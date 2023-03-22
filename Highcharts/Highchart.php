@@ -11,9 +11,9 @@ namespace Ob\HighchartsBundle\Highcharts;
  */
 class Highchart extends AbstractChart implements ChartInterface
 {
-    public $colorAxis;
+    public ChartOption|array|null $colorAxis;
 
-    public $noData;
+    public ChartOption $noData;
 
     public function __construct()
     {
@@ -22,17 +22,14 @@ class Highchart extends AbstractChart implements ChartInterface
         $this->initChartOption('noData');
     }
 
-    /**
-     * @param string $engine
-     *
-     * @return string
-     */
-    public function render($engine = 'jquery')
+    public function render(string $engine = 'jquery'): string
     {
         $chartJS = "";
+        // engine
         $chartJS .= $this->renderEngine($engine);
+        // options
         $chartJS .= $this->renderOptions();
-        $chartJS .= "\n    var " . (isset($this->chart->renderTo) ? $this->chart->renderTo : 'chart') . " = new Highcharts.Chart({\n";
+        $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.Chart({\n";
 
         // Chart
         $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
@@ -95,31 +92,25 @@ class Highchart extends AbstractChart implements ChartInterface
         // trim last trailing comma and close parenthesis
         $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
 
-        if ($engine !== false) {
+        if ($engine !== '') {
             $chartJS .= "});\n";
         }
 
         return trim($chartJS);
     }
 
-    /**
-     * @return string
-     */
-    private function renderColorAxis()
+    private function renderColorAxis(): string
     {
-        if (gettype($this->colorAxis) === 'array') {
+        if (is_array($this->colorAxis)) {
             return $this->renderWithJavascriptCallback($this->colorAxis, "colorAxis");
-        } elseif (gettype($this->colorAxis) === 'object') {
+        } elseif ($this->colorAxis instanceof ChartOption) {
             return $this->renderWithJavascriptCallback($this->colorAxis->colorAxis, "colorAxis");
+        } else {
+            return "";
         }
-
-        return "";
     }
 
-    /**
-     * @return string
-     */
-    private function renderPane()
+    private function renderPane(): string
     {
         if (get_object_vars($this->pane->pane)) {
             return "pane: " . json_encode($this->pane->pane) . ",\n";
@@ -128,10 +119,7 @@ class Highchart extends AbstractChart implements ChartInterface
         return "";
     }
 
-    /**
-     * @return string
-     */
-    private function renderDrilldown()
+    private function renderDrilldown(): string
     {
         if (get_object_vars($this->drilldown->drilldown)) {
             return "drilldown: " . json_encode($this->drilldown->drilldown) . ",\n";

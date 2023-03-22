@@ -7,29 +7,30 @@ use Laminas\Json\Json;
 abstract class AbstractChart
 {
     // Default options
-    public $chart;
-    public $colors;
-    public $credits;
-    public $global;
-    public $labels;
-    public $lang;
-    public $legend;
-    public $loading;
-    public $plotOptions;
-    public $rangeSelector;
-    public $point;
-    public $series;
-    public $drilldown;
-    public $subtitle;
-    public $symbols;
-    public $title;
-    public $tooltip;
-    public $xAxis;
-    public $yAxis;
-    public $exporting;
-    public $navigation;
-    public $pane;
-    public $scrollbar;
+    public ChartOption $chart;
+    public ChartOption $credits;
+    public ChartOption $global;
+    public ChartOption $labels;
+    public ChartOption $lang;
+    public ChartOption $legend;
+    public ChartOption $loading;
+    public ChartOption $plotOptions;
+    public ChartOption $rangeSelector;
+    public ChartOption $point;
+    public ChartOption $drilldown;
+    public ChartOption $subtitle;
+    public ChartOption $title;
+    public ChartOption $tooltip;
+    public ChartOption|array|null $xAxis;
+    public ChartOption|array|null $yAxis;
+    public ChartOption $exporting;
+    public ChartOption $navigation;
+    public ChartOption $pane;
+    public ChartOption $scrollbar;
+
+    public array $colors;
+    public array $series;
+    public array $symbols;
 
     public function __construct()
     {
@@ -48,65 +49,37 @@ abstract class AbstractChart
         }
     }
 
-    abstract public function render();
+    abstract public function render(): string;
 
-    /**
-     * @param string $name
-     * @param mixed  $value
-     *
-     * @return $this
-     */
-    public function __call($name, $value)
+    public function __call(string $name, mixed $value): static
     {
         $this->$name = $value;
 
         return $this;
     }
 
-    /**
-     * @param string $name
-     */
-    protected function initChartOption($name)
+    protected function initChartOption(string $name): void
     {
         $this->{$name} = new ChartOption($name);
     }
 
-    /**
-     * @param string $name
-     */
-    protected function initArrayOption($name)
+    protected function initArrayOption(string $name): void
     {
         $this->{$name} = array();
     }
 
-    /**
-     * @param ChartOption|array $chartOption
-     * @param string            $name
-     *
-     * @return string
-     */
-    protected function renderWithJavascriptCallback($chartOption, $name)
+    protected function renderWithJavascriptCallback(ChartOption|array|null $chartOption, string $name): string
     {
-        $result = "";
-
-        if (gettype($chartOption) === 'array') {
-            $result .= $this->renderArrayWithCallback($chartOption, $name);
+        if ($chartOption instanceof ChartOption) {
+            return $this->renderObjectWithCallback($chartOption, $name);
+        } else if (is_array($chartOption)) {
+            return $this->renderArrayWithCallback($chartOption, $name);
+        } else {
+            return "";
         }
-
-        if (gettype($chartOption) === 'object') {
-            $result .= $this->renderObjectWithCallback($chartOption, $name);
-        }
-
-        return $result;
     }
 
-    /**
-     * @param array  $chartOption
-     * @param string $name
-     *
-     * @return string
-     */
-    protected function renderArrayWithCallback($chartOption, $name)
+    protected function renderArrayWithCallback(array $chartOption, string $name): string
     {
         $result = "";
 
@@ -118,13 +91,7 @@ abstract class AbstractChart
         return $result;
     }
 
-    /**
-     * @param ChartOption $chartOption
-     * @param string      $name
-     *
-     * @return string
-     */
-    protected function renderObjectWithCallback($chartOption, $name)
+    protected function renderObjectWithCallback(ChartOption $chartOption, string $name): string
     {
         $result = "";
 
@@ -136,24 +103,16 @@ abstract class AbstractChart
         return $result;
     }
 
-    /**
-     * @param string $engine
-     *
-     * @return string
-     */
-    protected function renderEngine($engine)
+    protected function renderEngine(string $engine): string
     {
-        if ($engine == 'mootools') {
-            return 'window.addEvent(\'domready\', function () {';
-        } elseif ($engine == 'jquery') {
-            return "$(function () {";
-        }
+        return match($engine) {
+            'mootools' => 'window.addEvent(\'domready\', function () {',
+            'jquery' => "$(function () {",
+            default => "",
+        };
     }
 
-    /**
-     * @return string
-     */
-    protected function renderColors()
+    protected function renderColors(): string
     {
         if (!empty($this->colors)) {
             return "colors: " . json_encode($this->colors) . ",\n";
@@ -162,10 +121,7 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderCredits()
+    protected function renderCredits(): string
     {
         if (get_object_vars($this->credits->credits)) {
             return "credits: " . json_encode($this->credits->credits) . ",\n";
@@ -174,10 +130,7 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderSubtitle()
+    protected function renderSubtitle(): string
     {
         if (get_object_vars($this->subtitle->subtitle)) {
             return "subtitle: " . json_encode($this->subtitle->subtitle) . ",\n";
@@ -186,10 +139,7 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderTitle()
+    protected function renderTitle(): string
     {
         if (get_object_vars($this->title->title)) {
             return "title: " . json_encode($this->title->title) . ",\n";
@@ -198,38 +148,32 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderXAxis()
+    protected function renderXAxis(): string
     {
-        if (gettype($this->xAxis) === 'array') {
+        if (is_array($this->xAxis)) {
             return $this->renderWithJavascriptCallback($this->xAxis, "xAxis");
-        } elseif (gettype($this->xAxis) === 'object') {
+        } elseif ($this->xAxis instanceof ChartOption) {
             return $this->renderWithJavascriptCallback($this->xAxis->xAxis, "xAxis");
+        } else {
+            return "";
         }
-
-        return "";
     }
 
     /**
      * @return string
      */
-    protected function renderYAxis()
+    protected function renderYAxis(): string
     {
-        if (gettype($this->yAxis) === 'array') {
+        if (is_array($this->yAxis)) {
             return $this->renderWithJavascriptCallback($this->yAxis, "yAxis");
-        } elseif (gettype($this->yAxis) === 'object') {
+        } elseif ($this->yAxis instanceof ChartOption) {
             return $this->renderWithJavascriptCallback($this->yAxis->yAxis, "yAxis");
+        } else {
+            return "";
         }
-
-        return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderOptions()
+    protected function renderOptions(): string
     {
         $result = "";
 
@@ -243,10 +187,7 @@ abstract class AbstractChart
         return $result;
     }
 
-    /**
-     * @return string
-     */
-    protected function renderGlobal()
+    protected function renderGlobal(): string
     {
         if (get_object_vars($this->global->global)) {
             return "global: " . json_encode($this->global->global) . ",\n";
@@ -255,10 +196,7 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderLang()
+    protected function renderLang(): string
     {
         if (get_object_vars($this->lang->lang)) {
             return "lang: " . json_encode($this->lang->lang) . ",\n";
@@ -267,10 +205,7 @@ abstract class AbstractChart
         return "";
     }
 
-    /**
-     * @return string
-     */
-    protected function renderScrollbar()
+    protected function renderScrollbar(): string
     {
         if (get_object_vars($this->scrollbar->scrollbar)) {
             return 'scrollbar: ' . json_encode($this->scrollbar->scrollbar) . ",\n";

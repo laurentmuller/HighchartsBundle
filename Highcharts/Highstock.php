@@ -11,17 +11,14 @@ namespace Ob\HighchartsBundle\Highcharts;
  */
 class Highstock extends AbstractChart implements ChartInterface
 {
-    /**
-     * @param string $engine
-     *
-     * @return string
-     */
-    public function render($engine = 'jquery')
+    public function render(string $engine = 'jquery'): string
     {
         $chartJS = "";
+        // engine
         $chartJS .= $this->renderEngine($engine);
+        // options
         $chartJS .= $this->renderOptions();
-        $chartJS .= "\n    var " . (isset($this->chart->renderTo) ? $this->chart->renderTo : 'chart') . " = new Highcharts.StockChart({\n";
+        $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.StockChart({\n";
 
         // Chart Option
         $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
@@ -73,7 +70,7 @@ class Highstock extends AbstractChart implements ChartInterface
         // trim last trailing comma and close parenthesis
         $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
 
-        if ($engine !== false) {
+        if ($engine !== '') {
             $chartJS .= "});\n";
         }
 
