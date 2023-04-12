@@ -12,7 +12,6 @@ abstract class AbstractChart
     public ChartOption $chart;
     public array $colors;
     public ChartOption $credits;
-    public ChartOption $drilldown;
     public ChartOption $exporting;
     public ChartOption $global;
     public ChartOption $labels;
@@ -20,10 +19,8 @@ abstract class AbstractChart
     public ChartOption $legend;
     public ChartOption $loading;
     public ChartOption $navigation;
-    public ChartOption $pane;
     public ChartOption $plotOptions;
     public ChartOption $point;
-    public ChartOption $rangeSelector;
     public ChartOption $scrollbar;
     public array $series;
     public ChartOption $subtitle;
@@ -36,8 +33,8 @@ abstract class AbstractChart
     public function __construct()
     {
         $options = ['chart', 'credits', 'global', 'labels', 'lang', 'legend', 'loading', 'plotOptions',
-            'rangeSelector', 'point', 'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis', 'pane', 'exporting',
-            'navigation', 'drilldown', 'scrollbar'];
+            'point', 'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis',  'exporting', 'navigation',
+            'scrollbar'];
         foreach ($options as $option) {
             $this->initChartOption($option);
         }
@@ -55,7 +52,16 @@ abstract class AbstractChart
         return $this;
     }
 
-    abstract public function render(): string;
+     public function render(string $engine = 'jquery'): string
+     {
+         $chartJS = '';
+         $this->renderChartStart($chartJS, $engine);
+         $this->renderChartCommon($chartJS);
+         $this->renderChartOptions($chartJS);
+         $this->renderChartEnd($chartJS, $engine);
+
+         return \trim($chartJS);
+     }
 
     protected function initArrayOption(string $name): void
     {
@@ -77,6 +83,70 @@ abstract class AbstractChart
         }
 
         return $result;
+    }
+
+    protected function renderChartCommon(string &$chartJS): void
+    {
+        // Chart
+        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, 'chart');
+
+        // Colors
+        $chartJS .= $this->renderColors();
+
+        // Credits
+        $chartJS .= $this->renderCredits();
+
+        // Exporting
+        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, 'exporting');
+
+        // Legend
+        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, 'legend');
+
+        // Scrollbar
+        $chartJS .= $this->renderScrollbar();
+
+        // Subtitle
+        $chartJS .= $this->renderSubtitle();
+
+        // Title
+        $chartJS .= $this->renderTitle();
+
+        // xAxis
+        $chartJS .= $this->renderXAxis();
+
+        // yAxis
+        $chartJS .= $this->renderYAxis();
+
+        // PlotOptions
+        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, 'plotOptions');
+
+        // Series
+        $chartJS .= $this->renderWithJavascriptCallback($this->series, 'series');
+
+        // Tooltip
+        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, 'tooltip');
+    }
+
+    protected function renderChartEnd(string &$chartJS, string $engine): void
+    {
+        // trim last trailing comma and close parenthesis
+        $chartJS = \rtrim($chartJS, ",\n") . "\n    });\n";
+
+        if ('' !== $engine) {
+            $chartJS .= "});\n";
+        }
+    }
+
+    protected function renderChartOptions(string &$chartJS): void
+    {
+    }
+
+    protected function renderChartStart(string &$chartJS, string $engine): void
+    {
+        // engine
+        $chartJS .= $this->renderEngine($engine);
+        // options
+        $chartJS .= $this->renderOptions();
     }
 
     protected function renderColors(): string

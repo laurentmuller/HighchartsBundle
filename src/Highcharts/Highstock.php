@@ -13,69 +13,26 @@ namespace Ob\HighchartsBundle\Highcharts;
  */
 class Highstock extends AbstractChart implements ChartInterface
 {
-    public function render(string $engine = 'jquery'): string
+    public ChartOption $rangeSelector;
+
+    public function __construct()
     {
-        $chartJS = '';
-        // engine
-        $chartJS .= $this->renderEngine($engine);
-        // options
-        $chartJS .= $this->renderOptions();
-        $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.StockChart({\n";
+        parent::__construct();
+        $this->initChartOption('rangeSelector');
+    }
 
-        // Chart Option
-        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, 'chart');
-
-        // Colors
-        $chartJS .= $this->renderColors();
-
-        // Credits
-        $chartJS .= $this->renderCredits();
-
-        // Exporting
-        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, 'exporting');
-
-        // Labels
-
-        // Legend
-        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, 'legend');
-
-        // Loading
-        // Navigation
-
-        // PlotOptions
-        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, 'plotOptions');
+    protected function renderChartOptions(string &$chartJS): void
+    {
+        parent::renderChartOptions($chartJS);
 
         // RangeSelector
         $chartJS .= $this->renderWithJavascriptCallback($this->rangeSelector->rangeSelector, 'rangeSelector');
+    }
 
-        // Scrollbar
-        $chartJS .= $this->renderScrollbar();
+    protected function renderChartStart(string &$chartJS, string $engine): void
+    {
+        parent::renderChartStart($chartJS, $engine);
 
-        // Series
-        $chartJS .= $this->renderWithJavascriptCallback($this->series, 'series');
-
-        // Subtitle
-        $chartJS .= $this->renderSubtitle();
-
-        // Title
-        $chartJS .= $this->renderTitle();
-
-        // Tooltip
-        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, 'tooltip');
-
-        // xAxis
-        $chartJS .= $this->renderXAxis();
-
-        // yAxis
-        $chartJS .= $this->renderYAxis();
-
-        // trim last trailing comma and close parenthesis
-        $chartJS = \rtrim($chartJS, ",\n") . "\n    });\n";
-
-        if ('' !== $engine) {
-            $chartJS .= "});\n";
-        }
-
-        return \trim($chartJS);
+        $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.StockChart({\n";
     }
 }
