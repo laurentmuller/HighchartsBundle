@@ -45,8 +45,7 @@ $rules = [
 ];
 
 $finder = Finder::create()
-    ->in(__DIR__ . '/Highcharts')
-    ->in(__DIR__ . '/Twig')
+    ->in(__DIR__ . '/src')
     ->in(__DIR__ . '/Tests');
 
 $config = new Config();
