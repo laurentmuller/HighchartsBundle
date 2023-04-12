@@ -14,17 +14,12 @@ abstract class AbstractChart
     public ChartOption $credits;
     public ChartOption $exporting;
     public ChartOption $global;
-    public ChartOption $labels;
     public ChartOption $lang;
     public ChartOption $legend;
-    public ChartOption $loading;
-    public ChartOption $navigation;
     public ChartOption $plotOptions;
-    public ChartOption $point;
     public ChartOption $scrollbar;
     public array $series;
     public ChartOption $subtitle;
-    public array $symbols;
     public ChartOption $title;
     public ChartOption $tooltip;
     public ChartOption|array|null $xAxis;
@@ -32,14 +27,18 @@ abstract class AbstractChart
 
     public function __construct()
     {
-        $options = ['chart', 'credits', 'global', 'labels', 'lang', 'legend', 'loading', 'plotOptions',
-            'point', 'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis',  'exporting', 'navigation',
-            'scrollbar'];
+        // plot options
+        $options = [
+            'chart', 'credits', 'exporting', 'global',  'lang',
+            'legend', 'plotOptions', 'scrollbar', 'subtitle',
+            'title', 'tooltip', 'xAxis', 'yAxis',
+        ];
         foreach ($options as $option) {
             $this->initChartOption($option);
         }
 
-        $options = ['colors', 'series', 'symbols'];
+        // array options
+        $options = ['colors', 'series'];
         foreach ($options as $option) {
             $this->initArrayOption($option);
         }
@@ -75,14 +74,12 @@ abstract class AbstractChart
 
     protected function renderArrayWithCallback(array $chartOption, string $name): string
     {
-        $result = '';
-
         if (!empty($chartOption)) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            $result .= $name . ': ' . Json::encode($chartOption[0], false, ['enableJsonExprFinder' => true]) . ", \n";
+            return $name . ': ' . Json::encode($chartOption[0], false, ['enableJsonExprFinder' => true]) . ", \n";
         }
 
-        return $result;
+        return '';
     }
 
     protected function renderChartCommon(string &$chartJS): void
@@ -196,14 +193,12 @@ abstract class AbstractChart
 
     protected function renderObjectWithCallback(object $chartOption, string $name): string
     {
-        $result = '';
-
         if (\get_object_vars($chartOption)) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            $result .= $name . ': ' . Json::encode($chartOption, false, ['enableJsonExprFinder' => true]) . ",\n";
+            return $name . ': ' . Json::encode($chartOption, false, ['enableJsonExprFinder' => true]) . ",\n";
         }
 
-        return $result;
+        return '';
     }
 
     protected function renderOptions(): string
