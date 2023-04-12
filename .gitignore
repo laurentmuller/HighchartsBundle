@@ -1,7 +1,5 @@
-phpunit.xml
-composer.lock
-
-composer.phar
-php-cs-fixer.phar
-
-vendor
+/.idea
+/vendor
+/.php-cs-fixer.cache
+/.phpunit.result.cache
+/.phpunit.cache/test-results

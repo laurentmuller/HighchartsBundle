@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Twig;
 
 use Ob\HighchartsBundle\Highcharts\ChartInterface;
@@ -7,16 +10,16 @@ use Twig\TwigFunction;
 
 class HighchartsExtension extends AbstractExtension
 {
-    public function getFunctions(): array
-    {
-        return array(
-            new TwigFunction('chart', array($this, 'chart'), array('is_safe' => array('html'))),
-        );
-    }
-
-    public function chart(ChartInterface $chart, $engine = 'jquery'): string
+    public function chart(ChartInterface $chart, string $engine = 'jquery'): string
     {
         return $chart->render($engine);
+    }
+
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('chart', [$this, 'chart'], ['is_safe' => ['html']]),
+        ];
     }
 
     public function getName(): string

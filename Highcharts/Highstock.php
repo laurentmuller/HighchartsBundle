@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
  * This class is part of the Ob/HighchartsBundle
- * See Highcharts documentation at http://www.highcharts.com/ref/
+ * See Highcharts documentation at http://www.highcharts.com/ref/.
  *
  * @method Highstock colors(array $colors)
  * @method Highstock series(array $series)
@@ -13,7 +15,7 @@ class Highstock extends AbstractChart implements ChartInterface
 {
     public function render(string $engine = 'jquery'): string
     {
-        $chartJS = "";
+        $chartJS = '';
         // engine
         $chartJS .= $this->renderEngine($engine);
         // options
@@ -21,7 +23,7 @@ class Highstock extends AbstractChart implements ChartInterface
         $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.StockChart({\n";
 
         // Chart Option
-        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
+        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, 'chart');
 
         // Colors
         $chartJS .= $this->renderColors();
@@ -30,27 +32,27 @@ class Highstock extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderCredits();
 
         // Exporting
-        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, "exporting");
+        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, 'exporting');
 
         // Labels
 
         // Legend
-        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, "legend");
+        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, 'legend');
 
         // Loading
         // Navigation
 
         // PlotOptions
-        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, "plotOptions");
+        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, 'plotOptions');
 
         // RangeSelector
-        $chartJS .= $this->renderWithJavascriptCallback($this->rangeSelector->rangeSelector, "rangeSelector");
+        $chartJS .= $this->renderWithJavascriptCallback($this->rangeSelector->rangeSelector, 'rangeSelector');
 
         // Scrollbar
         $chartJS .= $this->renderScrollbar();
 
         // Series
-        $chartJS .= $this->renderWithJavascriptCallback($this->series, "series");
+        $chartJS .= $this->renderWithJavascriptCallback($this->series, 'series');
 
         // Subtitle
         $chartJS .= $this->renderSubtitle();
@@ -59,7 +61,7 @@ class Highstock extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderTitle();
 
         // Tooltip
-        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, "tooltip");
+        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, 'tooltip');
 
         // xAxis
         $chartJS .= $this->renderXAxis();
@@ -68,12 +70,12 @@ class Highstock extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderYAxis();
 
         // trim last trailing comma and close parenthesis
-        $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
+        $chartJS = \rtrim($chartJS, ",\n") . "\n    });\n";
 
-        if ($engine !== '') {
+        if ('' !== $engine) {
             $chartJS .= "});\n";
         }
 
-        return trim($chartJS);
+        return \trim($chartJS);
     }
 }

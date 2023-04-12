@@ -1,17 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
  * This class is part of the Ob/HighchartsBundle
- * See Highcharts documentation at http://www.highcharts.com/ref/
+ * See Highcharts documentation at http://www.highcharts.com/ref/.
  *
  * @method Highchart colors(array $colors)
  * @method Highchart series(array $series)
  */
 class Highchart extends AbstractChart implements ChartInterface
 {
-    public ChartOption|array|null $colorAxis;
+    public ChartOption $colorAxis;
 
     public ChartOption $noData;
 
@@ -24,7 +26,7 @@ class Highchart extends AbstractChart implements ChartInterface
 
     public function render(string $engine = 'jquery'): string
     {
-        $chartJS = "";
+        $chartJS = '';
         // engine
         $chartJS .= $this->renderEngine($engine);
         // options
@@ -32,39 +34,39 @@ class Highchart extends AbstractChart implements ChartInterface
         $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.Chart({\n";
 
         // Chart
-        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, "chart");
+        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, 'chart');
 
         // Colors
         $chartJS .= $this->renderColors();
 
-        // Color Axis
+        // Color Axiscls
         $chartJS .= $this->renderColorAxis();
 
         // Credits
         $chartJS .= $this->renderCredits();
 
         // Exporting
-        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, "exporting");
+        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, 'exporting');
 
         // Labels
 
         // Legend
-        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, "legend");
+        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, 'legend');
 
         // Loading
         // Navigation
 
         // noData
-        $chartJS .= $this->renderWithJavascriptCallback($this->noData->noData, "noData");
+        $chartJS .= $this->renderWithJavascriptCallback($this->noData->noData, 'noData');
 
         // Pane
         $chartJS .= $this->renderPane();
 
         // PlotOptions
-        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, "plotOptions");
+        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, 'plotOptions');
 
         // Series
-        $chartJS .= $this->renderWithJavascriptCallback($this->series, "series");
+        $chartJS .= $this->renderWithJavascriptCallback($this->series, 'series');
 
         // Scrollbar
         $chartJS .= $this->renderScrollbar();
@@ -81,7 +83,7 @@ class Highchart extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderTitle();
 
         // Tooltip
-        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, "tooltip");
+        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, 'tooltip');
 
         // xAxis
         $chartJS .= $this->renderXAxis();
@@ -90,41 +92,41 @@ class Highchart extends AbstractChart implements ChartInterface
         $chartJS .= $this->renderYAxis();
 
         // trim last trailing comma and close parenthesis
-        $chartJS = rtrim($chartJS, ",\n") . "\n    });\n";
+        $chartJS = \rtrim($chartJS, ",\n") . "\n    });\n";
 
-        if ($engine !== '') {
+        if ('' !== $engine) {
             $chartJS .= "});\n";
         }
 
-        return trim($chartJS);
+        return \trim($chartJS);
     }
 
     private function renderColorAxis(): string
     {
-        if (is_array($this->colorAxis)) {
-            return $this->renderWithJavascriptCallback($this->colorAxis, "colorAxis");
+        if (\is_array($this->colorAxis)) {
+            return $this->renderWithJavascriptCallback($this->colorAxis, 'colorAxis');
         } elseif ($this->colorAxis instanceof ChartOption) {
-            return $this->renderWithJavascriptCallback($this->colorAxis->colorAxis, "colorAxis");
+            return $this->renderWithJavascriptCallback($this->colorAxis->colorAxis, 'colorAxis');
         } else {
-            return "";
+            return '';
         }
-    }
-
-    private function renderPane(): string
-    {
-        if (get_object_vars($this->pane->pane)) {
-            return "pane: " . json_encode($this->pane->pane) . ",\n";
-        }
-
-        return "";
     }
 
     private function renderDrilldown(): string
     {
-        if (get_object_vars($this->drilldown->drilldown)) {
-            return "drilldown: " . json_encode($this->drilldown->drilldown) . ",\n";
+        if (\get_object_vars($this->drilldown->drilldown)) {
+            return 'drilldown: ' . \json_encode($this->drilldown->drilldown) . ",\n";
         }
 
-        return "";
+        return '';
+    }
+
+    private function renderPane(): string
+    {
+        if (\get_object_vars($this->pane->pane)) {
+            return 'pane: ' . \json_encode($this->pane->pane) . ",\n";
+        }
+
+        return '';
     }
 }

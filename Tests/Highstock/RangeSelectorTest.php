@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Tests\Highstock;
 
 use Ob\HighchartsBundle\Highcharts\Highstock;
@@ -16,7 +18,20 @@ class RangeSelectorTest extends TestCase
         $this->range = $this->chart->rangeSelector;
     }
 
-    public function testButtonSpacing()
+    public function testButtons(): void
+    {
+        $buttons = [[
+            'type' => 'month',
+                'count' => 3,
+                'text' => '3m',
+        ]];
+
+        $this->range->buttons($buttons);
+        $this->assertEquals($buttons, $this->range->buttons);
+        $this->assertMatchesRegularExpression('/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/', $this->chart->render());
+    }
+
+    public function testButtonSpacing(): void
     {
         $spacing = 0;
         $this->range->buttonSpacing($spacing);
@@ -24,25 +39,12 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"buttonSpacing":0/', $this->chart->render());
     }
 
-    public function testButtonTheme()
+    public function testButtonTheme(): void
     {
         $this->markTestIncomplete();
     }
 
-    public function testButtons()
-    {
-        $buttons = array(array(
-            'type' => 'month',
-                'count' => 3,
-                'text' => '3m'
-        ));
-
-        $this->range->buttons($buttons);
-        $this->assertEquals($buttons, $this->range->buttons);
-        $this->assertMatchesRegularExpression('/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/', $this->chart->render());
-    }
-
-    public function testEnabled()
+    public function testEnabled(): void
     {
         $this->range->enabled(true);
         $this->assertTrue($this->range->enabled);
@@ -53,7 +55,7 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"enabled":false/', $this->chart->render());
     }
 
-    public function testInputBoxBorderColor()
+    public function testInputBoxBorderColor(): void
     {
         $color = 'silver';
         $this->range->inputBoxBorderColor($color);
@@ -61,7 +63,7 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputBoxBorderColor":"silver"/', $this->chart->render());
     }
 
-    public function testInputBoxHeight()
+    public function testInputBoxHeight(): void
     {
         $height = 16;
         $this->range->inputBoxHeight($height);
@@ -69,7 +71,7 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputBoxHeight":16/', $this->chart->render());
     }
 
-    public function testInputBoxWidth()
+    public function testInputBoxWidth(): void
     {
         $width = 16;
         $this->range->inputBoxWidth($width);
@@ -77,7 +79,7 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputBoxWidth":16/', $this->chart->render());
     }
 
-    public function testInputDateFormat()
+    public function testInputDateFormat(): void
     {
         $format = '%b %e, %Y';
         $this->range->inputDateFormat($format);
@@ -85,12 +87,12 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputDateFormat":"%b %e, %Y"/', $this->chart->render());
     }
 
-    public function testInputDateParser()
+    public function testInputDateParser(): void
     {
         $this->markTestIncomplete();
     }
 
-    public function testInputEditDateFormat()
+    public function testInputEditDateFormat(): void
     {
         $format = '%b %e, %Y';
         $this->range->inputEditDateFormat($format);
@@ -98,7 +100,7 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputEditDateFormat":"%b %e, %Y"/', $this->chart->render());
     }
 
-    public function testinputEnabled()
+    public function testinputEnabled(): void
     {
         $this->range->inputEnabled(true);
         $this->assertTrue($this->range->inputEnabled);
@@ -109,27 +111,27 @@ class RangeSelectorTest extends TestCase
         $this->assertMatchesRegularExpression('/"inputEnabled":false/', $this->chart->render());
     }
 
-    public function testInputPosition()
+    public function testInputPosition(): void
     {
-        $position= array(
-            'align' => 'right'
-        );
+        $position = [
+            'align' => 'right',
+        ];
         $this->range->position($position);
         $this->assertEquals($position, $this->range->position);
         $this->assertMatchesRegularExpression('/"position":{"align":"right"}/', $this->chart->render());
     }
 
-    public function testInputStyle()
+    public function testInputStyle(): void
     {
         $this->markTestIncomplete();
     }
 
-    public function testLabelStyle()
+    public function testLabelStyle(): void
     {
         $this->markTestIncomplete();
     }
 
-    public function testSelected()
+    public function testSelected(): void
     {
         $index = 3;
         $this->range->selected($index);

@@ -1,18 +1,18 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
  * This class is part of the Ob/HighchartsBundle
- * See Highcharts documentation at http://www.highcharts.com/ref/#chart
+ * See Highcharts documentation at http://www.highcharts.com/ref/#chart.
  */
+#[\AllowDynamicProperties]
 class ChartOption
 {
     private string $option_name;
 
-    /**
-     * @param string $name
-     */
     public function __construct(string $name)
     {
         $this->option_name = $name;
@@ -20,9 +20,6 @@ class ChartOption
     }
 
     /**
-     * @param string $name
-     * @param array  $value
-     *
      * @return $this
      */
     public function __call(string $name, array $value): self
@@ -33,11 +30,6 @@ class ChartOption
         return $this;
     }
 
-    /**
-     * @param string $name
-     *
-     * @return mixed
-     */
     public function __get(string $name): mixed
     {
         $option_name = $this->option_name;
@@ -45,11 +37,6 @@ class ChartOption
         return $this->{$option_name}->{$name};
     }
 
-    /**
-     * @param string $name
-     *
-     * @return bool
-     */
     public function __isset(string $name): bool
     {
         $option_name = $this->option_name;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
@@ -7,14 +9,14 @@ use Ob\HighchartsBundle\Twig\HighchartsExtension;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the Twig extension
+ * This class hold Unit tests for the Twig extension.
  */
 class TwigTest extends TestCase
 {
     /**
-     * Chart rendering using the twig extension
+     * Chart rendering using the twig extension.
      */
-    public function testTwigExtension()
+    public function testTwigExtension(): void
     {
         $chart = new Highchart();
         $extension = new HighchartsExtension();

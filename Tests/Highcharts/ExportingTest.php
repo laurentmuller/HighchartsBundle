@@ -1,33 +1,35 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
+use Laminas\Json\Expr;
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use Zend\Json\Expr;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the exporting option
+ * This class hold Unit tests for the exporting option.
  */
 class ExportingTest extends TestCase
 {
     /**
-     * buttons option
+     * buttons option.
      */
-    public function testButtons()
+    public function testButtons(): void
     {
         $chart = new Highchart();
 
         // align option (string - left/center/right)
-        $chart->exporting->buttons(array('exportButton' => array('align' => 'center')));
+        $chart->exporting->buttons(['exportButton' => ['align' => 'center']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"exportButton":\{"align":"center"\}\}\}/', $chart->render());
-        $chart->exporting->buttons(array('printButton' => array('align' => 'center')));
+        $chart->exporting->buttons(['printButton' => ['align' => 'center']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"printButton":\{"align":"center"\}\}\}/', $chart->render());
 
         // backgroundColor option
-        $chart->exporting->buttons(array('exportButton' => array('backgroundColor' => 'blue')));
+        $chart->exporting->buttons(['exportButton' => ['backgroundColor' => 'blue']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"exportButton":\{"backgroundColor":"blue"\}\}\}/', $chart->render());
-        $chart->exporting->buttons(array('printButton' => array('backgroundColor' => 'blue')));
+        $chart->exporting->buttons(['printButton' => ['backgroundColor' => 'blue']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"printButton":\{"backgroundColor":"blue"\}\}\}/', $chart->render());
 
         // borderColor option
@@ -57,9 +59,9 @@ class ExportingTest extends TestCase
     }
 
     /**
-     * chartOptions option
+     * chartOptions option.
      */
-    public function testChartOptions()
+    public function testChartOptions(): void
     {
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
@@ -67,9 +69,9 @@ class ExportingTest extends TestCase
     }
 
     /**
-     * enabled option (true/false)
+     * enabled option (true/false).
      */
-    public function testEnabled()
+    public function testEnabled(): void
     {
         $chart = new Highchart();
 
@@ -81,20 +83,20 @@ class ExportingTest extends TestCase
     }
 
     /**
-     * filename option (string)
+     * filename option (string).
      */
-    public function testFilename()
+    public function testFilename(): void
     {
         $chart = new Highchart();
-        $chart->exporting->filename("graph");
+        $chart->exporting->filename('graph');
 
         $this->assertMatchesRegularExpression('/exporting: \{"filename":"graph"\}/', $chart->render());
     }
 
     /**
-     * type option (string - image/png, image/jpeg, application/pdf or image/svg+xml)
+     * type option (string - image/png, image/jpeg, application/pdf or image/svg+xml).
      */
-    public function testType()
+    public function testType(): void
     {
         $chart = new Highchart();
 
@@ -113,9 +115,9 @@ class ExportingTest extends TestCase
     }
 
     /**
-     * url option (string)
+     * url option (string).
      */
-    public function testUrl()
+    public function testUrl(): void
     {
         $chart = new Highchart();
 
@@ -126,9 +128,9 @@ class ExportingTest extends TestCase
     }
 
     /**
-     * width option (integer - width in px)
+     * width option (integer - width in px).
      */
-    public function testWidth()
+    public function testWidth(): void
     {
         $chart = new Highchart();
         $chart->exporting->width(300);

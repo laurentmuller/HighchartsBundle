@@ -1,36 +1,38 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the pane option
+ * This class hold Unit tests for the pane option.
  */
 class PaneTest extends TestCase
 {
-    public function testBackground()
+    public function testBackground(): void
     {
         $this->markTestIncomplete(
             'This test has not been implemented yet.'
         );
     }
 
-    public function testCenter()
+    public function testCenter(): void
     {
         $chart = new Highchart();
 
         // pixel based
-        $chart->pane->center(array(50, 100));
+        $chart->pane->center([50, 100]);
         $this->assertMatchesRegularExpression('/pane: \{"center":\[50,100\]\}/', $chart->render());
 
         // percentage based
-        $chart->pane->center(array('50%', '40%'));
+        $chart->pane->center(['50%', '40%']);
         $this->assertMatchesRegularExpression('/pane: \{"center":\["50%","40%"\]\}/', $chart->render());
     }
 
-    public function testEndAngle()
+    public function testEndAngle(): void
     {
         $chart = new Highchart();
 
@@ -38,7 +40,7 @@ class PaneTest extends TestCase
         $this->assertMatchesRegularExpression('/pane: \{"endAngle":5\}/', $chart->render());
     }
 
-    public function testStartAngle()
+    public function testStartAngle(): void
     {
         $chart = new Highchart();
 

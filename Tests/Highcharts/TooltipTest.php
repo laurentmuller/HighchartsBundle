@@ -1,45 +1,47 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
+use Laminas\Json\Expr;
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use Zend\Json\Expr;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the tooltip option
+ * This class hold Unit tests for the tooltip option.
  */
 class TooltipTest extends TestCase
 {
     /**
-     * Animation option (true/false)
+     * Animation option (true/false).
      */
-    public function testAnimation()
+    public function testAnimation(): void
     {
         $chart = new Highchart();
 
-        $chart->tooltip->animation("true");
+        $chart->tooltip->animation('true');
         $this->assertMatchesRegularExpression('/tooltip: \{"animation":"true"\}/', $chart->render());
 
-        $chart->tooltip->animation("false");
+        $chart->tooltip->animation('false');
         $this->assertMatchesRegularExpression('/tooltip: \{"animation":"false"\}/', $chart->render());
     }
 
     /**
-     * backgroundColor option (rgba)
+     * backgroundColor option (rgba).
      */
-    public function testBackgroundColor()
+    public function testBackgroundColor(): void
     {
         $chart = new Highchart();
 
-        $chart->tooltip->backgroundColor("rgba(255, 255, 255, .85)");
+        $chart->tooltip->backgroundColor('rgba(255, 255, 255, .85)');
         $this->assertMatchesRegularExpression('/tooltip: \{"backgroundColor":"rgba\(255, 255, 255, .85\)"\}/', $chart->render());
     }
 
     /**
-     * borderColor option (null/auto/rgba)
+     * borderColor option (null/auto/rgba).
      */
-    public function testBorderColor()
+    public function testBorderColor(): void
     {
         $chart = new Highchart();
 
@@ -54,51 +56,51 @@ class TooltipTest extends TestCase
     }
 
     /**
-     * borderRadius option (integer - radius in px)
+     * borderRadius option (integer - radius in px).
      */
-    public function testBorderRadius()
+    public function testBorderRadius(): void
     {
         $chart = new Highchart();
 
         $chart->tooltip->borderRadius(5);
         $this->assertMatchesRegularExpression('/tooltip: \{"borderRadius":5\}/', $chart->render());
 
-        $chart->tooltip->borderRadius("5");
+        $chart->tooltip->borderRadius('5');
         $this->assertMatchesRegularExpression('/tooltip: \{"borderRadius":"5"\}/', $chart->render());
     }
 
     /**
-     * borderWidth option (integer - width in px)
+     * borderWidth option (integer - width in px).
      */
-    public function testborderWidth()
+    public function testborderWidth(): void
     {
         $chart = new Highchart();
 
         $chart->tooltip->borderWidth(5);
         $this->assertMatchesRegularExpression('/tooltip: \{"borderWidth":5\}/', $chart->render());
 
-        $chart->tooltip->borderWidth("5");
+        $chart->tooltip->borderWidth('5');
         $this->assertMatchesRegularExpression('/tooltip: \{"borderWidth":"5"\}/', $chart->render());
     }
 
     /**
-     * enabled option (true/false)
+     * enabled option (true/false).
      */
-    public function testEnabled()
+    public function testEnabled(): void
     {
         $chart = new Highchart();
 
-        $chart->tooltip->enabled("true");
+        $chart->tooltip->enabled('true');
         $this->assertMatchesRegularExpression('/tooltip: \{"enabled":"true"\}/', $chart->render());
 
-        $chart->tooltip->enabled("false");
+        $chart->tooltip->enabled('false');
         $this->assertMatchesRegularExpression('/tooltip: \{"enabled":"false"\}/', $chart->render());
     }
 
     /**
-     * Formatter option (Zend Json Expr)
+     * Formatter option (Zend Json Expr).
      */
-    public function testFormatter()
+    public function testFormatter(): void
     {
         $chart = new Highchart();
 
@@ -109,16 +111,16 @@ class TooltipTest extends TestCase
     }
 
     /**
-     * shadow option (true/false)
+     * shadow option (true/false).
      */
-    public function testShadow()
+    public function testShadow(): void
     {
         $chart = new Highchart();
 
-        $chart->tooltip->shadow("true");
+        $chart->tooltip->shadow('true');
         $this->assertMatchesRegularExpression('/tooltip: \{"shadow":"true"\}/', $chart->render());
 
-        $chart->tooltip->shadow("false");
+        $chart->tooltip->shadow('false');
         $this->assertMatchesRegularExpression('/tooltip: \{"shadow":"false"\}/', $chart->render());
     }
 }
