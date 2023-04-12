@@ -104,7 +104,7 @@ class Highchart extends AbstractChart implements ChartInterface
     {
         if (\is_array($this->colorAxis)) {
             return $this->renderWithJavascriptCallback($this->colorAxis, 'colorAxis');
-        } elseif ($this->colorAxis instanceof ChartOption) {
+        } elseif (\is_object($this->colorAxis)) {
             return $this->renderWithJavascriptCallback($this->colorAxis->colorAxis, 'colorAxis');
         } else {
             return '';

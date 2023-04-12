@@ -124,7 +124,7 @@ abstract class AbstractChart
         return '';
     }
 
-    protected function renderObjectWithCallback(ChartOption|\stdClass $chartOption, string $name): string
+    protected function renderObjectWithCallback(object $chartOption, string $name): string
     {
         $result = '';
 
@@ -177,9 +177,9 @@ abstract class AbstractChart
         return '';
     }
 
-    protected function renderWithJavascriptCallback(ChartOption|\stdClass|array|null $chartOption, string $name): string
+    protected function renderWithJavascriptCallback(object|array|null $chartOption, string $name): string
     {
-        if ($chartOption instanceof ChartOption || $chartOption instanceof \stdClass) {
+        if (\is_object($chartOption)) {
             return $this->renderObjectWithCallback($chartOption, $name);
         } elseif (\is_array($chartOption)) {
             return $this->renderArrayWithCallback($chartOption, $name);
@@ -190,10 +190,10 @@ abstract class AbstractChart
 
     protected function renderXAxis(): string
     {
-        if (\is_array($this->xAxis)) {
-            return $this->renderWithJavascriptCallback($this->xAxis, 'xAxis');
-        } elseif ($this->xAxis instanceof ChartOption) {
+        if (\is_object($this->xAxis)) {
             return $this->renderWithJavascriptCallback($this->xAxis->xAxis, 'xAxis');
+        } elseif (\is_array($this->xAxis)) {
+            return $this->renderWithJavascriptCallback($this->xAxis, 'xAxis');
         } else {
             return '';
         }
@@ -201,10 +201,10 @@ abstract class AbstractChart
 
     protected function renderYAxis(): string
     {
-        if (\is_array($this->yAxis)) {
-            return $this->renderWithJavascriptCallback($this->yAxis, 'yAxis');
-        } elseif ($this->yAxis instanceof ChartOption) {
+        if (\is_object($this->yAxis)) {
             return $this->renderWithJavascriptCallback($this->yAxis->yAxis, 'yAxis');
+        } elseif (\is_array($this->yAxis)) {
+            return $this->renderWithJavascriptCallback($this->yAxis, 'yAxis');
         } else {
             return '';
         }
