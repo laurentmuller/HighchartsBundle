@@ -8,12 +8,12 @@ use Ob\HighchartsBundle\Twig\HighchartsExtension;
 
 class BundleInitializationTest extends BaseBundleTestCase
 {
-    protected function getBundleClass()
+    protected function getBundleClass(): string
     {
         return ObHighchartsBundle::class;
     }
 
-    public function testInitBundle()
+    public function testInitBundle(): void
     {
         // Create a new Kernel
         $kernel = $this->createKernel();
