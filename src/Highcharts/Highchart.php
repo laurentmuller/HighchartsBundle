@@ -13,8 +13,7 @@ namespace Ob\HighchartsBundle\Highcharts;
  */
 class Highchart extends AbstractChart implements ChartInterface
 {
-    public ChartOption $colorAxis;
-
+    public ChartOption|array|null $colorAxis;
     public ChartOption $noData;
 
     public function __construct()

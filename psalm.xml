@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<psalm
+    errorLevel="3"
+    resolveFromConfigFile="true"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
+    >
+
+    <projectFiles>
+        <directory name="src" />
+        <ignoreFiles>
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress">
+                <file name="src/Highcharts/AbstractChart.php" />
+                <file name="src/Highcharts/Highchart.php" />
+                <file name="src/Highcharts/Highstock.php" />
+            </errorLevel>
+        </PropertyNotSetInConstructor>
+        <InvalidAttribute>
+            <errorLevel type="suppress">
+                <file name="src/Highcharts/ChartOption.php" />
+            </errorLevel>
+        </InvalidAttribute>
+    </issueHandlers>
+</psalm>

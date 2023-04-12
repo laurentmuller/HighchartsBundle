@@ -30,8 +30,8 @@ abstract class AbstractChart
     public array $symbols;
     public ChartOption $title;
     public ChartOption $tooltip;
-    public ChartOption|array $xAxis;
-    public ChartOption|array $yAxis;
+    public ChartOption|array|null $xAxis;
+    public ChartOption|array|null $yAxis;
 
     public function __construct()
     {
