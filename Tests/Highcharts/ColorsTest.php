@@ -8,7 +8,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the colors option.
+ * This class hold Unit Tests for the colors option.
  */
 class ColorsTest extends TestCase
 {
@@ -17,10 +17,9 @@ class ColorsTest extends TestCase
      */
     public function testColors(): void
     {
-        $linechart = new Highchart();
-
+        $chart = new Highchart();
         $colors = ['#FF0000', '#00FF00', '#0000FF'];
-        $linechart->colors($colors);
-        $this->assertMatchesRegularExpression('/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/', $linechart->render());
+        $chart->colors($colors);
+        $this->assertMatchesRegularExpression('/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/', $chart->render());
     }
 }

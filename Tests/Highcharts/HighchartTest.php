@@ -8,7 +8,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the Highchart Class.
+ * This class hold Unit Tests for the Highchart Class.
  */
 class HighchartTest extends TestCase
 {
@@ -18,7 +18,6 @@ class HighchartTest extends TestCase
     public function testIeFriendliness(): void
     {
         $chart = new Highchart();
-
         $chart->chart->setTitle('Am I IE friendly yet?');
         $this->assertMatchesRegularExpression(
             '/\}(?<!,)\n?\r?\s*\}\);\n?\r?\s*\}\);/',
@@ -68,11 +67,9 @@ class HighchartTest extends TestCase
     public function testSetGet(): void
     {
         $chart = new Highchart();
-
         $chart->credits->enabled(false);
-        $this->assertTrue(false === $chart->credits->enabled);
-
+        $this->assertFalse($chart->credits->enabled);
         $chart->credits->enabled(true);
-        $this->assertTrue(true === $chart->credits->enabled);
+        $this->assertTrue($chart->credits->enabled);
     }
 }

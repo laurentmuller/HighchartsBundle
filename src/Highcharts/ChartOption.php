@@ -30,15 +30,12 @@ namespace Ob\HighchartsBundle\Highcharts;
 #[\AllowDynamicProperties]
 class ChartOption
 {
-    public function __construct(private string $name)
+    public function __construct(private readonly string $name)
     {
         $option_name = $this->name;
         $this->{$option_name} = new \stdClass();
     }
 
-    /**
-     * @return $this
-     */
     public function __call(string $name, array $value): self
     {
         $option_name = $this->name;

@@ -8,7 +8,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the global option.
+ * This class hold Unit Tests for the global option.
  */
 class GlobalTest extends TestCase
 {
@@ -18,10 +18,8 @@ class GlobalTest extends TestCase
     public function testGlobal(): void
     {
         $chart = new Highchart();
-
         $chart->global->useUTC('true');
         $this->assertMatchesRegularExpression('/global: \{"useUTC":"true"\}/', $chart->render());
-
         $chart->global->useUTC('false');
         $this->assertMatchesRegularExpression('/global: \{"useUTC":"false"\}/', $chart->render());
     }
@@ -32,7 +30,6 @@ class GlobalTest extends TestCase
     public function testLang(): void
     {
         $chart = new Highchart();
-
         $chart->lang->noData('No data to display');
         $this->assertMatchesRegularExpression('/"noData":"No data to display"/', $chart->render());
     }

@@ -8,6 +8,11 @@ use Laminas\Json\Json;
 
 abstract class AbstractChart
 {
+    /**
+     * The Zend json encode options.
+     */
+    private const ZEND_JSON_OPTIONS = ['enableJsonExprFinder' => true];
+
     // Default options
     public ChartOption $chart;
     public array $colors;
@@ -74,9 +79,9 @@ abstract class AbstractChart
 
     protected function renderArrayWithCallback(array $chartOption, string $name): string
     {
-        if (!empty($chartOption)) {
+        if ([] !== $chartOption) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            return $name . ': ' . Json::encode($chartOption[0], false, ['enableJsonExprFinder' => true]) . ", \n";
+            return $name . ': ' . Json::encode($chartOption[0], false, self::ZEND_JSON_OPTIONS) . ", \n";
         }
 
         return '';
@@ -148,7 +153,7 @@ abstract class AbstractChart
 
     protected function renderColors(): string
     {
-        if (!empty($this->colors)) {
+        if ([] !== $this->colors) {
             return 'colors: ' . \json_encode($this->colors) . ",\n";
         }
 
@@ -195,7 +200,7 @@ abstract class AbstractChart
     {
         if (\get_object_vars($chartOption)) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            return $name . ': ' . Json::encode($chartOption, false, ['enableJsonExprFinder' => true]) . ",\n";
+            return $name . ': ' . Json::encode($chartOption, false, self::ZEND_JSON_OPTIONS) . ",\n";
         }
 
         return '';

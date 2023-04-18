@@ -8,7 +8,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the lang option.
+ * This class hold Unit Tests for the lang option.
  */
 class LangTest extends TestCase
 {
@@ -19,7 +19,6 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->months(['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']);
-
         $this->assertMatchesRegularExpression(
             '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/',
             $chart->render()
@@ -33,7 +32,6 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->shortMonths(['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']);
-
         $this->assertMatchesRegularExpression(
             '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/',
             $chart->render()
@@ -47,7 +45,6 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->weekdays(['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']);
-
         $this->assertMatchesRegularExpression(
             '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/',
             $chart->render()

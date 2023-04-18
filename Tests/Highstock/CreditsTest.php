@@ -21,10 +21,11 @@ class CreditsTest extends TestCase
 
     public function testEnabled(): void
     {
+        $this->assertNotNull($this->chart);
+        $this->assertNotNull($this->credits);
         $this->credits->enabled(true);
         $this->assertTrue($this->credits->enabled);
         $this->assertMatchesRegularExpression('/"enabled":true/', $this->chart->render());
-
         $this->credits->enabled(false);
         $this->assertFalse($this->credits->enabled);
         $this->assertMatchesRegularExpression('/"enabled":false/', $this->chart->render());
@@ -32,10 +33,11 @@ class CreditsTest extends TestCase
 
     public function testHref(): void
     {
+        $this->assertNotNull($this->chart);
+        $this->assertNotNull($this->credits);
         $link = 'http://www.highcharts.com';
         $this->credits->href($link);
-        $this->assertEquals($link, $this->credits->href);
-        //        $this->assertMatchesRegularExpression('/"href":"http:\/\/www\.highcharts\.com"/', $this->chart->render());
+        $this->assertSame($link, $this->credits->href);
     }
 
     public function testPosition(): void
@@ -46,9 +48,10 @@ class CreditsTest extends TestCase
             'verticalAlign' => 'bottom',
             'y' => -5,
         ];
-
+        $this->assertNotNull($this->chart);
+        $this->assertNotNull($this->credits);
         $this->credits->position($position);
-        $this->assertEquals($this->credits->position, $position);
+        $this->assertSame($this->credits->position, $position);
         $this->assertMatchesRegularExpression('/"position":{"align":"right","x":-10,"verticalAlign":"bottom","y":-5}/', $this->chart->render());
     }
 
@@ -59,17 +62,20 @@ class CreditsTest extends TestCase
             'color' => '#909090',
             'fontSize' => '10px',
         ];
-
+        $this->assertNotNull($this->chart);
+        $this->assertNotNull($this->credits);
         $this->credits->style($style);
-        $this->assertEquals($style, $this->credits->style);
+        $this->assertSame($style, $this->credits->style);
         $this->assertMatchesRegularExpression('/"style":{"cursor":"pointer","color":"#909090","fontSize":"10px"}/', $this->chart->render());
     }
 
     public function testText(): void
     {
+        $this->assertNotNull($this->chart);
+        $this->assertNotNull($this->credits);
         $text = 'Highcharts.com';
         $this->credits->text($text);
-        $this->assertEquals($text, $this->credits->text);
+        $this->assertSame($text, $this->credits->text);
         $this->assertMatchesRegularExpression('/"text":"Highcharts.com"/', $this->chart->render());
     }
 }

@@ -9,7 +9,7 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the exporting option.
+ * This class hold Unit Tests for the exporting option.
  */
 class ExportingTest extends TestCase
 {
@@ -19,13 +19,11 @@ class ExportingTest extends TestCase
     public function testButtons(): void
     {
         $chart = new Highchart();
-
         // align option (string - left/center/right)
         $chart->exporting->buttons(['exportButton' => ['align' => 'center']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"exportButton":\{"align":"center"\}\}\}/', $chart->render());
         $chart->exporting->buttons(['printButton' => ['align' => 'center']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"printButton":\{"align":"center"\}\}\}/', $chart->render());
-
         // backgroundColor option
         $chart->exporting->buttons(['exportButton' => ['backgroundColor' => 'blue']]);
         $this->assertMatchesRegularExpression('/exporting: \{"buttons":\{"exportButton":\{"backgroundColor":"blue"\}\}\}/', $chart->render());
@@ -74,10 +72,8 @@ class ExportingTest extends TestCase
     public function testEnabled(): void
     {
         $chart = new Highchart();
-
         $chart->exporting->enabled(true);
         $this->assertMatchesRegularExpression('/exporting: \{"enabled":true\}/', $chart->render());
-
         $chart->exporting->enabled(false);
         $this->assertMatchesRegularExpression('/exporting: \{"enabled":false\}/', $chart->render());
     }
@@ -89,7 +85,6 @@ class ExportingTest extends TestCase
     {
         $chart = new Highchart();
         $chart->exporting->filename('graph');
-
         $this->assertMatchesRegularExpression('/exporting: \{"filename":"graph"\}/', $chart->render());
     }
 
@@ -99,17 +94,13 @@ class ExportingTest extends TestCase
     public function testType(): void
     {
         $chart = new Highchart();
-
         // We need to use a Json Expr or else the slashes are escaped
         $chart->exporting->type(new Expr('"image/png"'));
         $this->assertMatchesRegularExpression('/exporting: \{"type":"image\/png"\}/', $chart->render());
-
         $chart->exporting->type(new Expr('"image/jpeg"'));
         $this->assertMatchesRegularExpression('/exporting: \{"type":"image\/jpeg"\}/', $chart->render());
-
         $chart->exporting->type(new Expr('"application/pdf"'));
         $this->assertMatchesRegularExpression('/exporting: \{"type":"application\/pdf"\}/', $chart->render());
-
         $chart->exporting->type(new Expr('"image/svg+xml"'));
         $this->assertMatchesRegularExpression('/exporting: \{"type":"image\/svg\+xml"\}/', $chart->render());
     }
@@ -120,10 +111,8 @@ class ExportingTest extends TestCase
     public function testUrl(): void
     {
         $chart = new Highchart();
-
         // We need to use a Json Expr or else the slashes are escaped
         $chart->exporting->url(new Expr('"http://www.google.com"'));
-
         $this->assertMatchesRegularExpression('/exporting: \{"url":"http:\/\/www.google.com"\}/', $chart->render());
     }
 
@@ -134,7 +123,6 @@ class ExportingTest extends TestCase
     {
         $chart = new Highchart();
         $chart->exporting->width(300);
-
         $this->assertMatchesRegularExpression('/exporting: \{"width":300\}/', $chart->render());
     }
 }

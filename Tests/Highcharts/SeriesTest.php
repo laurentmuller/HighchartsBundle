@@ -8,14 +8,11 @@ use Ob\HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
- * This class hold Unit tests for the series option.
+ * This class hold Unit Tests for the series option.
  */
 class SeriesTest extends TestCase
 {
-    /**
-     * @var array
-     */
-    private $series;
+    private array $series = [];
 
     /**
      * Initialises the data.
@@ -35,7 +32,6 @@ class SeriesTest extends TestCase
     {
         $chart = new Highchart();
         $chart->series($this->series);
-
         $this->assertMatchesRegularExpression('/\{"name":"Data Serie #1","data":\[1,2,4,5,6,3,8\]\}/', $chart->render());
         $this->assertMatchesRegularExpression('/\{"name":"Data Serie #2","data":\[7,3,5,1,6,5,9\]\}/', $chart->render());
     }
