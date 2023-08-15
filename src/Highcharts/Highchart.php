@@ -10,7 +10,6 @@ namespace Ob\HighchartsBundle\Highcharts;
  *
  * @method Highchart colors(array $colors)
  * @method Highchart series(array $series)
- * @see \Ob\HighchartsBundle\Tests\Highcharts\HighchartTest
  */
 class Highchart extends AbstractChart implements ChartInterface
 {
