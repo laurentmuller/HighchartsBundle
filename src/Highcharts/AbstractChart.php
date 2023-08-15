@@ -56,16 +56,16 @@ abstract class AbstractChart
         return $this;
     }
 
-     public function render(string $engine = 'jquery'): string
-     {
-         $chartJS = '';
-         $this->renderChartStart($chartJS, $engine);
-         $this->renderChartCommon($chartJS);
-         $this->renderChartOptions($chartJS);
-         $this->renderChartEnd($chartJS, $engine);
+    public function render(string $engine = 'jquery'): string
+    {
+        $chartJS = '';
+        $this->renderChartStart($chartJS, $engine);
+        $this->renderChartCommon($chartJS);
+        $this->renderChartOptions($chartJS);
+        $this->renderChartEnd($chartJS, $engine);
 
-         return \trim($chartJS);
-     }
+        return \trim($chartJS);
+    }
 
     protected function initArrayOption(string $name): void
     {
