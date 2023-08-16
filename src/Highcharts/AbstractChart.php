@@ -81,18 +81,18 @@ abstract class AbstractChart implements ChartInterface
 
     protected function jsonEncode(ChartOption $chartOption): string
     {
-        if (!$chartOption->isEmpty()) {
+        if ($chartOption->hasData()) {
             return $chartOption->getName() . ': ' . \json_encode($chartOption->getData()) . ",\n";
         }
 
         return '';
     }
 
-    protected function renderArrayWithCallback(array $chartOption, string $name): string
+    protected function renderArrayWithCallback(array $data, string $name): string
     {
-        if ([] !== $chartOption) {
+        if ([] !== $data) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            return $name . ': ' . Json::encode($chartOption, false, self::ZEND_ENCODE_OPTIONS) . ", \n";
+            return $name . ': ' . Json::encode($data, false, self::ZEND_ENCODE_OPTIONS) . ", \n";
         }
 
         return '';
@@ -198,7 +198,7 @@ abstract class AbstractChart implements ChartInterface
     protected function renderOptions(): string
     {
         $result = '';
-        if (!$this->global->isEmpty() || !$this->lang->isEmpty()) {
+        if ($this->global->hasData() || $this->lang->hasData()) {
             $result .= "\n    Highcharts.setOptions({";
             $result .= $this->renderGlobal();
             $result .= $this->renderLang();

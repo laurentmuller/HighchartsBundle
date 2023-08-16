@@ -71,9 +71,9 @@ class ChartOption implements \ArrayAccess, \Countable
         return $this->name;
     }
 
-    public function isEmpty(): bool
+    public function hasData(): bool
     {
-        return [] === $this->data;
+        return [] !== $this->data;
     }
 
     public function merge(array $data): self

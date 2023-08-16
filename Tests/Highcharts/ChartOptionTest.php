@@ -37,7 +37,7 @@ class ChartOptionTest extends TestCase
     public function testEmpty(): void
     {
         $options = new ChartOption('test');
-        $this->assertTrue($options->isEmpty());
+        $this->assertFalse($options->hasData());
     }
 
     public function testOffsetExists(): void
