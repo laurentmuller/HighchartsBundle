@@ -18,13 +18,4 @@
         </ignoreFiles>
     </projectFiles>
 
-    <issueHandlers>
-        <PropertyNotSetInConstructor>
-            <errorLevel type="suppress">
-                <file name="src/Highcharts/AbstractChart.php" />
-                <file name="src/Highcharts/Highchart.php" />
-                <file name="src/Highcharts/Highstock.php" />
-            </errorLevel>
-        </PropertyNotSetInConstructor>
-    </issueHandlers>
 </psalm>

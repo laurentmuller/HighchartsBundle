@@ -29,10 +29,10 @@ return static function (RectorConfig $rectorConfig): void {
 
     // rules to skip
     $rectorConfig->skip([
-//        Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector::class,
-//        Rector\CodeQuality\Rector\Identical\FlipTypeControlToUseExclusiveTypeRector::class => [
-//            __DIR__ . '/src/Form/DataTransformer/AbstractEntityTransformer.php',
-//        ],
+        Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector::class,
+        Rector\CodeQuality\Rector\PropertyFetch\ExplicitMethodCallOverMagicGetSetRector::class => [
+            __DIR__ . '/Tests/Highcharts/ChartOptionTest.php',
+        ],
     ]);
 
     // rules to apply
@@ -40,10 +40,6 @@ return static function (RectorConfig $rectorConfig): void {
         // global
         SetList::PHP_82,
         SetList::CODE_QUALITY,
-        // Doctrine
-        DoctrineSetList::DOCTRINE_DBAL_30,
-        DoctrineSetList::DOCTRINE_CODE_QUALITY,
-        DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
         // PHP-Unit
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_EXCEPTION,

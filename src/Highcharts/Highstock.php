@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
- * This class is part of the Ob/HighchartsBundle
+ * This class is part of the Ob/HighchartsBundle.
+ *
  * See Highcharts documentation at http://www.highcharts.com/ref/.
  *
- * @method Highstock colors(array $colors)
- * @method Highstock series(array $series)
+ * @psalm-suppress PropertyNotSetInConstructor
  */
-class Highstock extends AbstractChart implements ChartInterface
+class Highstock extends AbstractChart
 {
     public ChartOption $rangeSelector;
 
@@ -25,8 +25,7 @@ class Highstock extends AbstractChart implements ChartInterface
     {
         parent::renderChartOptions($chartJS);
 
-        // RangeSelector
-        $chartJS .= $this->renderWithJavascriptCallback($this->rangeSelector->rangeSelector, 'rangeSelector');
+        $chartJS .= $this->renderOptionWithCallback($this->rangeSelector);
     }
 
     protected function renderChartStart(string &$chartJS, string $engine): void

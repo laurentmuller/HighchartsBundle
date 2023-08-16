@@ -6,14 +6,16 @@ namespace Ob\HighchartsBundle\Highcharts;
 
 use Laminas\Json\Json;
 
-abstract class AbstractChart
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
+abstract class AbstractChart implements ChartInterface
 {
     /**
      * The Zend json encode options.
      */
-    private const ZEND_JSON_OPTIONS = ['enableJsonExprFinder' => true];
+    private const ZEND_ENCODE_OPTIONS = ['enableJsonExprFinder' => true];
 
-    // Default options
     public ChartOption $chart;
     public array $colors;
     public ChartOption $credits;
@@ -27,12 +29,12 @@ abstract class AbstractChart
     public ChartOption $subtitle;
     public ChartOption $title;
     public ChartOption $tooltip;
-    public ChartOption|array|null $xAxis;
-    public ChartOption|array|null $yAxis;
+    public ChartOption|array $xAxis;
+    public ChartOption|array $yAxis;
 
     public function __construct()
     {
-        // plot options
+        //  options
         $options = [
             'chart', 'credits', 'exporting', 'global',  'lang',
             'legend', 'plotOptions', 'scrollbar', 'subtitle',
@@ -42,7 +44,7 @@ abstract class AbstractChart
             $this->initChartOption($option);
         }
 
-        // array options
+        // arrays
         $options = ['colors', 'series'];
         foreach ($options as $option) {
             $this->initArrayOption($option);
@@ -77,11 +79,20 @@ abstract class AbstractChart
         $this->{$name} = new ChartOption($name);
     }
 
+    protected function jsonEncode(ChartOption $chartOption): string
+    {
+        if (!$chartOption->isEmpty()) {
+            return $chartOption->getName() . ': ' . \json_encode($chartOption->getData()) . ",\n";
+        }
+
+        return '';
+    }
+
     protected function renderArrayWithCallback(array $chartOption, string $name): string
     {
         if ([] !== $chartOption) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            return $name . ': ' . Json::encode($chartOption[0], false, self::ZEND_JSON_OPTIONS) . ", \n";
+            return $name . ': ' . Json::encode($chartOption, false, self::ZEND_ENCODE_OPTIONS) . ", \n";
         }
 
         return '';
@@ -90,7 +101,7 @@ abstract class AbstractChart
     protected function renderChartCommon(string &$chartJS): void
     {
         // Chart
-        $chartJS .= $this->renderWithJavascriptCallback($this->chart->chart, 'chart');
+        $chartJS .= $this->renderOptionWithCallback($this->chart);
 
         // Colors
         $chartJS .= $this->renderColors();
@@ -99,10 +110,10 @@ abstract class AbstractChart
         $chartJS .= $this->renderCredits();
 
         // Exporting
-        $chartJS .= $this->renderWithJavascriptCallback($this->exporting->exporting, 'exporting');
+        $chartJS .= $this->renderOptionWithCallback($this->exporting);
 
         // Legend
-        $chartJS .= $this->renderWithJavascriptCallback($this->legend->legend, 'legend');
+        $chartJS .= $this->renderOptionWithCallback($this->legend);
 
         // Scrollbar
         $chartJS .= $this->renderScrollbar();
@@ -120,13 +131,13 @@ abstract class AbstractChart
         $chartJS .= $this->renderYAxis();
 
         // PlotOptions
-        $chartJS .= $this->renderWithJavascriptCallback($this->plotOptions->plotOptions, 'plotOptions');
+        $chartJS .= $this->renderOptionWithCallback($this->plotOptions);
 
         // Series
-        $chartJS .= $this->renderWithJavascriptCallback($this->series, 'series');
+        $chartJS .= $this->renderArrayWithCallback($this->series, 'series');
 
         // Tooltip
-        $chartJS .= $this->renderWithJavascriptCallback($this->tooltip->tooltip, 'tooltip');
+        $chartJS .= $this->renderOptionWithCallback($this->tooltip);
     }
 
     protected function renderChartEnd(string &$chartJS, string $engine): void
@@ -162,11 +173,7 @@ abstract class AbstractChart
 
     protected function renderCredits(): string
     {
-        if (\get_object_vars($this->credits->credits)) {
-            return 'credits: ' . \json_encode($this->credits->credits) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->credits);
     }
 
     protected function renderEngine(string $engine): string
@@ -180,37 +187,18 @@ abstract class AbstractChart
 
     protected function renderGlobal(): string
     {
-        if (\get_object_vars($this->global->global)) {
-            return 'global: ' . \json_encode($this->global->global) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->global);
     }
 
     protected function renderLang(): string
     {
-        if (\get_object_vars($this->lang->lang)) {
-            return 'lang: ' . \json_encode($this->lang->lang) . ",\n";
-        }
-
-        return '';
-    }
-
-    protected function renderObjectWithCallback(object $chartOption, string $name): string
-    {
-        if (\get_object_vars($chartOption)) {
-            // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            return $name . ': ' . Json::encode($chartOption, false, self::ZEND_JSON_OPTIONS) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->lang);
     }
 
     protected function renderOptions(): string
     {
         $result = '';
-
-        if (\get_object_vars($this->global->global) || \get_object_vars($this->lang->lang)) {
+        if (!$this->global->isEmpty() || !$this->lang->isEmpty()) {
             $result .= "\n    Highcharts.setOptions({";
             $result .= $this->renderGlobal();
             $result .= $this->renderLang();
@@ -220,63 +208,41 @@ abstract class AbstractChart
         return $result;
     }
 
+    protected function renderOptionWithCallback(ChartOption $chartOption): string
+    {
+        return $this->renderArrayWithCallback($chartOption->getData(), $chartOption->getName());
+    }
+
     protected function renderScrollbar(): string
     {
-        if (\get_object_vars($this->scrollbar->scrollbar)) {
-            return 'scrollbar: ' . \json_encode($this->scrollbar->scrollbar) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->scrollbar);
     }
 
     protected function renderSubtitle(): string
     {
-        if (\get_object_vars($this->subtitle->subtitle)) {
-            return 'subtitle: ' . \json_encode($this->subtitle->subtitle) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->subtitle);
     }
 
     protected function renderTitle(): string
     {
-        if (\get_object_vars($this->title->title)) {
-            return 'title: ' . \json_encode($this->title->title) . ",\n";
-        }
-
-        return '';
-    }
-
-    protected function renderWithJavascriptCallback(object|array|null $chartOption, string $name): string
-    {
-        if (\is_object($chartOption)) {
-            return $this->renderObjectWithCallback($chartOption, $name);
-        } elseif (\is_array($chartOption)) {
-            return $this->renderArrayWithCallback($chartOption, $name);
-        } else {
-            return '';
-        }
+        return $this->jsonEncode($this->title);
     }
 
     protected function renderXAxis(): string
     {
-        if (\is_object($this->xAxis)) {
-            return $this->renderWithJavascriptCallback($this->xAxis->xAxis, 'xAxis');
-        } elseif (\is_array($this->xAxis)) {
-            return $this->renderWithJavascriptCallback($this->xAxis, 'xAxis');
-        } else {
-            return '';
+        if ($this->xAxis instanceof ChartOption) {
+            return $this->renderOptionWithCallback($this->xAxis);
         }
+
+        return $this->renderArrayWithCallback($this->xAxis, 'xAxis');
     }
 
     protected function renderYAxis(): string
     {
-        if (\is_object($this->yAxis)) {
-            return $this->renderWithJavascriptCallback($this->yAxis->yAxis, 'yAxis');
-        } elseif (\is_array($this->yAxis)) {
-            return $this->renderWithJavascriptCallback($this->yAxis, 'yAxis');
-        } else {
-            return '';
+        if ($this->yAxis instanceof ChartOption) {
+            return $this->renderOptionWithCallback($this->yAxis);
         }
+
+        return $this->renderArrayWithCallback($this->yAxis, 'yAxis');
     }
 }

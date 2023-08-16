@@ -20,7 +20,6 @@ class TwigTest extends TestCase
     {
         $chart = new Highchart();
         $extension = new HighchartsExtension();
-        $this->assertSame('highcharts_extension', $extension->getName());
         // render with jquery
         $this->assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',

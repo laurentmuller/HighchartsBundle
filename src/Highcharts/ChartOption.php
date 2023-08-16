@@ -5,56 +5,112 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
- * This class is part of the Ob/HighchartsBundle
- * See Highcharts documentation at http://www.highcharts.com/ref/#chart.
+ * Chart options.
  *
- * @property object|array chart
- * @property object|array colorAxis
- * @property object|array credit
- * @property object|array drilldown
- * @property object|array exporting
- * @property object|array global
- * @property object|array lang
- * @property object|array legend
- * @property object|array nodata
- * @property object|array pane
- * @property object|array plotOptions
- * @property object|array rangeSelector
- * @property object|array scrollbar
- * @property object|array subtitle
- * @property object|array title
- * @property object|array tooltip
- * @property object|array xAxis
- * @property object|array yAxis
+ * @template-implements \ArrayAccess<string, mixed>
  */
-#[\AllowDynamicProperties]
-class ChartOption
+class ChartOption implements \ArrayAccess, \Countable
 {
+    private array $data = [];
+
     public function __construct(private readonly string $name)
     {
-        $option_name = $this->name;
-        $this->{$option_name} = new \stdClass();
     }
 
     public function __call(string $name, array $value): self
     {
-        $option_name = $this->name;
-        $this->{$option_name}->{$name} = $value[0];
+        $this->data[$name] = $value[0];
 
         return $this;
     }
 
-    public function __get(string $name): mixed
+    /**
+     * Returns whether a value exists for the given key.
+     */
+    public function __isset(string $key): bool
     {
-        $option_name = $this->name;
-
-        return $this->{$option_name}->{$name};
+        return isset($this->data[$key]);
     }
 
-    public function __isset(string $name): bool
+    /**
+     * Assigns a value for the given key.
+     */
+    public function __set(string $key, mixed $value): void
     {
-        $option_name = $this->name;
+        $this->data[$key] = $value;
+    }
 
-        return isset($this->{$option_name}->{$name});
+    /**
+     * Unsets a value for the given key.
+     */
+    public function __unset(string $key): void
+    {
+        unset($this->data[$key]);
+    }
+
+    /**
+     * Get a value for the given key.
+     */
+    public function &__get(string $key): mixed
+    {
+        return $this->data[$key];
+    }
+
+    public function count(): int
+    {
+        return \count($this->data);
+    }
+
+    public function getData(): array
+    {
+        return $this->data;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function isEmpty(): bool
+    {
+        return [] === $this->data;
+    }
+
+    /**
+     * @param string $offset
+     */
+    public function offsetExists(mixed $offset): bool
+    {
+        return isset($this->data[$offset]);
+    }
+
+    /**
+     * @param string $offset
+     */
+    public function offsetGet(mixed $offset): mixed
+    {
+        return $this->offsetExists($offset) ? $this->data[$offset] : null;
+    }
+
+    /**
+     * @param ?string $offset
+     */
+    public function offsetSet(mixed $offset, mixed $value): void
+    {
+        if (null === $offset) {
+            $this->data[] = $value;
+        } else {
+            $this->data[$offset] = $value;
+        }
+    }
+
+    /**
+     * @param string $offset
+     */
+    public function offsetUnset(mixed $offset): void
+    {
+        if ($this->offsetExists($offset)) {
+            unset($this->data[$offset]);
+        }
     }
 }

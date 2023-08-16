@@ -21,9 +21,4 @@ class HighchartsExtension extends AbstractExtension
             new TwigFunction('chart', $this->chart(...), ['is_safe' => ['html']]),
         ];
     }
-
-    public function getName(): string
-    {
-        return 'highcharts_extension';
-    }
 }

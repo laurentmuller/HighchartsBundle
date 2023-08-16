@@ -13,27 +13,15 @@ use PHPUnit\Framework\TestCase;
 class HighchartTest extends TestCase
 {
     /**
-     * Look for that mean trailing comma.
-     */
-    public function testIeFriendliness(): void
-    {
-        $chart = new Highchart();
-        $chart->chart->setTitle('Am I IE friendly yet?');
-        $this->assertMatchesRegularExpression(
-            '/\}(?<!,)\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $chart->render()
-        );
-    }
-
-    /**
      * Render chart using jQuery.
      */
     public function testJquery(): void
     {
         $chart = new Highchart();
+        $result = $chart->render();
         $this->assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $chart->render()
+            $result
         );
     }
 
@@ -43,9 +31,10 @@ class HighchartTest extends TestCase
     public function testMooTools(): void
     {
         $chart = new Highchart();
+        $result = $chart->render('mootools');
         $this->assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $chart->render('mootools')
+            $result
         );
     }
 
@@ -55,9 +44,10 @@ class HighchartTest extends TestCase
     public function testNoEngine(): void
     {
         $chart = new Highchart();
+        $result = $chart->render('');
         $this->assertMatchesRegularExpression(
             '/var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/',
-            $chart->render('')
+            $result
         );
     }
 

@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
- * This class is part of the Ob/HighchartsBundle
+ * This class is part of the Ob/HighchartsBundle.
+ *
  * See Highcharts documentation at http://www.highcharts.com/ref/.
  *
- * @method Highchart colors(array $colors)
- * @method Highchart series(array $series)
+ * @psalm-suppress PropertyNotSetInConstructor
  */
-class Highchart extends AbstractChart implements ChartInterface
+class Highchart extends AbstractChart
 {
-    public ChartOption|array|null $colorAxis;
+    public ChartOption|array $colorAxis;
     public ChartOption $drilldown;
     public ChartOption $noData;
     public ChartOption $pane;
@@ -31,13 +31,9 @@ class Highchart extends AbstractChart implements ChartInterface
     {
         parent::renderChartOptions($chartJS);
 
-        // Color Axis
         $chartJS .= $this->renderColorAxis();
-        // noData
-        $chartJS .= $this->renderWithJavascriptCallback($this->noData->noData, 'noData');
-        // Pane
+        $chartJS .= $this->renderNoData();
         $chartJS .= $this->renderPane();
-        // Drilldown
         $chartJS .= $this->renderDrilldown();
     }
 
@@ -50,30 +46,25 @@ class Highchart extends AbstractChart implements ChartInterface
 
     private function renderColorAxis(): string
     {
-        if (\is_array($this->colorAxis)) {
-            return $this->renderWithJavascriptCallback($this->colorAxis, 'colorAxis');
-        } elseif (\is_object($this->colorAxis)) {
-            return $this->renderWithJavascriptCallback($this->colorAxis->colorAxis, 'colorAxis');
-        } else {
-            return '';
+        if ($this->colorAxis instanceof ChartOption) {
+            return $this->renderOptionWithCallback($this->colorAxis);
         }
+
+        return $this->renderArrayWithCallback($this->colorAxis, 'colorAxis');
     }
 
     private function renderDrilldown(): string
     {
-        if (\get_object_vars($this->drilldown->drilldown)) {
-            return 'drilldown: ' . \json_encode($this->drilldown->drilldown) . ",\n";
-        }
+        return $this->jsonEncode($this->drilldown);
+    }
 
-        return '';
+    private function renderNoData(): string
+    {
+        return $this->renderOptionWithCallback($this->noData);
     }
 
     private function renderPane(): string
     {
-        if (\get_object_vars($this->pane->pane)) {
-            return 'pane: ' . \json_encode($this->pane->pane) . ",\n";
-        }
-
-        return '';
+        return $this->jsonEncode($this->pane);
     }
 }
