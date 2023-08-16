@@ -76,6 +76,13 @@ class ChartOption implements \ArrayAccess, \Countable
         return [] === $this->data;
     }
 
+    public function merge(array $data): self
+    {
+        $this->data = \array_merge($this->data, $data);
+
+        return $this;
+    }
+
     /**
      * @param string $offset
      */
