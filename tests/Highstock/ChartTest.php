@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highstock;
 
 use Ob\HighchartsBundle\Highcharts\Highstock;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
-class ChartTest extends TestCase
+class ChartTest extends AbstractChartTestCase
 {
-    protected ?Highstock $chart = null;
+    private ?Highstock $chart = null;
 
     protected function setUp(): void
     {
@@ -21,10 +21,17 @@ class ChartTest extends TestCase
         $this->assertNotNull($this->chart);
         $this->chart->chart->alignTicks(true);
         $this->assertTrue($this->chart->chart->alignTicks);
-        $this->assertMatchesRegularExpression('/"alignTicks":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"alignTicks":true/'
+        );
+
         $this->chart->chart->alignTicks(false);
         $this->assertFalse($this->chart->chart->alignTicks);
-        $this->assertMatchesRegularExpression('/"alignTicks":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"alignTicks":false/'
+        );
     }
 
     public function testAnimation(): void
@@ -32,10 +39,17 @@ class ChartTest extends TestCase
         $this->assertNotNull($this->chart);
         $this->chart->chart->animation(true);
         $this->assertTrue($this->chart->chart->animation);
-        $this->assertMatchesRegularExpression('/"animation":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"animation":true/'
+        );
+
         $this->chart->chart->animation(false);
         $this->assertFalse($this->chart->chart->animation);
-        $this->assertMatchesRegularExpression('/"animation":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"animation":false/'
+        );
     }
 
     public function testBackgroundColor(): void
@@ -44,7 +58,10 @@ class ChartTest extends TestCase
         $color = '#ffffff';
         $this->chart->chart->backgroundColor($color);
         $this->assertSame($color, $this->chart->chart->backgroundColor);
-        $this->assertMatchesRegularExpression('/"backgroundColor":"#ffffff"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"backgroundColor":"#ffffff"/'
+        );
     }
 
     public function testBorderColor(): void
@@ -53,7 +70,10 @@ class ChartTest extends TestCase
         $color = '#4572a7';
         $this->chart->chart->borderColor($color);
         $this->assertSame($color, $this->chart->chart->borderColor);
-        $this->assertMatchesRegularExpression('/"borderColor":"#4572a7"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"borderColor":"#4572a7"/'
+        );
     }
 
     public function testBorderRadius(): void
@@ -62,7 +82,10 @@ class ChartTest extends TestCase
         $radius = 5;
         $this->chart->chart->borderRadius($radius);
         $this->assertSame($radius, $this->chart->chart->borderRadius);
-        $this->assertMatchesRegularExpression('/"borderRadius":5/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"borderRadius":5/'
+        );
     }
 
     public function testBorderWidth(): void
@@ -71,7 +94,10 @@ class ChartTest extends TestCase
         $width = 0;
         $this->chart->chart->borderWidth($width);
         $this->assertSame($width, $this->chart->chart->borderWidth);
-        $this->assertMatchesRegularExpression('/"borderWidth":0/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"borderWidth":0/'
+        );
     }
 
     public function testClassName(): void
@@ -80,7 +106,10 @@ class ChartTest extends TestCase
         $class = 'extraClass';
         $this->chart->chart->className($class);
         $this->assertSame($class, $this->chart->chart->className);
-        $this->assertMatchesRegularExpression('/"className":"extraClass"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"className":"extraClass"/'
+        );
     }
 
     public function testEvents(): void
@@ -95,7 +124,10 @@ class ChartTest extends TestCase
         $height = '300px';
         $this->chart->chart->height($height);
         $this->assertSame($height, $this->chart->chart->height);
-        $this->assertMatchesRegularExpression('/"height":"300px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"height":"300px"/'
+        );
     }
 
     public function testIgnoreHiddenSeries(): void
@@ -103,10 +135,17 @@ class ChartTest extends TestCase
         $this->assertNotNull($this->chart);
         $this->chart->chart->ignoreHiddenSeries(true);
         $this->assertTrue($this->chart->chart->ignoreHiddenSeries);
-        $this->assertMatchesRegularExpression('/"ignoreHiddenSeries":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"ignoreHiddenSeries":true/'
+        );
+
         $this->chart->chart->ignoreHiddenSeries(false);
         $this->assertFalse($this->chart->chart->ignoreHiddenSeries);
-        $this->assertMatchesRegularExpression('/"ignoreHiddenSeries":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"ignoreHiddenSeries":false/'
+        );
     }
 
     public function testMargin(): void
@@ -121,7 +160,10 @@ class ChartTest extends TestCase
         $margin = '150px';
         $this->chart->chart->marginBottom($margin);
         $this->assertSame($margin, $this->chart->chart->marginBottom);
-        $this->assertMatchesRegularExpression('/"marginBottom":"150px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"marginBottom":"150px"/'
+        );
     }
 
     public function testMarginLeft(): void
@@ -130,7 +172,10 @@ class ChartTest extends TestCase
         $margin = '150px';
         $this->chart->chart->marginLeft($margin);
         $this->assertSame($margin, $this->chart->chart->marginLeft);
-        $this->assertMatchesRegularExpression('/"marginLeft":"150px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"marginLeft":"150px"/'
+        );
     }
 
     public function testMarginRight(): void
@@ -139,7 +184,10 @@ class ChartTest extends TestCase
         $margin = '150px';
         $this->chart->chart->marginRight($margin);
         $this->assertSame($margin, $this->chart->chart->marginRight);
-        $this->assertMatchesRegularExpression('/"marginRight":"150px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"marginRight":"150px"/'
+        );
     }
 
     public function testMarginTop(): void
@@ -148,7 +196,10 @@ class ChartTest extends TestCase
         $margin = '150px';
         $this->chart->chart->marginTop($margin);
         $this->assertSame($margin, $this->chart->chart->marginTop);
-        $this->assertMatchesRegularExpression('/"marginTop":"150px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"marginTop":"150px"/'
+        );
     }
 
     public function testPanning(): void
@@ -156,10 +207,17 @@ class ChartTest extends TestCase
         $this->assertNotNull($this->chart);
         $this->chart->chart->panning(true);
         $this->assertTrue($this->chart->chart->panning);
-        $this->assertMatchesRegularExpression('/"panning":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"panning":true/'
+        );
+
         $this->chart->chart->panning(false);
         $this->assertFalse($this->chart->chart->panning);
-        $this->assertMatchesRegularExpression('/"panning":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"panning":false/'
+        );
     }
 
     public function testPlotBackgroundColor(): void
@@ -228,7 +286,10 @@ class ChartTest extends TestCase
         $spacing = 15;
         $this->chart->chart->spacingBottom($spacing);
         $this->assertSame($spacing, $this->chart->chart->spacingBottom);
-        $this->assertMatchesRegularExpression('/"spacingBottom":15/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"spacingBottom":15/'
+        );
     }
 
     public function testSpacingLeft(): void
@@ -237,7 +298,10 @@ class ChartTest extends TestCase
         $spacing = 10;
         $this->chart->chart->spacingLeft($spacing);
         $this->assertSame($spacing, $this->chart->chart->spacingLeft);
-        $this->assertMatchesRegularExpression('/"spacingLeft":10/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"spacingLeft":10/'
+        );
     }
 
     public function testSpacingRight(): void
@@ -246,7 +310,10 @@ class ChartTest extends TestCase
         $spacing = 10;
         $this->chart->chart->spacingRight($spacing);
         $this->assertSame($spacing, $this->chart->chart->spacingRight);
-        $this->assertMatchesRegularExpression('/"spacingRight":10/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"spacingRight":10/'
+        );
     }
 
     public function testSpacingTop(): void
@@ -255,7 +322,10 @@ class ChartTest extends TestCase
         $spacing = 10;
         $this->chart->chart->spacingTop($spacing);
         $this->assertSame($spacing, $this->chart->chart->spacingTop);
-        $this->assertMatchesRegularExpression('/"spacingTop":10/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"spacingTop":10/'
+        );
     }
 
     public function testStyle(): void
@@ -275,7 +345,10 @@ class ChartTest extends TestCase
         $width = '800px';
         $this->chart->chart->width($width);
         $this->assertSame($width, $this->chart->chart->width);
-        $this->assertMatchesRegularExpression('/"width":"800px"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"width":"800px"/'
+        );
     }
 
     public function testZoomType(): void

@@ -5,15 +5,18 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highstock;
 
 use Ob\HighchartsBundle\Highcharts\Highstock;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
-class ColorsTest extends TestCase
+class ColorsTest extends AbstractChartTestCase
 {
     public function testColors(): void
     {
         $chart = new Highstock();
         $colors = ['#FF0000', '#00FF00', '#0000FF'];
         $chart->colors($colors);
-        $this->assertMatchesRegularExpression('/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/'
+        );
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highcharts;
+namespace Ob\HighchartsBundle\Tests\Twig;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
 use Ob\HighchartsBundle\Twig\HighchartsExtension;

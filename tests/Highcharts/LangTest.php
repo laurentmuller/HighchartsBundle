@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the lang option.
  */
-class LangTest extends TestCase
+class LangTest extends AbstractChartTestCase
 {
     /**
      * Set localized month names.
@@ -19,9 +19,9 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->months(['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']);
-        $this->assertMatchesRegularExpression(
-            '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/',
-            $chart->render()
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/'
         );
     }
 
@@ -32,9 +32,9 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->shortMonths(['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']);
-        $this->assertMatchesRegularExpression(
-            '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/',
-            $chart->render()
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/'
         );
     }
 
@@ -45,9 +45,9 @@ class LangTest extends TestCase
     {
         $chart = new Highchart();
         $chart->lang->weekdays(['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']);
-        $this->assertMatchesRegularExpression(
-            '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/',
-            $chart->render()
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/'
         );
     }
 }

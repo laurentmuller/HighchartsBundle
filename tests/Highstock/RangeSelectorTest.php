@@ -6,9 +6,9 @@ namespace Ob\HighchartsBundle\Tests\Highstock;
 
 use Ob\HighchartsBundle\Highcharts\ChartOption;
 use Ob\HighchartsBundle\Highcharts\Highstock;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
-class RangeSelectorTest extends TestCase
+class RangeSelectorTest extends AbstractChartTestCase
 {
     private ?Highstock $chart = null;
     private ?ChartOption $range = null;
@@ -30,7 +30,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->buttons($buttons);
         $this->assertSame($buttons, $this->range->buttons);
-        $this->assertMatchesRegularExpression('/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/'
+        );
     }
 
     public function testButtonSpacing(): void
@@ -40,7 +43,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->buttonSpacing($spacing);
         $this->assertSame($spacing, $this->range->buttonSpacing);
-        $this->assertMatchesRegularExpression('/"buttonSpacing":0/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"buttonSpacing":0/'
+        );
     }
 
     public function testButtonTheme(): void
@@ -56,10 +62,17 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->enabled(true);
         $this->assertTrue($this->range->enabled);
-        $this->assertMatchesRegularExpression('/"enabled":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"enabled":true/'
+        );
+
         $this->range->enabled(false);
         $this->assertFalse($this->range->enabled);
-        $this->assertMatchesRegularExpression('/"enabled":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"enabled":false/'
+        );
     }
 
     public function testInputBoxBorderColor(): void
@@ -69,7 +82,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputBoxBorderColor($color);
         $this->assertSame($color, $this->range->inputBoxBorderColor);
-        $this->assertMatchesRegularExpression('/"inputBoxBorderColor":"silver"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputBoxBorderColor":"silver"/'
+        );
     }
 
     public function testInputBoxHeight(): void
@@ -79,7 +95,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputBoxHeight($height);
         $this->assertSame($height, $this->range->inputBoxHeight);
-        $this->assertMatchesRegularExpression('/"inputBoxHeight":16/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputBoxHeight":16/'
+        );
     }
 
     public function testInputBoxWidth(): void
@@ -89,7 +108,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputBoxWidth($width);
         $this->assertSame($width, $this->range->inputBoxWidth);
-        $this->assertMatchesRegularExpression('/"inputBoxWidth":16/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputBoxWidth":16/'
+        );
     }
 
     public function testInputDateFormat(): void
@@ -99,7 +121,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputDateFormat($format);
         $this->assertSame($format, $this->range->inputDateFormat);
-        $this->assertMatchesRegularExpression('/"inputDateFormat":"%b %e, %Y"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputDateFormat":"%b %e, %Y"/'
+        );
     }
 
     public function testInputDateParser(): void
@@ -116,7 +141,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputEditDateFormat($format);
         $this->assertSame($format, $this->range->inputEditDateFormat);
-        $this->assertMatchesRegularExpression('/"inputEditDateFormat":"%b %e, %Y"/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputEditDateFormat":"%b %e, %Y"/'
+        );
     }
 
     public function testinputEnabled(): void
@@ -125,10 +153,17 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->inputEnabled(true);
         $this->assertTrue($this->range->inputEnabled);
-        $this->assertMatchesRegularExpression('/"inputEnabled":true/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputEnabled":true/'
+        );
+
         $this->range->inputEnabled(false);
         $this->assertFalse($this->range->inputEnabled);
-        $this->assertMatchesRegularExpression('/"inputEnabled":false/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"inputEnabled":false/'
+        );
     }
 
     public function testInputPosition(): void
@@ -140,7 +175,10 @@ class RangeSelectorTest extends TestCase
         $this->assertNotNull($this->range);
         $this->range->position($position);
         $this->assertSame($position, $this->range->position);
-        $this->assertMatchesRegularExpression('/"position":{"align":"right"}/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"position":{"align":"right"}/'
+        );
     }
 
     public function testInputStyle(): void
@@ -164,6 +202,9 @@ class RangeSelectorTest extends TestCase
         $this->range->selected($index);
         $this->assertSame($index, $this->range->selected);
         $this->assertNotNull($this->chart);
-        $this->assertMatchesRegularExpression('/"selected":3/', $this->chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $this->chart,
+            '/"selected":3/'
+        );
     }
 }

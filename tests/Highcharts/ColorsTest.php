@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the colors option.
  */
-class ColorsTest extends TestCase
+class ColorsTest extends AbstractChartTestCase
 {
     /**
      * Series output.
@@ -20,6 +20,9 @@ class ColorsTest extends TestCase
         $chart = new Highchart();
         $colors = ['#FF0000', '#00FF00', '#0000FF'];
         $chart->colors($colors);
-        $this->assertMatchesRegularExpression('/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/'
+        );
     }
 }

@@ -24,7 +24,7 @@ return static function (RectorConfig $rectorConfig): void {
     // paths
     $rectorConfig->paths([
         __DIR__ . '/src',
-        __DIR__ . '/Tests',
+        __DIR__ . '/tests',
     ]);
 
     // rules to skip

@@ -21,16 +21,15 @@ class Highchart extends AbstractChart
     public function __construct()
     {
         parent::__construct();
-        $this->initChartOption('colorAxis');
-        $this->initChartOption('drilldown');
-        $this->initChartOption('noData');
-        $this->initChartOption('pane');
+        $options = ['colorAxis', 'drilldown', 'noData', 'pane'];
+        foreach ($options as $option) {
+            $this->initChartOption($option);
+        }
     }
 
     protected function renderChartOptions(string &$chartJS): void
     {
         parent::renderChartOptions($chartJS);
-
         $chartJS .= $this->renderColorAxis();
         $chartJS .= $this->renderNoData();
         $chartJS .= $this->renderPane();
@@ -40,17 +39,17 @@ class Highchart extends AbstractChart
     protected function renderChartStart(string &$chartJS, string $engine): void
     {
         parent::renderChartStart($chartJS, $engine);
-
-        $chartJS .= "\n    var " . ($this->chart->renderTo ?? 'chart') . " = new Highcharts.Chart({\n";
+        $renderTo = $this->chart->renderTo ?? 'chart';
+        $chartJS .= "\n    var $renderTo = new Highcharts.Chart({\n";
     }
 
     private function renderColorAxis(): string
     {
         if ($this->colorAxis instanceof ChartOption) {
-            return $this->renderOptionWithCallback($this->colorAxis);
+            return $this->renderCallbackOption($this->colorAxis);
         }
 
-        return $this->renderArrayWithCallback($this->colorAxis, 'colorAxis');
+        return $this->renderCallbackArray($this->colorAxis, 'colorAxis');
     }
 
     private function renderDrilldown(): string
@@ -60,7 +59,7 @@ class Highchart extends AbstractChart
 
     private function renderNoData(): string
     {
-        return $this->renderOptionWithCallback($this->noData);
+        return $this->renderCallbackOption($this->noData);
     }
 
     private function renderPane(): string

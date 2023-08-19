@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the Highchart Class.
  */
-class HighchartTest extends TestCase
+class HighchartTest extends AbstractChartTestCase
 {
     /**
      * Render chart using jQuery.
@@ -18,10 +18,9 @@ class HighchartTest extends TestCase
     public function testJquery(): void
     {
         $chart = new Highchart();
-        $result = $chart->render();
-        $this->assertMatchesRegularExpression(
-            '/\$\(function\s?\(\)\s?\{\n?\r?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $result
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/\$\(function\s?\(\)\s?\{\n?\r?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/'
         );
     }
 
@@ -31,10 +30,10 @@ class HighchartTest extends TestCase
     public function testMooTools(): void
     {
         $chart = new Highchart();
-        $result = $chart->render('mootools');
-        $this->assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
+            $chart,
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $result
+            'mootools'
         );
     }
 
@@ -44,10 +43,10 @@ class HighchartTest extends TestCase
     public function testNoEngine(): void
     {
         $chart = new Highchart();
-        $result = $chart->render('');
-        $this->assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
+            $chart,
             '/var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/',
-            $result
+            ''
         );
     }
 

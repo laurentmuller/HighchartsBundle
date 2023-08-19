@@ -41,7 +41,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Ob\\HighchartsBundle\\Tests\\": "Tests/"
+            "Ob\\HighchartsBundle\\Tests\\": "tests/"
         }
     },
     "extra": {

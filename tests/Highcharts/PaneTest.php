@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Tests\Highcharts;
 
 use Ob\HighchartsBundle\Highcharts\Highchart;
-use PHPUnit\Framework\TestCase;
+use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the pane option.
  */
-class PaneTest extends TestCase
+class PaneTest extends AbstractChartTestCase
 {
     public function testBackground(): void
     {
@@ -24,23 +24,35 @@ class PaneTest extends TestCase
         $chart = new Highchart();
         // pixel based
         $chart->pane->center([50, 100]);
-        $this->assertMatchesRegularExpression('/pane: \{"center":\[50,100\]\}/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/pane: \{"center":\[50,100\]\}/'
+        );
         // percentage based
         $chart->pane->center(['50%', '40%']);
-        $this->assertMatchesRegularExpression('/pane: \{"center":\["50%","40%"\]\}/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/pane: \{"center":\["50%","40%"\]\}/'
+        );
     }
 
     public function testEndAngle(): void
     {
         $chart = new Highchart();
         $chart->pane->endAngle(5);
-        $this->assertMatchesRegularExpression('/pane: \{"endAngle":5\}/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/pane: \{"endAngle":5\}/'
+        );
     }
 
     public function testStartAngle(): void
     {
         $chart = new Highchart();
         $chart->pane->startAngle(5);
-        $this->assertMatchesRegularExpression('/pane: \{"startAngle":5\}/', $chart->render());
+        $this->assertChartMatchesRegularExpression(
+            $chart,
+            '/pane: \{"startAngle":5\}/'
+        );
     }
 }
