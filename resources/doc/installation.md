@@ -1,18 +1,17 @@
 # Installation
 
-1. Run `composer require ob/highcharts-bundle`
+1. Run composer:
+ 
+    ```console
+    composer require laurentmuller/highcharts-bundle
+    ```
 
-2. Register the bundle in your `app/AppKernel.php`:
-
-   ``` php
-    <?php
-    ...
-    public function registerBundles()
-    {
-        $bundles = array(
-            ...
-            new Ob\HighchartsBundle\ObHighchartsBundle(),
-            ...
-        );
-    ...
-   ```
+2. Register the bundle in your `config/bundles.php`:
+    
+    ```php
+    return [
+        ...
+        Ob\HighchartsBundle\ObHighchartsBundle::class => ['all' => true],
+        ...
+    ]
+    ```

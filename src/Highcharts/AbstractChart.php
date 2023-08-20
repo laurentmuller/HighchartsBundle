@@ -73,10 +73,15 @@ abstract class AbstractChart implements ChartInterface
 
     /**
      * Create an expression.
+     *
+     * @param string $expression the expression to represent
+     * @param bool   $trim       true to trim whitespaces and new lines
      */
-    protected function createExpression(string $expression): Expr
+    protected function createExpression(string $expression, bool $trim = true): Expr
     {
-        $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
+        if ($trim) {
+            $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
+        }
 
         return new Expr($expression);
     }
