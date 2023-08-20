@@ -30,7 +30,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector::class,
         Rector\CodeQuality\Rector\PropertyFetch\ExplicitMethodCallOverMagicGetSetRector::class => [
-            __DIR__ . '/Tests/Highcharts/ChartOptionTest.php',
+            __DIR__ . '/tests/Highcharts/ChartOptionTest.php',
         ],
     ]);
 

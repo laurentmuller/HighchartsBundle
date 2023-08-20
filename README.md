@@ -2,16 +2,16 @@
 
 `ObHighchartsBundle` eases the use of highcharts to display rich graphs and charts in your Symfony application by
 providing Twig extensions and PHP objects to do the heavy lifting. The bundle uses the excellent JS library
-[Highcharts](http://www.highcharts.com).
+[Highcharts](https://www.highcharts.com). 
 
 DRY out your chart code by writing it all in PHP!
 
-[![Build Status](https://travis-ci.org/marcaube/ObHighchartsBundle.png?branch=master)](https://travis-ci.org/marcaube/ObHighchartsBundle)
-[![Total Downloads](https://poser.pugx.org/ob/highcharts-bundle/downloads.png)](https://packagist.org/packages/ob/highcharts-bundle)
-[![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/marcaube/ObHighchartsBundle/badges/quality-score.png?s=a22d41fd17b944f8275e92c6d5aba27aca2ff18d)](https://scrutinizer-ci.com/g/marcaube/ObHighchartsBundle/)
-[![Code Coverage](https://scrutinizer-ci.com/g/marcaube/ObHighchartsBundle/badges/coverage.png?s=3d779351f7ef378fe0f6679809c90c17ad6f11b4)](https://scrutinizer-ci.com/g/marcaube/ObHighchartsBundle/)
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4cf81d53-f79c-478e-a172-ac2f60b55f02/mini.png)](https://insight.sensiolabs.com/projects/4cf81d53-f79c-478e-a172-ac2f60b55f02)
-
+[![Php-cs-fixer](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-cs-fixer.yaml/badge.svg)](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-cs-fixer.yaml)
+[![PHP-Stan](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-stan.yaml/badge.svg)](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-stan.yaml)
+[![Rector](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/rector.yaml/badge.svg)
+[![PHPUnit](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-unit.yaml/badge.svg)](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/php-unit.yaml)
+[![Psalm Static analysis](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/psalm.yaml/badge.svg)](https://github.com/laurentmuller/ObHighchartsBundle/actions/workflows/psalm.yaml)
+[![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
 
 ## Documentation
 
