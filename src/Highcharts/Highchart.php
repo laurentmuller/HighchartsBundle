@@ -39,8 +39,8 @@ class Highchart extends AbstractChart
     protected function renderChartStart(string &$chartJS, string $engine): void
     {
         parent::renderChartStart($chartJS, $engine);
-        $renderTo = $this->chart->renderTo ?? 'chart';
-        $chartJS .= "\n    var $renderTo = new Highcharts.Chart({\n";
+        $renderTo = $this->getRenderTo();
+        $chartJS .= "    var $renderTo = new Highcharts.Chart({\n";
     }
 
     private function renderColorAxis(): string

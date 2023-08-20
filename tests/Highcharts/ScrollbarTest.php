@@ -55,7 +55,7 @@ class ScrollbarTest extends TestCase
             $this->usedOptions[$key] = $value;
             $chart->scrollbar[$key] = $value;
         }
-        $result =  $chart->render();
+        $result = $chart->render();
         \preg_match('|scrollbar: (\{[^\}]+\})+|', $result, $matches);
         $options = \json_decode($matches[1], true);
         $this->assertCount(\count($this->usedOptions), \array_intersect($this->usedOptions, $options));

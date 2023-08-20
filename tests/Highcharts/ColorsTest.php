@@ -18,11 +18,8 @@ class ColorsTest extends AbstractChartTestCase
     public function testColors(): void
     {
         $chart = new Highchart();
-        $colors = ['#FF0000', '#00FF00', '#0000FF'];
-        $chart->colors($colors);
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/'
-        );
+        $chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
+        $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 }

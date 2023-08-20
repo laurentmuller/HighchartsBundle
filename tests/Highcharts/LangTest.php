@@ -19,10 +19,8 @@ class LangTest extends AbstractChartTestCase
     {
         $chart = new Highchart();
         $chart->lang->months(['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre']);
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/'
-        );
+        $regex = '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 
     /**
@@ -32,10 +30,8 @@ class LangTest extends AbstractChartTestCase
     {
         $chart = new Highchart();
         $chart->lang->shortMonths(['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec']);
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/'
-        );
+        $regex = '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 
     /**
@@ -45,9 +41,7 @@ class LangTest extends AbstractChartTestCase
     {
         $chart = new Highchart();
         $chart->lang->weekdays(['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']);
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/'
-        );
+        $regex = '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 }

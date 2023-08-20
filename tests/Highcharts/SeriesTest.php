@@ -32,13 +32,11 @@ class SeriesTest extends AbstractChartTestCase
     {
         $chart = new Highchart();
         $chart->series($this->series);
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/\{"name":"Data Serie #1","data":\[1,2,4,5,6,3,8\]\}/'
-        );
-        $this->assertChartMatchesRegularExpression(
-            $chart,
-            '/\{"name":"Data Serie #2","data":\[7,3,5,1,6,5,9\]\}/'
-        );
+
+        $regex = '/\{"name":"Data Serie #1","data":\[1,2,4,5,6,3,8\]\}/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
+
+        $regex = '/\{"name":"Data Serie #2","data":\[7,3,5,1,6,5,9\]\}/';
+        $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 }

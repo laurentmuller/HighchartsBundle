@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ob\HighchartsBundle\Highcharts;
 
+use Laminas\Json\Expr;
 use Laminas\Json\Json;
 
 /**
@@ -68,6 +69,24 @@ abstract class AbstractChart implements ChartInterface
         $this->renderChartEnd($chartJS, $engine);
 
         return \trim($chartJS);
+    }
+
+    /**
+     * Create an expression.
+     */
+    protected function createExpression(string $expression): Expr
+    {
+        $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
+
+        return new Expr($expression);
+    }
+
+    /**
+     * Gets the chart render to (target) property.
+     */
+    protected function getRenderTo(): string
+    {
+        return $this->chart->renderTo ?? 'chart';
     }
 
     protected function initArrayOption(string $name): void

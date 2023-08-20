@@ -25,17 +25,13 @@ class CreditsTest extends AbstractChartTestCase
         $this->assertNotNull($this->credits);
         $this->credits->enabled(true);
         $this->assertTrue($this->credits->enabled);
-        $this->assertChartMatchesRegularExpression(
-            $this->chart,
-            '/"enabled":true/'
-        );
+        $regex = '/"enabled":true/';
+        $this->assertChartMatchesRegularExpression($this->chart, $regex);
 
         $this->credits->enabled(false);
         $this->assertFalse($this->credits->enabled);
-        $this->assertChartMatchesRegularExpression(
-            $this->chart,
-            '/"enabled":false/'
-        );
+        $regex = '/"enabled":false/';
+        $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     public function testHref(): void
@@ -59,10 +55,8 @@ class CreditsTest extends AbstractChartTestCase
         $this->assertNotNull($this->credits);
         $this->credits->position($position);
         $this->assertSame($this->credits->position, $position);
-        $this->assertChartMatchesRegularExpression(
-            $this->chart,
-            '/"position":{"align":"right","x":-10,"verticalAlign":"bottom","y":-5}/'
-        );
+        $regex = '/"position":{"align":"right","x":-10,"verticalAlign":"bottom","y":-5}/';
+        $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     public function testStyle(): void
@@ -76,10 +70,8 @@ class CreditsTest extends AbstractChartTestCase
         $this->assertNotNull($this->credits);
         $this->credits->style($style);
         $this->assertSame($style, $this->credits->style);
-        $this->assertChartMatchesRegularExpression(
-            $this->chart,
-            '/"style":{"cursor":"pointer","color":"#909090","fontSize":"10px"}/'
-        );
+        $regex = '/"style":{"cursor":"pointer","color":"#909090","fontSize":"10px"}/';
+        $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     public function testText(): void
@@ -89,9 +81,7 @@ class CreditsTest extends AbstractChartTestCase
         $text = 'Highcharts.com';
         $this->credits->text($text);
         $this->assertSame($text, $this->credits->text);
-        $this->assertChartMatchesRegularExpression(
-            $this->chart,
-            '/"text":"Highcharts.com"/'
-        );
+        $regex = '/"text":"Highcharts.com"/';
+        $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 }
