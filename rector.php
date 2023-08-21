@@ -28,10 +28,7 @@ return static function (RectorConfig $rectorConfig): void {
 
     // rules to skip
     $rectorConfig->skip([
-        Rector\PHPUnit\Rector\Class_\AddSeeTestAnnotationRector::class,
-        Rector\CodeQuality\Rector\PropertyFetch\ExplicitMethodCallOverMagicGetSetRector::class => [
-            __DIR__ . '/tests/Highcharts/ChartOptionTest.php',
-        ],
+        Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
     ]);
 
     // rules to apply
@@ -41,7 +38,6 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::CODE_QUALITY,
         // PHP-Unit
         PHPUnitSetList::PHPUNIT_100,
-        PHPUnitSetList::PHPUNIT_EXCEPTION,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
         // Symfony

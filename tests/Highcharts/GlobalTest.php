@@ -18,7 +18,7 @@ class GlobalTest extends AbstractChartTestCase
     public function testGlobal(): void
     {
         $chart = new Highchart();
-        $chart->global->useUTC('true');
+        $chart->global['useUTC'] = 'true';
         $regex = '/global: \{"useUTC":"true"\}/';
         $this->assertChartMatchesRegularExpression($chart, $regex);
 
@@ -34,7 +34,7 @@ class GlobalTest extends AbstractChartTestCase
     public function testLang(): void
     {
         $chart = new Highchart();
-        $chart->lang->noData('No data to display');
+        $chart->lang['noData'] = 'No data to display';
         $regex = '/"noData":"No data to display"/';
         $this->assertChartMatchesRegularExpression($chart, $regex);
     }

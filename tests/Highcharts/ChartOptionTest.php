@@ -51,8 +51,8 @@ class ChartOptionTest extends TestCase
         $this->assertTrue($option->offsetExists($name));
     }
 
-    private function createOption(string $name = 'test'): ChartOption
+    private function createOption(): ChartOption
     {
-        return new ChartOption($name);
+        return new ChartOption('test');
     }
 }

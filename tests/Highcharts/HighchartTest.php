@@ -18,7 +18,7 @@ class HighchartTest extends AbstractChartTestCase
     public function testJquery(): void
     {
         $chart = new Highchart();
-        $regex = '/\$\(function\s?\(\)\s?\{\n?\r?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
+        $regex = '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
         $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 
@@ -28,7 +28,7 @@ class HighchartTest extends AbstractChartTestCase
     public function testMooTools(): void
     {
         $chart = new Highchart();
-        $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
+        $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
         $this->assertChartMatchesRegularExpression($chart, $regex, 'mootools');
     }
 
@@ -38,7 +38,7 @@ class HighchartTest extends AbstractChartTestCase
     public function testNoEngine(): void
     {
         $chart = new Highchart();
-        $regex = '/var chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
+        $regex = '/const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
         $this->assertChartMatchesRegularExpression($chart, $regex, '');
     }
 
@@ -48,9 +48,9 @@ class HighchartTest extends AbstractChartTestCase
     public function testSetGet(): void
     {
         $chart = new Highchart();
-        $chart->credits->enabled(false);
-        $this->assertFalse($chart->credits->enabled);
-        $chart->credits->enabled(true);
-        $this->assertTrue($chart->credits->enabled);
+        $chart->credits['enabled'] = false;
+        $this->assertFalse($chart->credits['enabled']);
+        $chart->credits['enabled'] = true;
+        $this->assertTrue($chart->credits['enabled']);
     }
 }

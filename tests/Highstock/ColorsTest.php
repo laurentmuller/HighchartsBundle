@@ -13,8 +13,8 @@ class ColorsTest extends AbstractChartTestCase
     {
         $chart = new Highstock();
         $colors = ['#FF0000', '#00FF00', '#0000FF'];
-        $chart->colors($colors);
-        $regex = '/colors: \[\["#FF0000","#00FF00","#0000FF"\]\]/';
+        $chart->colors = $colors;
+        $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
         $this->assertChartMatchesRegularExpression($chart, $regex);
     }
 }

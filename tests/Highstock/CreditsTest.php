@@ -23,13 +23,13 @@ class CreditsTest extends AbstractChartTestCase
     {
         $this->assertNotNull($this->chart);
         $this->assertNotNull($this->credits);
-        $this->credits->enabled(true);
-        $this->assertTrue($this->credits->enabled);
+        $this->credits['enabled'] = true;
+        $this->assertTrue($this->credits['enabled']);
         $regex = '/"enabled":true/';
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $this->credits->enabled(false);
-        $this->assertFalse($this->credits->enabled);
+        $this->credits['enabled'] = false;
+        $this->assertFalse($this->credits['enabled']);
         $regex = '/"enabled":false/';
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
@@ -38,7 +38,7 @@ class CreditsTest extends AbstractChartTestCase
     {
         $this->assertNotNull($this->chart);
         $this->assertNotNull($this->credits);
-        $link = 'http://www.highcharts.com';
+        $link = 'https://www.highcharts.com';
         $this->credits->href($link);
         $this->assertSame($link, $this->credits->href);
     }
