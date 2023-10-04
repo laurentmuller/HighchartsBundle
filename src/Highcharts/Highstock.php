@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
- * This class is part of the Ob/HighchartsBundle.
+ * Highstock chart.
  *
  * See Highcharts documentation at http://www.highcharts.com/ref/.
- *
- * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highstock extends AbstractChart
 {
@@ -35,6 +33,6 @@ class Highstock extends AbstractChart
 
     protected function renderRangeSelector(): string
     {
-        return $this->renderCallbackOption($this->rangeSelector);
+        return $this->renderCallback($this->rangeSelector);
     }
 }

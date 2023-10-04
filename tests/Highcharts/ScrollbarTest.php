@@ -12,11 +12,10 @@ use PHPUnit\Framework\TestCase;
  */
 class ScrollbarTest extends TestCase
 {
+    /** @psalm-var array<string, mixed> */
     private array $scrollbar = [];
 
-    /*
-     * @var array
-     */
+    /* @psalm-var array<string, mixed> */
     private array $usedOptions = [];
 
     /**
@@ -43,10 +42,13 @@ class ScrollbarTest extends TestCase
 
     /**
      * Scrollbar config output.
+     *
+     * @throws \Exception
      */
     public function testConfig(): void
     {
         $chart = new Highchart();
+        /** @psalm-var  mixed $value */
         foreach ($this->scrollbar as $key => $value) {
             // Config randomization
             if (0 === \random_int(0, 5)) {
@@ -57,6 +59,7 @@ class ScrollbarTest extends TestCase
         }
         $result = $chart->render();
         \preg_match('|scrollbar: (\{[^\}]+\})+|', $result, $matches);
+        /** @psalm-var array $options */
         $options = \json_decode($matches[1], true);
         $this->assertCount(\count($this->usedOptions), \array_intersect($this->usedOptions, $options));
     }

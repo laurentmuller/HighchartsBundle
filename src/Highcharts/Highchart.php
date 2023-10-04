@@ -5,11 +5,9 @@ declare(strict_types=1);
 namespace Ob\HighchartsBundle\Highcharts;
 
 /**
- * This class is part of the Ob/HighchartsBundle.
+ * Highchart chart.
  *
  * See Highcharts documentation at http://www.highcharts.com/ref/.
- *
- * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highchart extends AbstractChart
 {
@@ -44,11 +42,7 @@ class Highchart extends AbstractChart
 
     private function renderColorAxis(): string
     {
-        if ($this->colorAxis instanceof ChartOption) {
-            return $this->renderCallbackOption($this->colorAxis);
-        }
-
-        return $this->renderCallbackArray($this->colorAxis, 'colorAxis');
+        return $this->renderCallback($this->colorAxis, 'colorAxis');
     }
 
     private function renderDrilldown(): string
@@ -58,7 +52,7 @@ class Highchart extends AbstractChart
 
     private function renderNoData(): string
     {
-        return $this->renderCallbackOption($this->noData);
+        return $this->renderCallback($this->noData);
     }
 
     private function renderPane(): string
