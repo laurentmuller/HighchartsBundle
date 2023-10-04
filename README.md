@@ -20,11 +20,9 @@ DRY out your chart code by writing it all in PHP!
 * [Cookbook](resources/doc/cookbook.md)
 * [Highcharts API](http://api.highcharts.com/highcharts)
 
-
 ## Contributing
 
 See [CONTRIBUTING](CONTRIBUTING.md) file.
-
 
 ## License
 
