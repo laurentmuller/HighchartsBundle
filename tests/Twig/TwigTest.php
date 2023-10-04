@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Twig;
+namespace HighchartsBundle\Tests\Twig;
 
-use Ob\HighchartsBundle\Highcharts\Highchart;
-use Ob\HighchartsBundle\Twig\HighchartsExtension;
+use HighchartsBundle\Highcharts\Highchart;
+use HighchartsBundle\Twig\HighchartsExtension;
 use PHPUnit\Framework\TestCase;
 
 /**

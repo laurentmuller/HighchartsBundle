@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Highcharts;
+namespace HighchartsBundle\Highcharts;
 
 use Laminas\Json\Expr;
 use Laminas\Json\Json;

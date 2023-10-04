@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Twig;
+namespace HighchartsBundle\Twig;
 
-use Ob\HighchartsBundle\Highcharts\ChartInterface;
+use HighchartsBundle\Highcharts\ChartInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 

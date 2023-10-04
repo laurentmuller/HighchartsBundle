@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highstock;
+namespace HighchartsBundle\Tests\Highstock;
 
-use Ob\HighchartsBundle\Highcharts\Highstock;
-use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
+use HighchartsBundle\Highcharts\Highstock;
+use HighchartsBundle\Tests\AbstractChartTestCase;
 
 class ChartTest extends AbstractChartTestCase
 {

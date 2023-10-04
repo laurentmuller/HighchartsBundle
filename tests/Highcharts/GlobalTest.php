@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highcharts;
+namespace HighchartsBundle\Tests\Highcharts;
 
-use Ob\HighchartsBundle\Highcharts\Highchart;
-use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
+use HighchartsBundle\Highcharts\Highchart;
+use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the global option.

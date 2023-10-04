@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highcharts;
+namespace HighchartsBundle\Tests\Highcharts;
 
-use Ob\HighchartsBundle\Highcharts\ChartOption;
+use HighchartsBundle\Highcharts\ChartOption;
 use PHPUnit\Framework\TestCase;
 
 class ChartOptionTest extends TestCase

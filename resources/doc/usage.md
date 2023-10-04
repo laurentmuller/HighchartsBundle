@@ -5,7 +5,7 @@
 In your controller ...
 
 ```php
-use Ob\HighchartsBundle\Highcharts\Highchart;
+use HighchartsBundle\Highcharts\Highchart;
 
 public function chartAction()
 {

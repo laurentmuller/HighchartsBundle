@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highcharts;
+namespace HighchartsBundle\Tests\Highcharts;
 
-use Ob\HighchartsBundle\Highcharts\Highchart;
+use HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**

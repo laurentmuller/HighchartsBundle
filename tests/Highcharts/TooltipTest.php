@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Ob\HighchartsBundle\Tests\Highcharts;
+namespace HighchartsBundle\Tests\Highcharts;
 
+use HighchartsBundle\Highcharts\Highchart;
+use HighchartsBundle\Tests\AbstractChartTestCase;
 use Laminas\Json\Expr;
-use Ob\HighchartsBundle\Highcharts\Highchart;
-use Ob\HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the tooltip option.

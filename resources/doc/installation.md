@@ -7,11 +7,11 @@
     ```
 
 2. Register the bundle in your `config/bundles.php`:
-    
+
     ```php
     return [
         ...
-        Ob\HighchartsBundle\ObHighchartsBundle::class => ['all' => true],
+        HighchartsBundle\HighchartsBundle::class => ['all' => true],
         ...
     ]
     ```
