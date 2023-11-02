@@ -21,6 +21,7 @@ abstract class AbstractChart implements ChartInterface
     // The Zend json encode options.
     private const ZEND_ENCODE_OPTIONS = ['enableJsonExprFinder' => true];
 
+    public ChartOption $accessibility;
     public ChartOption $chart;
     public array $colors;
     public ChartOption $credits;
@@ -41,9 +42,10 @@ abstract class AbstractChart implements ChartInterface
     {
         //  options
         $options = [
-            'chart', 'credits', 'exporting', 'global',  'lang',
+            'chart', 'credits', 'exporting', 'global', 'lang',
             'legend', 'plotOptions', 'scrollbar', 'subtitle',
             'title', 'tooltip', 'xAxis', 'yAxis',
+            'accessibility',
         ];
         foreach ($options as $option) {
             $this->initChartOption($option);
@@ -122,6 +124,11 @@ abstract class AbstractChart implements ChartInterface
         return self::SPACE . "$name: $encoded" . self::END_LINE;
     }
 
+    protected function renderAccessibility(): string
+    {
+        return $this->jsonEncode($this->accessibility);
+    }
+
     protected function renderCallback(ChartOption|array $data, string $name = ''): string
     {
         if ($data instanceof ChartOption) {
@@ -158,6 +165,7 @@ abstract class AbstractChart implements ChartInterface
         $chartJS .= $this->renderPlotOptions();
         $chartJS .= $this->renderSeries();
         $chartJS .= $this->renderTooltip();
+        $chartJS .= $this->renderAccessibility();
     }
 
     protected function renderChartEnd(string &$chartJS, string $engine): void
