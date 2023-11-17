@@ -13,7 +13,6 @@
             "role": "Developer"
         }
     ],
-
     "require": {
         "php": "^8.2",
         "symfony/http-kernel": "^6.0",
@@ -63,5 +62,18 @@
         "allow-plugins": {
             "phpstan/extension-installer": true
         }
+    },
+    "scripts": {
+        "cs-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
+        "psalm": "vendor/bin/psalm --config=psalm.xml",
+        "phpstan": "vendor/bin/phpstan analyse --memory-limit 2G -c phpstan.neon",
+        "rector": "vendor/bin/rector process --dry-run --config=rector.php",
+        "run-all": [
+            "@cs-fixer",
+            "@psalm",
+            "@phpstan",
+            "@rector",
+            "phpunit"
+        ]
     }
 }
