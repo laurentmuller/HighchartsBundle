@@ -36,8 +36,8 @@ abstract class AbstractChart implements ChartInterface
     public ChartOption $subtitle;
     public ChartOption $title;
     public ChartOption $tooltip;
-    public ChartOption|array $xAxis;
-    public ChartOption|array $yAxis;
+    public ChartOption $xAxis;
+    public ChartOption $yAxis;
 
     public function __construct()
     {

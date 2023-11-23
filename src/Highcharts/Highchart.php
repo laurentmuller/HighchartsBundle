@@ -11,7 +11,7 @@ namespace HighchartsBundle\Highcharts;
  */
 class Highchart extends AbstractChart
 {
-    public ChartOption|array $colorAxis;
+    public ChartOption $colorAxis;
     public ChartOption $drilldown;
     public ChartOption $noData;
     public ChartOption $pane;
