@@ -31,7 +31,7 @@ class SeriesTest extends AbstractChartTestCase
     public function testData(): void
     {
         $chart = new Highchart();
-        $chart->series = $this->series;
+        $chart->series->merge($this->series);
 
         $regex = '/\{"name":"Data #1","data":\[1,2,4,5,6,3,8\]\}/';
         $this->assertChartMatchesRegularExpression($chart, $regex);

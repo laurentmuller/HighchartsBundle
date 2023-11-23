@@ -42,7 +42,7 @@ class Highchart extends AbstractChart
 
     private function renderColorAxis(): string
     {
-        return $this->renderCallback($this->colorAxis, 'colorAxis');
+        return $this->renderCallback($this->colorAxis);
     }
 
     private function renderDrilldown(): string

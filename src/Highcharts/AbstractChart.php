@@ -32,7 +32,7 @@ abstract class AbstractChart implements ChartInterface
     public ChartOption $plotOptions;
     public bool $prettyPrint = false;
     public ChartOption $scrollbar;
-    public array $series;
+    public ChartOption $series;
     public ChartOption $subtitle;
     public ChartOption $title;
     public ChartOption $tooltip;
@@ -44,8 +44,8 @@ abstract class AbstractChart implements ChartInterface
         //  options
         $options = [
             'chart', 'credits', 'exporting', 'global', 'lang',
-            'legend', 'plotOptions', 'scrollbar', 'subtitle',
-            'title', 'tooltip', 'xAxis', 'yAxis',
+            'legend', 'plotOptions', 'scrollbar', 'series',
+            'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis',
             'accessibility',
         ];
         foreach ($options as $option) {
@@ -53,7 +53,7 @@ abstract class AbstractChart implements ChartInterface
         }
 
         // arrays
-        $options = ['colors', 'series'];
+        $options = ['colors'];
         foreach ($options as $option) {
             $this->initArrayOption($option);
         }
@@ -116,7 +116,7 @@ abstract class AbstractChart implements ChartInterface
             $name = $data->getName();
             $data = $data->getData();
         }
-        if ([] === $data) {
+        if ('' === $name || [] === $data) {
             return '';
         }
 
@@ -130,15 +130,14 @@ abstract class AbstractChart implements ChartInterface
         return $this->jsonEncode($this->accessibility);
     }
 
-    protected function renderCallback(ChartOption|array $data, string $name = ''): string
+    protected function renderCallback(ChartOption $option): string
     {
-        if ($data instanceof ChartOption) {
-            $name = $data->getName();
-            $data = $data->getData();
-        }
-        if ([] === $data) {
+        if (!$option->hasData()) {
             return '';
         }
+
+        $name = $option->getName();
+        $data = $option->getData();
 
         // Zend\Json is used in place of json_encode to preserve JS anonymous functions
         $encoded = Json::encode(valueToEncode: $data, options: $this->getZendEncodeOptions());
@@ -252,7 +251,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderSeries(): string
     {
-        return $this->renderCallback($this->series, 'series');
+        return $this->renderCallback($this->series);
     }
 
     protected function renderSubtitle(): string
@@ -272,12 +271,12 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderXAxis(): string
     {
-        return $this->renderCallback($this->xAxis, 'xAxis');
+        return $this->renderCallback($this->xAxis);
     }
 
     protected function renderYAxis(): string
     {
-        return $this->renderCallback($this->yAxis, 'yAxis');
+        return $this->renderCallback($this->yAxis);
     }
 
     private function getJsonEncodeOptions(): int
