@@ -78,7 +78,7 @@ class ChartOption implements \ArrayAccess, \Countable
 
     public function merge(array $data): self
     {
-        $this->data = \array_merge($this->data, $data);
+        $this->data = \array_merge_recursive($this->data, $data);
 
         return $this;
     }
