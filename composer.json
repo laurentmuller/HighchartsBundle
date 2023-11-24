@@ -1,9 +1,9 @@
 {
     "name": "laurentmuller/highcharts-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony Bundle that ease the use of highcharts to display rich graph and charts in your app",
+    "description": "Symfony Bundle that ease the use of highcharts to display rich graph and charts in your application.",
     "keywords": ["symfony", "charting", "charts", "highcharts", "chart", "graph", "graphs"],
-    "homepage": "https://github.com/laurentmuller/ObHighchartsBundle",
+    "homepage": "https://github.com/laurentmuller/HighchartsBundle",
     "license": "MIT",
     "authors": [
         {
@@ -13,6 +13,11 @@
             "role": "Developer"
         }
     ],
+    "support": {
+        "email": "bibi@bibi.nu",
+        "issues": "https://github.com/laurentmuller/HighchartsBundle/issues",
+        "source": "https://github.com/laurentmuller/HighchartsBundle"
+    },
     "require": {
         "php": "^8.2",
         "symfony/http-kernel": "^6.0",
@@ -64,15 +69,15 @@
         }
     },
     "scripts": {
-        "cs-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
-        "psalm": "vendor/bin/psalm --config=psalm.xml",
-        "phpstan": "vendor/bin/phpstan analyse --memory-limit 2G -c phpstan.neon",
-        "rector": "vendor/bin/rector process --dry-run --config=rector.php",
-        "run-all": [
-            "@cs-fixer",
-            "@psalm",
-            "@phpstan",
-            "@rector",
+        "php-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
+        "php-psalm": "vendor/bin/psalm --config=psalm.xml",
+        "php-stan": "vendor/bin/phpstan analyse --memory-limit 2G -c phpstan.neon",
+        "php-rector": "vendor/bin/rector process --dry-run --config=rector.php",
+        "php-all": [
+            "@php-fixer",
+            "@php-psalm",
+            "@php-stan",
+            "@php-rector",
             "phpunit"
         ]
     }

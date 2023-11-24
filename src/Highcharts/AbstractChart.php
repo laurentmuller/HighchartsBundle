@@ -1,4 +1,12 @@
 <?php
+/*
+ * This file is part of the HighchartsBundle package.
+ *
+ * (c) bibi.nu <bibi@bibi.nu>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 declare(strict_types=1);
 
@@ -23,6 +31,7 @@ abstract class AbstractChart implements ChartInterface
 
     public ChartOption $accessibility;
     public ChartOption $chart;
+    /** @var string[] */
     public array $colors;
     public ChartOption $credits;
     public ChartOption $exporting;
@@ -82,6 +91,8 @@ abstract class AbstractChart implements ChartInterface
      *
      * @param string $expression the expression to represent
      * @param bool   $trim       true to trim whitespaces and new lines
+     *
+     * @psalm-api
      */
     protected function createExpression(string $expression, bool $trim = true): Expr
     {
@@ -105,6 +116,9 @@ abstract class AbstractChart implements ChartInterface
         $this->{$name} = [];
     }
 
+    /**
+     * @psalm-param non-empty-string $name
+     */
     protected function initChartOption(string $name): void
     {
         $this->{$name} = new ChartOption($name);
@@ -127,13 +141,16 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderAccessibility(): string
     {
-        return $this->jsonEncode($this->accessibility);
+        return $this->renderCallback($this->accessibility);
     }
 
     protected function renderCallback(ChartOption $option): string
     {
         if (!$option->hasData()) {
             return '';
+        }
+        if (!$option->hasExpression()) {
+            return $this->jsonEncode($option);
         }
 
         $name = $option->getName();

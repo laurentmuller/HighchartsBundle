@@ -1,8 +1,18 @@
 <?php
+/*
+ * This file is part of the HighchartsBundle package.
+ *
+ * (c) bibi.nu <bibi@bibi.nu>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
 
 declare(strict_types=1);
 
 namespace HighchartsBundle\Highcharts;
+
+use Laminas\Json\Expr;
 
 /**
  * Chart options.
@@ -13,6 +23,9 @@ class ChartOption implements \ArrayAccess, \Countable
 {
     private array $data = [];
 
+    /**
+     * @psalm-param non-empty-string $name
+     */
     public function __construct(private readonly string $name)
     {
     }
@@ -76,6 +89,11 @@ class ChartOption implements \ArrayAccess, \Countable
         return [] !== $this->data;
     }
 
+    public function hasExpression(): bool
+    {
+        return $this->findExpression($this->data);
+    }
+
     public function merge(array $data): self
     {
         $this->data = \array_merge_recursive($this->data, $data);
@@ -119,5 +137,21 @@ class ChartOption implements \ArrayAccess, \Countable
         if ($this->offsetExists($offset)) {
             unset($this->data[$offset]);
         }
+    }
+
+    private function findExpression(array $values): bool
+    {
+        /** @psalm-var mixed $value */
+        foreach ($values as $value) {
+            if ($value instanceof Expr) {
+                return true;
+            } elseif (\is_array($value)) {
+                if ($this->findExpression($value)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
