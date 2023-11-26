@@ -16,7 +16,7 @@
     ]
     ```
 
-## See also:
+## See also
 
 - [Usage](usage.md)
 - [Cookbook](cookbook.md)

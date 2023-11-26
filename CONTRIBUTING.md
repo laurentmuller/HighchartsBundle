@@ -25,7 +25,7 @@ why you are creating it.
 
 Thank you!
 
-## See also:
+## See also
 
 - [Installation](resources/doc/installation.md)
 - [Usage](resources/doc/usage.md)

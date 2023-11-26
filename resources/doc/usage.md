@@ -93,7 +93,7 @@ $chart->tooltip->formatter($func);
 // ...
 ```
 
-## See also:
+## See also
 
 - [Installation](installation.md)
 - [Cookbook](cookbook.md)

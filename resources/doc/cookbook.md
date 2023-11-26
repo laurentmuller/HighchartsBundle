@@ -166,7 +166,7 @@ $chart->tooltip->formatter($formatter);
 $chart->series($series);
 ```
 
-## See also:
+## See also
 
 - [Installation](installation.md)
 - [Usage](usage.md)

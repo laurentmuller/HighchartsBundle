@@ -11,7 +11,6 @@ TBD
 ### [2.0.0] - 2022-03-21
 * Added PHP version 8.0.
 * Update composer.json
-* Update composer.json
 
 ### [1.7.0] - 2020-01-12
 
@@ -76,7 +75,8 @@ as possible. See http://framework.zend.com/security/advisory/ZF2014-01
 
 * Initial release
 
-[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.18...HEAD
+[2.0.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...2.0
 [1.7.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.6...1.7
 [1.6.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.5...1.6
 [1.5.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.4...1.5
