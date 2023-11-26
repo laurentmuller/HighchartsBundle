@@ -29,7 +29,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) file.
 
 ## License
 
-HighchartsBundle is released under the MIT License. See the bundled [LICENSE](LICENSE) file for details.
+HighchartsBundle is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
 
 Please note that the Highcharts JS library is **not** free for commercial use, see their
 [FAQ](http://shop.highsoft.com/faq) for more details on what constitutes a non-commercial project or their
