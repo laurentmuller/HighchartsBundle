@@ -21,10 +21,13 @@ use Laminas\Json\Json;
 abstract class AbstractChart implements ChartInterface
 {
     // the script end line
-    private const END_LINE = ",\n";
+    protected const END_LINE = ",\n";
+
+    // the script new line
+    protected const NEW_LINE = "\n";
 
     // the space prefix
-    private const SPACE = '        ';
+    protected const SPACE = '        ';
 
     // The Zend json encode options.
     private const ZEND_ENCODE_OPTIONS = ['enableJsonExprFinder' => true];
@@ -75,7 +78,10 @@ abstract class AbstractChart implements ChartInterface
         return $this;
     }
 
-    public function render(string $engine = 'jquery'): string
+    /**
+     * @psalm-param ChartInterface::ENGINE_* $engine
+     */
+    public function render(string $engine = self::ENGINE_JQUERY): string
     {
         $chartJS = '';
         $this->renderChartStart($chartJS, $engine);
@@ -188,9 +194,9 @@ abstract class AbstractChart implements ChartInterface
     protected function renderChartEnd(string &$chartJS, string $engine): void
     {
         // trim last trailing comma and close parenthesis
-        $chartJS = \rtrim($chartJS, self::END_LINE) . "\n    });\n";
+        $chartJS = \rtrim($chartJS, self::END_LINE) . "\n    });" . self::NEW_LINE;
         if ('' !== $engine) {
-            $chartJS .= "});\n";
+            $chartJS .= '});' . self::NEW_LINE;
         }
     }
 
@@ -217,8 +223,8 @@ abstract class AbstractChart implements ChartInterface
     protected function renderEngine(string $engine): string
     {
         return match ($engine) {
-            'mootools' => 'window.addEvent(\'domready\', function () {',
-            'jquery' => '$(function () {',
+            self::ENGINE_MOOTOOLS => 'window.addEvent(\'domready\', function () {',
+            self::ENGINE_JQUERY => '$(function () {',
             default => '',
         };
     }
@@ -249,11 +255,11 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        $result = "\n    Highcharts.setOptions({\n";
+        $result = self::NEW_LINE . self::SPACE . ' Highcharts.setOptions({' . self::NEW_LINE;
         $result .= $this->renderGlobal();
         $result .= $this->renderLang();
 
-        return $result . "    });\n";
+        return $result . self::SPACE . '});' . self::NEW_LINE;
     }
 
     protected function renderPlotOptions(): string

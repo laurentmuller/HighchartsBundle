@@ -92,3 +92,9 @@ $chart = new Highchart();
 $chart->tooltip->formatter($func);
 // ...
 ```
+
+## See also:
+
+- [Installation](installation.md)
+- [Cookbook](cookbook.md)
+- [Home Page](../../README.md)

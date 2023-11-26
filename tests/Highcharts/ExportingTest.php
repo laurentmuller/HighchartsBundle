@@ -66,19 +66,6 @@ class ExportingTest extends AbstractChartTestCase
         // width option (integer - width in px)
         // x option (integer - horizontal offset in px)
         // y option (integer - vertical offset in px)
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
-    /**
-     * chartOptions option.
-     */
-    public function testChartOptions(): void
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
     }
 
     /**

@@ -18,7 +18,10 @@ use Twig\TwigFunction;
 
 class HighchartsExtension extends AbstractExtension
 {
-    public function chart(ChartInterface $chart, string $engine = 'jquery'): string
+    /**
+     * @psalm-param ChartInterface::ENGINE_* $engine
+     */
+    public function chart(ChartInterface $chart, string $engine = ChartInterface::ENGINE_JQUERY): string
     {
         return $chart->render($engine);
     }

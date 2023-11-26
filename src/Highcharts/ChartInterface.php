@@ -17,5 +17,14 @@ namespace HighchartsBundle\Highcharts;
  */
 interface ChartInterface
 {
+    public const ENGINE_JQUERY = 'jquery';
+
+    public const ENGINE_MOOTOOLS = 'mootools';
+
+    public const ENGINE_NONE = '';
+
+    /**
+     * @psalm-param self::ENGINE_* $engine
+     */
     public function render(string $engine): string;
 }

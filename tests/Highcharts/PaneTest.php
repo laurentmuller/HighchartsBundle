@@ -20,13 +20,6 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
  */
 class PaneTest extends AbstractChartTestCase
 {
-    public function testBackground(): void
-    {
-        $this->markTestIncomplete(
-            'This test has not been implemented yet.'
-        );
-    }
-
     public function testCenter(): void
     {
         $chart = new Highchart();

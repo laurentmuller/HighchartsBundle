@@ -53,13 +53,6 @@ class RangeSelectorTest extends AbstractChartTestCase
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testButtonTheme(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->assertNotNull($this->range);
-        $this->markTestIncomplete();
-    }
-
     public function testEnabled(): void
     {
         $this->assertNotNull($this->chart);
@@ -119,13 +112,6 @@ class RangeSelectorTest extends AbstractChartTestCase
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testInputDateParser(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->assertNotNull($this->range);
-        $this->markTestIncomplete();
-    }
-
     public function testInputEditDateFormat(): void
     {
         $format = '%b %e, %Y';
@@ -163,20 +149,6 @@ class RangeSelectorTest extends AbstractChartTestCase
         $this->assertSame($position, $this->range->position);
         $regex = '/"position":{"align":"right"}/';
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    public function testInputStyle(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->assertNotNull($this->range);
-        $this->markTestIncomplete();
-    }
-
-    public function testLabelStyle(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->assertNotNull($this->range);
-        $this->markTestIncomplete();
     }
 
     public function testSelected(): void

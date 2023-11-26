@@ -24,3 +24,10 @@ Also, while creating your Pull Request on GitHub, you MUST write a description w
 why you are creating it.
 
 Thank you!
+
+## See also:
+
+- [Installation](resources/doc/installation.md)
+- [Usage](resources/doc/usage.md)
+- [Cookbook](resources/doc/cookbook.md)
+- [Home Page](README.md)

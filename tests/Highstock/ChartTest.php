@@ -102,12 +102,6 @@ class ChartTest extends AbstractChartTestCase
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testEvents(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
     public function testHeight(): void
     {
         $this->assertNotNull($this->chart);
@@ -130,12 +124,6 @@ class ChartTest extends AbstractChartTestCase
         $this->assertFalse($this->chart->chart->ignoreHiddenSeries);
         $regex = '/"ignoreHiddenSeries":false/';
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    public function testMargin(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
     }
 
     public function testMarginBottom(): void
@@ -192,66 +180,6 @@ class ChartTest extends AbstractChartTestCase
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testPlotBackgroundColor(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testPlotBackgroundImage(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testPlotBorderColor(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testPlotBorderWidth(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testPlotShadow(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testReflow(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testRenderTo(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testSelectionMarkerFIll(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testShadow(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testSpacing(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
     public function testSpacingBottom(): void
     {
         $this->assertNotNull($this->chart);
@@ -292,17 +220,6 @@ class ChartTest extends AbstractChartTestCase
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testStyle(): void
-    {
-        $this->assertNotNull($this->chart);
-        $this->markTestIncomplete();
-    }
-
-    public function testType(): void
-    {
-        $this->markTestIncomplete();
-    }
-
     public function testWidth(): void
     {
         $this->assertNotNull($this->chart);
@@ -311,10 +228,5 @@ class ChartTest extends AbstractChartTestCase
         $this->assertSame($width, $this->chart->chart->width);
         $regex = '/"width":"800px"/';
         $this->assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    public function testZoomType(): void
-    {
-        $this->markTestIncomplete();
     }
 }
