@@ -40,6 +40,6 @@ class Highstock extends AbstractChart
 
     protected function renderRangeSelector(): string
     {
-        return $this->renderCallback($this->rangeSelector);
+        return $this->jsonEncode($this->rangeSelector);
     }
 }

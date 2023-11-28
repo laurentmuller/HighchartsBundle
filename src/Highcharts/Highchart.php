@@ -49,17 +49,17 @@ class Highchart extends AbstractChart
 
     private function renderColorAxis(): string
     {
-        return $this->renderCallback($this->colorAxis);
+        return $this->jsonEncode($this->colorAxis);
     }
 
     private function renderDrilldown(): string
     {
-        return $this->renderCallback($this->drilldown);
+        return $this->jsonEncode($this->drilldown);
     }
 
     private function renderNoData(): string
     {
-        return $this->renderCallback($this->noData);
+        return $this->jsonEncode($this->noData);
     }
 
     private function renderPane(): string

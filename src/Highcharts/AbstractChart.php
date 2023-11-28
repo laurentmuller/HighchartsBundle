@@ -21,16 +21,16 @@ use Laminas\Json\Json;
 abstract class AbstractChart implements ChartInterface
 {
     // the script end line
-    protected const END_LINE = ",\n";
+    private const END_LINE = ",\n";
 
     // the half space prefix
-    protected const HALF_SPACE = '    ';
+    private const HALF_SPACE = '    ';
 
     // the script new line
-    protected const NEW_LINE = "\n";
+    private const NEW_LINE = "\n";
 
     // the space prefix
-    protected const SPACE = '        ';
+    private const SPACE = '        ';
 
     // The Zend json encode options.
     private const ZEND_ENCODE_OPTIONS = ['enableJsonExprFinder' => true];
@@ -139,7 +139,9 @@ abstract class AbstractChart implements ChartInterface
 
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string
     {
+        $isExpression = false;
         if ($data instanceof ChartOption) {
+            $isExpression = $data->hasExpression();
             $name = $data->getName();
             $data = $data->getData();
         }
@@ -147,37 +149,24 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        $encoded = \json_encode($data);
+        if ($isExpression) {
+            // Zend\Json is used in place of json_encode to preserve JS anonymous functions
+            $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
+        } else {
+            $encoded = \json_encode($data);
+        }
 
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
 
     protected function renderAccessibility(): string
     {
-        return $this->renderCallback($this->accessibility);
-    }
-
-    protected function renderCallback(ChartOption $option): string
-    {
-        if (!$option->hasData()) {
-            return '';
-        }
-        if (!$option->hasExpression()) {
-            return $this->jsonEncode($option);
-        }
-
-        $name = $option->getName();
-        $data = $option->getData();
-
-        // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-        $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
-
-        return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
+        return $this->jsonEncode($this->accessibility);
     }
 
     protected function renderChart(): string
     {
-        return $this->renderCallback($this->chart);
+        return $this->jsonEncode($this->chart);
     }
 
     protected function renderChartClass(): string
@@ -246,7 +235,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderExporting(): string
     {
-        return $this->renderCallback($this->exporting);
+        return $this->jsonEncode($this->exporting);
     }
 
     protected function renderGlobal(): string
@@ -261,7 +250,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderLegend(): string
     {
-        return $this->renderCallback($this->legend);
+        return $this->jsonEncode($this->legend);
     }
 
     protected function renderOptions(): string
@@ -279,7 +268,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderPlotOptions(): string
     {
-        return $this->renderCallback($this->plotOptions);
+        return $this->jsonEncode($this->plotOptions);
     }
 
     protected function renderScrollbar(): string
@@ -289,7 +278,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderSeries(): string
     {
-        return $this->renderCallback($this->series);
+        return $this->jsonEncode($this->series);
     }
 
     protected function renderSubtitle(): string
@@ -304,16 +293,16 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderTooltip(): string
     {
-        return $this->renderCallback($this->tooltip);
+        return $this->jsonEncode($this->tooltip);
     }
 
     protected function renderXAxis(): string
     {
-        return $this->renderCallback($this->xAxis);
+        return $this->jsonEncode($this->xAxis);
     }
 
     protected function renderYAxis(): string
     {
-        return $this->renderCallback($this->yAxis);
+        return $this->jsonEncode($this->yAxis);
     }
 }

@@ -4,6 +4,10 @@
 
 TBD
 
+### [2.20.2] - 2023-11-28
+
+- Simplified encoding options
+
 ### [2.20.1] - 2023-11-28
 
 - Added chart class property
@@ -93,6 +97,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.2]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.1...2.20.2
 [2.20.1]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.0...2.20.1
 [2.20.0]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.19...2.20.0
 [2.19.19]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.18...2.19.19
