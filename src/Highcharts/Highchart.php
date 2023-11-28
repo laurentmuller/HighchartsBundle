@@ -33,6 +33,11 @@ class Highchart extends AbstractChart
         }
     }
 
+    protected function getChartClass(): string
+    {
+        return 'Chart';
+    }
+
     protected function renderChartOptions(string &$chartJS): void
     {
         parent::renderChartOptions($chartJS);
@@ -40,12 +45,6 @@ class Highchart extends AbstractChart
         $chartJS .= $this->renderNoData();
         $chartJS .= $this->renderPane();
         $chartJS .= $this->renderDrilldown();
-    }
-
-    protected function renderChartStart(string &$chartJS, string $engine): void
-    {
-        parent::renderChartStart($chartJS, $engine);
-        $chartJS .= self::NEW_LINE . self::HALF_SPACE . "const {$this->getRenderTo()} = new Highcharts.Chart({" . self::NEW_LINE;
     }
 
     private function renderColorAxis(): string

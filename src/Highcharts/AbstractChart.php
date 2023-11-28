@@ -112,6 +112,11 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
+     * Gets the chart class (type) to create.
+     */
+    abstract protected function getChartClass(): string;
+
+    /**
      * Gets the chart render to (target) property.
      */
     protected function getRenderTo(): string
@@ -144,7 +149,7 @@ abstract class AbstractChart implements ChartInterface
 
         $encoded = \json_encode($data);
 
-        return self::SPACE . "$name: $encoded" . self::END_LINE;
+        return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
 
     protected function renderAccessibility(): string
@@ -167,12 +172,20 @@ abstract class AbstractChart implements ChartInterface
         // Zend\Json is used in place of json_encode to preserve JS anonymous functions
         $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
 
-        return self::SPACE . "$name: $encoded" . self::END_LINE;
+        return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
 
     protected function renderChart(): string
     {
         return $this->renderCallback($this->chart);
+    }
+
+    protected function renderChartClass(): string
+    {
+        $renderTo = $this->getRenderTo();
+        $class = $this->getChartClass();
+
+        return self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::END_LINE;
     }
 
     protected function renderChartCommon(string &$chartJS): void
@@ -195,7 +208,6 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderChartEnd(string &$chartJS, string $engine): void
     {
-        // trim last trailing comma and close parenthesis
         $chartJS = \rtrim($chartJS, self::END_LINE) . self::NEW_LINE . self::HALF_SPACE . '});' . self::NEW_LINE;
         if ('' !== $engine) {
             $chartJS .= '});' . self::NEW_LINE;
@@ -210,6 +222,7 @@ abstract class AbstractChart implements ChartInterface
     {
         $chartJS .= $this->renderEngine($engine);
         $chartJS .= $this->renderOptions();
+        $chartJS .= $this->renderChartClass();
     }
 
     protected function renderColors(): string
@@ -261,7 +274,7 @@ abstract class AbstractChart implements ChartInterface
         $result .= $this->renderGlobal();
         $result .= $this->renderLang();
 
-        return $result . self::HALF_SPACE . '});' . self::NEW_LINE;
+        return $result . self::HALF_SPACE . '});';
     }
 
     protected function renderPlotOptions(): string

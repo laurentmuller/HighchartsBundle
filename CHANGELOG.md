@@ -1,87 +1,100 @@
-# Changelog
+# Change log
 
 ## [Unreleased]
 
 TBD
-### [2.19.18] - 2023-11.26
-* Updated documentation
-* Added Engine constants
-* Removed skipped tests
+
+### [2.20.1] - 2023-11-28
+
+- Added chart class property
+- Added lint markdown action
+
+### [2.20.0] - 2023-11-28
+
+- Removed pretty print option
+
+### [2.19.19] - 2023-11-28
+
+- Updated tests
+- Reworked script output.
+
+### [2.19.18] - 2023-11-26
+
+- Updated documentation
+- Added Engine constants
+- Removed skipped tests
 
 ### [2.0.0] - 2022-03-21
-* Added PHP version 8.0.
-* Update composer.json
 
-### [1.7.0] - 2020-01-12
+- Added PHP version 8.2.
+- Update composer.json
 
-* Add support for Symfony 5
-* Add support for Twig 3
-* Drop support for PHP < 7.2
+### 1.7.0 - 2020-01-12
 
-### [1.6.0] - 2017-12-27
+- Add support for Symfony 5
+- Add support for Twig 3
+- Drop support for PHP < 7.2
 
-* Add support for Symfony 4
+### 1.6.0 - 2017-12-27
 
-### [1.5.0] - 2016-07-26
+- Add support for Symfony 4
 
-* Improve Travis configuration, test on PHP 7
-* Add support for zend-json ~3.0
-* Fix Symfony 3.1 deprecation notice for YAML scalars starting with `%`
+### 1.5.0 - 2016-07-26
 
-### [1.4.0] - 2016-01-10
+- Improve Travis configuration, test on PHP 7
+- Add support for zend-json ~3.0
+- Fix Symfony 3.1 deprecation notice for YAML scalars starting with `%`
 
-* Update version constraint to support Symfony 3
+### 1.4.0 - 2016-01-10
 
-### [1.3.0] - 2015-10-10
+- Update version constraint to support Symfony 3
 
-* Update to PSR-4 auto-loading
-* Add support for colorAxis
-* Add support for noData
+### 1.3.0 - 2015-10-10
 
-### [1.2.0] - 2014-08-04
+- Update to PSR-4 auto-loading
+- Add support for colorAxis
+- Add support for noData
 
-* Refactor deprecated Twig_Function_Method to Twig_SimpleFunction
-* Add support for lang
-* Test on more PHP versions and also HHVM
-* Add support for drilldown
-* Add support for setOptions
-* Drop support for deprecated versions of Symfony
-* Add support for scrollbar
+### 1.2.0 - 2014-08-04
 
-### [1.1.0] - 2014-06-26
+- Refactor deprecated Twig_Function_Method to Twig_SimpleFunction
+- Add support for lang
+- Test on more PHP versions and also HHVM
+- Add support for drilldown
+- Add support for setOptions
+- Drop support for deprecated versions of Symfony
+- Add support for scrollbar
+
+### 1.1.0 - 2014-06-26
 
 This release fixes a security issue. You are encouraged to update to it as soon
 as possible. See http://framework.zend.com/security/advisory/ZF2014-01
 
-* Add support for pane option
-* Add support for Highstock
-* Extract a common interface from Highchart and Highstock
-* Add support for rangeSelector
-* Add a branch alias to composer.json
-* Update to Highcharts v4
-* Update Zend\Json for a security issue
-* Remove bundled assets in favor of Highcharts' CDN (http://code.highcharts.com/)
+- Add support for pane option
+- Add support for Highstock
+- Extract a common interface from Highchart and Highstock
+- Add support for rangeSelector
+- Add a branch alias to composer.json
+- Update to Highcharts v4
+- Update Zend\Json for a security issue
+- Remove bundled assets in favor of Highcharts' CDN (http://code.highcharts.com/)
 
-### [1.0.1] - 2013-11-08
+### 1.0.1 - 2013-11-08
 
-* Make the JS wrapper optional
-* Add support for multiple x-axis
-* Update to Highcharts v3.0.6
-* Add license to composer.json
-* Add doc blocks for IDE type hinting
-* Configure Travis to test on Symfony 2.1, 2.2 and 2.3
+- Make the JS wrapper optional
+- Add support for multiple x-axis
+- Update to Highcharts v3.0.6
+- Add license to composer.json
+- Add doc blocks for IDE type hinting
+- Configure Travis to test on Symfony 2.1, 2.2 and 2.3
 
 ### 1.0.0 - 2013-08-06
 
-* Initial release
+- Initial release
 
-[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.18...HEAD
-[2.0.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...2.0
-[1.7.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.6...1.7
-[1.6.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.5...1.6
-[1.5.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.4...1.5
-[1.4.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.3...1.4
-[1.3.0]: https://github.com/laurentmuller/HighchartsBundle/1.2...1.3
-[1.2.0]: https://github.com/laurentmuller/HighchartsBundle/1.1...1.2
-[1.1.0]: https://github.com/laurentmuller/HighchartsBundle/1.0.1...1.1
-[1.0.1]: https://github.com/laurentmuller/HighchartsBundle/1.0...1.0.1
+[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.1]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.0...2.20.1
+[2.20.0]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.19...2.20.0
+[2.19.19]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.18...2.19.19
+[2.19.18]: https://github.com/laurentmuller/HighchartsBundle/compare/2.0.0...2.19.18
+[2.0.0]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...2.0.0
