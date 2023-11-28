@@ -145,10 +145,8 @@ class ChartOption implements \ArrayAccess, \Countable
         foreach ($values as $value) {
             if ($value instanceof Expr) {
                 return true;
-            } elseif (\is_array($value)) {
-                if ($this->findExpression($value)) {
-                    return true;
-                }
+            } elseif (\is_array($value) && $this->findExpression($value)) {
+                return true;
             }
         }
 

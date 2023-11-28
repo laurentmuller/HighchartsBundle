@@ -45,7 +45,7 @@ class Highchart extends AbstractChart
     protected function renderChartStart(string &$chartJS, string $engine): void
     {
         parent::renderChartStart($chartJS, $engine);
-        $chartJS .= self::SPACE . "const {$this->getRenderTo()} = new Highcharts.Chart({" . self::NEW_LINE;
+        $chartJS .= self::NEW_LINE . self::HALF_SPACE . "const {$this->getRenderTo()} = new Highcharts.Chart({" . self::NEW_LINE;
     }
 
     private function renderColorAxis(): string

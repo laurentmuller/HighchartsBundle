@@ -36,7 +36,7 @@ class Highstock extends AbstractChart
     protected function renderChartStart(string &$chartJS, string $engine): void
     {
         parent::renderChartStart($chartJS, $engine);
-        $chartJS .= self::SPACE . "const {$this->getRenderTo()} = new Highcharts.StockChart({" . self::END_LINE;
+        $chartJS .= self::NEW_LINE . self::HALF_SPACE . "const {$this->getRenderTo()} = new Highcharts.StockChart({" . self::END_LINE;
     }
 
     protected function renderRangeSelector(): string

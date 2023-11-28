@@ -23,6 +23,9 @@ abstract class AbstractChart implements ChartInterface
     // the script end line
     protected const END_LINE = ",\n";
 
+    // the half space prefix
+    protected const HALF_SPACE = '    ';
+
     // the script new line
     protected const NEW_LINE = "\n";
 
@@ -194,7 +197,7 @@ abstract class AbstractChart implements ChartInterface
     protected function renderChartEnd(string &$chartJS, string $engine): void
     {
         // trim last trailing comma and close parenthesis
-        $chartJS = \rtrim($chartJS, self::END_LINE) . "\n    });" . self::NEW_LINE;
+        $chartJS = \rtrim($chartJS, self::END_LINE) . self::NEW_LINE . self::HALF_SPACE . '});' . self::NEW_LINE;
         if ('' !== $engine) {
             $chartJS .= '});' . self::NEW_LINE;
         }
@@ -255,11 +258,11 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        $result = self::NEW_LINE . self::SPACE . ' Highcharts.setOptions({' . self::NEW_LINE;
+        $result = self::NEW_LINE . self::HALF_SPACE . 'Highcharts.setOptions({' . self::NEW_LINE;
         $result .= $this->renderGlobal();
         $result .= $this->renderLang();
 
-        return $result . self::SPACE . '});' . self::NEW_LINE;
+        return $result . self::HALF_SPACE . '});' . self::NEW_LINE;
     }
 
     protected function renderPlotOptions(): string

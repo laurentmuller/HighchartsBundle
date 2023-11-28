@@ -69,6 +69,6 @@ class ScrollbarTest extends TestCase
         \preg_match('|scrollbar: (\{[^\}]+\})+|', $result, $matches);
         /** @psalm-var array $options */
         $options = \json_decode($matches[1], true);
-        $this->assertCount(\count($this->usedOptions), \array_intersect($this->usedOptions, $options));
+        self::assertCount(\count($this->usedOptions), \array_intersect($this->usedOptions, $options));
     }
 }

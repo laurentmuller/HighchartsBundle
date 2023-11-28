@@ -1,6 +1,6 @@
 <?php
 /*
- * This file is part of the Calculation package.
+ * This file is part of the HighchartsBundle package.
  *
  * (c) bibi.nu <bibi@bibi.nu>
  *
@@ -11,8 +11,11 @@
 declare(strict_types=1);
 
 use Rector\Config\RectorConfig;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector;
+use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
+use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Set\TwigSetList;
 
@@ -24,11 +27,14 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/rector.php',
     ]);
 
     // rules to skip
     $rectorConfig->skip([
-        Rector\PHPUnit\CodeQuality\Rector\Class_\AddSeeTestAnnotationRector::class,
+        AddSeeTestAnnotationRector::class,
+        PreferPHPUnitThisCallRector::class,
+        DisallowedEmptyRuleFixerRector::class,
     ]);
 
     // rules to apply
@@ -41,7 +47,7 @@ return static function (RectorConfig $rectorConfig): void {
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
         // Symfony
-        SymfonySetList::SYMFONY_62,
+        SymfonySetList::SYMFONY_63,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,

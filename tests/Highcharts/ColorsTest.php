@@ -28,6 +28,6 @@ class ColorsTest extends AbstractChartTestCase
         $chart = new Highchart();
         $chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
         $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
     }
 }

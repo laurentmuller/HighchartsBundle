@@ -29,17 +29,17 @@ class TwigTest extends TestCase
         $chart = new Highchart();
         $extension = new HighchartsExtension();
         // render with jquery
-        $this->assertMatchesRegularExpression(
+        self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $extension->chart($chart)
         );
         // render with jquery explicitly
-        $this->assertMatchesRegularExpression(
+        self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $extension->chart($chart, 'jquery')
         );
         // render with mootools
-        $this->assertMatchesRegularExpression(
+        self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $extension->chart($chart, 'mootools')
         );

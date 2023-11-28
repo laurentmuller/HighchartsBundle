@@ -42,9 +42,9 @@ class SeriesTest extends AbstractChartTestCase
         $chart->series->merge($this->series);
 
         $regex = '/\{"name":"Data #1","data":\[1,2,4,5,6,3,8\]\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
 
         $regex = '/\{"name":"Data #2","data":\[7,3,5,1,6,5,9\]\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
     }
 }

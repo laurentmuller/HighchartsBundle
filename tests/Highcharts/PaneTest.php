@@ -26,12 +26,12 @@ class PaneTest extends AbstractChartTestCase
         // pixel based
         $chart->pane['center'] = [50, 100];
         $regex = '/pane: \{"center":\[50,100\]\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
 
         // percentage based
         $chart->pane['center'] = ['50%', '40%'];
         $regex = '/pane: \{"center":\["50%","40%"\]\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
     }
 
     public function testEndAngle(): void
@@ -39,7 +39,7 @@ class PaneTest extends AbstractChartTestCase
         $chart = new Highchart();
         $chart->pane['endAngle'] = 5;
         $regex = '/pane: \{"endAngle":5\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
     }
 
     public function testStartAngle(): void
@@ -47,6 +47,6 @@ class PaneTest extends AbstractChartTestCase
         $chart = new Highchart();
         $chart->pane['startAngle'] = 5;
         $regex = '/pane: \{"startAngle":5\}/';
-        $this->assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($chart, $regex);
     }
 }

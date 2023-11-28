@@ -20,9 +20,9 @@ class AbstractChartTestCase extends TestCase
     /**
      * @psalm-param ChartInterface::ENGINE_* $engine
      */
-    protected function assertChartMatchesRegularExpression(ChartInterface $chart, string $regex, string $engine = 'jquery'): void
+    protected static function assertChartMatchesRegularExpression(ChartInterface $chart, string $regex, string $engine = 'jquery'): void
     {
         $result = $chart->render($engine);
-        $this->assertMatchesRegularExpression($regex, $result);
+        self::assertMatchesRegularExpression($regex, $result);
     }
 }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\ChartOption;
+use Laminas\Json\Expr;
 use PHPUnit\Framework\TestCase;
 
 class ChartOptionTest extends TestCase
@@ -22,8 +23,8 @@ class ChartOptionTest extends TestCase
         $name = 'name';
         $option = $this->createOption();
         $option[$name] = $name;
-        $this->assertArrayHasKey($name, $option);
-        $this->assertSame($name, $option[$name]);
+        self::assertArrayHasKey($name, $option);
+        self::assertSame($name, $option[$name]);
     }
 
     public function testAccessObject(): void
@@ -31,32 +32,93 @@ class ChartOptionTest extends TestCase
         $name = 'name';
         $option = $this->createOption();
         $option->{$name} = $name;
-        $this->assertSame($name, $option->{$name});
+        self::assertSame($name, $option->{$name});
     }
 
     public function testCount(): void
     {
         $option = $this->createOption();
-        $this->assertCount(0, $option);
+        self::assertCount(0, $option);
         $option['name'] = 'value';
-        $this->assertCount(1, $option);
+        self::assertCount(1, $option);
     }
 
     public function testHasData(): void
     {
+        $name = 'name';
         $option = $this->createOption();
-        $this->assertFalse($option->hasData());
-        $option['name'] = 'value';
-        $this->assertTrue($option->hasData());
+        self::assertFalse($option->hasData());
+        $option->{$name} = 'value';
+        self::assertTrue($option->hasData());
+    }
+
+    public function testHasExpression(): void
+    {
+        $option = $this->createOption();
+        self::assertFalse($option->hasExpression());
+        $expr = new Expr('function(){}');
+        $option['expression'] = $expr;
+        self::assertTrue($option->hasExpression());
+    }
+
+    public function testIsset(): void
+    {
+        $name = 'name';
+        $option = $this->createOption();
+        self::assertFalse($option->__isset($name));
+        $option->{$name} = $name;
+        self::assertTrue($option->__isset($name));
+    }
+
+    public function testMerge(): void
+    {
+        $option = $this->createOption();
+        $option['key1'] = 'value1';
+        $option->merge(['key2' => 'value2']);
+        $expected = ['key1' => 'value1', 'key2' => 'value2'];
+        $actual = $option->getData();
+        self::assertSame($expected, $actual);
+    }
+
+    public function testOffsetExist(): void
+    {
+        $option = $this->createOption();
+        self::assertFalse($option->offsetExists('key'));
+        $option['key'] = 'value';
+        self::assertTrue($option->offsetExists('key'));
     }
 
     public function testOffsetExists(): void
     {
         $name = 'name';
         $option = $this->createOption();
-        $this->assertFalse($option->offsetExists($name));
+        self::assertFalse($option->offsetExists($name));
         $option->{$name} = $name;
-        $this->assertTrue($option->offsetExists($name));
+        self::assertTrue($option->offsetExists($name));
+    }
+
+    public function testOffsetGet(): void
+    {
+        $option = $this->createOption();
+        self::assertNull($option->offsetGet('key'));
+        $option['key'] = 'value';
+        self::assertSame('value', $option->offsetGet('key'));
+    }
+
+    public function testOffsetSet(): void
+    {
+        $option = $this->createOption();
+        $option->offsetSet('key', 'value');
+        self::assertSame('value', $option->offsetGet('key'));
+    }
+
+    public function testOffsetUnset(): void
+    {
+        $option = $this->createOption();
+        $option['key'] = 'value';
+        self::assertSame('value', $option->offsetGet('key'));
+        $option->offsetUnset('key');
+        self::assertNull($option->offsetGet('key'));
     }
 
     private function createOption(): ChartOption
