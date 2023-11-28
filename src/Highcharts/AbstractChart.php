@@ -174,7 +174,7 @@ abstract class AbstractChart implements ChartInterface
         $renderTo = $this->getRenderTo();
         $class = $this->getChartClass();
 
-        return self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::END_LINE;
+        return self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::NEW_LINE;
     }
 
     protected function renderChartCommon(string &$chartJS): void

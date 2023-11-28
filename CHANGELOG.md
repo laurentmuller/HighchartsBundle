@@ -4,6 +4,10 @@
 
 TBD
 
+### [2.20.3] - 2023-11-28
+
+- Replaced comma from by new line when render chart class 
+
 ### [2.20.2] - 2023-11-28
 
 - Simplified encoding options
@@ -97,6 +101,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.3]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.2...2.20.3
 [2.20.2]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.1...2.20.2
 [2.20.1]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.0...2.20.1
 [2.20.0]: https://github.com/laurentmuller/HighchartsBundle/compare/2.19.19...2.20.0
