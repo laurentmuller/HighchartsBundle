@@ -45,7 +45,6 @@ abstract class AbstractChart implements ChartInterface
     public ChartOption $lang;
     public ChartOption $legend;
     public ChartOption $plotOptions;
-    public bool $prettyPrint = false;
     public ChartOption $scrollbar;
     public ChartOption $series;
     public ChartOption $subtitle;
@@ -143,7 +142,7 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        $encoded = \json_encode($data, $this->getJsonEncodeOptions());
+        $encoded = \json_encode($data);
 
         return self::SPACE . "$name: $encoded" . self::END_LINE;
     }
@@ -166,7 +165,7 @@ abstract class AbstractChart implements ChartInterface
         $data = $option->getData();
 
         // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-        $encoded = Json::encode(valueToEncode: $data, options: $this->getZendEncodeOptions());
+        $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
 
         return self::SPACE . "$name: $encoded" . self::END_LINE;
     }
@@ -303,15 +302,5 @@ abstract class AbstractChart implements ChartInterface
     protected function renderYAxis(): string
     {
         return $this->renderCallback($this->yAxis);
-    }
-
-    private function getJsonEncodeOptions(): int
-    {
-        return $this->prettyPrint ? \JSON_PRETTY_PRINT : 0;
-    }
-
-    private function getZendEncodeOptions(): array
-    {
-        return \array_merge(self::ZEND_ENCODE_OPTIONS, ['prettyPrint' => $this->prettyPrint]);
     }
 }
