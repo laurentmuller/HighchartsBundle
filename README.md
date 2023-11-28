@@ -2,9 +2,10 @@
 
 This is fork of the [ObHighchartsBundle](https://github.com/marcaube/ObHighchartsBundle) with support for PHP 8.2.
 
-`HighchartsBundle` eases the use of highcharts to display rich graphs and charts in your Symfony application by
-providing Twig extensions and PHP objects to do the heavy lifting. The bundle uses the excellent JS library
-[Highcharts](https://www.highcharts.com). 
+`HighchartsBundle` eases the use of highcharts to display rich graphs and 
+charts in your Symfony application by providing Twig extensions and PHP objects
+to do the heavy lifting. The bundle uses the excellent JS 
+library [Highcharts](https://www.highcharts.com). 
 
 
 DRY out your chart code by writing it all in PHP!
@@ -33,8 +34,9 @@ See [CHANGELOG](CHANGELOG.md) file.
 
 ## License
 
-HighchartsBundle is released under the MIT License. See the bundled [LICENSE](LICENSE.md) file for details.
+HighchartsBundle is released under the MIT License. See the bundled
+[LICENSE](LICENSE) file for details.
 
-Please note that the Highcharts JS library is **not** free for commercial use, see their
-[FAQ](http://shop.highsoft.com/faq) for more details on what constitutes a non-commercial project or their
-[product page](http://shop.highsoft.com/highcharts.html) for details on pricing.
+Please note that the Highcharts JS library is **not** free for commercial use, 
+see their [FAQ](http://shop.highsoft.com/faq) for more details on what constitutes a non-commercial
+project or their [product page](http://shop.highsoft.com/highcharts.html) for details on pricing.

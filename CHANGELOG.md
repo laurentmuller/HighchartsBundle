@@ -68,7 +68,7 @@ TBD
 ### 1.1.0 - 2014-06-26
 
 This release fixes a security issue. You are encouraged to update to it as soon
-as possible. See http://framework.zend.com/security/advisory/ZF2014-01
+as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/security/advisory/ZF2014-01)
 
 - Add support for pane option
 - Add support for Highstock
@@ -77,7 +77,7 @@ as possible. See http://framework.zend.com/security/advisory/ZF2014-01
 - Add a branch alias to composer.json
 - Update to Highcharts v4
 - Update Zend\Json for a security issue
-- Remove bundled assets in favor of Highcharts' CDN (http://code.highcharts.com/)
+- Remove bundled assets in favor of Highcharts' CDN ([https://code.highcharts.com](https://code.highcharts.com))
 
 ### 1.0.1 - 2013-11-08
 
