@@ -30,12 +30,12 @@ public function chartAction()
 In your template ...
 
 ```html
-<!-- Load jQuery from Google's CDN if needed -->
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js" type="text/javascript"></script>
-
-<script src="//code.highcharts.com/11.1.0/highcharts.js"></script>
-<script src="//code.highcharts.com/11.1.0/modules/exporting.js"></script>
-<script type="text/javascript">
+<!-- Load jQuery -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+<!-- Load highcharts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script>
     {{ chart(chart) }}
 </script>
 
@@ -48,13 +48,12 @@ If you'd like to use mootools instead of jquery to render your charts, just load
 argument of the twig extension like this
 
 ```html
-<!-- Load MooTools from Google's CDN if needed and the highcharts adapter -->
-<script src="https://ajax.googleapis.com/ajax/libs/mootools/1.4.2/mootools-yui-compressed.js" type="text/javascript"></script>
-<script src="//code.highcharts.com/3.0.10/adapters/mootools-adapter.js" type="text/javascript"></script>
-
-<script src="//code.highcharts.com/11.1.0/highcharts.js"></script>
-<script src="//code.highcharts.com/11.1.0/modules/exporting.js"></script>
-<script type="text/javascript">
+<!-- Load MooTools -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.js"></script>
+<!-- Load highcharts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script>
     {{ chart(chart, 'mootools') }}
 </script>
 
@@ -67,9 +66,10 @@ It is also possible to render your highcharts code without a jquery or mootools 
 control how and when the chart is loaded or when integrating with existing code.
 
 ```html
-<script src="//code.highcharts.com/11.1.0/highcharts.js"></script>
-<script src="//code.highcharts.com/11.1.0/modules/exporting.js"></script>
-<script type="text/javascript">
+<!-- Load highcharts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script>
     myLib.chartLoad(function(data){
         {{ chart(chart, false) }}
     });

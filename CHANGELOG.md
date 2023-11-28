@@ -34,7 +34,7 @@ TBD
 
 ### [1.3.0] - 2015-10-10
 
-* Update to PSR-4 autoloading
+* Update to PSR-4 auto-loading
 * Add support for colorAxis
 * Add support for noData
 
@@ -68,7 +68,7 @@ as possible. See http://framework.zend.com/security/advisory/ZF2014-01
 * Add support for multiple x-axis
 * Update to Highcharts v3.0.6
 * Add license to composer.json
-* Add docblocks for IDE type hinting
+* Add doc blocks for IDE type hinting
 * Configure Travis to test on Symfony 2.1, 2.2 and 2.3
 
 ### 1.0.0 - 2013-08-06
