@@ -6,7 +6,7 @@ TBD
 
 ### [2.20.3] - 2023-11-28
 
-- Replaced comma from by new line when render chart class 
+- Replaced comma from by new line when render chart class
 
 ### [2.20.2] - 2023-11-28
 
