@@ -4,6 +4,10 @@
 
 TBD
 
+### [2.20.4] - 2023-12-08
+
+- Moved is expression from chart option to abstract chart.
+
 ### [2.20.3] - 2023-11-28
 
 - Replaced comma from by new line when render chart class
@@ -101,6 +105,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.4]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.3...2.20.4
 [2.20.3]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.2...2.20.3
 [2.20.2]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.1...2.20.2
 [2.20.1]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.0...2.20.1
