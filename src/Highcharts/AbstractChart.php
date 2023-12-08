@@ -139,9 +139,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string
     {
-        $isExpression = false;
         if ($data instanceof ChartOption) {
-            $isExpression = $data->hasExpression();
             $name = $data->getName();
             $data = $data->getData();
         }
@@ -149,7 +147,7 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        if ($isExpression) {
+        if ($this->isExpression($data)) {
             // Zend\Json is used in place of json_encode to preserve JS anonymous functions
             $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
         } else {
@@ -304,5 +302,19 @@ abstract class AbstractChart implements ChartInterface
     protected function renderYAxis(): string
     {
         return $this->jsonEncode($this->yAxis);
+    }
+
+    private function isExpression(array $values): bool
+    {
+        /** @psalm-var mixed $value */
+        foreach ($values as $value) {
+            if ($value instanceof Expr) {
+                return true;
+            } elseif (\is_array($value) && $this->isExpression($value)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

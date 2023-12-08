@@ -13,7 +13,6 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\ChartOption;
-use Laminas\Json\Expr;
 use PHPUnit\Framework\TestCase;
 
 class ChartOptionTest extends TestCase
@@ -50,15 +49,6 @@ class ChartOptionTest extends TestCase
         self::assertFalse($option->hasData());
         $option->{$name} = 'value';
         self::assertTrue($option->hasData());
-    }
-
-    public function testHasExpression(): void
-    {
-        $option = $this->createOption();
-        self::assertFalse($option->hasExpression());
-        $expr = new Expr('function(){}');
-        $option['expression'] = $expr;
-        self::assertTrue($option->hasExpression());
     }
 
     public function testIsset(): void

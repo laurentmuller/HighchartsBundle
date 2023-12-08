@@ -12,8 +12,6 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Highcharts;
 
-use Laminas\Json\Expr;
-
 /**
  * Chart options.
  *
@@ -89,11 +87,6 @@ class ChartOption implements \ArrayAccess, \Countable
         return [] !== $this->data;
     }
 
-    public function hasExpression(): bool
-    {
-        return $this->findExpression($this->data);
-    }
-
     public function merge(array $data): self
     {
         $this->data = \array_merge_recursive($this->data, $data);
@@ -137,19 +130,5 @@ class ChartOption implements \ArrayAccess, \Countable
         if ($this->offsetExists($offset)) {
             unset($this->data[$offset]);
         }
-    }
-
-    private function findExpression(array $values): bool
-    {
-        /** @psalm-var mixed $value */
-        foreach ($values as $value) {
-            if ($value instanceof Expr) {
-                return true;
-            } elseif (\is_array($value) && $this->findExpression($value)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }
