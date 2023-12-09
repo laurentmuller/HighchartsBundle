@@ -3,6 +3,9 @@
 ## [Unreleased]
 
 TBD
+### [2.20.5] - 2023-12-09
+
+- Update named service.
 
 ### [2.20.4] - 2023-12-08
 
@@ -105,6 +108,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.5]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.4...2.20.5
 [2.20.4]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.3...2.20.4
 [2.20.3]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.2...2.20.3
 [2.20.2]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.1...2.20.2
