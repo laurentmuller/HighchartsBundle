@@ -15,7 +15,7 @@ namespace HighchartsBundle\Highcharts;
 /**
  * Highstock chart.
  *
- * See Highcharts documentation at http://www.highcharts.com/ref/.
+ * See documentation at https://www.highcharts.com/products/stock/.
  */
 class Highstock extends AbstractChart
 {

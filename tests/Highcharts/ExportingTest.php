@@ -44,28 +44,6 @@ class ExportingTest extends AbstractChartTestCase
         $chart->exporting['buttons'] = ['printButton' => ['backgroundColor' => 'blue']];
         $regex = '/exporting: \{"buttons":\{"printButton":\{"backgroundColor":"blue"\}\}\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
-
-        // borderColor option
-        // borderRadius option
-        // borderWidth option
-        // enabled option
-        // height option
-        // hoverBorderColor option
-        // hoverSymbolFill option
-        // hoverSymbolStroke option
-        // menuItems option
-        // onclick option
-        // symbol option
-        // symbolFill option
-        // symbolSize option
-        // symbolStroke option (color)
-        // symbolStrokeWidth option (integer - stroke width in px)
-        // symbolX option (float)
-        // symbolY option (float)
-        // verticalAlign option (string - top/middle/bottom)
-        // width option (integer - width in px)
-        // x option (integer - horizontal offset in px)
-        // y option (integer - vertical offset in px)
     }
 
     /**

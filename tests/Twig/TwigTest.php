@@ -28,20 +28,25 @@ class TwigTest extends TestCase
     {
         $chart = new Highchart();
         $extension = new HighchartsExtension();
-        // render with jquery
+        // render with jquery (default)
+        $actual = $extension->chart($chart);
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $extension->chart($chart)
+            $actual
         );
+
         // render with jquery explicitly
+        $actual = $extension->chart($chart, 'jquery');
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $extension->chart($chart, 'jquery')
+            $actual
         );
+
         // render with mootools
+        $actual = $extension->chart($chart, 'mootools');
         self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $extension->chart($chart, 'mootools')
+            $actual
         );
     }
 }

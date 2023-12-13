@@ -15,7 +15,7 @@ namespace HighchartsBundle\Highcharts;
 /**
  * Highchart chart.
  *
- * See Highcharts documentation at http://www.highcharts.com/ref/.
+ * See documentation at https://www.highcharts.com/products/highcharts/.
  */
 class Highchart extends AbstractChart
 {

@@ -20,20 +20,31 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
  */
 class PaneTest extends AbstractChartTestCase
 {
-    public function testCenter(): void
+    /**
+     * Percentage based.
+     */
+    public function testCenterPercent(): void
     {
         $chart = new Highchart();
-        // pixel based
-        $chart->pane['center'] = [50, 100];
-        $regex = '/pane: \{"center":\[50,100\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
-
-        // percentage based
         $chart->pane['center'] = ['50%', '40%'];
         $regex = '/pane: \{"center":\["50%","40%"\]\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
     }
 
+    /**
+     * Pixel based.
+     */
+    public function testCenterPixel(): void
+    {
+        $chart = new Highchart();
+        $chart->pane['center'] = [50, 100];
+        $regex = '/pane: \{"center":\[50,100\]\}/';
+        self::assertChartMatchesRegularExpression($chart, $regex);
+    }
+
+    /**
+     * End angle.
+     */
     public function testEndAngle(): void
     {
         $chart = new Highchart();
@@ -42,6 +53,9 @@ class PaneTest extends AbstractChartTestCase
         self::assertChartMatchesRegularExpression($chart, $regex);
     }
 
+    /**
+     * Start angle.
+     */
     public function testStartAngle(): void
     {
         $chart = new Highchart();

@@ -24,6 +24,8 @@ interface ChartInterface
     public const ENGINE_NONE = '';
 
     /**
+     * Render this chart for the given engine.
+     *
      * @psalm-param self::ENGINE_* $engine
      */
     public function render(string $engine): string;
