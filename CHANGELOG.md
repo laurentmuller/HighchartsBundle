@@ -4,6 +4,10 @@
 
 TBD
 
+### [2.20.7] - 2024-01-08
+
+- Symfony 7 support for required development.
+
 ### [2.20.6] - 2023-12-20
 
 - Symfony 7 support.
@@ -18,7 +22,7 @@ TBD
 
 ### [2.20.3] - 2023-11-28
 
-- Replaced comma from by new line when render chart class
+- Replaced comma by new line when render chart class
 
 ### [2.20.2] - 2023-11-28
 
@@ -79,7 +83,7 @@ TBD
 
 - Refactor deprecated Twig_Function_Method to Twig_SimpleFunction
 - Add support for lang
-- Test on more PHP versions and also HHVM
+- Test on more PHP versions and HHVM
 - Add support for drilldown
 - Add support for setOptions
 - Drop support for deprecated versions of Symfony
@@ -113,6 +117,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.7]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.6...2.20.7
 [2.20.6]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.5...2.20.6
 [2.20.5]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.4...2.20.5
 [2.20.4]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.3...2.20.4

@@ -84,12 +84,11 @@ There are several use case where you need to define a js function, let's see how
 
 ```php
 // ...
-$func = new Zend\Json\Expr("function() {
+$chart = new Highchart();
+$expr = $chart->createExpression("function() {
     return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>';
 }");
-
-$chart = new Highchart();
-$chart->tooltip->formatter($func);
+$chart->tooltip->formatter($expr);
 // ...
 ```
 
