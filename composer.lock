@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "df2e00a98323582b79a08004994959f5",
+    "content-hash": "1b4c530d51ee9170748fce0d8d84aa38",
     "packages": [
         {
             "name": "laminas/laminas-json",
@@ -3529,21 +3529,21 @@
         },
         {
             "name": "rector/rector",
-            "version": "0.18.13",
+            "version": "dev-main",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rectorphp/rector.git",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618"
+                "reference": "cc3c45157f88afccd2eb83e9c6ea2a4f22de7b04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rectorphp/rector/zipball/f8011a76d36aa4f839f60f3b4f97707d97176618",
-                "reference": "f8011a76d36aa4f839f60f3b4f97707d97176618",
+                "url": "https://api.github.com/repos/rectorphp/rector/zipball/cc3c45157f88afccd2eb83e9c6ea2a4f22de7b04",
+                "reference": "cc3c45157f88afccd2eb83e9c6ea2a4f22de7b04",
                 "shasum": ""
             },
             "require": {
                 "php": "^7.2|^8.0",
-                "phpstan/phpstan": "^1.10.35"
+                "phpstan/phpstan": "^1.10.52"
             },
             "conflict": {
                 "rector/rector-doctrine": "*",
@@ -3551,6 +3551,7 @@
                 "rector/rector-phpunit": "*",
                 "rector/rector-symfony": "*"
             },
+            "default-branch": true,
             "bin": [
                 "bin/rector"
             ],
@@ -3573,7 +3574,7 @@
             ],
             "support": {
                 "issues": "https://github.com/rectorphp/rector/issues",
-                "source": "https://github.com/rectorphp/rector/tree/0.18.13"
+                "source": "https://github.com/rectorphp/rector/tree/main"
             },
             "funding": [
                 {
@@ -3581,7 +3582,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-12-20T16:08:01+00:00"
+            "time": "2024-01-09T08:51:33+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -6073,7 +6074,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "rector/rector": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
