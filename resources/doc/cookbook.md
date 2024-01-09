@@ -31,7 +31,7 @@ $chart->series([
 
 ## Pie chart with Drilldown
 
-This is a simple recipe to re-create a chart similar to the drilldown pie-chart demo at [highcharts.com/demo/pie-drilldown](https://www.highcharts.com/demo/pie-drilldown)
+This is a simple recipe to re-create a chart like the drilldown pie-chart demo at [highcharts.com/demo/pie-drilldown](https://www.highcharts.com/demo/pie-drilldown)
 
 ```php
 $chart = new Highchart();
@@ -104,7 +104,7 @@ $chart->drilldown->series($drilldown);
 
 ## Multi-axes plot
 
-This is a simple recipe for creating a plot with multiple y-axes, similar to [the highcharts demo](https://www.highcharts.com/demo/combo-multi-axes)
+This is a simple recipe for creating a plot with multiple y-axes, like the [highcharts demo](https://www.highcharts.com/demo/combo-multi-axes)
 
 ```php
 $series = [
@@ -125,7 +125,7 @@ $series = [
 $yData = [
     [
         'labels' => [
-            'formatter' => new Expr('function () { return this.value + " degrees C" }'),
+            'formatter' => Highchart.createExpression('function () { return this.value + " degrees C" }'),
             'style' => ['color' => '#AA4643')
         ],
         'title' => [
@@ -136,7 +136,7 @@ $yData = [
     ],
     [
         'labels' => [
-            'formatter' => new Expr('function () { return this.value + " mm" }'),
+            'formatter' => Highchart.createExpression('function () { return this.value + " mm" }'),
             'style' => ['color' => '#4572A7']
         ],
         'gridLineWidth' => 0,
@@ -155,7 +155,7 @@ $chart->title->text('Average Monthly Weather Data for Tokyo');
 $chart->xAxis->categories($categories);
 $chart->yAxis($yData);
 $chart->legend->enabled(false);
-$formatter = new Expr('function () {
+$formatter = Highchart.createExpression('function () {
                  var unit = {
                      "Rainfall": "mm",
                      "Temperature": "degrees C"

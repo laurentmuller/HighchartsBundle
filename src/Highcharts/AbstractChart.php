@@ -81,6 +81,23 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
+     * Create an expression.
+     *
+     * @param string $expression the expression to represent
+     * @param bool   $trim       true to trim whitespaces and new lines
+     *
+     * @psalm-api
+     */
+    public static function createExpression(string $expression, bool $trim = true): Expr
+    {
+        if ($trim) {
+            $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
+        }
+
+        return new Expr($expression);
+    }
+
+    /**
      * @psalm-param ChartInterface::ENGINE_* $engine
      */
     public function render(string $engine = self::ENGINE_JQUERY): string
@@ -92,23 +109,6 @@ abstract class AbstractChart implements ChartInterface
         $this->renderChartEnd($chartJS, $engine);
 
         return \trim($chartJS);
-    }
-
-    /**
-     * Create an expression.
-     *
-     * @param string $expression the expression to represent
-     * @param bool   $trim       true to trim whitespaces and new lines
-     *
-     * @psalm-api
-     */
-    protected function createExpression(string $expression, bool $trim = true): Expr
-    {
-        if ($trim) {
-            $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
-        }
-
-        return new Expr($expression);
     }
 
     /**

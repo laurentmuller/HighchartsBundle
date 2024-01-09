@@ -3,6 +3,9 @@
 ## [Unreleased]
 
 TBD
+### [2.20.8] - 2024-01-09
+
+- Set function `createExpression` as static.
 
 ### [2.20.7] - 2024-01-08
 
@@ -117,6 +120,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.8]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.7...2.20.8
 [2.20.7]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.6...2.20.7
 [2.20.6]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.5...2.20.6
 [2.20.5]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.4...2.20.5
