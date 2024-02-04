@@ -51,11 +51,6 @@
             "HighchartsBundle\\Tests\\": "tests/"
         }
     },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.8.x-dev"
-        }
-    },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
@@ -69,16 +64,17 @@
         }
     },
     "scripts": {
-        "php-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
-        "php-psalm": "vendor/bin/psalm --config=psalm.xml",
-        "php-stan": "vendor/bin/phpstan analyse --memory-limit 2G -c phpstan.neon",
-        "php-rector": "vendor/bin/rector process --dry-run --config=rector.php",
-        "php-all": [
-            "@php-fixer",
-            "@php-psalm",
-            "@php-stan",
-            "@php-rector",
-            "phpunit"
+        "app-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
+        "app-psalm": "vendor/bin/psalm --config psalm.xml",
+        "app-stan": "vendor/bin/phpstan analyse --configuration phpstan.neon --memory-limit 2G",
+        "app-rector": "vendor/bin/rector process --dry-run --config rector.php",
+        "app-test": "phpunit",
+        "app-all": [
+            "@app-fixer",
+            "@app-psalm",
+            "@app-stan",
+            "@app-rector",
+            "@app-test"
         ]
     }
 }
