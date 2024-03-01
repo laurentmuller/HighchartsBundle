@@ -52,7 +52,7 @@ jobs:
                 uses: codecov/codecov-action@v4.0.1
                 with:
                     token: ${{ secrets.CODECOV_TOKEN }}
-                    slug: 'laurentmuller/calculation'
+                    slug: 'laurentmuller/highcharts-bundle'
                     disable_search: true
                     file: ./clover.xml
 
@@ -60,3 +60,6 @@ jobs:
                 uses: DavidAnson/markdownlint-cli2-action@v15
                 with:
                     globs: '*.md'
+
+            -   name: Composer validate
+                run: composer validate --strict
