@@ -10,13 +10,9 @@ library [Highcharts](https://www.highcharts.com).
 
 DRY out your chart code by writing it all in PHP!
 
-[![Php-cs-fixer](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml)
-[![PHP-Stan](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-stan.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-stan.yaml)
-[![Rector](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml)
-[![PHPUnit](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-unit.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-unit.yaml)
-[![Psalm Static analysis](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/psalm.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/psalm.yaml)
-[![Markdown Lint](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/markdown.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/markdown.yaml)
+[![CI](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml)
 [![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
+[![codecov](https://codecov.io/github/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/github/laurentmuller/HighchartsBundle)
 
 ## Documentation
 
