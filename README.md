@@ -12,7 +12,7 @@ DRY out your chart code by writing it all in PHP!
 
 [![CI](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml)
 [![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
-[![codecov](https://codecov.io/github/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/github/laurentmuller/HighchartsBundle)
+[![codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
 
 ## Documentation
 

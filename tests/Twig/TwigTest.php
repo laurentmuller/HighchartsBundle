@@ -49,4 +49,14 @@ class TwigTest extends TestCase
             $actual
         );
     }
+
+    public function testTwigFunctions(): void
+    {
+        $extension = new HighchartsExtension();
+        $functions = $extension->getFunctions();
+        self::assertCount(1, $functions);
+        self::assertArrayHasKey(0, $functions);
+        $function = $functions[0];
+        self::assertSame('chart', $function->getName());
+    }
 }

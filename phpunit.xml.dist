@@ -28,6 +28,7 @@
         </include>
 
         <exclude>
+            <file>./src/HighchartsBundle.php</file>
             <file>.php-cs-fixer.dist.php</file>
             <file>rector.php</file>
         </exclude>
