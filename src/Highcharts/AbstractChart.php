@@ -147,12 +147,10 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        if ($this->isExpression($data)) {
-            // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-            $encoded = Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS);
-        } else {
-            $encoded = \json_encode($data);
-        }
+        // Zend\Json is used in place of json_encode to preserve JS anonymous functions
+        $encoded = $this->isExpression($data)
+            ? Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS)
+            : \json_encode($data);
 
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }

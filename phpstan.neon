@@ -5,3 +5,6 @@ parameters:
 
     # Level 6
     checkMissingIterableValueType: false
+
+    ignoreErrors:
+        - message: '#Variable property access#'

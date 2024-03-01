@@ -31,15 +31,20 @@
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
         "slam/phpstan-extensions": "^6.0",
+        "orklah/psalm-insane-comparison": "^2.0",
+        "orklah/psalm-not-empty": "^1.0",
+        "orklah/psalm-strict-equality": "^2.0",
         "spaze/phpstan-disallowed-calls": "^2.0",
         "phpstan/phpstan": "^1.0",
+        "phpstan/phpstan-strict-rules": "^1.5",
         "phpstan/extension-installer": "^1.0",
         "friendsofphp/php-cs-fixer": "^3.0",
         "phpunit/phpunit": "^10.0",
         "rector/rector": "^0.19",
         "symfony/framework-bundle": "^6.0| ^7.0",
         "symfony/phpunit-bridge": "^6.0| ^7.0",
-        "vimeo/psalm": "^5.0"
+        "vimeo/psalm": "^5.0",
+        "psalm/plugin-phpunit": "^0.18"
     },
     "autoload": {
         "psr-4": {
@@ -64,17 +69,20 @@
         }
     },
     "scripts": {
+        "app-fixer-fix": "vendor/bin/php-cs-fixer fix --diff",
         "app-fixer": "vendor/bin/php-cs-fixer fix --diff --dry-run",
         "app-psalm": "vendor/bin/psalm --config psalm.xml",
         "app-stan": "vendor/bin/phpstan analyse --configuration phpstan.neon --memory-limit 2G",
         "app-rector": "vendor/bin/rector process --dry-run --config rector.php",
         "app-test": "phpunit",
+        "app-markdown": "markdownlint-cli2 *.md",
         "app-all": [
             "@app-fixer",
             "@app-psalm",
             "@app-stan",
             "@app-rector",
-            "@app-test"
+            "@app-test",
+            "@app-markdown"
         ]
     }
 }

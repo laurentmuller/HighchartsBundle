@@ -115,11 +115,7 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function offsetSet(mixed $offset, mixed $value): void
     {
-        if (null === $offset) {
-            $this->data[] = $value;
-        } else {
-            $this->data[$offset] = $value;
-        }
+        null === $offset ? $this->data[] = $value : $this->data[$offset] = $value;
     }
 
     /**

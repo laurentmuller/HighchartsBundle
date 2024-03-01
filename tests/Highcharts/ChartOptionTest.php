@@ -111,6 +111,15 @@ class ChartOptionTest extends TestCase
         self::assertNull($option->offsetGet('key'));
     }
 
+    public function testUnset(): void
+    {
+        $option = $this->createOption();
+        $option->offsetSet('key', 'value');
+        self::assertSame('value', $option->offsetGet('key'));
+        $option->__unset('key');
+        self::assertNull($option->offsetGet('key'));
+    }
+
     private function createOption(): ChartOption
     {
         return new ChartOption('test');

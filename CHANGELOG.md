@@ -3,6 +3,8 @@
 ## [Unreleased]
 
 - Updated GitHub actions.
+- Completed tests.
+- Added new tests.
 
 ### [2.20.8] - 2024-01-09
 
