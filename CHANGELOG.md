@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-- Merged GitHub actions.
+- Updated CI actions.
 - Completed tests.
 - Added new tests.
 
