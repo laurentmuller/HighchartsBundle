@@ -10,10 +10,6 @@ library [Highcharts](https://www.highcharts.com).
 
 DRY out your chart code by writing it all in PHP!
 
-[![CI](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml)
-[![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
-[![codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
-
 ## Documentation
 
 * [Installation](resources/doc/installation.md)
@@ -38,3 +34,14 @@ Please note that the Highcharts JS library is **not** free for commercial use,
 see their [FAQ](https://shop.highsoft.com/faq) for more details on what
 constitutes a non-commercial project or their
 [product page](https://www.highcharts.com/products) for details on pricing.
+
+## Actions
+
+[![PHP-CS-Fixer](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml)
+[![PHPStan](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml)
+[![PHPUnit](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml)
+[![Psalm](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/pslam.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/pslam.yaml)
+[![Rector](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml)
+[![Lint](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml)
+[![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
+[![codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
