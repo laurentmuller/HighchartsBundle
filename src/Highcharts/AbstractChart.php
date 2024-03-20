@@ -17,6 +17,8 @@ use Laminas\Json\Json;
 
 /**
  * Abstract chart.
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 abstract class AbstractChart implements ChartInterface
 {
@@ -84,15 +86,13 @@ abstract class AbstractChart implements ChartInterface
      * Create an expression.
      *
      * @param string $expression the expression to represent
-     * @param bool   $trim       true to trim whitespaces and new lines
      *
      * @psalm-api
      */
-    public static function createExpression(string $expression, bool $trim = true): Expr
+    public static function createExpression(string $expression): Expr
     {
-        if ($trim) {
-            $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
-        }
+        // remove consecutive spaces
+        $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
 
         return new Expr($expression);
     }

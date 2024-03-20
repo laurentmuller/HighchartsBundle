@@ -16,6 +16,8 @@ namespace HighchartsBundle\Highcharts;
  * Highchart chart.
  *
  * See documentation at https://www.highcharts.com/products/highcharts/.
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highchart extends AbstractChart
 {

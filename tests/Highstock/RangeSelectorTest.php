@@ -31,8 +31,8 @@ class RangeSelectorTest extends AbstractChartTestCase
     {
         $buttons = [[
             'type' => 'month',
-                'count' => 3,
-                'text' => '3m',
+            'count' => 3,
+            'text' => '3m',
         ]];
         self::assertNotNull($this->chart);
         self::assertNotNull($this->range);

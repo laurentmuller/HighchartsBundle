@@ -2,7 +2,8 @@
 
 ## Pie chart with legend
 
-This is a simple recipe to re-create the pie-chart demo with legend at [highcharts.com/demo/pie-legend](https://www.highcharts.com/demo/pie-legend)
+This is a simple recipe to re-create the pie-chart demo with legend at
+[highcharts.com/demo/pie-legend](https://www.highcharts.com/demo/pie-legend)
 
 ```php
 $chart = new Highchart();
@@ -31,7 +32,8 @@ $chart->series([
 
 ## Pie chart with Drilldown
 
-This is a simple recipe to re-create a chart like the drilldown pie-chart demo at [highcharts.com/demo/pie-drilldown](https://www.highcharts.com/demo/pie-drilldown)
+This is a simple recipe to re-create a chart like the drilldown pie-chart demo
+at [highcharts.com/demo/pie-drilldown](https://www.highcharts.com/demo/pie-drilldown)
 
 ```php
 $chart = new Highchart();
@@ -104,7 +106,8 @@ $chart->drilldown->series($drilldown);
 
 ## Multi-axes plot
 
-This is a simple recipe for creating a plot with multiple y-axes, like the [highcharts demo](https://www.highcharts.com/demo/combo-multi-axes)
+This is a simple recipe for creating a plot with multiple y-axes, like the
+[highcharts demo](https://www.highcharts.com/demo/combo-multi-axes)
 
 ```php
 $series = [

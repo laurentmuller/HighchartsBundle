@@ -15,7 +15,7 @@ namespace HighchartsBundle\Tests;
 use HighchartsBundle\Highcharts\ChartInterface;
 use PHPUnit\Framework\TestCase;
 
-class AbstractChartTestCase extends TestCase
+abstract class AbstractChartTestCase extends TestCase
 {
     /**
      * @psalm-param ChartInterface::ENGINE_* $engine

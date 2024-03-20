@@ -16,6 +16,8 @@ namespace HighchartsBundle\Highcharts;
  * Highstock chart.
  *
  * See documentation at https://www.highcharts.com/products/stock/.
+ *
+ * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highstock extends AbstractChart
 {

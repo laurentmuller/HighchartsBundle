@@ -44,8 +44,9 @@ In your template ...
 
 ## Use highcharts with mootools
 
-If you'd like to use mootools instead of jquery to render your charts, just load the mootools adapter use the second
-argument of the twig extension like this
+If you'd like to use mootools instead of jquery to render your charts, just 
+load the mootools adapter use the second argument of the twig extension like 
+this
 
 ```html
 <!-- Load MooTools -->
@@ -62,8 +63,9 @@ argument of the twig extension like this
 
 ## Use highcharts without a jquery or mootools wrapper
 
-It is also possible to render your highcharts code without a jquery or mootools wrapper. This is useful when you want
-control how and when the chart is loaded or when integrating with existing code.
+It is also possible to render your highcharts code without a jquery or mootools
+wrapper. This is useful when you want control how and when the chart is loaded
+or when integrating with existing code.
 
 ```html
 <!-- Load highcharts -->
@@ -80,7 +82,8 @@ control how and when the chart is loaded or when integrating with existing code.
 
 ## Use a Javascript anonymous function
 
-There are several use case where you need to define a js function, let's see how to use one for a tooltip formatter
+There are several use case where you need to define a js function, let's see
+how to use one for a tooltip formatter
 
 ```php
 // ...
