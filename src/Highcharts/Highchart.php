@@ -21,6 +21,8 @@ namespace HighchartsBundle\Highcharts;
  */
 class Highchart extends AbstractChart
 {
+    public const CHART_CLASS = 'Chart';
+
     public ChartOption $colorAxis;
     public ChartOption $drilldown;
     public ChartOption $noData;
@@ -37,35 +39,35 @@ class Highchart extends AbstractChart
 
     protected function getChartClass(): string
     {
-        return 'Chart';
+        return self::CHART_CLASS;
     }
 
     protected function renderChartOptions(string &$chartJS): void
     {
         parent::renderChartOptions($chartJS);
-        $chartJS .= $this->renderColorAxis();
-        $chartJS .= $this->renderNoData();
-        $chartJS .= $this->renderPane();
-        $chartJS .= $this->renderDrilldown();
+        $this->renderColorAxis($chartJS);
+        $this->renderDrilldown($chartJS);
+        $this->renderNoData($chartJS);
+        $this->renderPane($chartJS);
     }
 
-    private function renderColorAxis(): string
+    private function renderColorAxis(string &$chartJS): void
     {
-        return $this->jsonEncode($this->colorAxis);
+        $chartJS .= $this->jsonEncode($this->colorAxis);
     }
 
-    private function renderDrilldown(): string
+    private function renderDrilldown(string &$chartJS): void
     {
-        return $this->jsonEncode($this->drilldown);
+        $chartJS .= $this->jsonEncode($this->drilldown);
     }
 
-    private function renderNoData(): string
+    private function renderNoData(string &$chartJS): void
     {
-        return $this->jsonEncode($this->noData);
+        $chartJS .= $this->jsonEncode($this->noData);
     }
 
-    private function renderPane(): string
+    private function renderPane(string &$chartJS): void
     {
-        return $this->jsonEncode($this->pane);
+        $chartJS .= $this->jsonEncode($this->pane);
     }
 }

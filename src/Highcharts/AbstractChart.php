@@ -155,46 +155,48 @@ abstract class AbstractChart implements ChartInterface
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
 
-    protected function renderAccessibility(): string
+    protected function renderAccessibility(string &$chartJS): void
     {
-        return $this->jsonEncode($this->accessibility);
+        $chartJS .= $this->jsonEncode($this->accessibility);
     }
 
-    protected function renderChart(): string
+    protected function renderChart(string &$chartJS): void
     {
-        return $this->jsonEncode($this->chart);
+        $chartJS .= $this->jsonEncode($this->chart);
     }
 
-    protected function renderChartClass(): string
+    protected function renderChartClass(string &$chartJS): void
     {
         $renderTo = $this->getRenderTo();
         $class = $this->getChartClass();
-
-        return self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::NEW_LINE;
+        $chartJS .= self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::NEW_LINE;
     }
 
     protected function renderChartCommon(string &$chartJS): void
     {
-        $chartJS .= $this->renderChart();
-        $chartJS .= $this->renderColors();
-        $chartJS .= $this->renderCredits();
-        $chartJS .= $this->renderExporting();
-        $chartJS .= $this->renderLegend();
-        $chartJS .= $this->renderScrollbar();
-        $chartJS .= $this->renderSubtitle();
-        $chartJS .= $this->renderTitle();
-        $chartJS .= $this->renderXAxis();
-        $chartJS .= $this->renderYAxis();
-        $chartJS .= $this->renderPlotOptions();
-        $chartJS .= $this->renderSeries();
-        $chartJS .= $this->renderTooltip();
-        $chartJS .= $this->renderAccessibility();
+        $this->renderChart($chartJS);
+        $this->renderColors($chartJS);
+        $this->renderCredits($chartJS);
+        $this->renderExporting($chartJS);
+        $this->renderLegend($chartJS);
+        $this->renderScrollbar($chartJS);
+        $this->renderSubtitle($chartJS);
+        $this->renderTitle($chartJS);
+        $this->renderXAxis($chartJS);
+        $this->renderYAxis($chartJS);
+        $this->renderPlotOptions($chartJS);
+        $this->renderSeries($chartJS);
+        $this->renderTooltip($chartJS);
+        $this->renderAccessibility($chartJS);
     }
 
+    /**
+     * @psalm-param ChartInterface::ENGINE_* $engine
+     */
     protected function renderChartEnd(string &$chartJS, string $engine): void
     {
         $chartJS = \rtrim($chartJS, self::END_LINE) . self::NEW_LINE . self::HALF_SPACE . '});' . self::NEW_LINE;
-        if ('' !== $engine) {
+        if (self::ENGINE_NONE !== $engine) {
             $chartJS .= '});' . self::NEW_LINE;
         }
     }
@@ -203,103 +205,108 @@ abstract class AbstractChart implements ChartInterface
     {
     }
 
+    /**
+     * @psalm-param ChartInterface::ENGINE_* $engine
+     */
     protected function renderChartStart(string &$chartJS, string $engine): void
     {
-        $chartJS .= $this->renderEngine($engine);
-        $chartJS .= $this->renderOptions();
-        $chartJS .= $this->renderChartClass();
+        $this->renderEngine($chartJS, $engine);
+        $this->renderOptions($chartJS);
+        $this->renderChartClass($chartJS);
     }
 
-    protected function renderColors(): string
+    protected function renderColors(string &$chartJS): void
     {
-        return $this->jsonEncode($this->colors, 'colors');
+        $chartJS .= $this->jsonEncode($this->colors, 'colors');
     }
 
-    protected function renderCredits(): string
+    protected function renderCredits(string &$chartJS): void
     {
-        return $this->jsonEncode($this->credits);
+        $chartJS .= $this->jsonEncode($this->credits);
     }
 
-    protected function renderEngine(string $engine): string
+    /**
+     * @psalm-param ChartInterface::ENGINE_* $engine
+     */
+    protected function renderEngine(string &$chartJS, string $engine): void
     {
-        return match ($engine) {
+        $chartJS .= match ($engine) {
             self::ENGINE_MOOTOOLS => 'window.addEvent(\'domready\', function () {',
             self::ENGINE_JQUERY => '$(function () {',
             default => '',
         };
     }
 
-    protected function renderExporting(): string
+    protected function renderExporting(string &$chartJS): void
     {
-        return $this->jsonEncode($this->exporting);
+        $chartJS .= $this->jsonEncode($this->exporting);
     }
 
-    protected function renderGlobal(): string
+    protected function renderGlobal(string &$chartJS): void
     {
-        return $this->jsonEncode($this->global);
+        $chartJS .= $this->jsonEncode($this->global);
     }
 
-    protected function renderLang(): string
+    protected function renderLang(string &$chartJS): void
     {
-        return $this->jsonEncode($this->lang);
+        $chartJS .= $this->jsonEncode($this->lang);
     }
 
-    protected function renderLegend(): string
+    protected function renderLegend(string &$chartJS): void
     {
-        return $this->jsonEncode($this->legend);
+        $chartJS .= $this->jsonEncode($this->legend);
     }
 
-    protected function renderOptions(): string
+    protected function renderOptions(string &$chartJS): void
     {
         if (!$this->global->hasData() && !$this->lang->hasData()) {
-            return '';
+            return;
         }
 
-        $result = self::NEW_LINE . self::HALF_SPACE . 'Highcharts.setOptions({' . self::NEW_LINE;
-        $result .= $this->renderGlobal();
-        $result .= $this->renderLang();
-
-        return $result . self::HALF_SPACE . '});';
+        $chartJS .= self::NEW_LINE . self::HALF_SPACE . 'Highcharts.setOptions({' . self::NEW_LINE;
+        $this->renderGlobal($chartJS);
+        $this->renderLang($chartJS);
+        $chartJS .= self::HALF_SPACE . '});';
     }
 
-    protected function renderPlotOptions(): string
+    protected function renderPlotOptions(string &$chartJS): void
     {
-        return $this->jsonEncode($this->plotOptions);
+        $chartJS .= $this->jsonEncode($this->plotOptions);
     }
 
-    protected function renderScrollbar(): string
+    protected function renderScrollbar(string &$chartJS): void
     {
-        return $this->jsonEncode($this->scrollbar);
+        $chartJS .= $this->jsonEncode($this->scrollbar);
     }
 
-    protected function renderSeries(): string
+    protected function renderSeries(string &$chartJS): void
     {
-        return $this->jsonEncode($this->series);
+        $chartJS .= $this->jsonEncode($this->series);
     }
 
-    protected function renderSubtitle(): string
+    protected function renderSubtitle(string &$chartJS): void
     {
-        return $this->jsonEncode($this->subtitle);
+        $chartJS .= $this->jsonEncode($this->subtitle);
     }
 
-    protected function renderTitle(): string
+    protected function renderTitle(string &$chartJS): void
     {
-        return $this->jsonEncode($this->title);
+        $chartJS .= $this->jsonEncode($this->title);
     }
 
-    protected function renderTooltip(): string
+    protected function renderTooltip(string &$chartJS): void
     {
-        return $this->jsonEncode($this->tooltip);
+        $chartJS .= $this->jsonEncode($this->tooltip);
     }
 
-    protected function renderXAxis(): string
+    protected function renderXAxis(string &$chartJS): void
     {
-        return $this->jsonEncode($this->xAxis);
+        $chartJS .= $this->jsonEncode($this->xAxis);
     }
 
-    protected function renderYAxis(): string
+    protected function renderYAxis(string &$chartJS): void
     {
-        return $this->jsonEncode($this->yAxis);
+        $chartJS .= $this->jsonEncode($this->yAxis);
     }
 
     private function isExpression(array $values): bool

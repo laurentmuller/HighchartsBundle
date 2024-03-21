@@ -21,6 +21,8 @@ namespace HighchartsBundle\Highcharts;
  */
 class Highstock extends AbstractChart
 {
+    public const CHART_CLASS = 'StockChart';
+
     public ChartOption $rangeSelector;
 
     public function __construct()
@@ -31,17 +33,17 @@ class Highstock extends AbstractChart
 
     protected function getChartClass(): string
     {
-        return 'StockChart';
+        return self::CHART_CLASS;
     }
 
     protected function renderChartOptions(string &$chartJS): void
     {
         parent::renderChartOptions($chartJS);
-        $chartJS .= $this->renderRangeSelector();
+        $this->renderRangeSelector($chartJS);
     }
 
-    protected function renderRangeSelector(): string
+    protected function renderRangeSelector(string &$chartJS): void
     {
-        return $this->jsonEncode($this->rangeSelector);
+        $chartJS .= $this->jsonEncode($this->rangeSelector);
     }
 }
