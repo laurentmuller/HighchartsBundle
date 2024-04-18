@@ -16,8 +16,6 @@ namespace HighchartsBundle\Highcharts;
  * Highstock chart.
  *
  * See documentation at https://www.highcharts.com/products/stock/.
- *
- * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highstock extends AbstractChart
 {
@@ -28,7 +26,7 @@ class Highstock extends AbstractChart
     public function __construct()
     {
         parent::__construct();
-        $this->initChartOption('rangeSelector');
+        $this->rangeSelector = new ChartOption('rangeSelector');
     }
 
     protected function getChartClass(): string

@@ -17,8 +17,6 @@ use Laminas\Json\Json;
 
 /**
  * Abstract chart.
- *
- * @psalm-suppress PropertyNotSetInConstructor
  */
 abstract class AbstractChart implements ChartInterface
 {
@@ -40,7 +38,7 @@ abstract class AbstractChart implements ChartInterface
     public ChartOption $accessibility;
     public ChartOption $chart;
     /** @var string[] */
-    public array $colors;
+    public array $colors = [];
     public ChartOption $credits;
     public ChartOption $exporting;
     public ChartOption $global;
@@ -57,22 +55,21 @@ abstract class AbstractChart implements ChartInterface
 
     public function __construct()
     {
-        //  options
-        $options = [
-            'chart', 'credits', 'exporting', 'global', 'lang',
-            'legend', 'plotOptions', 'scrollbar', 'series',
-            'subtitle', 'title', 'tooltip', 'xAxis', 'yAxis',
-            'accessibility',
-        ];
-        foreach ($options as $option) {
-            $this->initChartOption($option);
-        }
-
-        // arrays
-        $options = ['colors'];
-        foreach ($options as $option) {
-            $this->initArrayOption($option);
-        }
+        $this->accessibility = new ChartOption('accessibility');
+        $this->chart = new ChartOption('chart');
+        $this->credits = new ChartOption('credits');
+        $this->exporting = new ChartOption('exporting');
+        $this->global = new ChartOption('global');
+        $this->lang = new ChartOption('lang');
+        $this->legend = new ChartOption('legend');
+        $this->plotOptions = new ChartOption('plotOptions');
+        $this->scrollbar = new ChartOption('scrollbar');
+        $this->series = new ChartOption('series');
+        $this->subtitle = new ChartOption('subtitle');
+        $this->title = new ChartOption('title');
+        $this->tooltip = new ChartOption('tooltip');
+        $this->xAxis = new ChartOption('xAxis');
+        $this->yAxis = new ChartOption('yAxis');
     }
 
     public function __call(string $name, mixed $value): static
@@ -122,19 +119,6 @@ abstract class AbstractChart implements ChartInterface
     protected function getRenderTo(): string
     {
         return (string) ($this->chart->renderTo ?? 'chart');
-    }
-
-    protected function initArrayOption(string $name): void
-    {
-        $this->{$name} = [];
-    }
-
-    /**
-     * @psalm-param non-empty-string $name
-     */
-    protected function initChartOption(string $name): void
-    {
-        $this->{$name} = new ChartOption($name);
     }
 
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string

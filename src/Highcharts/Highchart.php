@@ -16,8 +16,6 @@ namespace HighchartsBundle\Highcharts;
  * Highchart chart.
  *
  * See documentation at https://www.highcharts.com/products/highcharts/.
- *
- * @psalm-suppress PropertyNotSetInConstructor
  */
 class Highchart extends AbstractChart
 {
@@ -31,10 +29,10 @@ class Highchart extends AbstractChart
     public function __construct()
     {
         parent::__construct();
-        $options = ['colorAxis', 'drilldown', 'noData', 'pane'];
-        foreach ($options as $option) {
-            $this->initChartOption($option);
-        }
+        $this->colorAxis = new ChartOption('colorAxis');
+        $this->drilldown = new ChartOption('drilldown');
+        $this->noData = new ChartOption('noData');
+        $this->pane = new ChartOption('pane');
     }
 
     protected function getChartClass(): string

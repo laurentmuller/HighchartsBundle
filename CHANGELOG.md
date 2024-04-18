@@ -2,6 +2,11 @@
 
 ## [Unreleased]
 
+## [2.20.11] - 2024-04-18
+
+- Modified the constructor.
+- Removed `initArrayOption()` and `initChartOption()` functions.
+
 ## [2.20.10] - 2024-03-21
 
 - Updated psalm annotation.
@@ -133,6 +138,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.11]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.10...2.20.11
 [2.20.10]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.9...2.20.10
 [2.20.9]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.8...2.20.9
 [2.20.8]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.7...2.20.8
