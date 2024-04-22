@@ -13,6 +13,8 @@ declare(strict_types=1);
 namespace HighchartsBundle\Twig;
 
 use HighchartsBundle\Highcharts\ChartInterface;
+use HighchartsBundle\Highcharts\Engine;
+use Twig\Error\SyntaxError;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -24,10 +26,14 @@ class HighchartsExtension extends AbstractExtension
     /**
      * Render the given chart with the given engine.
      *
-     * @psalm-param ChartInterface::ENGINE_* $engine
+     * @throws SyntaxError if the engine is a string and the corresponding enumeration cannot be found
      */
-    public function chart(ChartInterface $chart, string $engine = ChartInterface::ENGINE_JQUERY): string
+    public function chart(ChartInterface $chart, Engine|string $engine = Engine::JQUERY): string
     {
+        if (\is_string($engine)) {
+            $engine = $this->parseEngine($engine);
+        }
+
         return $chart->render($engine);
     }
 
@@ -36,5 +42,17 @@ class HighchartsExtension extends AbstractExtension
         return [
             new TwigFunction('chart', $this->chart(...), ['is_safe' => ['html']]),
         ];
+    }
+
+    /**
+     * @throws SyntaxError
+     */
+    private function parseEngine(string $engine): Engine
+    {
+        try {
+            return Engine::from($engine);
+        } catch (\ValueError $e) {
+            throw new SyntaxError("Invalid chart engine: \"$engine\".", previous: $e);
+        }
     }
 }
