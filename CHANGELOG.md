@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Removed `orklah/psalm-*` plugins.
+
 ## [2.20.11] - 2024-04-18
 
 - Modified the constructor.
