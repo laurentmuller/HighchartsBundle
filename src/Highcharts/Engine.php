@@ -13,12 +13,22 @@ declare(strict_types=1);
 namespace HighchartsBundle\Highcharts;
 
 /**
- * Chart interface.
+ * The render engine enumeration.
+ *
+ * @see ChartInterface::render()
  */
-interface ChartInterface
+enum Engine: string
 {
     /**
-     * Render this chart for the given engine.
+     * The JQuery engine.
      */
-    public function render(Engine $engine): string;
+    case JQUERY = 'jquery';
+    /**
+     * The MooTools engine.
+     */
+    case MOOTOOLS = 'mootools';
+    /**
+     * No engine.
+     */
+    case NONE = '';
 }

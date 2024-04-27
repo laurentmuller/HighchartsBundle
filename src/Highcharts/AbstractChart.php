@@ -94,10 +94,7 @@ abstract class AbstractChart implements ChartInterface
         return new Expr($expression);
     }
 
-    /**
-     * @psalm-param ChartInterface::ENGINE_* $engine
-     */
-    public function render(string $engine = self::ENGINE_JQUERY): string
+    public function render(Engine $engine = Engine::JQUERY): string
     {
         $chartJS = '';
         $this->renderChartStart($chartJS, $engine);
@@ -174,13 +171,10 @@ abstract class AbstractChart implements ChartInterface
         $this->renderAccessibility($chartJS);
     }
 
-    /**
-     * @psalm-param ChartInterface::ENGINE_* $engine
-     */
-    protected function renderChartEnd(string &$chartJS, string $engine): void
+    protected function renderChartEnd(string &$chartJS, Engine $engine): void
     {
         $chartJS = \rtrim($chartJS, self::END_LINE) . self::NEW_LINE . self::HALF_SPACE . '});' . self::NEW_LINE;
-        if (self::ENGINE_NONE !== $engine) {
+        if (Engine::NONE !== $engine) {
             $chartJS .= '});' . self::NEW_LINE;
         }
     }
@@ -189,10 +183,7 @@ abstract class AbstractChart implements ChartInterface
     {
     }
 
-    /**
-     * @psalm-param ChartInterface::ENGINE_* $engine
-     */
-    protected function renderChartStart(string &$chartJS, string $engine): void
+    protected function renderChartStart(string &$chartJS, Engine $engine): void
     {
         $this->renderEngine($chartJS, $engine);
         $this->renderOptions($chartJS);
@@ -209,14 +200,11 @@ abstract class AbstractChart implements ChartInterface
         $chartJS .= $this->jsonEncode($this->credits);
     }
 
-    /**
-     * @psalm-param ChartInterface::ENGINE_* $engine
-     */
-    protected function renderEngine(string &$chartJS, string $engine): void
+    protected function renderEngine(string &$chartJS, Engine $engine): void
     {
         $chartJS .= match ($engine) {
-            self::ENGINE_MOOTOOLS => 'window.addEvent(\'domready\', function () {',
-            self::ENGINE_JQUERY => '$(function () {',
+            Engine::MOOTOOLS => 'window.addEvent(\'domready\', function () {',
+            Engine::JQUERY => '$(function () {',
             default => '',
         };
     }

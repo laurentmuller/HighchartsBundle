@@ -13,15 +13,16 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests;
 
 use HighchartsBundle\Highcharts\ChartInterface;
+use HighchartsBundle\Highcharts\Engine;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractChartTestCase extends TestCase
 {
-    /**
-     * @psalm-param ChartInterface::ENGINE_* $engine
-     */
-    protected static function assertChartMatchesRegularExpression(ChartInterface $chart, string $regex, string $engine = 'jquery'): void
-    {
+    protected static function assertChartMatchesRegularExpression(
+        ChartInterface $chart,
+        string $regex,
+        Engine $engine = Engine::JQUERY
+    ): void {
         $result = $chart->render($engine);
         self::assertMatchesRegularExpression($regex, $result);
     }

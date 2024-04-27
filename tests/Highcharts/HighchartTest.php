@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
+use HighchartsBundle\Highcharts\Engine;
 use HighchartsBundle\Highcharts\Highchart;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
@@ -37,17 +38,17 @@ class HighchartTest extends AbstractChartTestCase
     {
         $chart = new Highchart();
         $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($chart, $regex, 'mootools');
+        self::assertChartMatchesRegularExpression($chart, $regex, Engine::MOOTOOLS);
     }
 
     /**
-     * Render chart without library wrapper.
+     * Render chart without a library wrapper.
      */
     public function testNoEngine(): void
     {
         $chart = new Highchart();
         $regex = '/const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($chart, $regex, '');
+        self::assertChartMatchesRegularExpression($chart, $regex, Engine::NONE);
     }
 
     /**
