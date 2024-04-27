@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Added markdown configuration file.
+
 ## [2.20.11] - 2024-04-18
 
 - Modified the constructor.

@@ -75,7 +75,7 @@
         "app-stan": "vendor/bin/phpstan analyse --configuration phpstan.neon --memory-limit 2G",
         "app-rector": "vendor/bin/rector process --dry-run --config rector.php",
         "app-test": "phpunit",
-        "app-markdown": "markdownlint-cli2 *.md",
+        "app-markdown": "markdownlint-cli2",
         "app-all": [
             "@app-fixer",
             "@app-psalm",
