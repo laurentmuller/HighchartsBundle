@@ -33,8 +33,8 @@ In your template ...
 <!-- Load jQuery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
 <!-- Load highcharts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/modules/exporting.min.js"></script>
 <script>
     {{ chart(chart) }}
 </script>
@@ -44,16 +44,16 @@ In your template ...
 
 ## Use highcharts with mootools
 
-If you'd like to use mootools instead of jquery to render your charts, just 
-load the mootools adapter use the second argument of the twig extension like 
+If you'd like to use mootools instead of jquery to render your charts, load the
+mootools adapter to use as the second argument of the twig extension like
 this
 
 ```html
 <!-- Load MooTools -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mootools/1.6.0/mootools-core.js"></script>
 <!-- Load highcharts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/modules/exporting.min.js"></script>
 <script>
     {{ chart(chart, 'mootools') }}
 </script>
@@ -64,13 +64,13 @@ this
 ## Use highcharts without a jquery or mootools wrapper
 
 It is also possible to render your highcharts code without a jquery or mootools
-wrapper. This is useful when you want control how and when the chart is loaded
-or when integrating with existing code.
+wrapper. This is useful when you want to control how and when the chart is
+loaded or when integrating with existing code.
 
 ```html
 <!-- Load highcharts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/exporting.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/highcharts.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/modules/exporting.min.js"></script>
 <script>
     myLib.chartLoad(function(data){
         {{ chart(chart, false) }}
@@ -82,16 +82,16 @@ or when integrating with existing code.
 
 ## Use a Javascript anonymous function
 
-There are several use case where you need to define a js function, let's see
-how to use one for a tooltip formatter
+There are several use cases where you need to define a javascript function,
+let's see how to use one for a tooltip formatter
 
 ```php
 // ...
-$chart = new Highchart();
-$expr = $chart->createExpression("function() {
+$expression = AbstractChart::createExpression("function() {
     return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>';
 }");
-$chart->tooltip->formatter($expr);
+$chart = new Highchart();
+$chart->tooltip->formatter($expression);
 // ...
 ```
 

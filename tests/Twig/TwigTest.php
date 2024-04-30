@@ -24,64 +24,88 @@ use Twig\Error\SyntaxError;
 class TwigTest extends TestCase
 {
     /**
-     * @throws SyntaxError
+     * @throws \ReflectionException
      */
     public function testInvalidEngine(): void
     {
         $this->expectException(SyntaxError::class);
-        $chart = new Highchart();
-        $extension = new HighchartsExtension();
-        $extension->chart($chart, 'fake');
+        $this->invokeChart('fake');
     }
 
     /**
      * Chart rendering using the twig extension.
      *
-     * @throws SyntaxError
+     * @throws \ReflectionException
      */
     public function testTwigExtension(): void
     {
-        $chart = new Highchart();
-        $extension = new HighchartsExtension();
         // render with jquery (default)
-        $actual = $extension->chart($chart);
+        $actual = $this->invokeChart();
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
 
         // render with jquery explicitly
-        $actual = $extension->chart($chart, Engine::JQUERY);
+        $actual = $this->invokeChart(Engine::JQUERY);
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
-        $actual = $extension->chart($chart, 'jquery');
+        $actual = $this->invokeChart('jquery');
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
 
         // render with mootools
-        $actual = $extension->chart($chart, Engine::MOOTOOLS);
+        $actual = $this->invokeChart(Engine::MOOTOOLS);
         self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
-        $actual = $extension->chart($chart, 'mootools');
+        $actual = $this->invokeChart('mootools');
         self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
     }
 
-    public function testTwigFunctions(): void
+    public function testTwigMembers(): void
     {
         $extension = new HighchartsExtension();
+        self::assertCount(0, $extension->getFilters());
+        self::assertCount(0, $extension->getNodeVisitors());
+        self::assertCount(0, $extension->getOperators());
+        self::assertCount(0, $extension->getTests());
+        self::assertCount(0, $extension->getTokenParsers());
+
         $functions = $extension->getFunctions();
         self::assertCount(1, $functions);
         self::assertArrayHasKey(0, $functions);
         $function = $functions[0];
         self::assertSame('chart', $function->getName());
+        self::assertFalse($function->needsEnvironment());
+        self::assertFalse($function->needsContext());
+        self::assertFalse($function->isDeprecated());
+        self::assertFalse($function->isVariadic());
+        self::assertIsCallable($function->getCallable());
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    private function invokeChart(Engine|string $engine = Engine::JQUERY): string
+    {
+        $chart = new Highchart();
+        $extension = new HighchartsExtension();
+        $class = new \ReflectionClass($extension);
+        if (!$class->hasMethod('chart')) {
+            throw new \ReflectionException('Unable to find the "chart" function.');
+        }
+        $method = $class->getMethod('chart');
+        $method->setAccessible(true);
+
+        return (string) $method->invokeArgs($extension, [$chart, $engine]);
     }
 }

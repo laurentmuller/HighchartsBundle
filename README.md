@@ -1,6 +1,6 @@
 # HighchartsBundle
 
-This is fork of the [ObHighchartsBundle](https://github.com/marcaube/ObHighchartsBundle)
+This is a fork of the [ObHighchartsBundle](https://github.com/marcaube/ObHighchartsBundle)
 with support for PHP 8.2.
 
 `HighchartsBundle` eases the use of highcharts to display rich graphs and

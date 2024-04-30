@@ -23,25 +23,25 @@ use Twig\TwigFunction;
  */
 class HighchartsExtension extends AbstractExtension
 {
+    public function getFunctions(): array
+    {
+        return [
+            new TwigFunction('chart', $this->chart(...), ['is_safe' => ['html']]),
+        ];
+    }
+
     /**
      * Render the given chart with the given engine.
      *
      * @throws SyntaxError if the engine is a string and the corresponding enumeration cannot be found
      */
-    public function chart(ChartInterface $chart, Engine|string $engine = Engine::JQUERY): string
+    private function chart(ChartInterface $chart, Engine|string $engine = Engine::JQUERY): string
     {
         if (\is_string($engine)) {
             $engine = $this->parseEngine($engine);
         }
 
         return $chart->render($engine);
-    }
-
-    public function getFunctions(): array
-    {
-        return [
-            new TwigFunction('chart', $this->chart(...), ['is_safe' => ['html']]),
-        ];
     }
 
     /**
