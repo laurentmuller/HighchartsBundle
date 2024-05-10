@@ -12,9 +12,9 @@ DRY out your chart code by writing it all in PHP!
 
 ## Documentation
 
-* [Installation](resources/doc/installation.md)
-* [Usage](resources/doc/usage.md)
-* [Cookbook](resources/doc/cookbook.md)
+* [Installation](doc/installation.md)
+* [Usage](doc/usage.md)
+* [Cookbook](doc/cookbook.md)
 * [Highcharts API](https://api.highcharts.com/highcharts)
 
 ## Contributing

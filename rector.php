@@ -20,9 +20,8 @@ use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Set\TwigSetList;
 
 return RectorConfig::configure()
-    ->withBootstrapFiles([
-        __DIR__ . '/vendor/autoload.php',
-    ])->withPaths([
+    ->withRootFiles()
+    ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
         __DIR__ . '/rector.php',
@@ -34,6 +33,10 @@ return RectorConfig::configure()
         // global
         SetList::PHP_82,
         SetList::CODE_QUALITY,
+        SetList::PRIVATIZATION,
+        SetList::INSTANCEOF,
+        SetList::STRICT_BOOLEANS,
+        SetList::TYPE_DECLARATION,
         // PHP-Unit
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,

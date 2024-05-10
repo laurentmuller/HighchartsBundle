@@ -99,4 +99,4 @@ $chart->tooltip->formatter($expression);
 
 - [Installation](installation.md)
 - [Cookbook](cookbook.md)
-- [Home Page](../../README.md)
+- [Home Page](../README.md)

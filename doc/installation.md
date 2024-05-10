@@ -29,4 +29,4 @@
 
 - [Usage](usage.md)
 - [Cookbook](cookbook.md)
-- [Home Page](../../README.md)
+- [Home Page](../README.md)

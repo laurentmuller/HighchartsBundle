@@ -173,4 +173,4 @@ $chart->series($series);
 
 - [Installation](installation.md)
 - [Usage](usage.md)
-- [Home Page](../../README.md)
+- [Home Page](../README.md)

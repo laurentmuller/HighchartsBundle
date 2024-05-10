@@ -5,6 +5,8 @@
 - Added markdown configuration file.
 - Changed the `chart` function visibility of the `HighchartsExtension` class.
 - Updated `TwigTest` class.
+- Updated rector configuration.
+- Move documentation to the root folder.
 
 ## [2.20.12] - 2024-04-22
 
@@ -48,8 +50,7 @@
 
 ## [2.20.4] - 2023-12-08
 
-- Moved `isExpression()` function from `ChartOption` class to `AbstractChart`
-  class.
+- Moved is expression from chart option to abstract chart.
 
 ## [2.20.3] - 2023-11-28
 
@@ -66,7 +67,7 @@
 
 ## [2.20.0] - 2023-11-28
 
-- Removed the pretty print option
+- Removed pretty print option
 
 ## [2.19.19] - 2023-11-28
 
@@ -125,7 +126,7 @@
 This release fixes a security issue. You are encouraged to update to it as soon
 as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/security/advisory/ZF2014-01)
 
-- Add support for the pane option
+- Add support for pane option
 - Add support for Highstock
 - Extract a common interface from Highchart and Highstock
 - Add support for rangeSelector
