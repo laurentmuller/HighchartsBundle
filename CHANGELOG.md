@@ -7,6 +7,8 @@
 - Updated `TwigTest` class.
 - Updated rector configuration.
 - Move documentation to the root folder.
+- Updated `phpstan` configuration.
+- Updated `psalm/plugin-phpunit` plugin version.
 
 ## [2.20.12] - 2024-04-22
 

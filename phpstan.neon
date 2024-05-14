@@ -3,8 +3,8 @@ parameters:
     paths:
     - src
 
-    # Level 6
-    checkMissingIterableValueType: false
 
     ignoreErrors:
         - message: '#Variable property access#'
+        -
+            identifier: missingType.iterableValue
