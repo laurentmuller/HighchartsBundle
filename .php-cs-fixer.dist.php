@@ -12,6 +12,7 @@ declare(strict_types=1);
 
 use PhpCsFixer\Config;
 use PhpCsFixer\Finder;
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
 
 $comment = <<<COMMENT
     This file is part of the HighchartsBundle package.
@@ -52,6 +53,7 @@ $rules = [
     'array_syntax' => ['syntax' => 'short'],
     'list_syntax' => ['syntax' => 'short'],
     'doctrine_annotation_array_assignment' => ['operator' => '='],
+    'phpdoc_to_comment' => ['allow_before_return_statement' => true],
 ];
 
 $finder = Finder::create()
@@ -61,6 +63,7 @@ $finder = Finder::create()
 $config = new Config();
 
 return $config
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setRiskyAllowed(true)
     ->setFinder($finder)
     ->setRules($rules);

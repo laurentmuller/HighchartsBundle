@@ -23,7 +23,7 @@ abstract class AbstractChart implements ChartInterface
     // the script end line
     private const END_LINE = ",\n";
 
-    // the half space prefix
+    // the half-space prefix
     private const HALF_SPACE = '    ';
 
     // the script new line

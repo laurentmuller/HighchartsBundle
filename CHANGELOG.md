@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [2.20.13] - 2024-06-16
+
 - Added markdown configuration file.
 - Changed the `chart` function visibility of the `HighchartsExtension` class.
 - Updated `TwigTest` class.
@@ -9,6 +11,8 @@
 - Move documentation to the root folder.
 - Updated `phpstan` configuration.
 - Updated `psalm/plugin-phpunit` plugin version.
+- Updated `PhpCsFixer` configuration.
+- Updated `.gitattributes` to exclude non-essential files from distribution.
 
 ## [2.20.12] - 2024-04-22
 
@@ -151,6 +155,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.13]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.12...2.20.13
 [2.20.12]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.11...2.20.12
 [2.20.11]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.10...2.20.11
 [2.20.10]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.9...2.20.10
