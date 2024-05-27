@@ -1,6 +1,12 @@
 name: Composer Diff
 
-on: [ push, pull_request ]
+on:
+    push:
+        paths:
+            - 'composer.lock'
+    pull_request:
+        paths:
+            - 'composer.lock'
 
 jobs:
     build:
