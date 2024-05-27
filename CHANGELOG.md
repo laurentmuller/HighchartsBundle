@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+- Updated markdown lint configuration.
+- Added composer diff action.
+
 ## [2.20.13] - 2024-06-16
 
 - Added markdown configuration file.
