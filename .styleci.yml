@@ -11,5 +11,7 @@ enabled:
   - native_function_invocation
   - concat_with_spaces
 disabled:
+  - no_nullable_type_declarations
   - native_function_invocation_symfony
   - concat_without_spaces
+  - phpdoc_to_comment

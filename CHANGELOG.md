@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+- Updated `.styleci.yml` configuration.
+- Updated `.markdownlint-cli2.yaml` configuration.
+- Updated to Symfony v7.1.0.
+
 ## [2.20.13] - 2024-06-16
 
 - Added markdown configuration file.
