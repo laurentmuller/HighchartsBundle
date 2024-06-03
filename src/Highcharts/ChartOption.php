@@ -61,6 +61,8 @@ class ChartOption implements \ArrayAccess, \Countable
 
     /**
      * Get a value for the given key.
+     *
+     * @psalm-suppress NonVariableReferenceReturn
      */
     public function &__get(string $key): mixed
     {

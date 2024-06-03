@@ -5,6 +5,9 @@
 - Updated `.styleci.yml` configuration.
 - Updated `.markdownlint-cli2.yaml` configuration.
 - Updated to Symfony v7.1.0.
+- Updated `phpunit/phpunit` to version `^11.0`.
+- Updated `vimeo/psalm` to `dev-master` branch.
+- Updated `spaze/phpstan-disallowed-calls` to version `^3.0`.
 
 ## [2.20.13] - 2024-06-16
 

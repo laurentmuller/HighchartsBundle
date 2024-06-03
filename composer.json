@@ -43,13 +43,13 @@
         "phpstan/phpstan": "^1.0",
         "phpstan/phpstan-strict-rules": "^1.5",
         "phpstan/extension-installer": "^1.0",
-        "phpunit/phpunit": "^10.0",
+        "phpunit/phpunit": "^11.0",
         "rector/rector": "^1.0",
         "slam/phpstan-extensions": "^6.0",
-        "spaze/phpstan-disallowed-calls": "^2.0",
+        "spaze/phpstan-disallowed-calls": "^3.0",
         "symfony/framework-bundle": "^6.0| ^7.0",
         "symfony/phpunit-bridge": "^6.0| ^7.0",
-        "vimeo/psalm": "^5.0"
+        "vimeo/psalm": "dev-master"
     },
     "autoload": {
         "psr-4": {

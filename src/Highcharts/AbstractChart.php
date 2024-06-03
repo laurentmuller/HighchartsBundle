@@ -131,7 +131,7 @@ abstract class AbstractChart implements ChartInterface
         // Zend\Json is used in place of json_encode to preserve JS anonymous functions
         $encoded = $this->isExpression($data)
             ? Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS)
-            : \json_encode($data);
+            : (string) \json_encode($data);
 
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
