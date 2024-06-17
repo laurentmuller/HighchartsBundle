@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Updated to Symfony v7.1.1.
 - Updated `.styleci.yml` configuration.
 - Updated `.markdownlint-cli2.yaml` configuration.
 - Updated to Symfony v7.1.0.
