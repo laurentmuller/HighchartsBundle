@@ -26,7 +26,6 @@ return RectorConfig::configure()
         __DIR__ . '/tests',
         __DIR__ . '/rector.php',
     ])->withSkip([
-        AddSeeTestAnnotationRector::class,
         PreferPHPUnitThisCallRector::class,
         DisallowedEmptyRuleFixerRector::class,
     ])->withSets([
@@ -42,7 +41,7 @@ return RectorConfig::configure()
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
         // Symfony
-        SymfonySetList::SYMFONY_63,
+        SymfonySetList::SYMFONY_71,
         SymfonySetList::SYMFONY_CODE_QUALITY,
         SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
