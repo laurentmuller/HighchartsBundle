@@ -1,5 +1,9 @@
 # Change log
 
+## [Unreleased]
+
+- Updated `CHANGELOG.MD` file.
+
 ## [2.20.14] - 2024-08-04
 
 - Simplified configuration.
