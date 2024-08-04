@@ -17,6 +17,9 @@ use PHPUnit\Framework\TestCase;
 
 class ChartOptionTest extends TestCase
 {
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function testAccessArray(): void
     {
         $name = 'name';
@@ -26,11 +29,15 @@ class ChartOptionTest extends TestCase
         self::assertSame($name, $option[$name]);
     }
 
+    /**
+     * @psalm-suppress InvalidArgument
+     */
     public function testAccessObject(): void
     {
         $name = 'name';
         $option = $this->createOption();
         $option->{$name} = $name;
+        self::assertArrayHasKey($name, $option);
         self::assertSame($name, $option->{$name});
     }
 

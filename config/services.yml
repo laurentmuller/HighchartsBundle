@@ -1,8 +1,0 @@
-parameters:
-  highcharts.twig_extension.class: HighchartsBundle\Twig\HighchartsExtension
-
-services:
-  highcharts.twig.highcharts_extension:
-    class: "%highcharts.twig_extension.class%"
-    tags:
-        - { name: twig.extension }

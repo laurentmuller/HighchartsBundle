@@ -1,7 +1,8 @@
 # Change log
 
-## [Unreleased]
+## [2.20.14] - 2024-08-04
 
+- Simplified configuration.
 - Updated to Symfony v7.1.2 and Rector v1.2.0.
 - Updated to Symfony v7.1.1.
 - Updated `.styleci.yml` configuration.
@@ -164,6 +165,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Initial release
 
 [Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.14]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.13...2.20.14
 [2.20.13]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.12...2.20.13
 [2.20.12]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.11...2.20.12
 [2.20.11]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.10...2.20.11
