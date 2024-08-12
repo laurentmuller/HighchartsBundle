@@ -3,6 +3,7 @@
 ## [Unreleased]
 
 - Updated `CHANGELOG.MD` file.
+- Updated `codecov-action` version to 4.5.0.
 
 ## [2.20.14] - 2024-08-04
 
