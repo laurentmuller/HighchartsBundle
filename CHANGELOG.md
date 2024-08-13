@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+- Updated `twig` version to 3.11.0.
+- Renamed Twig extension service name.
 - Updated `CHANGELOG.MD` file.
 - Updated `codecov-action` version to 4.5.0.
 

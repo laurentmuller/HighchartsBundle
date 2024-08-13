@@ -25,7 +25,7 @@ class HighchartsBundle extends AbstractBundle
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {
         $container->services()
-            ->set('highcharts.twig_extension.class', HighchartsExtension::class)
+            ->set('twig.extension.highcharts', HighchartsExtension::class)
             ->tag('twig.extension');
     }
 }
