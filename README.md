@@ -44,4 +44,5 @@ constitutes a non-commercial project or their
 [![Rector](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml)
 [![Lint](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml)
 [![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
-[![codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
+[![Codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
+[![SymfonyInsight](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee/mini.svg)](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee)
