@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- http://www.phpunit.de/manual/current/en/appendixes.configuration.html -->
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.0/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
-         backupStaticProperties="false"
-         processIsolation="false"
-         stopOnFailure="false"
-         backupGlobals="false"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/11.2/phpunit.xsd"
          colors="true">
 
     <php>
@@ -23,13 +17,11 @@
 
     <source>
         <include>
-            <directory suffix=".php">./src</directory>
+            <directory>./src</directory>
         </include>
 
         <exclude>
             <file>./src/HighchartsBundle.php</file>
-            <file>.php-cs-fixer.dist.php</file>
-            <file>rector.php</file>
         </exclude>
     </source>
 

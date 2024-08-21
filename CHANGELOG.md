@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Updated `phpunit.xml.dist` file.
 - Added `SymfonyInsight` quality check tool and badge.
 - Update PHP version in `composer.json`.
 - Updated `twig` version to 3.11.0.
