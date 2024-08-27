@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+- Added rector fix script to `composer.json`.
 - Updated `phpunit.xml.dist` file.
 - Added `SymfonyInsight` quality check tool and badge.
 - Update PHP version in `composer.json`.
