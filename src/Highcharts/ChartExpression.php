@@ -15,7 +15,7 @@ namespace HighchartsBundle\Highcharts;
 /**
  * Encode a string to a native JavaScript expression.
  */
-readonly class Expr implements \Stringable
+readonly class ChartExpression implements \Stringable
 {
     private string $magicKey;
 

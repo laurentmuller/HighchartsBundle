@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\Expr;
+use HighchartsBundle\Highcharts\ChartExpression;
 use HighchartsBundle\Highcharts\Highchart;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
@@ -117,7 +117,7 @@ class TooltipTest extends AbstractChartTestCase
     public function testFormatter(): void
     {
         $chart = new Highchart();
-        $func = new Expr('function () { return 1; }');
+        $func = new ChartExpression('function () { return 1; }');
         $chart->tooltip['formatter'] = $func;
         $regex = '/tooltip: \{"formatter":function\s?\(\)\s?\{ return 1; \}\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);

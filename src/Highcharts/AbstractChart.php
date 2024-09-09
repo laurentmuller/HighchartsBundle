@@ -121,15 +121,13 @@ abstract class AbstractChart implements ChartInterface
      * Create a JavaScript expression.
      *
      * @param string $expression the expression to represent
-     *
-     * @psalm-api
      */
-    public static function createExpression(string $expression): Expr
+    public static function createExpression(string $expression): ChartExpression
     {
         // remove consecutive spaces
         $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
 
-        return new Expr($expression);
+        return new ChartExpression($expression);
     }
 
     public function render(Engine $engine = Engine::JQUERY): string
@@ -146,20 +144,21 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Enqueue JavaScript expressions that must be replaced after encoding values to JSON.
      *
-     * @phpstan-param \SplQueue<Expr> $expressions.
+     * @param ChartExpression|array|scalar $valueToEncode
+     * @param \SplQueue<ChartExpression>   $expressions
      *
-     * @psalm-suppress MixedAssignment
+     * @return array|scalar
      */
     protected function enqueueExpressions(mixed $valueToEncode, \SplQueue $expressions): mixed
     {
-        if ($valueToEncode instanceof Expr) {
+        if ($valueToEncode instanceof ChartExpression) {
             $expressions->enqueue($valueToEncode);
 
             return $valueToEncode->getMagicKey();
         }
 
         if (\is_array($valueToEncode)) {
-            /** @phpstan-var mixed $value */
+            /** @phpstan-var ChartExpression|array|scalar $value */
             foreach ($valueToEncode as $key => $value) {
                 $valueToEncode[$key] = $this->enqueueExpressions($value, $expressions);
             }
@@ -186,7 +185,7 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Inject JavaScript expressions into the encoded value.
      *
-     * @phpstan-param \SplQueue<Expr> $expressions
+     * @param \SplQueue<ChartExpression> $expressions
      */
     protected function injectExpressions(string $encodedValue, \SplQueue $expressions): string
     {
@@ -202,9 +201,9 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
-     * Encode to JSON the given option or array.
+     * Encode the given option or array to JSON.
      *
-     * Returns an empty string if the name and the data are empty.
+     * Returns an empty string if the name or the data are empty.
      */
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string
     {
@@ -216,9 +215,8 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        /** @phpstan-var \SplQueue<Expr> $expressions */
+        /** @var \SplQueue<ChartExpression> $expressions */
         $expressions = new \SplQueue();
-        /** @phpstan-var array $data */
         $data = $this->enqueueExpressions($data, $expressions);
         $encoded = (string) \json_encode($data, \JSON_UNESCAPED_SLASHES);
         $encoded = $this->injectExpressions($encoded, $expressions);
