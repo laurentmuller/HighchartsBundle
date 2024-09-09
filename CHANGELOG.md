@@ -1,6 +1,6 @@
 # Change log
 
-[Unreleased]
+## [2.20.16] - 2024-09-09
 
 - Renamed `Expr` class to `ChartExpression`.
 
@@ -182,7 +182,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
-[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.16]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.15...2.20.16
 [2.20.15]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.14...2.20.15
 [2.20.14]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.13...2.20.14
 [2.20.13]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.12...2.20.13
