@@ -12,9 +12,9 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
+use HighchartsBundle\Highcharts\Expr;
 use HighchartsBundle\Highcharts\Highchart;
 use HighchartsBundle\Tests\AbstractChartTestCase;
-use Laminas\Json\Expr;
 
 /**
  * This class hold Unit Tests for the tooltip option.

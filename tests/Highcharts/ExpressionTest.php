@@ -23,9 +23,9 @@ class ExpressionTest extends TestCase
 {
     public function testCreateExpression(): void
     {
-        $expected = 'function() {location.href = this.url;}';
-        $expression = AbstractChart::createExpression($expected);
-        self::assertSame($expected, (string) $expression);
+        $expression = 'function() {location.href = this.url;}';
+        $actual = AbstractChart::createExpression($expression);
+        self::assertSame($expression, (string) $actual);
     }
 
     /**

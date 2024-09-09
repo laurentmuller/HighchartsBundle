@@ -14,7 +14,6 @@ namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\Highchart;
 use HighchartsBundle\Tests\AbstractChartTestCase;
-use Laminas\Json\Expr;
 
 /**
  * This class hold Unit Tests for the exporting option.
@@ -78,20 +77,19 @@ class ExportingTest extends AbstractChartTestCase
     public function testType(): void
     {
         $chart = new Highchart();
-        // We need to use a Json Expr or else the slashes are escaped
-        $chart->exporting['type'] = (new Expr('"image/png"'));
+        $chart->exporting['type'] = 'image/png';
         $regex = '/exporting: \{"type":"image\/png"\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
 
-        $chart->exporting['type'] = (new Expr('"image/jpeg"'));
+        $chart->exporting['type'] = 'image/jpeg';
         $regex = '/exporting: \{"type":"image\/jpeg"\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
 
-        $chart->exporting['type'] = (new Expr('"application/pdf"'));
+        $chart->exporting['type'] = 'application/pdf';
         $regex = '/exporting: \{"type":"application\/pdf"\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
 
-        $chart->exporting['type'] = (new Expr('"image/svg+xml"'));
+        $chart->exporting['type'] = 'image/svg+xml';
         $regex = '/exporting: \{"type":"image\/svg\+xml"\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
     }
@@ -102,8 +100,7 @@ class ExportingTest extends AbstractChartTestCase
     public function testUrl(): void
     {
         $chart = new Highchart();
-        // We need to use a Json Expr or else the slashes are escaped
-        $chart->exporting['url'] = (new Expr('"https://www.google.com"'));
+        $chart->exporting['url'] = 'https://www.google.com';
         $regex = '/exporting: \{"url":"https:\/\/www.google.com"\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
     }

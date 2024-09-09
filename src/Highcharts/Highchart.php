@@ -21,9 +21,21 @@ class Highchart extends AbstractChart
 {
     public const CHART_CLASS = 'Chart';
 
+    /**
+     * The color axis options for series.
+     */
     public ChartOption $colorAxis;
+    /**
+     * The options for drill down.
+     */
     public ChartOption $drilldown;
+    /**
+     * The options for displaying a message when not data.
+     */
     public ChartOption $noData;
+    /**
+     * The pane options serves as a container for axes and backgrounds.
+     */
     public ChartOption $pane;
 
     public function __construct()

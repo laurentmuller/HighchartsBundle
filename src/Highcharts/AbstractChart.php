@@ -12,9 +12,6 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Highcharts;
 
-use Laminas\Json\Expr;
-use Laminas\Json\Json;
-
 /**
  * Abstract chart.
  */
@@ -32,25 +29,67 @@ abstract class AbstractChart implements ChartInterface
     // the space prefix
     private const SPACE = '        ';
 
-    // The Zend json encode options.
-    private const ZEND_ENCODE_OPTIONS = ['enableJsonExprFinder' => true];
-
+    /**
+     * Options for configuring accessibility for the chart.
+     */
     public ChartOption $accessibility;
+    /**
+     * General options for the chart.
+     */
     public ChartOption $chart;
-    /** @var string[] */
+    /**
+     * An array containing the default colors for the chart's series.
+     *
+     * @var string[]
+     */
     public array $colors = [];
+    /**
+     * The credit's label options.
+     */
     public ChartOption $credits;
+    /**
+     * The options for the exporting module.
+     */
     public ChartOption $exporting;
+    /**
+     * The global options.
+     */
     public ChartOption $global;
+    /**
+     * The language object options.
+     */
     public ChartOption $lang;
+    /**
+     * The legend is a box containing a symbol and name for each series item or point item in the chart.
+     */
     public ChartOption $legend;
+    /**
+     * The plot options is a wrapper object for config objects for each series type.
+     */
     public ChartOption $plotOptions;
-    public ChartOption $scrollbar;
+    /**
+     * The series options for specific data and the data itself.
+     */
     public ChartOption $series;
+    /**
+     * The chart's subtitle options.
+     */
     public ChartOption $subtitle;
+    /**
+     * The chart's main title options.
+     */
     public ChartOption $title;
+    /**
+     * The options for the tooltip that appears when the user hovers over a series or point.
+     */
     public ChartOption $tooltip;
+    /**
+     * The X axis or category axis options.
+     */
     public ChartOption $xAxis;
+    /**
+     * The Y axis or value axis options.
+     */
     public ChartOption $yAxis;
 
     public function __construct()
@@ -63,7 +102,6 @@ abstract class AbstractChart implements ChartInterface
         $this->lang = new ChartOption('lang');
         $this->legend = new ChartOption('legend');
         $this->plotOptions = new ChartOption('plotOptions');
-        $this->scrollbar = new ChartOption('scrollbar');
         $this->series = new ChartOption('series');
         $this->subtitle = new ChartOption('subtitle');
         $this->title = new ChartOption('title');
@@ -80,7 +118,7 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
-     * Create an expression.
+     * Create a JavaScript expression.
      *
      * @param string $expression the expression to represent
      *
@@ -106,18 +144,68 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
+     * Enqueue JavaScript expressions that must be replaced after encoding values to JSON.
+     *
+     * @phpstan-param \SplQueue<Expr> $expressions.
+     *
+     * @psalm-suppress MixedAssignment
+     */
+    protected function enqueueExpressions(mixed $valueToEncode, \SplQueue $expressions): mixed
+    {
+        if ($valueToEncode instanceof Expr) {
+            $expressions->enqueue($valueToEncode);
+
+            return $valueToEncode->getMagicKey();
+        }
+
+        if (\is_array($valueToEncode)) {
+            /** @phpstan-var mixed $value */
+            foreach ($valueToEncode as $key => $value) {
+                $valueToEncode[$key] = $this->enqueueExpressions($value, $expressions);
+            }
+
+            return $valueToEncode;
+        }
+
+        return $valueToEncode;
+    }
+
+    /**
      * Gets the chart class (type) to create.
      */
     abstract protected function getChartClass(): string;
 
     /**
-     * Gets the chart render to (target) property.
+     * Gets where the chart must be rendered to (the 'div' target).
      */
     protected function getRenderTo(): string
     {
         return (string) ($this->chart->renderTo ?? 'chart');
     }
 
+    /**
+     * Inject JavaScript expressions into the encoded value.
+     *
+     * @phpstan-param \SplQueue<Expr> $expressions
+     */
+    protected function injectExpressions(string $encodedValue, \SplQueue $expressions): string
+    {
+        foreach ($expressions as $expression) {
+            $encodedValue = \str_replace(
+                \sprintf('"%s"', $expression->getMagicKey()),
+                $expression->getExpression(),
+                $encodedValue
+            );
+        }
+
+        return $encodedValue;
+    }
+
+    /**
+     * Encode to JSON the given option or array.
+     *
+     * Returns an empty string if the name and the data are empty.
+     */
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string
     {
         if ($data instanceof ChartOption) {
@@ -128,10 +216,12 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        // Zend\Json is used in place of json_encode to preserve JS anonymous functions
-        $encoded = $this->isExpression($data)
-            ? Json::encode(valueToEncode: $data, options: self::ZEND_ENCODE_OPTIONS)
-            : (string) \json_encode($data);
+        /** @phpstan-var \SplQueue<Expr> $expressions */
+        $expressions = new \SplQueue();
+        /** @phpstan-var array $data */
+        $data = $this->enqueueExpressions($data, $expressions);
+        $encoded = (string) \json_encode($data, \JSON_UNESCAPED_SLASHES);
+        $encoded = $this->injectExpressions($encoded, $expressions);
 
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }
@@ -160,7 +250,6 @@ abstract class AbstractChart implements ChartInterface
         $this->renderCredits($chartJS);
         $this->renderExporting($chartJS);
         $this->renderLegend($chartJS);
-        $this->renderScrollbar($chartJS);
         $this->renderSubtitle($chartJS);
         $this->renderTitle($chartJS);
         $this->renderXAxis($chartJS);
@@ -246,11 +335,6 @@ abstract class AbstractChart implements ChartInterface
         $chartJS .= $this->jsonEncode($this->plotOptions);
     }
 
-    protected function renderScrollbar(string &$chartJS): void
-    {
-        $chartJS .= $this->jsonEncode($this->scrollbar);
-    }
-
     protected function renderSeries(string &$chartJS): void
     {
         $chartJS .= $this->jsonEncode($this->series);
@@ -279,19 +363,5 @@ abstract class AbstractChart implements ChartInterface
     protected function renderYAxis(string &$chartJS): void
     {
         $chartJS .= $this->jsonEncode($this->yAxis);
-    }
-
-    private function isExpression(array $values): bool
-    {
-        /** @psalm-var mixed $value */
-        foreach ($values as $value) {
-            if ($value instanceof Expr) {
-                return true;
-            } elseif (\is_array($value) && $this->isExpression($value)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

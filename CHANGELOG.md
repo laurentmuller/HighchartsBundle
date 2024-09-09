@@ -1,7 +1,10 @@
 # Change log
 
-## [Unreleased]
+## [2.20.15] - 2024-09-09
 
+- Removed the `laminas-json` dependency and use internal code for expressions.
+- Removed the `scrollbar` chart options.
+- Updated to Symfony v7.1.4 and Twig v3.13.0.
 - Added rector fix script to `composer.json`.
 - Updated `phpunit.xml.dist` file.
 - Added `SymfonyInsight` quality check tool and badge.
@@ -175,7 +178,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
-[Unreleased]: https://github.com/laurentmuller/HighchartsBundle/compare/1.7...HEAD
+[2.20.15]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.14...2.20.15
 [2.20.14]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.13...2.20.14
 [2.20.13]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.12...2.20.13
 [2.20.12]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.11...2.20.12
