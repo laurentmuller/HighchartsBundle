@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Updated to Twig v3.14.0 due to a possible sandbox bypass.
+
 ## [2.20.16] - 2024-09-09
 
 - Renamed `Expr` class to `ChartExpression`.
