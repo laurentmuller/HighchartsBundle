@@ -17,13 +17,16 @@ namespace HighchartsBundle\Highcharts;
  */
 readonly class ChartExpression implements \Stringable
 {
+    private string $expression;
     private string $magicKey;
 
     /**
      * @param string $expression the expression to represent
      */
-    public function __construct(private string $expression)
+    public function __construct(string $expression)
     {
+        // remove consecutive spaces
+        $this->expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
         $this->magicKey = \hash('md5', $this->expression);
     }
 
@@ -40,5 +43,27 @@ readonly class ChartExpression implements \Stringable
     public function getMagicKey(): string
     {
         return $this->magicKey;
+    }
+
+    /**
+     * Inject this expression into the encoded value.
+     */
+    public function injectExpression(string $encodedValue): string
+    {
+        return \str_replace(
+            \sprintf('"%s"', $this->getMagicKey()),
+            $this->getExpression(),
+            $encodedValue
+        );
+    }
+
+    /**
+     * Create a chart expression.
+     *
+     * @param string $expression the expression to represent
+     */
+    public static function instance(string $expression): self
+    {
+        return new self($expression);
     }
 }

@@ -117,19 +117,6 @@ abstract class AbstractChart implements ChartInterface
         return $this;
     }
 
-    /**
-     * Create a JavaScript expression.
-     *
-     * @param string $expression the expression to represent
-     */
-    public static function createExpression(string $expression): ChartExpression
-    {
-        // remove consecutive spaces
-        $expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
-
-        return new ChartExpression($expression);
-    }
-
     public function render(Engine $engine = Engine::JQUERY): string
     {
         $chartJS = '';
@@ -190,11 +177,7 @@ abstract class AbstractChart implements ChartInterface
     protected function injectExpressions(string $encodedValue, \SplQueue $expressions): string
     {
         foreach ($expressions as $expression) {
-            $encodedValue = \str_replace(
-                \sprintf('"%s"', $expression->getMagicKey()),
-                $expression->getExpression(),
-                $encodedValue
-            );
+            $encodedValue = $expression->injectExpression($encodedValue);
         }
 
         return $encodedValue;

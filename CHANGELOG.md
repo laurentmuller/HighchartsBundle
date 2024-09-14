@@ -1,7 +1,10 @@
 # Change log
 
-## Unreleased
+## [2.20.17] - 2024-09-14
 
+- **BC**: Moved `createExpression()` function of `AbstractChart` to `instance()`
+  function of `ChartExpression` class.
+- Added `injectExpression()` function to the `ChartExpression` class.
 - Updated to Twig v3.14.0 due to a possible sandbox bypass.
 
 ## [2.20.16] - 2024-09-09
@@ -186,6 +189,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
+[2.20.17]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.16...2.20.17
 [2.20.16]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.15...2.20.16
 [2.20.15]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.14...2.20.15
 [2.20.14]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.13...2.20.14

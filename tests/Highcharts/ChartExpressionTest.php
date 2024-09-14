@@ -12,19 +12,28 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\AbstractChart;
+use HighchartsBundle\Highcharts\ChartExpression;
 use HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
 /**
  * This class hold Unit Tests for the chart expression.
  */
-class ExpressionTest extends TestCase
+class ChartExpressionTest extends TestCase
 {
-    public function testCreateExpression(): void
+    public function testInjectExpression(): void
+    {
+        $script = 'function() {location.href = this.url;}';
+        $expression = ChartExpression::instance($script);
+        $encodedValue = \sprintf('"%s"', $expression->getMagicKey());
+        $actual = $expression->injectExpression($encodedValue);
+        self::assertSame($script, $actual);
+    }
+
+    public function testInstance(): void
     {
         $expression = 'function() {location.href = this.url;}';
-        $actual = AbstractChart::createExpression($expression);
+        $actual = ChartExpression::instance($expression);
         self::assertSame($expression, (string) $actual);
     }
 
@@ -38,7 +47,7 @@ class ExpressionTest extends TestCase
         $expression = 'function() {location.href = this.url;}';
         $credits['test'] = [
             'entry' => 'entry',
-            'expr' => AbstractChart::createExpression($expression),
+            'expr' => ChartExpression::instance($expression),
         ];
 
         $actual = $chart->render();
