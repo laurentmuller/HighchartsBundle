@@ -52,7 +52,7 @@ class HighchartsExtension extends AbstractExtension
         try {
             return Engine::from($engine);
         } catch (\ValueError $e) {
-            throw new SyntaxError("Invalid chart engine: \"$engine\".", previous: $e);
+            throw new SyntaxError(\sprintf('Invalid chart engine: "%s".', $engine), previous: $e);
         }
     }
 }

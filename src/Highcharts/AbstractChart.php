@@ -129,7 +129,7 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
-     * Enqueue JavaScript expressions that must be replaced after encoding values to JSON.
+     * Enqueue chart expressions that must be replaced after encoding values to JSON.
      *
      * @param ChartExpression|array|scalar $valueToEncode
      * @param \SplQueue<ChartExpression>   $expressions
@@ -139,9 +139,7 @@ abstract class AbstractChart implements ChartInterface
     protected function enqueueExpressions(mixed $valueToEncode, \SplQueue $expressions): mixed
     {
         if ($valueToEncode instanceof ChartExpression) {
-            $expressions->enqueue($valueToEncode);
-
-            return $valueToEncode->getMagicKey();
+            return $valueToEncode->enqueue($expressions);
         }
 
         if (\is_array($valueToEncode)) {
@@ -149,8 +147,6 @@ abstract class AbstractChart implements ChartInterface
             foreach ($valueToEncode as $key => $value) {
                 $valueToEncode[$key] = $this->enqueueExpressions($value, $expressions);
             }
-
-            return $valueToEncode;
         }
 
         return $valueToEncode;
@@ -170,14 +166,14 @@ abstract class AbstractChart implements ChartInterface
     }
 
     /**
-     * Inject JavaScript expressions into the encoded value.
+     * Inject chart expressions into the encoded value.
      *
      * @param \SplQueue<ChartExpression> $expressions
      */
     protected function injectExpressions(string $encodedValue, \SplQueue $expressions): string
     {
         foreach ($expressions as $expression) {
-            $encodedValue = $expression->injectExpression($encodedValue);
+            $encodedValue = $expression->inject($encodedValue);
         }
 
         return $encodedValue;

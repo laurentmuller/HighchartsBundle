@@ -1,5 +1,11 @@
 # Change log
 
+## [2.20.18] - 2024-09-16
+
+- Added `enqueue()` function and renamed `inject()` function
+  of `ChartExpression` class.
+- Simplified `enqueueExpressions()` function of `AbstractChart` class.
+
 ## [2.20.17] - 2024-09-14
 
 - **BC**: Moved `createExpression()` function of `AbstractChart` to `instance()`
@@ -189,6 +195,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
+[2.20.18]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.17...2.20.18
 [2.20.17]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.16...2.20.17
 [2.20.16]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.15...2.20.16
 [2.20.15]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.14...2.20.15

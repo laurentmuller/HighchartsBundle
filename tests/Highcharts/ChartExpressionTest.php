@@ -16,41 +16,47 @@ use HighchartsBundle\Highcharts\ChartExpression;
 use HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
-/**
- * This class hold Unit Tests for the chart expression.
- */
 class ChartExpressionTest extends TestCase
 {
-    public function testInjectExpression(): void
+    public function testContainsExpression(): void
+    {
+        $chart = new Highchart();
+        $script = 'function() {location.href = this.url;}';
+        $expression = ChartExpression::instance($script);
+        $chart->credits['test'] = [
+            'entry' => 'entry',
+            'expr' => $expression,
+        ];
+
+        $actual = $chart->render();
+        self::assertStringContainsString($script, $actual);
+    }
+
+    public function testEnqueue(): void
+    {
+        /** @var \SplQueue<ChartExpression> $expressions */
+        $expressions = new \SplQueue();
+        $script = 'function() {location.href = this.url;}';
+        $actual = ChartExpression::instance($script);
+        $actual->enqueue($expressions);
+        self::assertCount(1, $expressions);
+        self::assertSame($expressions[0], $actual);
+    }
+
+    public function testInject(): void
     {
         $script = 'function() {location.href = this.url;}';
         $expression = ChartExpression::instance($script);
         $encodedValue = \sprintf('"%s"', $expression->getMagicKey());
-        $actual = $expression->injectExpression($encodedValue);
+        $actual = $expression->inject($encodedValue);
         self::assertSame($script, $actual);
     }
 
     public function testInstance(): void
     {
-        $expression = 'function() {location.href = this.url;}';
-        $actual = ChartExpression::instance($expression);
-        self::assertSame($expression, (string) $actual);
-    }
-
-    /**
-     * Used only for code coverage.
-     */
-    public function testIsExpression(): void
-    {
-        $chart = new Highchart();
-        $credits = $chart->credits;
-        $expression = 'function() {location.href = this.url;}';
-        $credits['test'] = [
-            'entry' => 'entry',
-            'expr' => ChartExpression::instance($expression),
-        ];
-
-        $actual = $chart->render();
-        self::assertNotEmpty($actual);
+        $script = 'function() {location.href = this.url;}';
+        $expression = ChartExpression::instance($script);
+        self::assertSame($script, $expression->getExpression());
+        self::assertSame($script, (string) $expression);
     }
 }

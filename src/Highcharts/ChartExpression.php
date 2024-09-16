@@ -25,7 +25,6 @@ readonly class ChartExpression implements \Stringable
      */
     public function __construct(string $expression)
     {
-        // remove consecutive spaces
         $this->expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
         $this->magicKey = \hash('md5', $this->expression);
     }
@@ -33,6 +32,20 @@ readonly class ChartExpression implements \Stringable
     public function __toString(): string
     {
         return $this->expression;
+    }
+
+    /**
+     * Adds this instance to the given queue and return this magic key.
+     *
+     * @param \SplQueue<ChartExpression> $expressions the queue where add this expression
+     *
+     * @return string this magic key
+     */
+    public function enqueue(\SplQueue $expressions): string
+    {
+        $expressions->enqueue($this);
+
+        return $this->getMagicKey();
     }
 
     public function getExpression(): string
@@ -46,9 +59,9 @@ readonly class ChartExpression implements \Stringable
     }
 
     /**
-     * Inject this expression into the encoded value.
+     * Inject this JavaScript expression into the encoded value.
      */
-    public function injectExpression(string $encodedValue): string
+    public function inject(string $encodedValue): string
     {
         return \str_replace(
             \sprintf('"%s"', $this->getMagicKey()),
@@ -60,7 +73,7 @@ readonly class ChartExpression implements \Stringable
     /**
      * Create a chart expression.
      *
-     * @param string $expression the expression to represent
+     * @param string $expression the JavaScript expression to represent
      */
     public static function instance(string $expression): self
     {
