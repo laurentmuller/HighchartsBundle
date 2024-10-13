@@ -1,5 +1,10 @@
 # Change log
 
+## Unreleased
+
+- Updated documentation.
+- Added `getQuotedKey()` function to the `ChartExpression` class.
+
 ## [2.20.18] - 2024-09-16
 
 - Added `enqueue()` function and renamed `inject()` function

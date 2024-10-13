@@ -80,14 +80,14 @@ loaded or when integrating with existing code.
 <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
 ```
 
-## Use a Javascript anonymous function
+## Use a JavaScript anonymous function
 
-There are several use cases where you need to define a javascript function,
+There are several use cases where you need to define a JavaScript function,
 let's see how to use one for a tooltip formatter
 
 ```php
 // ...
-$expression = AbstractChart::createExpression("function() {
+$expression = ChartExpression::instance("function() {
     return 'The value for <b>' + this.x + '</b> is <b>' + this.y + '</b>';
 }");
 $chart = new Highchart();

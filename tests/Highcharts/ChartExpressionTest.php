@@ -59,4 +59,13 @@ class ChartExpressionTest extends TestCase
         self::assertSame($script, $expression->getExpression());
         self::assertSame($script, (string) $expression);
     }
+
+    public function testQuotedKey(): void
+    {
+        $script = 'function() {location.href = this.url;}';
+        $expression = ChartExpression::instance($script);
+        $actual = $expression->getQuotedKey();
+        $expected = '"' . $expression->getMagicKey() . '"';
+        self::assertSame($expected, $actual);
+    }
 }

@@ -128,7 +128,7 @@ $series = [
 $yData = [
     [
         'labels' => [
-            'formatter' => AbstractChart::createExpression('function () { return this.value + " degrees C" }'),
+            'formatter' => ChartExpression::instance('function () { return this.value + " degrees C" }'),
             'style' => ['color' => '#AA4643')
         ],
         'title' => [
@@ -139,7 +139,7 @@ $yData = [
     ],
     [
         'labels' => [
-            'formatter' => AbstractChart::createExpression('function () { return this.value + " mm" }'),
+            'formatter' => ChartExpression::instance('function () { return this.value + " mm" }'),
             'style' => ['color' => '#4572A7']
         ],
         'gridLineWidth' => 0,
@@ -158,7 +158,7 @@ $chart->title->text('Average Monthly Weather Data for Tokyo');
 $chart->xAxis->categories($categories);
 $chart->yAxis($yData);
 $chart->legend->enabled(false);
-$formatter = AbstractChart::createExpression('function () {
+$formatter = ChartExpression::instance('function () {
                  var unit = {
                      "Rainfall": "mm",
                      "Temperature": "degrees C"

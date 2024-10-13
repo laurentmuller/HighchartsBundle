@@ -59,12 +59,20 @@ readonly class ChartExpression implements \Stringable
     }
 
     /**
+     * Gets the magic key inside double quotes.
+     */
+    public function getQuotedKey(): string
+    {
+        return \sprintf('"%s"', $this->getMagicKey());
+    }
+
+    /**
      * Inject this JavaScript expression into the encoded value.
      */
     public function inject(string $encodedValue): string
     {
         return \str_replace(
-            \sprintf('"%s"', $this->getMagicKey()),
+            $this->getQuotedKey(),
             $this->getExpression(),
             $encodedValue
         );
