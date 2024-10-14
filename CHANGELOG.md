@@ -1,7 +1,8 @@
 # Change log
 
-## Unreleased
+## [2.20.19] - 2024-10-14
 
+- Replaced `SplQueue` structure by an array for expressions.
 - Updated documentation.
 - Added `getQuotedKey()` function to the `ChartExpression` class.
 
@@ -200,6 +201,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
+[2.20.19]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.18...2.20.19
 [2.20.18]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.17...2.20.18
 [2.20.17]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.16...2.20.17
 [2.20.16]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.15...2.20.16

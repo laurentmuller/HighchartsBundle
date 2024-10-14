@@ -29,27 +29,8 @@ class ChartExpressionTest extends TestCase
         ];
 
         $actual = $chart->render();
-        self::assertStringContainsString($script, $actual);
-    }
-
-    public function testEnqueue(): void
-    {
-        /** @var \SplQueue<ChartExpression> $expressions */
-        $expressions = new \SplQueue();
-        $script = 'function() {location.href = this.url;}';
-        $actual = ChartExpression::instance($script);
-        $actual->enqueue($expressions);
-        self::assertCount(1, $expressions);
-        self::assertSame($expressions[0], $actual);
-    }
-
-    public function testInject(): void
-    {
-        $script = 'function() {location.href = this.url;}';
-        $expression = ChartExpression::instance($script);
-        $encodedValue = \sprintf('"%s"', $expression->getMagicKey());
-        $actual = $expression->inject($encodedValue);
-        self::assertSame($script, $actual);
+        $expected = '"expr":' . $script;
+        self::assertStringContainsString($expected, $actual);
     }
 
     public function testInstance(): void
@@ -58,6 +39,15 @@ class ChartExpressionTest extends TestCase
         $expression = ChartExpression::instance($script);
         self::assertSame($script, $expression->getExpression());
         self::assertSame($script, (string) $expression);
+    }
+
+    public function testMagicKey(): void
+    {
+        $script = 'function() {location.href = this.url;}';
+        $expected = \hash('md5', $script);
+        $expression = ChartExpression::instance($script);
+        $actual = $expression->getMagicKey();
+        self::assertSame($expected, $actual);
     }
 
     public function testQuotedKey(): void

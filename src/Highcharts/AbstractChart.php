@@ -131,15 +131,18 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Enqueue chart expressions that must be replaced after encoding values to JSON.
      *
-     * @param ChartExpression|array|scalar $valueToEncode
-     * @param \SplQueue<ChartExpression>   $expressions
+     * @param ChartExpression|array|scalar   $valueToEncode
+     * @param array<string, ChartExpression> $expressions
      *
      * @return array|scalar
      */
-    protected function enqueueExpressions(mixed $valueToEncode, \SplQueue $expressions): mixed
+    protected function enqueueExpressions(mixed $valueToEncode, array &$expressions): mixed
     {
         if ($valueToEncode instanceof ChartExpression) {
-            return $valueToEncode->enqueue($expressions);
+            $key = $valueToEncode->getMagicKey();
+            $expressions[$key] = $valueToEncode;
+
+            return $key;
         }
 
         if (\is_array($valueToEncode)) {
@@ -168,15 +171,14 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Inject chart expressions into the encoded value.
      *
-     * @param \SplQueue<ChartExpression> $expressions
+     * @param array<string, ChartExpression> $expressions
      */
-    protected function injectExpressions(string $encodedValue, \SplQueue $expressions): string
+    protected function injectExpressions(string $encodedValue, array $expressions): string
     {
-        foreach ($expressions as $expression) {
-            $encodedValue = $expression->inject($encodedValue);
-        }
+        $search = \array_map(static fn (ChartExpression $ex): string => $ex->getQuotedKey(), $expressions);
+        $replace = \array_map(static fn (ChartExpression $ex): string => $ex->getExpression(), $expressions);
 
-        return $encodedValue;
+        return \str_replace($search, $replace, $encodedValue);
     }
 
     /**
@@ -194,8 +196,7 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        /** @var \SplQueue<ChartExpression> $expressions */
-        $expressions = new \SplQueue();
+        $expressions = [];
         $data = $this->enqueueExpressions($data, $expressions);
         $encoded = (string) \json_encode($data, \JSON_UNESCAPED_SLASHES);
         $encoded = $this->injectExpressions($encoded, $expressions);

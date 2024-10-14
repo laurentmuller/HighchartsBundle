@@ -34,20 +34,6 @@ readonly class ChartExpression implements \Stringable
         return $this->expression;
     }
 
-    /**
-     * Adds this instance to the given queue and return this magic key.
-     *
-     * @param \SplQueue<ChartExpression> $expressions the queue where add this expression
-     *
-     * @return string this magic key
-     */
-    public function enqueue(\SplQueue $expressions): string
-    {
-        $expressions->enqueue($this);
-
-        return $this->getMagicKey();
-    }
-
     public function getExpression(): string
     {
         return $this->expression;
@@ -64,18 +50,6 @@ readonly class ChartExpression implements \Stringable
     public function getQuotedKey(): string
     {
         return \sprintf('"%s"', $this->getMagicKey());
-    }
-
-    /**
-     * Inject this JavaScript expression into the encoded value.
-     */
-    public function inject(string $encodedValue): string
-    {
-        return \str_replace(
-            $this->getQuotedKey(),
-            $this->getExpression(),
-            $encodedValue
-        );
     }
 
     /**
