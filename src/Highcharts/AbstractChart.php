@@ -199,7 +199,9 @@ abstract class AbstractChart implements ChartInterface
         $expressions = [];
         $data = $this->enqueueExpressions($data, $expressions);
         $encoded = (string) \json_encode($data, \JSON_UNESCAPED_SLASHES);
-        $encoded = $this->injectExpressions($encoded, $expressions);
+        if ([] !== $expressions) {
+            $encoded = $this->injectExpressions($encoded, $expressions);
+        }
 
         return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
     }

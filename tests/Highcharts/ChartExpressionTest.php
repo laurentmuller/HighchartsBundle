@@ -44,7 +44,7 @@ class ChartExpressionTest extends TestCase
     public function testMagicKey(): void
     {
         $script = 'function() {location.href = this.url;}';
-        $expected = \hash('md5', $script);
+        $expected = \md5($script);
         $expression = ChartExpression::instance($script);
         $actual = $expression->getMagicKey();
         self::assertSame($expected, $actual);
@@ -56,6 +56,15 @@ class ChartExpressionTest extends TestCase
         $expression = ChartExpression::instance($script);
         $actual = $expression->getQuotedKey();
         $expected = '"' . $expression->getMagicKey() . '"';
+        self::assertSame($expected, $actual);
+    }
+
+    public function testTrimExpression(): void
+    {
+        $script = ' function()  {location.href  =  this.url;}  ';
+        $expression = ChartExpression::instance($script);
+        $expected = 'function() {location.href = this.url;}';
+        $actual = $expression->getExpression();
         self::assertSame($expected, $actual);
     }
 }

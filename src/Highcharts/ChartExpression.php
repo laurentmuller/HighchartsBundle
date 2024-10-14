@@ -26,7 +26,7 @@ readonly class ChartExpression implements \Stringable
     public function __construct(string $expression)
     {
         $this->expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
-        $this->magicKey = \hash('md5', $this->expression);
+        $this->magicKey = \md5($this->expression);
     }
 
     public function __toString(): string

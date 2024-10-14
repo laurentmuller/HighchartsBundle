@@ -1,5 +1,11 @@
 # Change log
 
+## [2.20.20] - 2024-10-14
+
+- Updated `markdownlint-cli2-action` and `codecov-action` versions.
+- Replaced `hash()` function by `md5()` function.
+- Inject expressions only if necessary.
+
 ## [2.20.19] - 2024-10-14
 
 - Replaced `SplQueue` structure by an array for expressions.
@@ -201,6 +207,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 
 - Initial release
 
+[2.20.20]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.19...2.20.20
 [2.20.19]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.18...2.20.19
 [2.20.18]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.17...2.20.18
 [2.20.17]: https://github.com/laurentmuller/HighchartsBundle/compare/2.20.16...2.20.17
