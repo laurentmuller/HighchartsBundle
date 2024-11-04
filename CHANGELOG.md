@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.1.6.
 - Updated `CHANGELOG.md`.
 
 ## 2.20.20 - 2024-10-14
@@ -38,7 +39,7 @@
 - Removed the `laminas-json` dependency and use internal code for expressions.
 - Removed the `scrollbar` chart options.
 - Updated to Symfony v7.1.4 and Twig v3.13.0.
-- Added rector fix script to `composer.json`.
+- Added the rector fix script to `composer.json`.
 - Updated `phpunit.xml.dist` file.
 - Added `SymfonyInsight` quality check tool and badge.
 - Update PHP version in `composer.json`.
@@ -61,7 +62,7 @@
 
 ## 2.20.13 - 2024-06-16
 
-- Added markdown configuration file.
+- Added the markdown configuration file.
 - Changed the `chart` function visibility of the `HighchartsExtension` class.
 - Updated `TwigTest` class.
 - Updated rector configuration.

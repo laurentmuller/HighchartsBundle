@@ -175,8 +175,14 @@ abstract class AbstractChart implements ChartInterface
      */
     protected function injectExpressions(string $encodedValue, array $expressions): string
     {
-        $search = \array_map(static fn (ChartExpression $ex): string => $ex->getQuotedKey(), $expressions);
-        $replace = \array_map(static fn (ChartExpression $ex): string => $ex->getExpression(), $expressions);
+        $search = \array_map(
+            static fn (ChartExpression $expression): string => $expression->getQuotedKey(),
+            $expressions
+        );
+        $replace = \array_map(
+            static fn (ChartExpression $expression): string => $expression->getExpression(),
+            $expressions
+        );
 
         return \str_replace($search, $replace, $encodedValue);
     }
