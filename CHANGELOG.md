@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added badges to `README.md`.
+- Updated Symfony to version 7.1.7.
 - Create `.symfony.insight.yaml` file.
 - Updated Symfony to version 7.1.6.
 - Updated `CHANGELOG.md`.
