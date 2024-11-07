@@ -35,7 +35,7 @@ see their [FAQ](https://shop.highsoft.com/faq) for more details on what
 constitutes a non-commercial project or their
 [product page](https://www.highcharts.com/products) for details on pricing.
 
-## Qualité du code
+## Code Quality
 
 [![SymfonyInsight](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee/mini.svg)](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee)
 [![Codacy](https://app.codacy.com/project/badge/Grade/2777bc9261fc4fee9082e6bcbf531828)](https://app.codacy.com/gh/laurentmuller/HighchartsBundle/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
