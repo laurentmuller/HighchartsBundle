@@ -8,3 +8,6 @@ parameters:
         - message: '#Variable property access#'
         -
             identifier: missingType.iterableValue
+
+includes:
+	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
