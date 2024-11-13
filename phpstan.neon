@@ -10,4 +10,4 @@ parameters:
             identifier: missingType.iterableValue
 
 includes:
-	- vendor/phpstan/phpstan/conf/bleedingEdge.neon
+	- vendor-bin/phpstan/vendor/phpstan/phpstan/conf/bleedingEdge.neon
