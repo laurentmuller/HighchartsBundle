@@ -73,11 +73,6 @@
         }
     },
     "scripts": {
-        "app-lint": [
-            "@php bin/console lint:yaml .github/workflows --parse-tags",
-            "@php bin/console lint:container",
-            "@composer validate --strict"
-        ],
         "app-fixer": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff --dry-run",
         "app-fixer-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff",
         "app-rector": "vendor-bin/rector/vendor/bin/rector process --dry-run --config rector.php",
