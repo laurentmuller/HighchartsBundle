@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Removed separate `PHPUnit` tool.
+- Updated CI.
 - Split dependencies in dedicated folders using `bamarni/composer-bin-plugin`.
 - Added bleeding edge before update `phpstan` to version 2.0.
 - Added badges to `README.md`.
