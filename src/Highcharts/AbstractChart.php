@@ -165,7 +165,11 @@ abstract class AbstractChart implements ChartInterface
      */
     protected function getRenderTo(): string
     {
-        return (string) ($this->chart['renderTo'] ?? 'chart');
+        if (isset($this->chart['renderTo']) && \is_string($this->chart['renderTo'])) {
+            return $this->chart['renderTo'];
+        }
+
+        return 'chart';
     }
 
     /**

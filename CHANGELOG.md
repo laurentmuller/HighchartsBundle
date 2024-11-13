@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated `PHPStan` to version 2.0 and level to 10.
 - Removed separate `PHPUnit` tool.
 - Updated CI.
 - Split dependencies in dedicated folders using `bamarni/composer-bin-plugin`.

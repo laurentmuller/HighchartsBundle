@@ -39,7 +39,7 @@ constitutes a non-commercial project or their
 
 [![SymfonyInsight](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee/mini.svg)](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee)
 [![Codacy](https://app.codacy.com/project/badge/Grade/2777bc9261fc4fee9082e6bcbf531828)](https://app.codacy.com/gh/laurentmuller/HighchartsBundle/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
-[![PHP-Stan](https://img.shields.io/badge/PHPStan-Level%208-brightgreen.svg?style=flat&logo=php)](https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests)
+[![PHP-Stan](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg?style=flat&logo=php)](https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests)
 [![Psalm](https://img.shields.io/badge/Psalm-Level%201-brightgreen.svg?style=flat)](https://psalm.dev/docs/running_psalm/installation/)
 [![CodeFactor](https://www.codefactor.io/repository/github/laurentmuller/highchartsbundle/badge)](https://www.codefactor.io/repository/github/laurentmuller/highchartsbundle)
 [![Codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)

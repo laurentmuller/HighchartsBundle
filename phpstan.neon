@@ -1,13 +1,15 @@
 parameters:
-    level: 8
+    level: 10
     paths:
-    - src
+        - src
 
+    reportUnmatchedIgnoredErrors: true
+    checkUninitializedProperties: true
 
     ignoreErrors:
-        - message: '#Variable property access#'
         -
-            identifier: missingType.iterableValue
-
-includes:
-	- vendor-bin/phpstan/vendor/phpstan/phpstan/conf/bleedingEdge.neon
+             message: '#Variable property access#'
+             identifier: property.dynamicName
+             path: src/Highcharts/AbstractChart.php
+        -
+             identifier: missingType.iterableValue
