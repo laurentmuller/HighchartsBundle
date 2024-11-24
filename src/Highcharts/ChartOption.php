@@ -89,6 +89,16 @@ class ChartOption implements \ArrayAccess, \Countable
         return [] !== $this->data;
     }
 
+    /**
+     * Create a new instance.
+     *
+     * @psalm-param non-empty-string $name
+     */
+    public static function instance(string $name): self
+    {
+        return new self($name);
+    }
+
     public function merge(array $data): self
     {
         $this->data = \array_merge_recursive($this->data, $data);

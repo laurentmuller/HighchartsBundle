@@ -94,20 +94,20 @@ abstract class AbstractChart implements ChartInterface
 
     public function __construct()
     {
-        $this->accessibility = new ChartOption('accessibility');
-        $this->chart = new ChartOption('chart');
-        $this->credits = new ChartOption('credits');
-        $this->exporting = new ChartOption('exporting');
-        $this->global = new ChartOption('global');
-        $this->lang = new ChartOption('lang');
-        $this->legend = new ChartOption('legend');
-        $this->plotOptions = new ChartOption('plotOptions');
-        $this->series = new ChartOption('series');
-        $this->subtitle = new ChartOption('subtitle');
-        $this->title = new ChartOption('title');
-        $this->tooltip = new ChartOption('tooltip');
-        $this->xAxis = new ChartOption('xAxis');
-        $this->yAxis = new ChartOption('yAxis');
+        $this->accessibility = ChartOption::instance('accessibility');
+        $this->chart = ChartOption::instance('chart');
+        $this->credits = ChartOption::instance('credits');
+        $this->exporting = ChartOption::instance('exporting');
+        $this->global = ChartOption::instance('global');
+        $this->lang = ChartOption::instance('lang');
+        $this->legend = ChartOption::instance('legend');
+        $this->plotOptions = ChartOption::instance('plotOptions');
+        $this->series = ChartOption::instance('series');
+        $this->subtitle = ChartOption::instance('subtitle');
+        $this->title = ChartOption::instance('title');
+        $this->tooltip = ChartOption::instance('tooltip');
+        $this->xAxis = ChartOption::instance('xAxis');
+        $this->yAxis = ChartOption::instance('yAxis');
     }
 
     public function __call(string $name, mixed $value): static

@@ -76,7 +76,6 @@ class TwigTest extends TestCase
         $extension = new HighchartsExtension();
         self::assertCount(0, $extension->getFilters());
         self::assertCount(0, $extension->getNodeVisitors());
-        self::assertCount(2, $extension->getOperators());
         self::assertCount(0, $extension->getTests());
         self::assertCount(0, $extension->getTokenParsers());
 

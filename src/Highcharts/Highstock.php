@@ -29,7 +29,7 @@ class Highstock extends AbstractChart
     public function __construct()
     {
         parent::__construct();
-        $this->rangeSelector = new ChartOption('rangeSelector');
+        $this->rangeSelector = ChartOption::instance('rangeSelector');
     }
 
     protected function getChartClass(): string

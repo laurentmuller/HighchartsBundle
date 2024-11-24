@@ -129,6 +129,6 @@ class ChartOptionTest extends TestCase
 
     private function createOption(): ChartOption
     {
-        return new ChartOption('test');
+        return ChartOption::instance('test');
     }
 }

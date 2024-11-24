@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated `PHPunit` continuous integration action.
+- Added static `instance()` function to `ChartOption` class.
 - Added test for the `renderTo` property.
 - Updated `PHPStan` to version 2.0 and level to 10.
 - Removed separate `PHPUnit` tool.

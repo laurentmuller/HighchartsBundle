@@ -41,10 +41,10 @@ class Highchart extends AbstractChart
     public function __construct()
     {
         parent::__construct();
-        $this->colorAxis = new ChartOption('colorAxis');
-        $this->drilldown = new ChartOption('drilldown');
-        $this->noData = new ChartOption('noData');
-        $this->pane = new ChartOption('pane');
+        $this->colorAxis = ChartOption::instance('colorAxis');
+        $this->drilldown = ChartOption::instance('drilldown');
+        $this->noData = ChartOption::instance('noData');
+        $this->pane = ChartOption::instance('pane');
     }
 
     protected function getChartClass(): string
