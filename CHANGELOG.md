@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated `php-cs-fixer` to version 3.65.0.
 - Updated `PHPunit` continuous integration action.
 - Added static `instance()` function to `ChartOption` class.
 - Added test for the `renderTo` property.
