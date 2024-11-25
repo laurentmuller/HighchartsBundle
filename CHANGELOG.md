@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 2.20.21 - 2024-11-25
 
 - Updated `php-cs-fixer` to version 3.65.0.
 - Updated `PHPunit` continuous integration action.
