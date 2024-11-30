@@ -1,5 +1,10 @@
 # Change log
 
+## Unreleased
+
+- Updated Symfony to version 7.2.0.
+- Updated Symfony to version 7.1.9.
+
 ## 2.20.21 - 2024-11-25
 
 - Updated `php-cs-fixer` to version 3.65.0.
