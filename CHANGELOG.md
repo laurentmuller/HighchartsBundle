@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Removed `composer.lock` from export. 
 - Updated Symfony to version 7.2.2.
 - Updated Symfony to version 7.2.1.
 - Updated Symfony to version 7.2.0.
