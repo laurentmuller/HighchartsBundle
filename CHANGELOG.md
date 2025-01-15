@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 2.20.22 - 2025-01-15
 
 - Removed `composer.lock` from export. 
 - Updated Symfony to version 7.2.2.
