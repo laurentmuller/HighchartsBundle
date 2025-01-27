@@ -214,7 +214,7 @@ abstract class AbstractChart implements ChartInterface
             $encoded = $this->injectExpressions($encoded, $expressions);
         }
 
-        return self::SPACE . $name . ': ' . $encoded . self::END_LINE;
+        return \sprintf('%s%s: %s%s', self::SPACE, $name, $encoded, self::END_LINE);
     }
 
     protected function renderAccessibility(string &$chartJS): void
@@ -231,7 +231,10 @@ abstract class AbstractChart implements ChartInterface
     {
         $renderTo = $this->getRenderTo();
         $class = $this->getChartClass();
-        $chartJS .= self::NEW_LINE . self::HALF_SPACE . "const $renderTo = new Highcharts.$class({" . self::NEW_LINE;
+        $chartJS .= self::NEW_LINE;
+        $chartJS .= self::HALF_SPACE;
+        $chartJS .= \sprintf('const %s = new Highcharts.%s({', $renderTo, $class);
+        $chartJS .= self::NEW_LINE;
     }
 
     protected function renderChartCommon(string &$chartJS): void
@@ -253,9 +256,14 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderChartEnd(string &$chartJS, Engine $engine): void
     {
-        $chartJS = \rtrim($chartJS, self::END_LINE) . self::NEW_LINE . self::HALF_SPACE . '});' . self::NEW_LINE;
+        $chartJS = \rtrim($chartJS, self::END_LINE);
+        $chartJS .= self::NEW_LINE;
+        $chartJS .= self::HALF_SPACE;
+        $chartJS .= '});';
+        $chartJS .= self::NEW_LINE;
         if (Engine::NONE !== $engine) {
-            $chartJS .= '});' . self::NEW_LINE;
+            $chartJS .= '});';
+            $chartJS .= self::NEW_LINE;
         }
     }
 
@@ -315,10 +323,14 @@ abstract class AbstractChart implements ChartInterface
             return;
         }
 
-        $chartJS .= self::NEW_LINE . self::HALF_SPACE . 'Highcharts.setOptions({' . self::NEW_LINE;
+        $chartJS .= self::NEW_LINE;
+        $chartJS .= self::HALF_SPACE;
+        $chartJS .= 'Highcharts.setOptions({';
+        $chartJS .= self::NEW_LINE;
         $this->renderGlobal($chartJS);
         $this->renderLang($chartJS);
-        $chartJS .= self::HALF_SPACE . '});';
+        $chartJS .= self::HALF_SPACE;
+        $chartJS .= '});';
     }
 
     protected function renderPlotOptions(string &$chartJS): void
