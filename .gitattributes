@@ -2,6 +2,7 @@
 *.md eol=lf
 
 /.github                 export-ignore
+/cache                   export-ignore
 /doc                     export-ignore
 /tests                   export-ignore
 /vendor-bin              export-ignore

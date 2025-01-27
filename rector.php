@@ -19,6 +19,7 @@ use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Set\TwigSetList;
 
 return RectorConfig::configure()
+    ->withCache(__DIR__ . '/cache/rector')
     ->withRootFiles()
     ->withPaths([
         __DIR__ . '/src',

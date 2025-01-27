@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated cache configurations.
 - Updated psalm to version 6.0.
 
 ## 2.20.22 - 2025-01-15
