@@ -39,13 +39,15 @@ return RectorConfig::configure()
         // PHP-Unit
         PHPUnitSetList::PHPUNIT_100,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-        PHPUnitSetList::ANNOTATIONS_TO_ATTRIBUTES,
         // Symfony
         SymfonySetList::SYMFONY_71,
         SymfonySetList::SYMFONY_CODE_QUALITY,
-        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
         SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
         // twig
-        TwigSetList::TWIG_240,
+        TwigSetList::TWIG_24,
         TwigSetList::TWIG_UNDERSCORE_TO_NAMESPACE,
-    ]);
+    ])->withAttributesSets(
+        // annotations to attributes
+        symfony: true,
+        phpunit: true
+    );
