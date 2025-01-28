@@ -14,7 +14,6 @@ use Rector\Config\RectorConfig;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Set\TwigSetList;
 
@@ -27,7 +26,6 @@ return RectorConfig::configure()
         __DIR__ . '/rector.php',
     ])->withSkip([
         PreferPHPUnitThisCallRector::class,
-        DisallowedEmptyRuleFixerRector::class,
     ])->withSets([
         // global
         SetList::PHP_82,
