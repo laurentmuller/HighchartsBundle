@@ -35,7 +35,7 @@ return RectorConfig::configure()
         SetList::STRICT_BOOLEANS,
         SetList::TYPE_DECLARATION,
         // PHP-Unit
-        PHPUnitSetList::PHPUNIT_100,
+        PHPUnitSetList::PHPUNIT_110,
         PHPUnitSetList::PHPUNIT_CODE_QUALITY,
         // Symfony
         SymfonySetList::SYMFONY_72,
