@@ -1,6 +1,7 @@
 <?php
+
 /*
- * This file is part of the Calculation package.
+ * This file is part of the HighchartsBundle package.
  *
  * (c) bibi.nu <bibi@bibi.nu>
  *
@@ -38,27 +39,32 @@ $rules = [
     // --------------------------------------------------------------
     //  Rules override
     // --------------------------------------------------------------
-    'method_chaining_indentation' => true,
-    'native_function_invocation' => ['include' => ['@internal', 'all']],
-    'final_internal_class' => true,
-    'header_comment' => ['header' => $comment, 'location' => 'after_open', 'separate' => 'bottom'],
-    'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
+    'strict_param' => true,
     'no_unused_imports' => true,
     'strict_comparison' => true,
-    'strict_param' => true,
     'ordered_imports' => true,
     'ordered_interfaces' => true,
-    'ordered_class_elements' => ['sort_algorithm' => 'alpha'],
+    'final_internal_class' => true,
+    'method_chaining_indentation' => true,
     'concat_space' => ['spacing' => 'one'],
-    'array_syntax' => ['syntax' => 'short'],
     'list_syntax' => ['syntax' => 'short'],
+    'array_syntax' => ['syntax' => 'short'],
+    'ordered_class_elements' => ['sort_algorithm' => 'alpha'],
     'doctrine_annotation_array_assignment' => ['operator' => '='],
     'phpdoc_to_comment' => ['allow_before_return_statement' => true],
+    'native_function_invocation' => ['include' => ['@internal', 'all']],
+    'header_comment' => ['header' => $comment, 'location' => 'after_open', 'separate' => 'bottom'],
+    'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
 ];
 
 $finder = Finder::create()
     ->in(__DIR__ . '/src')
-    ->in(__DIR__ . '/tests');
+    ->in(__DIR__ . '/tests')
+    ->append([
+        __FILE__,
+        __DIR__ . '/rector.php',
+        __DIR__ . '/.twig-cs-fixer.php',
+    ]);
 
 $config = new Config();
 

@@ -75,10 +75,10 @@ class TwigTest extends TestCase
     public function testTwigMembers(): void
     {
         $extension = new HighchartsExtension();
-        self::assertCount(0, $extension->getFilters());
-        self::assertCount(0, $extension->getNodeVisitors());
-        self::assertCount(0, $extension->getTests());
-        self::assertCount(0, $extension->getTokenParsers());
+        self::assertEmpty($extension->getFilters());
+        self::assertEmpty($extension->getNodeVisitors());
+        self::assertEmpty($extension->getTests());
+        self::assertEmpty($extension->getTokenParsers());
 
         $functions = $extension->getFunctions();
         self::assertCount(1, $functions);

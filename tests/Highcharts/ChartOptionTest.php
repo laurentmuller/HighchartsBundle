@@ -14,10 +14,13 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\ChartOption;
+use HighchartsBundle\Tests\AssertEmptyTrait;
 use PHPUnit\Framework\TestCase;
 
 class ChartOptionTest extends TestCase
 {
+    use AssertEmptyTrait;
+
     /**
      * @psalm-suppress InvalidArgument
      */
@@ -45,7 +48,7 @@ class ChartOptionTest extends TestCase
     public function testCount(): void
     {
         $option = $this->createOption();
-        self::assertCount(0, $option);
+        self::assertEmptyCountable($option);
         $option['name'] = 'value';
         self::assertCount(1, $option);
     }
