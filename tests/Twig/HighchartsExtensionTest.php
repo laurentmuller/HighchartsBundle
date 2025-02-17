@@ -22,49 +22,73 @@ use Twig\Error\SyntaxError;
 /**
  * This class hold Unit Tests for the Twig extension.
  */
-class TwigTest extends TestCase
+class HighchartsExtensionTest extends TestCase
 {
+    /**
+     * @throws \ReflectionException
+     */
+    public function testDefaultEngine(): void
+    {
+        $actual = $this->invokeChart();
+        self::assertMatchesRegularExpression(
+            '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
+            $actual
+        );
+    }
+
     /**
      * @throws \ReflectionException
      */
     public function testInvalidEngine(): void
     {
         $this->expectException(SyntaxError::class);
+        $this->expectExceptionMessage('Invalid chart engine: "fake".');
         $this->invokeChart('fake');
     }
 
     /**
-     * Chart rendering using the twig extension.
-     *
      * @throws \ReflectionException
      */
-    public function testTwigExtension(): void
+    public function testJQueryEnum(): void
     {
-        // render with jquery (default)
-        $actual = $this->invokeChart();
-        self::assertMatchesRegularExpression(
-            '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
-        );
-
         // render with jquery explicitly
         $actual = $this->invokeChart(Engine::JQUERY);
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testJQueryString(): void
+    {
         $actual = $this->invokeChart('jquery');
         self::assertMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
+    }
 
+    /**
+     * @throws \ReflectionException
+     */
+    public function testMootoolsEnum(): void
+    {
         // render with mootools
         $actual = $this->invokeChart(Engine::MOOTOOLS);
         self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             $actual
         );
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testMootoolsString(): void
+    {
         $actual = $this->invokeChart('mootools');
         self::assertMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
@@ -82,7 +106,6 @@ class TwigTest extends TestCase
 
         $functions = $extension->getFunctions();
         self::assertCount(1, $functions);
-        self::assertArrayHasKey(0, $functions);
         $function = $functions[0];
         self::assertSame('chart', $function->getName());
         self::assertFalse($function->needsEnvironment());
@@ -95,17 +118,19 @@ class TwigTest extends TestCase
     /**
      * @throws \ReflectionException
      */
-    private function invokeChart(Engine|string $engine = Engine::JQUERY): string
+    private function invokeChart(Engine|string|null $engine = null): string
     {
         $chart = new Highchart();
         $extension = new HighchartsExtension();
         $class = new \ReflectionClass($extension);
+
         if (!$class->hasMethod('chart')) {
             throw new \ReflectionException('Unable to find the "chart" function.');
         }
+
         $method = $class->getMethod('chart');
         $method->setAccessible(true);
 
-        return (string) $method->invokeArgs($extension, [$chart, $engine]);
+        return (string) $method->invoke($extension, $chart, $engine ?? Engine::JQUERY);
     }
 }

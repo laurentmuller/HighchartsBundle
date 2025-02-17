@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Psalm configuration. Reworked `HighchartsExtension` tests.
 - Updated tests.
 - Updated rector configuration.
 - Updated Symfony to version 7.2.3.
