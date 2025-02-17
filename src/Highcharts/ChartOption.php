@@ -17,6 +17,9 @@ namespace HighchartsBundle\Highcharts;
  * Chart options.
  *
  * @template-implements \ArrayAccess<string, mixed>
+ *
+ * @psalm-no-seal-methods
+ * @psalm-no-seal-properties
  */
 class ChartOption implements \ArrayAccess, \Countable
 {

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated chart option annotations.
 - Updated Psalm configuration. Reworked `HighchartsExtension` tests.
 - Updated tests.
 - Updated rector configuration.
