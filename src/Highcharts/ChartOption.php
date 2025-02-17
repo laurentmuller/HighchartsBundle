@@ -74,6 +74,7 @@ class ChartOption implements \ArrayAccess, \Countable
         return $this->data[$key];
     }
 
+    #[\Override]
     public function count(): int
     {
         return \count($this->data);
@@ -114,6 +115,7 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * @param string $offset
      */
+    #[\Override]
     public function offsetExists(mixed $offset): bool
     {
         return isset($this->data[$offset]);
@@ -122,6 +124,7 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * @param string $offset
      */
+    #[\Override]
     public function offsetGet(mixed $offset): mixed
     {
         return $this->offsetExists($offset) ? $this->data[$offset] : null;
@@ -130,6 +133,7 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * @param ?string $offset
      */
+    #[\Override]
     public function offsetSet(mixed $offset, mixed $value): void
     {
         null === $offset ? $this->data[] = $value : $this->data[$offset] = $value;
@@ -138,6 +142,7 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * @param string $offset
      */
+    #[\Override]
     public function offsetUnset(mixed $offset): void
     {
         if ($this->offsetExists($offset)) {

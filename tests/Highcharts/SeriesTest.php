@@ -26,6 +26,7 @@ class SeriesTest extends AbstractChartTestCase
     /**
      * Initialises the data.
      */
+    #[\Override]
     protected function setUp(): void
     {
         $this->series = [

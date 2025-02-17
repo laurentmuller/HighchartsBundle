@@ -22,6 +22,7 @@ class CreditsTest extends AbstractChartTestCase
     protected ?Highstock $chart = null;
     protected ?ChartOption $credits = null;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->chart = new Highstock();

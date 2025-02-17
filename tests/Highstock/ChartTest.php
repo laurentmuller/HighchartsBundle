@@ -20,6 +20,7 @@ class ChartTest extends AbstractChartTestCase
 {
     private ?Highstock $chart = null;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->chart = new Highstock();

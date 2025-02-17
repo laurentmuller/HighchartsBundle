@@ -24,6 +24,7 @@ use Twig\TwigFunction;
  */
 class HighchartsExtension extends AbstractExtension
 {
+    #[\Override]
     public function getFunctions(): array
     {
         return [

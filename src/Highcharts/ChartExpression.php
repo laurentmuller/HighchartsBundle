@@ -30,6 +30,7 @@ readonly class ChartExpression implements \Stringable
         $this->magicKey = \md5($this->expression);
     }
 
+    #[\Override]
     public function __toString(): string
     {
         return $this->expression;

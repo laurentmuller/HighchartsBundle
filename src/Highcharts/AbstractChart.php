@@ -118,6 +118,7 @@ abstract class AbstractChart implements ChartInterface
         return $this;
     }
 
+    #[\Override]
     public function render(Engine $engine = Engine::JQUERY): string
     {
         $chartJS = '';

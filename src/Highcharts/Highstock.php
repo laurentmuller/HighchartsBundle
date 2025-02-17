@@ -33,11 +33,13 @@ class Highstock extends AbstractChart
         $this->rangeSelector = ChartOption::instance('rangeSelector');
     }
 
+    #[\Override]
     protected function getChartClass(): string
     {
         return self::CHART_CLASS;
     }
 
+    #[\Override]
     protected function renderChartOptions(string &$chartJS): void
     {
         parent::renderChartOptions($chartJS);

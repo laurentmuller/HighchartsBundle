@@ -22,6 +22,7 @@ class RangeSelectorTest extends AbstractChartTestCase
     private ?Highstock $chart = null;
     private ?ChartOption $range = null;
 
+    #[\Override]
     protected function setUp(): void
     {
         $this->chart = new Highstock();
