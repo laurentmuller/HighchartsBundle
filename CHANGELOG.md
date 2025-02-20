@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Small correction in the documentation.
 - Added missing override attribute.
 - Updated chart option annotations.
 - Updated Psalm configuration. Reworked `HighchartsExtension` tests.

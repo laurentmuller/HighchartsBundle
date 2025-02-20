@@ -73,7 +73,7 @@ loaded or when integrating with existing code.
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.4.1/modules/exporting.min.js"></script>
 <script>
     myLib.chartLoad(function(data){
-        {{ chart(chart, false) }}
+        {{ chart(chart, '') }}
     });
 </script>
 
