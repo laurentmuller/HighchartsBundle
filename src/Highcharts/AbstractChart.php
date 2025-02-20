@@ -136,7 +136,7 @@ abstract class AbstractChart implements ChartInterface
      * @param ChartExpression|array<array-key, mixed>|scalar $valueToEncode
      * @param array<string, ChartExpression>                 $expressions
      *
-     * @phpstan-return array<array-key, mixed>|scalar
+     * @return array<array-key, mixed>|scalar
      */
     protected function enqueueExpressions(mixed $valueToEncode, array &$expressions): mixed
     {
