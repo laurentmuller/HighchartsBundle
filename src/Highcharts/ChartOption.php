@@ -33,6 +33,9 @@ class ChartOption implements \ArrayAccess, \Countable
     {
     }
 
+    /**
+     * @param array<array-key, mixed> $value
+     */
     public function __call(string $name, array $value): self
     {
         $this->data[$name] = $value[0];
@@ -80,6 +83,9 @@ class ChartOption implements \ArrayAccess, \Countable
         return \count($this->data);
     }
 
+    /**
+     * @return array<array-key, mixed>
+     */
     public function getData(): array
     {
         return $this->data;
@@ -105,6 +111,9 @@ class ChartOption implements \ArrayAccess, \Countable
         return new self($name);
     }
 
+    /**
+     * @param array<array-key, mixed> $data
+     */
     public function merge(array $data): self
     {
         $this->data = \array_merge_recursive($this->data, $data);

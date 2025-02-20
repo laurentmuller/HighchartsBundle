@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated PhpDoc for array values.
 - Small correction in the documentation.
 - Added missing override attribute.
 - Updated chart option annotations.

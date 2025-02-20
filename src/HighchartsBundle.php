@@ -23,6 +23,9 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  */
 class HighchartsBundle extends AbstractBundle
 {
+    /**
+     * @param array<array-key, mixed> $config
+     */
     #[\Override]
     public function loadExtension(array $config, ContainerConfigurator $container, ContainerBuilder $builder): void
     {

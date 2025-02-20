@@ -133,10 +133,10 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Enqueue chart expressions that must be replaced after encoding values to JSON.
      *
-     * @param ChartExpression|array|scalar   $valueToEncode
-     * @param array<string, ChartExpression> $expressions
+     * @param ChartExpression|array<array-key, mixed>|scalar $valueToEncode
+     * @param array<string, ChartExpression>                 $expressions
      *
-     * @return array|scalar
+     * @phpstan-return array<array-key, mixed>|scalar
      */
     protected function enqueueExpressions(mixed $valueToEncode, array &$expressions): mixed
     {
@@ -196,7 +196,9 @@ abstract class AbstractChart implements ChartInterface
     /**
      * Encode the given option or array to JSON.
      *
-     * Returns an empty string if the name or the data are empty.
+     * @param ChartOption|array<array-key, mixed> $data
+     *
+     * Returns an empty string if the name or the data are empty
      */
     protected function jsonEncode(ChartOption|array $data, string $name = ''): string
     {
