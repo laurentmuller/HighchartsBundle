@@ -24,6 +24,9 @@ namespace HighchartsBundle\Highcharts;
  */
 class ChartOption implements \ArrayAccess, \Countable
 {
+    /**
+     * @var array<array-key, mixed>
+     */
     private array $data = [];
 
     /**

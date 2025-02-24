@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated code with iterable values for PHPStan.
+- Removed `__call()` function in `AbstractChart` class.
 - Updated PhpDoc for array values.
 - Small correction in the documentation.
 - Added missing override attribute.

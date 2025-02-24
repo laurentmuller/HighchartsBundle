@@ -6,11 +6,3 @@ parameters:
 
     reportUnmatchedIgnoredErrors: true
     checkUninitializedProperties: true
-
-    ignoreErrors:
-        -
-             message: '#Variable property access#'
-             identifier: property.dynamicName
-             path: src/Highcharts/AbstractChart.php
-        -
-             identifier: missingType.iterableValue

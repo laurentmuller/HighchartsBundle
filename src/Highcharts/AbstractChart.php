@@ -111,13 +111,6 @@ abstract class AbstractChart implements ChartInterface
         $this->yAxis = ChartOption::instance('yAxis');
     }
 
-    public function __call(string $name, mixed $value): static
-    {
-        $this->$name = $value;
-
-        return $this;
-    }
-
     #[\Override]
     public function render(Engine $engine = Engine::JQUERY): string
     {
@@ -148,7 +141,7 @@ abstract class AbstractChart implements ChartInterface
         }
 
         if (\is_array($valueToEncode)) {
-            /** @phpstan-var ChartExpression|array|scalar $value */
+            /** @phpstan-var ChartExpression|array<array-key, mixed>|scalar $value */
             foreach ($valueToEncode as $key => $value) {
                 $valueToEncode[$key] = $this->enqueueExpressions($value, $expressions);
             }
