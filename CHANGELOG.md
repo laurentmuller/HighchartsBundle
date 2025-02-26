@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.2.4.
 - Updated code with iterable values for PHPStan.
 - Removed `__call()` function in `AbstractChart` class.
 - Updated PhpDoc for array values.
