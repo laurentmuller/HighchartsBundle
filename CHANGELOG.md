@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added `$data` parameter to the `ChartOptions` constructor.
 - Updated Symfony to version 7.2.4.
 - Updated code with iterable values for PHPStan.
 - Removed `__call()` function in `AbstractChart` class.

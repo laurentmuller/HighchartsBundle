@@ -25,15 +25,13 @@ namespace HighchartsBundle\Highcharts;
 class ChartOption implements \ArrayAccess, \Countable
 {
     /**
-     * @var array<array-key, mixed>
+     * @param non-empty-string        $name
+     * @param array<array-key, mixed> $data
      */
-    private array $data = [];
-
-    /**
-     * @psalm-param non-empty-string $name
-     */
-    public function __construct(private readonly string $name)
-    {
+    public function __construct(
+        private readonly string $name,
+        private array $data = []
+    ) {
     }
 
     /**
@@ -94,6 +92,9 @@ class ChartOption implements \ArrayAccess, \Countable
         return $this->data;
     }
 
+    /**
+     * @return non-empty-string
+     */
     public function getName(): string
     {
         return $this->name;
@@ -107,11 +108,12 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * Create a new instance.
      *
-     * @psalm-param non-empty-string $name
+     * @param non-empty-string        $name
+     * @param array<array-key, mixed> $data
      */
-    public static function instance(string $name): self
+    public static function instance(string $name, array $data = []): self
     {
-        return new self($name);
+        return new self($name, $data);
     }
 
     /**
