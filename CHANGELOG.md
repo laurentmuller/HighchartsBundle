@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 2.20.23 - 2025-03-11
 
 - Added `$data` parameter to the `ChartOptions` constructor.
 - Updated Symfony to version 7.2.4.
