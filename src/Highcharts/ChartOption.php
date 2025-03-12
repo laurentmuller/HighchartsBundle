@@ -25,8 +25,8 @@ namespace HighchartsBundle\Highcharts;
 class ChartOption implements \ArrayAccess, \Countable
 {
     /**
-     * @param non-empty-string        $name
-     * @param array<array-key, mixed> $data
+     * @param non-empty-string        $name the option name
+     * @param array<array-key, mixed> $data the initial values
      */
     public function __construct(
         private readonly string $name,
@@ -108,8 +108,8 @@ class ChartOption implements \ArrayAccess, \Countable
     /**
      * Create a new instance.
      *
-     * @param non-empty-string        $name
-     * @param array<array-key, mixed> $data
+     * @param non-empty-string        $name the option name
+     * @param array<array-key, mixed> $data the initial values
      */
     public static function instance(string $name, array $data = []): self
     {

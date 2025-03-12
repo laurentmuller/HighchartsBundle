@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- `ChartOptions`: Updated PHP documentation.
+
 ## 2.20.23 - 2025-03-11
 
 - Added `$data` parameter to the `ChartOptions` constructor.
@@ -100,7 +104,7 @@
 
 ## 2.20.13 - 2024-06-16
 
-- Added the markdown configuration file.
+- Added the Markdown configuration file.
 - Changed the `chart` function visibility of the `HighchartsExtension` class.
 - Updated `TwigTest` class.
 - Updated rector configuration.
