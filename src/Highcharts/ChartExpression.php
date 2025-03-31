@@ -51,7 +51,7 @@ readonly class ChartExpression implements \Stringable
      */
     public function getQuotedKey(): string
     {
-        return \sprintf('"%s"', $this->getMagicKey());
+        return \sprintf('"%s"', $this->magicKey);
     }
 
     /**

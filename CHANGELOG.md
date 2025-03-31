@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.2.5.
+- `ChartExpression`: Internal update.
 - `ChartOptions`: Updated PHP documentation.
 
 ## 2.20.23 - 2025-03-11
