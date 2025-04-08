@@ -19,11 +19,17 @@ use PHPUnit\Framework\TestCase;
 
 class EngineTest extends TestCase
 {
+    /**
+     * @psalm-return \Generator<int, array{string}>
+     */
     public static function getInvalidValues(): \Generator
     {
         yield ['fake'];
     }
 
+    /**
+     * @psalm-return \Generator<int, array{Engine, string}>
+     */
     public static function getValues(): \Generator
     {
         yield [Engine::JQUERY, 'jquery'];
@@ -49,7 +55,6 @@ class EngineTest extends TestCase
     {
         self::expectException(\ValueError::class);
         Engine::from($value);
-        self::fail('A value error must be raised.');
     }
 
     #[DataProvider('getValues')]

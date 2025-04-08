@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Added php unit plugin to Psalm.
+- Added type-coverage to PHP Stan.
 - Updated license year.
 - Updated Symfony to version 7.2.5.
 - `ChartExpression`: Internal update.

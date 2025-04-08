@@ -6,3 +6,8 @@ parameters:
 
     reportUnmatchedIgnoredErrors: true
     checkUninitializedProperties: true
+
+    type_coverage:
+        param: 100
+        return: 100
+        property: 100
