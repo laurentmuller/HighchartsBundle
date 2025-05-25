@@ -25,7 +25,7 @@ use Twig\Error\SyntaxError;
 class HighchartsExtensionTest extends TestCase
 {
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testDefaultEngine(): void
     {
@@ -37,7 +37,7 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testInvalidEngine(): void
     {
@@ -47,7 +47,7 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testJQueryEnum(): void
     {
@@ -60,7 +60,7 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testJQueryString(): void
     {
@@ -72,7 +72,7 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testMootoolsEnum(): void
     {
@@ -85,7 +85,7 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     public function testMootoolsString(): void
     {
@@ -116,21 +116,13 @@ class HighchartsExtensionTest extends TestCase
     }
 
     /**
-     * @throws \ReflectionException
+     * @throws SyntaxError
      */
     private function invokeChart(Engine|string|null $engine = null): string
     {
         $chart = new Highchart();
         $extension = new HighchartsExtension();
-        $class = new \ReflectionClass($extension);
 
-        if (!$class->hasMethod('chart')) {
-            throw new \ReflectionException('Unable to find the "chart" function.');
-        }
-
-        $method = $class->getMethod('chart');
-        $method->setAccessible(true);
-
-        return (string) $method->invoke($extension, $chart, $engine ?? Engine::JQUERY);
+        return $extension->chart($chart, $engine ?? Engine::JQUERY);
     }
 }

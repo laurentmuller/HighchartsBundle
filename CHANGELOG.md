@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- `HighchartsExtension`: Make `chart()` function public.
 - Added php unit plugin to Psalm.
 - Added type-coverage to PHP Stan.
 - Updated license year.
