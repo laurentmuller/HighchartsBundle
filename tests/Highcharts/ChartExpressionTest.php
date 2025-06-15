@@ -42,12 +42,12 @@ class ChartExpressionTest extends TestCase
         self::assertSame($script, (string) $expression);
     }
 
-    public function testMagicKey(): void
+    public function testKey(): void
     {
         $script = 'function() {location.href = this.url;}';
         $expected = \md5($script);
         $expression = ChartExpression::instance($script);
-        $actual = $expression->getMagicKey();
+        $actual = $expression->getKey();
         self::assertSame($expected, $actual);
     }
 
@@ -56,7 +56,7 @@ class ChartExpressionTest extends TestCase
         $script = 'function() {location.href = this.url;}';
         $expression = ChartExpression::instance($script);
         $actual = $expression->getQuotedKey();
-        $expected = '"' . $expression->getMagicKey() . '"';
+        $expected = '"' . $expression->getKey() . '"';
         self::assertSame($expected, $actual);
     }
 

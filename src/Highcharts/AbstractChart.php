@@ -134,7 +134,7 @@ abstract class AbstractChart implements ChartInterface
     protected function enqueueExpressions(mixed $valueToEncode, array &$expressions): mixed
     {
         if ($valueToEncode instanceof ChartExpression) {
-            $key = $valueToEncode->getMagicKey();
+            $key = $valueToEncode->getKey();
             $expressions[$key] = $valueToEncode;
 
             return $key;

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- **BC**: `ChartExpression`: renamed `getMagicKey()` property to `getKey()`.
+- Updated Symfony to version 7.3.0.
 - `HighchartsExtension`: Make `chart()` function public.
 - Added php unit plugin to Psalm.
 - Added type-coverage to PHP Stan.

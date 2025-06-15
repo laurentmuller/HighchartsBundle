@@ -19,7 +19,7 @@ namespace HighchartsBundle\Highcharts;
 readonly class ChartExpression implements \Stringable
 {
     private string $expression;
-    private string $magicKey;
+    private string $key;
 
     /**
      * @param string $expression the expression to represent
@@ -27,7 +27,7 @@ readonly class ChartExpression implements \Stringable
     public function __construct(string $expression)
     {
         $this->expression = (string) \preg_replace('/\s+/', ' ', \trim($expression));
-        $this->magicKey = \md5($this->expression);
+        $this->key = \md5($this->expression);
     }
 
     #[\Override]
@@ -41,9 +41,9 @@ readonly class ChartExpression implements \Stringable
         return $this->expression;
     }
 
-    public function getMagicKey(): string
+    public function getKey(): string
     {
-        return $this->magicKey;
+        return $this->key;
     }
 
     /**
@@ -51,7 +51,7 @@ readonly class ChartExpression implements \Stringable
      */
     public function getQuotedKey(): string
     {
-        return \sprintf('"%s"', $this->magicKey);
+        return \sprintf('"%s"', $this->key);
     }
 
     /**
