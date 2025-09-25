@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated PHP-CS-Fixer and StyleCI configurations.
+- Updated Symfony to version 7.3.3.
 - **BC**: `ChartExpression`: renamed `getMagicKey()` property to `getKey()`.
 - Updated Symfony to version 7.3.0.
 - `HighchartsExtension`: Make `chart()` function public.

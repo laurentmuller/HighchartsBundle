@@ -52,14 +52,15 @@ $rules = [
     'doctrine_annotation_array_assignment' => ['operator' => '='],
     'phpdoc_to_comment' => ['allow_before_return_statement' => true],
     'native_function_invocation' => ['include' => ['@internal', 'all']],
-    'header_comment' => ['header' => $comment, 'location' => 'after_open', 'separate' => 'bottom'],
+    'header_comment' => ['header' => $comment, 'location' => 'after_open'],
     'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
 ];
 
 $finder = Finder::create()
-    ->in(__DIR__ . '/src')
-    ->in(__DIR__ . '/tests')
-    ->append([
+    ->in([
+        __DIR__ . '/src',
+        __DIR__ . '/tests',
+    ])->append([
         __FILE__,
         __DIR__ . '/rector.php',
         __DIR__ . '/.twig-cs-fixer.php',
