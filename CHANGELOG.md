@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 2.20.24 - 2025-09-25
 
 - Updated PHP-CS-Fixer and StyleCI configurations.
 - Updated Symfony to version 7.3.3.
