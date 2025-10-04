@@ -1,5 +1,9 @@
 # Change log
 
+## 2.20.26 - 2025-10-04
+
+- Removed the `replace` key in `composer.json`.
+
 ## 2.20.25 - 2025-10-04
 
 - Removed `symfony/yaml` dependency.
