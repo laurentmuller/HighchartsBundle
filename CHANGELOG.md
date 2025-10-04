@@ -1,5 +1,11 @@
 # Change log
 
+## 2.20.25 - 2025-10-04
+
+- Removed `symfony/yaml` dependency.
+- Updated Symfony to version 7.3.4.
+- Updated PHP-CS-Fixer configuration.
+
 ## 2.20.24 - 2025-09-25
 
 - Updated PHP-CS-Fixer and StyleCI configurations.
@@ -258,7 +264,7 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Update to Highcharts v3.0.6
 - Add license to composer.json
 - Add doc blocks for IDE type hinting
-- Configure Travis to test on Symfony 2.1, 2.2 and 2.3
+- Configure Travis to tests on Symfony 2.1, 2.2 and 2.3
 
 ## 1.0.0 - 2013-08-06
 

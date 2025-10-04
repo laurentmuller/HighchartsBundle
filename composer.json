@@ -31,7 +31,6 @@
         "symfony/config": "^6.0| ^7.0",
         "symfony/dependency-injection": "^6.0| ^7.0",
         "symfony/http-kernel": "^6.0| ^7.0",
-        "symfony/yaml": "^6.0| ^7.0",
         "twig/twig": "^3.0"
     },
     "require-dev": {
