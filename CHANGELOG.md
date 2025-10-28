@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Make test classes final.
+
 ## 2.20.26 - 2025-10-04
 
 - Removed the `replace` key in `composer.json`.

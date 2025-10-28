@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the 'renderTo' property.
  */
-class RenderToTest extends AbstractChartTestCase
+final class RenderToTest extends AbstractChartTestCase
 {
     public function testWithDefault(): void
     {

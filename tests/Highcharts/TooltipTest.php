@@ -20,7 +20,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the tooltip option.
  */
-class TooltipTest extends AbstractChartTestCase
+final class TooltipTest extends AbstractChartTestCase
 {
     /**
      * Animation option (true/false).

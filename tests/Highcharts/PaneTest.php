@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the pane option.
  */
-class PaneTest extends AbstractChartTestCase
+final class PaneTest extends AbstractChartTestCase
 {
     /**
      * Percentage based.

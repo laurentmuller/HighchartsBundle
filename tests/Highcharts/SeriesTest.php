@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the series option.
  */
-class SeriesTest extends AbstractChartTestCase
+final class SeriesTest extends AbstractChartTestCase
 {
     private array $series = [];
 

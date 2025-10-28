@@ -20,7 +20,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the Highchart Class.
  */
-class HighchartTest extends AbstractChartTestCase
+final class HighchartTest extends AbstractChartTestCase
 {
     /**
      * Render chart using jQuery.

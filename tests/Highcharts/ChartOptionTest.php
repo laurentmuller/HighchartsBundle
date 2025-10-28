@@ -17,7 +17,7 @@ use HighchartsBundle\Highcharts\ChartOption;
 use HighchartsBundle\Tests\AssertEmptyTrait;
 use PHPUnit\Framework\TestCase;
 
-class ChartOptionTest extends TestCase
+final class ChartOptionTest extends TestCase
 {
     use AssertEmptyTrait;
 

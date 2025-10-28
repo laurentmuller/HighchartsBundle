@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the lang option.
  */
-class LangTest extends AbstractChartTestCase
+final class LangTest extends AbstractChartTestCase
 {
     /**
      * Set localized month names.

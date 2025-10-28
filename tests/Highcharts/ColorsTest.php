@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the colors option.
  */
-class ColorsTest extends AbstractChartTestCase
+final class ColorsTest extends AbstractChartTestCase
 {
     /**
      * Series output.

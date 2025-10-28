@@ -22,7 +22,7 @@ use Twig\Error\SyntaxError;
 /**
  * This class hold Unit Tests for the Twig extension.
  */
-class HighchartsExtensionTest extends TestCase
+final class HighchartsExtensionTest extends TestCase
 {
     /**
      * @throws SyntaxError

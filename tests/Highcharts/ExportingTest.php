@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the exporting option.
  */
-class ExportingTest extends AbstractChartTestCase
+final class ExportingTest extends AbstractChartTestCase
 {
     /**
      * buttons option.

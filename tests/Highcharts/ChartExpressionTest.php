@@ -17,7 +17,7 @@ use HighchartsBundle\Highcharts\ChartExpression;
 use HighchartsBundle\Highcharts\Highchart;
 use PHPUnit\Framework\TestCase;
 
-class ChartExpressionTest extends TestCase
+final class ChartExpressionTest extends TestCase
 {
     public function testContainsExpression(): void
     {

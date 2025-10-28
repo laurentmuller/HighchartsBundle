@@ -16,7 +16,7 @@ namespace HighchartsBundle\Tests\Highstock;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
-class ColorsTest extends AbstractChartTestCase
+final class ColorsTest extends AbstractChartTestCase
 {
     public function testColors(): void
     {

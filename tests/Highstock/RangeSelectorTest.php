@@ -17,7 +17,7 @@ use HighchartsBundle\Highcharts\ChartOption;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
-class RangeSelectorTest extends AbstractChartTestCase
+final class RangeSelectorTest extends AbstractChartTestCase
 {
     private ?Highstock $chart = null;
     private ?ChartOption $range = null;

@@ -16,7 +16,7 @@ namespace HighchartsBundle\Tests\Highstock;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
-class ChartTest extends AbstractChartTestCase
+final class ChartTest extends AbstractChartTestCase
 {
     private ?Highstock $chart = null;
 

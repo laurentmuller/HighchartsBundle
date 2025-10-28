@@ -17,10 +17,10 @@ use HighchartsBundle\Highcharts\ChartOption;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
-class CreditsTest extends AbstractChartTestCase
+final class CreditsTest extends AbstractChartTestCase
 {
-    protected ?Highstock $chart = null;
-    protected ?ChartOption $credits = null;
+    private ?Highstock $chart = null;
+    private ?ChartOption $credits = null;
 
     #[\Override]
     protected function setUp(): void

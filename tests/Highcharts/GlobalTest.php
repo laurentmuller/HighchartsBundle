@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the global option.
  */
-class GlobalTest extends AbstractChartTestCase
+final class GlobalTest extends AbstractChartTestCase
 {
     /**
      * useUTC option (true/false).

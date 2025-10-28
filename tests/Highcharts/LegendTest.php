@@ -19,7 +19,7 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 /**
  * This class hold Unit Tests for the legend option.
  */
-class LegendTest extends AbstractChartTestCase
+final class LegendTest extends AbstractChartTestCase
 {
     /**
      * Align option (left/center/right).

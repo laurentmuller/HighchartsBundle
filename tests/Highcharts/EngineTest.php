@@ -17,7 +17,7 @@ use HighchartsBundle\Highcharts\Engine;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class EngineTest extends TestCase
+final class EngineTest extends TestCase
 {
     /**
      * @psalm-return \Generator<int, array{string}>
