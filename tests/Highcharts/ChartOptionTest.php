@@ -14,23 +14,22 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\ChartOption;
-use HighchartsBundle\Tests\AssertEmptyTrait;
 use PHPUnit\Framework\TestCase;
 
 final class ChartOptionTest extends TestCase
 {
-    use AssertEmptyTrait;
+    private const NAME = 'name';
+    private const VALUE = 'value';
 
     /**
      * @psalm-suppress InvalidArgument
      */
     public function testAccessArray(): void
     {
-        $name = 'name';
         $option = $this->createOption();
-        $option[$name] = $name;
-        self::assertArrayHasKey($name, $option);
-        self::assertSame($name, $option[$name]);
+        $option[self::NAME] = self::VALUE;
+        self::assertArrayHasKey(self::NAME, $option);
+        self::assertSame(self::VALUE, $option[self::NAME]);
     }
 
     /**
@@ -38,37 +37,66 @@ final class ChartOptionTest extends TestCase
      */
     public function testAccessObject(): void
     {
-        $name = 'name';
         $option = $this->createOption();
-        $option->{$name} = $name;
-        self::assertArrayHasKey($name, $option);
-        self::assertSame($name, $option->{$name});
+        $option->{self::NAME} = self::VALUE;
+        self::assertArrayHasKey(self::NAME, $option);
+        self::assertSame(self::VALUE, $option->{self::NAME});
+    }
+
+    public function testCall(): void
+    {
+        $option = $this->createOption();
+        $option->__call(self::NAME, [self::VALUE]);
+        self::assertSame(self::VALUE, $option[self::NAME]);
     }
 
     public function testCount(): void
     {
         $option = $this->createOption();
-        self::assertEmptyCountable($option);
-        $option['name'] = 'value';
+        self::assertCount(0, $option);
+        $option[self::NAME] = self::VALUE;
         self::assertCount(1, $option);
+    }
+
+    public function testGet(): void
+    {
+        $option = $this->createOption();
+        self::assertNull($option->__get(self::NAME));
+        $option[self::NAME] = self::VALUE;
+        self::assertSame(self::VALUE, $option->__get(self::NAME));
+    }
+
+    public function testGetData(): void
+    {
+        $option = $this->createOption();
+        $actual = $option->getData();
+        self::assertCount(0, $actual);
+        $option[self::NAME] = self::VALUE;
+        $actual = $option->getData();
+        self::assertCount(1, $actual);
+        self::assertSame([self::NAME => self::VALUE], $actual);
+    }
+
+    public function testGetName(): void
+    {
+        $option = $this->createOption();
+        self::assertSame(self::NAME, $option->getName());
     }
 
     public function testHasData(): void
     {
-        $name = 'name';
         $option = $this->createOption();
         self::assertFalse($option->hasData());
-        $option->{$name} = 'value';
+        $option[self::NAME] = self::VALUE;
         self::assertTrue($option->hasData());
     }
 
     public function testIsset(): void
     {
-        $name = 'name';
         $option = $this->createOption();
-        self::assertFalse($option->__isset($name));
-        $option->{$name} = $name;
-        self::assertTrue($option->__isset($name));
+        self::assertFalse($option->__isset(self::NAME));
+        $option[self::NAME] = self::VALUE;
+        self::assertTrue($option->__isset(self::NAME));
     }
 
     public function testMerge(): void
@@ -81,58 +109,56 @@ final class ChartOptionTest extends TestCase
         self::assertSame($expected, $actual);
     }
 
-    public function testOffsetExist(): void
-    {
-        $option = $this->createOption();
-        self::assertFalse($option->offsetExists('key'));
-        $option['key'] = 'value';
-        self::assertTrue($option->offsetExists('key'));
-    }
-
     public function testOffsetExists(): void
     {
-        $name = 'name';
         $option = $this->createOption();
-        self::assertFalse($option->offsetExists($name));
-        $option->{$name} = $name;
-        self::assertTrue($option->offsetExists($name));
+        self::assertFalse($option->offsetExists(self::NAME));
+        $option[self::NAME] = self::VALUE;
+        self::assertTrue($option->offsetExists(self::NAME));
     }
 
     public function testOffsetGet(): void
     {
         $option = $this->createOption();
-        self::assertNull($option->offsetGet('key'));
-        $option['key'] = 'value';
-        self::assertSame('value', $option->offsetGet('key'));
+        self::assertNull($option->offsetGet(self::NAME));
+        $option[self::NAME] = self::VALUE;
+        self::assertSame(self::VALUE, $option->offsetGet(self::NAME));
     }
 
     public function testOffsetSet(): void
     {
         $option = $this->createOption();
-        $option->offsetSet('key', 'value');
-        self::assertSame('value', $option->offsetGet('key'));
+        $option->offsetSet(self::NAME, self::VALUE);
+        self::assertSame(self::VALUE, $option[self::NAME]);
     }
 
     public function testOffsetUnset(): void
     {
         $option = $this->createOption();
-        $option['key'] = 'value';
-        self::assertSame('value', $option->offsetGet('key'));
-        $option->offsetUnset('key');
-        self::assertNull($option->offsetGet('key'));
+        $option[self::NAME] = self::VALUE;
+        self::assertSame(self::VALUE, $option[self::NAME]);
+        $option->offsetUnset(self::NAME);
+        self::assertNull($option->offsetGet(self::NAME));
+    }
+
+    public function testSet(): void
+    {
+        $option = $this->createOption();
+        $option->__set(self::NAME, self::VALUE);
+        self::assertSame(self::VALUE, $option[self::NAME]);
     }
 
     public function testUnset(): void
     {
         $option = $this->createOption();
-        $option->offsetSet('key', 'value');
-        self::assertSame('value', $option->offsetGet('key'));
-        $option->__unset('key');
-        self::assertNull($option->offsetGet('key'));
+        $option[self::NAME] = self::VALUE;
+        self::assertSame(self::VALUE, $option[self::NAME]);
+        $option->__unset(self::NAME);
+        self::assertNull($option->offsetGet(self::NAME));
     }
 
     private function createOption(): ChartOption
     {
-        return ChartOption::instance('test');
+        return ChartOption::instance(self::NAME);
     }
 }
