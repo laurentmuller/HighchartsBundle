@@ -1,5 +1,9 @@
 # Change log
 
+## 3.0.1 - 2025-11-01
+
+- Make `HighchartsExtension` class public.
+
 ## 3.0.0 - 2025-11-01
 
 - Replaced Twig extension by Twig attribute.
