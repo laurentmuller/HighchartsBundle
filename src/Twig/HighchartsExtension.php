@@ -15,12 +15,14 @@ namespace HighchartsBundle\Twig;
 
 use HighchartsBundle\Highcharts\ChartInterface;
 use HighchartsBundle\Highcharts\Engine;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use Twig\Attribute\AsTwigFunction;
 use Twig\Error\SyntaxError;
 
 /**
  * Twig extension to render charts.
  */
+#[Autoconfigure(tags: ['twig.attribute_extension'], public: true)]
 class HighchartsExtension
 {
     /**
