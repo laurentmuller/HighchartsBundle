@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 2.20.27 - 2025-11-01
 
 - Updated tests for `ChartOption` class.
 - Make test classes final.
