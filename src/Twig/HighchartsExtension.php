@@ -15,20 +15,20 @@ namespace HighchartsBundle\Twig;
 
 use HighchartsBundle\Highcharts\ChartInterface;
 use HighchartsBundle\Highcharts\Engine;
+use Twig\Attribute\AsTwigFunction;
 use Twig\Error\SyntaxError;
-use Twig\Extension\AbstractExtension;
-use Twig\TwigFunction;
 
 /**
  * Twig extension to render charts.
  */
-class HighchartsExtension extends AbstractExtension
+class HighchartsExtension
 {
     /**
      * Render the given chart with the given engine.
      *
      * @throws SyntaxError if the engine is a string and the corresponding enumeration cannot be found
      */
+    #[AsTwigFunction(name: 'chart', isSafe: ['html'])]
     public function chart(ChartInterface $chart, Engine|string $engine = Engine::JQUERY): string
     {
         if (\is_string($engine)) {
@@ -36,14 +36,6 @@ class HighchartsExtension extends AbstractExtension
         }
 
         return $chart->render($engine);
-    }
-
-    #[\Override]
-    public function getFunctions(): array
-    {
-        return [
-            new TwigFunction('chart', $this->chart(...), ['is_safe' => ['html']]),
-        ];
     }
 
     /**

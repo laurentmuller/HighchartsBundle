@@ -1,5 +1,10 @@
 # Change log
 
+## Unreleased
+
+- Replaced Twig extension by Twig attribute.
+- Removed Symfony 6.x support.
+
 ## 2.20.27 - 2025-11-01
 
 - Updated tests for `ChartOption` class.
