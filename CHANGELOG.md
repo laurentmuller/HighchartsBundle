@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 3.0.0 - 2025-11-01
 
 - Replaced Twig extension by Twig attribute.
 - Removed Symfony 6.x support.
