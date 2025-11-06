@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Removed Psalm dependency.
+
 ## 3.0.2 - 2025-11-01
 
 - `HighchartsBundle`: Updated configuration.

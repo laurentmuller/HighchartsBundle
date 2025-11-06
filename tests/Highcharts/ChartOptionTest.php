@@ -21,9 +21,6 @@ final class ChartOptionTest extends TestCase
     private const NAME = 'name';
     private const VALUE = 'value';
 
-    /**
-     * @psalm-suppress InvalidArgument
-     */
     public function testAccessArray(): void
     {
         $option = $this->createOption();
@@ -32,9 +29,6 @@ final class ChartOptionTest extends TestCase
         self::assertSame(self::VALUE, $option[self::NAME]);
     }
 
-    /**
-     * @psalm-suppress InvalidArgument
-     */
     public function testAccessObject(): void
     {
         $option = $this->createOption();

@@ -17,10 +17,6 @@ namespace HighchartsBundle\Highcharts;
  * Chart options.
  *
  * @template-implements \ArrayAccess<string, mixed>
- *
- * @psalm-no-seal-methods
- *
- * @psalm-no-seal-properties
  */
 class ChartOption implements \ArrayAccess, \Countable
 {
@@ -70,8 +66,6 @@ class ChartOption implements \ArrayAccess, \Countable
 
     /**
      * Get a value for the given key.
-     *
-     * @psalm-suppress NonVariableReferenceReturn
      */
     public function &__get(string $key): mixed
     {

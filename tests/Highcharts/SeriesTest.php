@@ -21,27 +21,18 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
  */
 final class SeriesTest extends AbstractChartTestCase
 {
-    private array $series = [];
-
-    /**
-     * Initialises the data.
-     */
-    #[\Override]
-    protected function setUp(): void
-    {
-        $this->series = [
-            ['name' => 'Data #1', 'data' => [1, 2, 4, 5, 6, 3, 8]],
-            ['name' => 'Data #2', 'data' => [7, 3, 5, 1, 6, 5, 9]],
-        ];
-    }
-
     /**
      * Series output.
      */
     public function testData(): void
     {
+        $series = [
+            ['name' => 'Data #1', 'data' => [1, 2, 4, 5, 6, 3, 8]],
+            ['name' => 'Data #2', 'data' => [7, 3, 5, 1, 6, 5, 9]],
+        ];
+
         $chart = new Highchart();
-        $chart->series->merge($this->series);
+        $chart->series->merge($series);
 
         $regex = '/\{"name":"Data #1","data":\[1,2,4,5,6,3,8\]\}/';
         self::assertChartMatchesRegularExpression($chart, $regex);
