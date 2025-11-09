@@ -28,16 +28,16 @@
     },
     "require": {
         "php": "^8.2",
-        "symfony/config": "^6.0| ^7.0",
-        "symfony/dependency-injection": "^6.0| ^7.0",
-        "symfony/http-kernel": "^6.0| ^7.0",
-        "twig/twig": "^3.0"
+        "symfony/config": " ^7.0",
+        "symfony/dependency-injection": " ^7.0",
+        "symfony/http-kernel": " ^7.0",
+        "twig/twig": "^3.21"
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.0",
         "phpunit/phpunit": "^11.0",
-        "symfony/framework-bundle": "^6.0| ^7.0",
-        "symfony/phpunit-bridge": "^6.0| ^7.0"
+        "symfony/framework-bundle": " ^7.0",
+        "symfony/phpunit-bridge": " ^7.0"
     },
     "extra": {
         "bamarni-bin": {
@@ -76,14 +76,12 @@
         "app-fixer-fix": "vendor-bin/php-cs-fixer/vendor/bin/php-cs-fixer fix --diff",
         "app-rector": "vendor-bin/rector/vendor/bin/rector process --dry-run --config rector.php",
         "app-rector-fix": "vendor-bin/rector/vendor/bin/rector process --config rector.php",
-        "app-psalm": "vendor-bin/psalm/vendor/bin/psalm --config psalm.xml",
         "app-stan": "vendor-bin/phpstan/vendor/bin/phpstan analyse --configuration phpstan.neon --memory-limit 2G",
         "app-test": "vendor/bin/phpunit",
         "app-markdown": "markdownlint-cli2",
         "app-all": [
             "@app-fixer",
             "@app-rector",
-            "@app-psalm",
             "@app-stan",
             "@app-test",
             "@app-markdown"

@@ -1,5 +1,24 @@
 # Change log
 
+## Unreleased
+
+- Removed Psalm dependency.
+
+## 3.0.2 - 2025-11-01
+
+- `HighchartsBundle`: Updated configuration.
+- `HighchartsExtension`: Added `Autoconfigure` attribute.
+- Updated `twig/twig` dependency to version `^3.21`.
+
+## 3.0.1 - 2025-11-01
+
+- Make `HighchartsExtension` class public.
+
+## 3.0.0 - 2025-11-01
+
+- Replaced Twig extension by Twig attribute.
+- Removed Symfony 6.x support.
+
 ## 2.20.27 - 2025-11-01
 
 - Updated tests for `ChartOption` class.

@@ -19,17 +19,11 @@ use PHPUnit\Framework\TestCase;
 
 final class EngineTest extends TestCase
 {
-    /**
-     * @psalm-return \Generator<int, array{string}>
-     */
     public static function getInvalidValues(): \Generator
     {
         yield ['fake'];
     }
 
-    /**
-     * @psalm-return \Generator<int, array{Engine, string}>
-     */
     public static function getValues(): \Generator
     {
         yield [Engine::JQUERY, 'jquery'];

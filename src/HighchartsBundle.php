@@ -31,6 +31,6 @@ class HighchartsBundle extends AbstractBundle
     {
         $container->services()
             ->set('twig.extension.highcharts', HighchartsExtension::class)
-            ->tag('twig.extension');
+            ->autoconfigure();
     }
 }

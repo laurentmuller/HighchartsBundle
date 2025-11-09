@@ -96,25 +96,6 @@ final class HighchartsExtensionTest extends TestCase
         );
     }
 
-    public function testTwigMembers(): void
-    {
-        $extension = new HighchartsExtension();
-        self::assertEmpty($extension->getFilters());
-        self::assertEmpty($extension->getNodeVisitors());
-        self::assertEmpty($extension->getTests());
-        self::assertEmpty($extension->getTokenParsers());
-
-        $functions = $extension->getFunctions();
-        self::assertCount(1, $functions);
-        $function = $functions[0];
-        self::assertSame('chart', $function->getName());
-        self::assertFalse($function->needsEnvironment());
-        self::assertFalse($function->needsContext());
-        self::assertFalse($function->isDeprecated());
-        self::assertFalse($function->isVariadic());
-        self::assertIsCallable($function->getCallable());
-    }
-
     /**
      * @throws SyntaxError
      */
