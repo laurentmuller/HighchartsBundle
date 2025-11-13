@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.3.7.
 - Removed Psalm dependency.
 
 ## 3.0.2 - 2025-11-01

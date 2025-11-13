@@ -40,7 +40,6 @@ constitutes a non-commercial project or their
 [![SymfonyInsight](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee/mini.svg)](https://insight.symfony.com/projects/15f0eafe-79c2-45d7-8780-36644afd55ee)
 [![Codacy](https://app.codacy.com/project/badge/Grade/2777bc9261fc4fee9082e6bcbf531828)](https://app.codacy.com/gh/laurentmuller/HighchartsBundle/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 [![PHP-Stan](https://img.shields.io/badge/PHPStan-Level%2010-brightgreen.svg?style=flat&logo=php)](https://phpstan.org/blog/find-bugs-in-your-code-without-writing-tests)
-[![Psalm](https://img.shields.io/badge/Psalm-Level%201-brightgreen.svg?style=flat)](https://psalm.dev/docs/running_psalm/installation/)
 [![CodeFactor](https://www.codefactor.io/repository/github/laurentmuller/highchartsbundle/badge)](https://www.codefactor.io/repository/github/laurentmuller/highchartsbundle)
 [![Codecov](https://codecov.io/gh/laurentmuller/HighchartsBundle/graph/badge.svg?token=ILPZUJJBNA)](https://codecov.io/gh/laurentmuller/HighchartsBundle)
 
@@ -49,7 +48,6 @@ constitutes a non-commercial project or their
 [![PHP-CS-Fixer](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml)
 [![PHPStan](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml)
 [![PHPUnit](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml)
-[![Psalm](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/pslam.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/pslam.yaml)
 [![Rector](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml)
 [![Lint](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml)
 [![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
