@@ -287,7 +287,7 @@ abstract class AbstractChart implements ChartInterface
     protected function renderEngine(string &$chartJS, Engine $engine): void
     {
         $chartJS .= match ($engine) {
-            Engine::MOOTOOLS => 'window.addEvent(\'domready\', function () {',
+            Engine::MOOTOOLS => "window.addEvent('domready', function () {",
             Engine::JQUERY => '$(function () {',
             default => '',
         };

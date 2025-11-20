@@ -11,41 +11,68 @@
 
 declare(strict_types=1);
 
+use Rector\CodingStyle\Rector\ArrowFunction\StaticArrowFunctionRector;
+use Rector\CodingStyle\Rector\Catch_\CatchExceptionNameMatchingTypeRector;
+use Rector\CodingStyle\Rector\ClassMethod\NewlineBeforeNewAssignSetRector;
+use Rector\CodingStyle\Rector\Closure\StaticClosureRector;
+use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use Rector\Config\RectorConfig;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\Symfony\Set\SymfonySetList;
 use Rector\Symfony\Set\TwigSetList;
+
+$paths = [
+    __DIR__ . '/src',
+    __DIR__ . '/tests',
+    __DIR__ . '/rector.php',
+];
+
+$skips = [
+    PreferPHPUnitThisCallRector::class,
+    // CODING STYLE
+    NewlineAfterStatementRector::class,
+    NewlineBeforeNewAssignSetRector::class,
+    CatchExceptionNameMatchingTypeRector::class,
+];
+
+$sets = [
+    // global
+    SetList::PHP_82,
+    SetList::CODE_QUALITY,
+    SetList::CODING_STYLE,
+    SetList::DEAD_CODE,
+    SetList::INSTANCEOF,
+    SetList::PRIVATIZATION,
+    SetList::TYPE_DECLARATION,
+    // PHP-Unit
+    PHPUnitSetList::PHPUNIT_110,
+    PHPUnitSetList::PHPUNIT_CODE_QUALITY,
+    // twig
+    TwigSetList::TWIG_24,
+    TwigSetList::TWIG_UNDERSCORE_TO_NAMESPACE,
+];
+
+$rules = [
+    // static closure and arrow functions
+    StaticClosureRector::class,
+    StaticArrowFunctionRector::class,
+];
 
 return RectorConfig::configure()
     ->withCache(__DIR__ . '/cache/rector')
     ->withRootFiles()
-    ->withPaths([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-        __DIR__ . '/rector.php',
-    ])->withSkip([
-        PreferPHPUnitThisCallRector::class,
-    ])->withSets([
-        // global
-        SetList::PHP_82,
-        SetList::CODE_QUALITY,
-        SetList::PRIVATIZATION,
-        SetList::INSTANCEOF,
-        SetList::STRICT_BOOLEANS,
-        SetList::TYPE_DECLARATION,
-        // PHP-Unit
-        PHPUnitSetList::PHPUNIT_110,
-        PHPUnitSetList::PHPUNIT_CODE_QUALITY,
-        // Symfony
-        SymfonySetList::SYMFONY_72,
-        SymfonySetList::SYMFONY_CODE_QUALITY,
-        SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION,
-        // twig
-        TwigSetList::TWIG_24,
-        TwigSetList::TWIG_UNDERSCORE_TO_NAMESPACE,
-    ])->withAttributesSets(
+    ->withPaths($paths)
+    ->withSkip($skips)
+    ->withSets($sets)
+    ->withRules($rules)
+    ->withComposerBased(
+        twig: true,
+        phpunit: true,
+        symfony: true,
+    )->withPhpSets(
+        php82: true
+    )->withAttributesSets(
         // annotations to attributes
         symfony: true,
         phpunit: true

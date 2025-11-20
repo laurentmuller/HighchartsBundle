@@ -57,21 +57,27 @@ $rules = [
     'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
 ];
 
+$paths = [
+    __DIR__ . '/src',
+    __DIR__ . '/tests',
+];
+
+$files = [
+    __FILE__,
+    __DIR__ . '/rector.php',
+    __DIR__ . '/.twig-cs-fixer.php',
+];
+
 $finder = Finder::create()
-    ->in([
-        __DIR__ . '/src',
-        __DIR__ . '/tests',
-    ])->append([
-        __FILE__,
-        __DIR__ . '/rector.php',
-        __DIR__ . '/.twig-cs-fixer.php',
-    ]);
+    ->in($paths)
+    ->append($files);
 
 $config = new Config();
 
 return $config
     ->setParallelConfig(ParallelConfigFactory::detect())
     ->setCacheFile(__DIR__ . '/cache/php-cs-fixer/.php-cs-fixer.cache')
+    ->setUnsupportedPhpVersionAllowed(false)
     ->setRiskyAllowed(true)
     ->setFinder($finder)
     ->setRules($rules);

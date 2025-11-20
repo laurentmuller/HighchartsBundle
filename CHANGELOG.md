@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Rector and PhpCsFixer configurations.
 - Updated Symfony to version 7.3.7.
 - Removed Psalm dependency.
 
