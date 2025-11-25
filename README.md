@@ -10,6 +10,11 @@ library [Highcharts](https://www.highcharts.com).
 
 DRY out your chart code by writing it all in PHP!
 
+| Branch | Symfony Version | Twig Version |
+|--------|-----------------|--------------|
+| master | 7.0             | 3.21         |
+| 2.x    | 6.0, 7.0        | 3.0          |
+
 ## Documentation
 
 * [Installation](doc/installation.md)

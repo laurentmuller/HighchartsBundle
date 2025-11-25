@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Updated Rector and PhpCsFixer configurations.
+- Updated `actions/checkout` workflows to version 6.
+- Updated Rector, PhpStan and PhpCsFixer configurations.
 - Updated Symfony to version 7.3.7.
 - Removed Psalm dependency.
 
