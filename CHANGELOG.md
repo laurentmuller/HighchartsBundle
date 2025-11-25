@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 3.0.3 - 2025-11-25
 
 - Simplified `ChartOption` class and updated tests.
 - Updated `actions/checkout` workflows to version 6.
