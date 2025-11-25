@@ -17,8 +17,25 @@ use HighchartsBundle\Highcharts\ChartInterface;
 use HighchartsBundle\Highcharts\Engine;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @template TChart of ChartInterface
+ */
 abstract class AbstractChartTestCase extends TestCase
 {
+    /**
+     * @var TChart
+     */
+    protected ChartInterface $chart;
+
+    #[\Override]
+    protected function setUp(): void
+    {
+        $this->chart = $this->createChart();
+    }
+
+    /**
+     * @param TChart $chart
+     */
     protected static function assertChartMatchesRegularExpression(
         ChartInterface $chart,
         string $regex,
@@ -27,4 +44,9 @@ abstract class AbstractChartTestCase extends TestCase
         $result = $chart->render($engine);
         self::assertMatchesRegularExpression($regex, $result);
     }
+
+    /**
+     * @return TChart
+     */
+    abstract protected function createChart(): ChartInterface;
 }

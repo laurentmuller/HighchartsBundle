@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Simplified `ChartOption` class and updated tests.
 - Updated `actions/checkout` workflows to version 6.
 - Updated Rector, PhpStan and PhpCsFixer configurations.
 - Updated Symfony to version 7.3.7.

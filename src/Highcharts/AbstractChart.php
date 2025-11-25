@@ -315,7 +315,7 @@ abstract class AbstractChart implements ChartInterface
 
     protected function renderOptions(string &$chartJS): void
     {
-        if (!$this->global->hasData() && !$this->lang->hasData()) {
+        if ($this->global->isEmpty() && $this->lang->isEmpty()) {
             return;
         }
 

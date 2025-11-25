@@ -16,19 +16,13 @@ namespace HighchartsBundle\Tests\Highstock;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
-final class ChartTest extends AbstractChartTestCase
+/**
+ * @extends AbstractChartTestCase<Highstock>
+ */
+final class HighstockTest extends AbstractChartTestCase
 {
-    private ?Highstock $chart = null;
-
-    #[\Override]
-    protected function setUp(): void
-    {
-        $this->chart = new Highstock();
-    }
-
     public function testAlignTicks(): void
     {
-        self::assertNotNull($this->chart);
         $this->chart->chart->alignTicks(true);
         self::assertTrue($this->chart->chart->alignTicks);
         $regex = '/"alignTicks":true/';
@@ -42,7 +36,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testAnimation(): void
     {
-        self::assertNotNull($this->chart);
         $this->chart->chart->animation(true);
         self::assertTrue($this->chart->chart->animation);
         $regex = '/"animation":true/';
@@ -56,7 +49,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testBackgroundColor(): void
     {
-        self::assertNotNull($this->chart);
         $color = '#ffffff';
         $this->chart->chart->backgroundColor($color);
         self::assertSame($color, $this->chart->chart->backgroundColor);
@@ -66,7 +58,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testBorderColor(): void
     {
-        self::assertNotNull($this->chart);
         $color = '#4572a7';
         $this->chart->chart->borderColor($color);
         self::assertSame($color, $this->chart->chart->borderColor);
@@ -76,7 +67,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testBorderRadius(): void
     {
-        self::assertNotNull($this->chart);
         $radius = 5;
         $this->chart->chart->borderRadius($radius);
         self::assertSame($radius, $this->chart->chart->borderRadius);
@@ -86,7 +76,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testBorderWidth(): void
     {
-        self::assertNotNull($this->chart);
         $width = 0;
         $this->chart->chart->borderWidth($width);
         self::assertSame($width, $this->chart->chart->borderWidth);
@@ -96,7 +85,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testClassName(): void
     {
-        self::assertNotNull($this->chart);
         $class = 'extraClass';
         $this->chart->chart->className($class);
         self::assertSame($class, $this->chart->chart->className);
@@ -106,7 +94,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testHeight(): void
     {
-        self::assertNotNull($this->chart);
         $height = '300px';
         $this->chart->chart->height($height);
         self::assertSame($height, $this->chart->chart->height);
@@ -116,7 +103,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testIgnoreHiddenSeries(): void
     {
-        self::assertNotNull($this->chart);
         $this->chart->chart->ignoreHiddenSeries(true);
         self::assertTrue($this->chart->chart->ignoreHiddenSeries);
         $regex = '/"ignoreHiddenSeries":true/';
@@ -130,7 +116,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testMarginBottom(): void
     {
-        self::assertNotNull($this->chart);
         $margin = '150px';
         $this->chart->chart->marginBottom($margin);
         self::assertSame($margin, $this->chart->chart->marginBottom);
@@ -140,7 +125,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testMarginLeft(): void
     {
-        self::assertNotNull($this->chart);
         $margin = '150px';
         $this->chart->chart->marginLeft($margin);
         self::assertSame($margin, $this->chart->chart->marginLeft);
@@ -150,7 +134,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testMarginRight(): void
     {
-        self::assertNotNull($this->chart);
         $margin = '150px';
         $this->chart->chart->marginRight($margin);
         self::assertSame($margin, $this->chart->chart->marginRight);
@@ -160,7 +143,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testMarginTop(): void
     {
-        self::assertNotNull($this->chart);
         $margin = '150px';
         $this->chart->chart->marginTop($margin);
         self::assertSame($margin, $this->chart->chart->marginTop);
@@ -170,7 +152,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testPanning(): void
     {
-        self::assertNotNull($this->chart);
         $this->chart->chart->panning(true);
         self::assertTrue($this->chart->chart->panning);
         $regex = '/"panning":true/';
@@ -184,7 +165,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testSpacingBottom(): void
     {
-        self::assertNotNull($this->chart);
         $spacing = 15;
         $this->chart->chart->spacingBottom($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingBottom);
@@ -194,7 +174,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testSpacingLeft(): void
     {
-        self::assertNotNull($this->chart);
         $spacing = 10;
         $this->chart->chart->spacingLeft($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingLeft);
@@ -204,7 +183,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testSpacingRight(): void
     {
-        self::assertNotNull($this->chart);
         $spacing = 10;
         $this->chart->chart->spacingRight($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingRight);
@@ -214,7 +192,6 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testSpacingTop(): void
     {
-        self::assertNotNull($this->chart);
         $spacing = 10;
         $this->chart->chart->spacingTop($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingTop);
@@ -224,11 +201,16 @@ final class ChartTest extends AbstractChartTestCase
 
     public function testWidth(): void
     {
-        self::assertNotNull($this->chart);
         $width = '800px';
         $this->chart->chart->width($width);
         self::assertSame($width, $this->chart->chart->width);
         $regex = '/"width":"800px"/';
         self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highstock
+    {
+        return new Highstock();
     }
 }

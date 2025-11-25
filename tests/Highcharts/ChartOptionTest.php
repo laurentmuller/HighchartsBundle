@@ -60,6 +60,16 @@ final class ChartOptionTest extends TestCase
         self::assertSame(self::VALUE, $option->__get(self::NAME));
     }
 
+    public function testGetByReference(): void
+    {
+        $option = $this->createOption();
+        $option[self::NAME] = self::VALUE;
+        $value = &$option->__get(self::NAME);
+        $value = 'other value';
+        $actual = $option->__get(self::NAME);
+        self::assertSame('other value', $actual);
+    }
+
     public function testGetData(): void
     {
         $option = $this->createOption();
@@ -77,12 +87,12 @@ final class ChartOptionTest extends TestCase
         self::assertSame(self::NAME, $option->getName());
     }
 
-    public function testHasData(): void
+    public function testIsEmpty(): void
     {
         $option = $this->createOption();
-        self::assertFalse($option->hasData());
+        self::assertTrue($option->isEmpty());
         $option[self::NAME] = self::VALUE;
-        self::assertTrue($option->hasData());
+        self::assertFalse($option->isEmpty());
     }
 
     public function testIsset(): void

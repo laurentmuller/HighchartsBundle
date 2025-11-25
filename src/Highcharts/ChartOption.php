@@ -16,18 +16,17 @@ namespace HighchartsBundle\Highcharts;
 /**
  * Chart options.
  *
- * @template-implements \ArrayAccess<string, mixed>
+ * @template-extends \ArrayObject<string, mixed>
  */
-class ChartOption implements \ArrayAccess, \Countable
+class ChartOption extends \ArrayObject
 {
     /**
-     * @param non-empty-string        $name the option name
-     * @param array<array-key, mixed> $data the initial values
+     * @param non-empty-string     $name the option name
+     * @param array<string, mixed> $data the initial values
      */
-    public function __construct(
-        private readonly string $name,
-        private array $data = []
-    ) {
+    public function __construct(private readonly string $name, array $data = [])
+    {
+        parent::__construct($data);
     }
 
     /**
@@ -35,7 +34,7 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function __call(string $name, array $value): self
     {
-        $this->data[$name] = $value[0];
+        $this[$name] = $value[0];
 
         return $this;
     }
@@ -45,7 +44,7 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function __isset(string $key): bool
     {
-        return isset($this->data[$key]);
+        return $this->offsetExists($key);
     }
 
     /**
@@ -53,7 +52,7 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function __set(string $key, mixed $value): void
     {
-        $this->data[$key] = $value;
+        $this[$key] = $value;
     }
 
     /**
@@ -61,7 +60,7 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function __unset(string $key): void
     {
-        unset($this->data[$key]);
+        unset($this[$key]);
     }
 
     /**
@@ -69,21 +68,15 @@ class ChartOption implements \ArrayAccess, \Countable
      */
     public function &__get(string $key): mixed
     {
-        return $this->data[$key];
-    }
-
-    #[\Override]
-    public function count(): int
-    {
-        return \count($this->data);
+        return $this[$key];
     }
 
     /**
-     * @return array<array-key, mixed>
+     * @return array<string, mixed>
      */
     public function getData(): array
     {
-        return $this->data;
+        return $this->getArrayCopy();
     }
 
     /**
@@ -94,67 +87,27 @@ class ChartOption implements \ArrayAccess, \Countable
         return $this->name;
     }
 
-    public function hasData(): bool
-    {
-        return [] !== $this->data;
-    }
-
     /**
      * Create a new instance.
      *
-     * @param non-empty-string        $name the option name
-     * @param array<array-key, mixed> $data the initial values
+     * @param non-empty-string     $name the option name
+     * @param array<string, mixed> $data the initial values
      */
     public static function instance(string $name, array $data = []): self
     {
         return new self($name, $data);
     }
 
-    /**
-     * @param array<array-key, mixed> $data
-     */
-    public function merge(array $data): self
+    public function isEmpty(): bool
     {
-        $this->data = \array_merge_recursive($this->data, $data);
-
-        return $this;
+        return 0 === $this->count();
     }
 
     /**
-     * @param string $offset
+     * @param array<string, mixed> $data
      */
-    #[\Override]
-    public function offsetExists(mixed $offset): bool
+    public function merge(array $data): void
     {
-        return isset($this->data[$offset]);
-    }
-
-    /**
-     * @param string $offset
-     */
-    #[\Override]
-    public function offsetGet(mixed $offset): mixed
-    {
-        return $this->offsetExists($offset) ? $this->data[$offset] : null;
-    }
-
-    /**
-     * @param ?string $offset
-     */
-    #[\Override]
-    public function offsetSet(mixed $offset, mixed $value): void
-    {
-        null === $offset ? $this->data[] = $value : $this->data[$offset] = $value;
-    }
-
-    /**
-     * @param string $offset
-     */
-    #[\Override]
-    public function offsetUnset(mixed $offset): void
-    {
-        if ($this->offsetExists($offset)) {
-            unset($this->data[$offset]);
-        }
+        $this->exchangeArray(\array_merge_recursive($this->getArrayCopy(), $data));
     }
 }

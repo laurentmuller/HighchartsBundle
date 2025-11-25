@@ -17,15 +17,17 @@ use HighchartsBundle\Highcharts\ChartOption;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
+/**
+ * @extends AbstractChartTestCase<Highstock>
+ */
 final class RangeSelectorTest extends AbstractChartTestCase
 {
-    private ?Highstock $chart = null;
-    private ?ChartOption $range = null;
+    private ChartOption $range;
 
     #[\Override]
     protected function setUp(): void
     {
-        $this->chart = new Highstock();
+        parent::setUp();
         $this->range = $this->chart->rangeSelector;
     }
 
@@ -125,7 +127,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
-    public function testinputEnabled(): void
+    public function testInputEnabled(): void
     {
         self::assertNotNull($this->chart);
         self::assertNotNull($this->range);
@@ -162,5 +164,11 @@ final class RangeSelectorTest extends AbstractChartTestCase
         self::assertSame($index, $this->range->selected);
         $regex = '/"selected":3/';
         self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highstock
+    {
+        return new Highstock();
     }
 }

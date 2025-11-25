@@ -18,6 +18,8 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the pane option.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class PaneTest extends AbstractChartTestCase
 {
@@ -26,10 +28,9 @@ final class PaneTest extends AbstractChartTestCase
      */
     public function testCenterPercent(): void
     {
-        $chart = new Highchart();
-        $chart->pane['center'] = ['50%', '40%'];
+        $this->chart->pane['center'] = ['50%', '40%'];
         $regex = '/pane: \{"center":\["50%","40%"\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -37,10 +38,9 @@ final class PaneTest extends AbstractChartTestCase
      */
     public function testCenterPixel(): void
     {
-        $chart = new Highchart();
-        $chart->pane['center'] = [50, 100];
+        $this->chart->pane['center'] = [50, 100];
         $regex = '/pane: \{"center":\[50,100\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -48,10 +48,9 @@ final class PaneTest extends AbstractChartTestCase
      */
     public function testEndAngle(): void
     {
-        $chart = new Highchart();
-        $chart->pane['endAngle'] = 5;
+        $this->chart->pane['endAngle'] = 5;
         $regex = '/pane: \{"endAngle":5\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -59,9 +58,14 @@ final class PaneTest extends AbstractChartTestCase
      */
     public function testStartAngle(): void
     {
-        $chart = new Highchart();
-        $chart->pane['startAngle'] = 5;
+        $this->chart->pane['startAngle'] = 5;
         $regex = '/pane: \{"startAngle":5\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

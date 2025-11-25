@@ -19,6 +19,8 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the tooltip option.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class TooltipTest extends AbstractChartTestCase
 {
@@ -27,89 +29,83 @@ final class TooltipTest extends AbstractChartTestCase
      */
     public function testAnimation(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['animation'] = 'true';
+        $this->chart->tooltip['animation'] = 'true';
         $regex = '/tooltip: \{"animation":"true"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['animation'] = 'false';
+        $this->chart->tooltip['animation'] = 'false';
         $regex = '/tooltip: \{"animation":"false"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * backgroundColor option (rgba).
+     * BackgroundColor option (rgba).
      */
     public function testBackgroundColor(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['backgroundColor'] = 'rgba(255, 255, 255, .85)';
+        $this->chart->tooltip['backgroundColor'] = 'rgba(255, 255, 255, .85)';
         $regex = '/tooltip: \{"backgroundColor":"rgba\(255, 255, 255, .85\)"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * borderColor option (null/auto/rgba).
+     * BorderColor option (null/auto/rgba).
      */
     public function testBorderColor(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['borderColor'] = 'null';
+        $this->chart->tooltip['borderColor'] = 'null';
         $regex = '/tooltip: \{"borderColor":"null"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['borderColor'] = 'auto';
+        $this->chart->tooltip['borderColor'] = 'auto';
         $regex = '/tooltip: \{"borderColor":"auto"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['borderColor'] = 'rgba(255, 255, 255, .85)';
+        $this->chart->tooltip['borderColor'] = 'rgba(255, 255, 255, .85)';
         $regex = '/tooltip: \{"borderColor":"rgba\(255, 255, 255, .85\)"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * borderRadius option (integer - radius in px).
+     * BorderRadius option (integer - radius in px).
      */
     public function testBorderRadius(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['borderRadius'] = 5;
+        $this->chart->tooltip['borderRadius'] = 5;
         $regex = '/tooltip: \{"borderRadius":5\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['borderRadius'] = '5';
+        $this->chart->tooltip['borderRadius'] = '5';
         $regex = '/tooltip: \{"borderRadius":"5"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * borderWidth option (integer - width in px).
+     * BorderWidth option (integer - width in px).
      */
-    public function testborderWidth(): void
+    public function testBorderWidth(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['borderWidth'] = 5;
+        $this->chart->tooltip['borderWidth'] = 5;
         $regex = '/tooltip: \{"borderWidth":5\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['borderWidth'] = '5';
+        $this->chart->tooltip['borderWidth'] = '5';
         $regex = '/tooltip: \{"borderWidth":"5"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * enabled option (true/false).
+     * Enabled option (true/false).
      */
     public function testEnabled(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['enabled'] = 'true';
+        $this->chart->tooltip['enabled'] = 'true';
         $regex = '/tooltip: \{"enabled":"true"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['enabled'] = 'false';
+        $this->chart->tooltip['enabled'] = 'false';
         $regex = '/tooltip: \{"enabled":"false"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -117,25 +113,29 @@ final class TooltipTest extends AbstractChartTestCase
      */
     public function testFormatter(): void
     {
-        $chart = new Highchart();
         $func = new ChartExpression('function () { return 1; }');
-        $chart->tooltip['formatter'] = $func;
+        $this->chart->tooltip['formatter'] = $func;
         $regex = '/tooltip: \{"formatter":function\s?\(\)\s?\{ return 1; \}\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
-     * shadow option (true/false).
+     * Shadow option (true/false).
      */
     public function testShadow(): void
     {
-        $chart = new Highchart();
-        $chart->tooltip['shadow'] = 'true';
+        $this->chart->tooltip['shadow'] = 'true';
         $regex = '/tooltip: \{"shadow":"true"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
-        $chart->tooltip['shadow'] = 'false';
+        $this->chart->tooltip['shadow'] = 'false';
         $regex = '/tooltip: \{"shadow":"false"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

@@ -18,6 +18,8 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the lang option.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class LangTest extends AbstractChartTestCase
 {
@@ -26,10 +28,9 @@ final class LangTest extends AbstractChartTestCase
      */
     public function testMonths(): void
     {
-        $chart = new Highchart();
-        $chart->lang['months'] = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
+        $this->chart->lang['months'] = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
         $regex = '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -37,10 +38,9 @@ final class LangTest extends AbstractChartTestCase
      */
     public function testShortMonths(): void
     {
-        $chart = new Highchart();
-        $chart->lang['shortMonths'] = ['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'];
+        $this->chart->lang['shortMonths'] = ['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'];
         $regex = '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -48,9 +48,14 @@ final class LangTest extends AbstractChartTestCase
      */
     public function testWeekDays(): void
     {
-        $chart = new Highchart();
-        $chart->lang['weekdays'] = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+        $this->chart->lang['weekdays'] = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
         $regex = '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

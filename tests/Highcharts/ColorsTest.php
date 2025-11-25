@@ -18,6 +18,8 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the colors option.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class ColorsTest extends AbstractChartTestCase
 {
@@ -26,9 +28,14 @@ final class ColorsTest extends AbstractChartTestCase
      */
     public function testColors(): void
     {
-        $chart = new Highchart();
-        $chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
+        $this->chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
         $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

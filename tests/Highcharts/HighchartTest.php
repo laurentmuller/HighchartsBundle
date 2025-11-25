@@ -18,7 +18,9 @@ use HighchartsBundle\Highcharts\Highchart;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
- * This class hold Unit Tests for the Highchart Class.
+ * This class hold Unit Tests for the Highchart class.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class HighchartTest extends AbstractChartTestCase
 {
@@ -27,9 +29,8 @@ final class HighchartTest extends AbstractChartTestCase
      */
     public function testJquery(): void
     {
-        $chart = new Highchart();
         $regex = '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -37,9 +38,8 @@ final class HighchartTest extends AbstractChartTestCase
      */
     public function testMooTools(): void
     {
-        $chart = new Highchart();
         $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($chart, $regex, Engine::MOOTOOLS);
+        self::assertChartMatchesRegularExpression($this->chart, $regex, Engine::MOOTOOLS);
     }
 
     /**
@@ -47,9 +47,8 @@ final class HighchartTest extends AbstractChartTestCase
      */
     public function testNoEngine(): void
     {
-        $chart = new Highchart();
         $regex = '/const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($chart, $regex, Engine::NONE);
+        self::assertChartMatchesRegularExpression($this->chart, $regex, Engine::NONE);
     }
 
     /**
@@ -57,10 +56,15 @@ final class HighchartTest extends AbstractChartTestCase
      */
     public function testSetGet(): void
     {
-        $chart = new Highchart();
-        $chart->credits['enabled'] = false;
-        self::assertFalse($chart->credits['enabled']);
-        $chart->credits['enabled'] = true;
-        self::assertTrue($chart->credits['enabled']);
+        $this->chart->credits['enabled'] = false;
+        self::assertFalse($this->chart->credits['enabled']);
+        $this->chart->credits['enabled'] = true;
+        self::assertTrue($this->chart->credits['enabled']);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

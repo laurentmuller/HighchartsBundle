@@ -17,15 +17,17 @@ use HighchartsBundle\Highcharts\ChartOption;
 use HighchartsBundle\Highcharts\Highstock;
 use HighchartsBundle\Tests\AbstractChartTestCase;
 
+/**
+ * @extends AbstractChartTestCase<Highstock>
+ */
 final class CreditsTest extends AbstractChartTestCase
 {
-    private ?Highstock $chart = null;
-    private ?ChartOption $credits = null;
+    private ChartOption $credits;
 
     #[\Override]
     protected function setUp(): void
     {
-        $this->chart = new Highstock();
+        parent::setUp();
         $this->credits = $this->chart->credits;
     }
 
@@ -93,5 +95,11 @@ final class CreditsTest extends AbstractChartTestCase
         self::assertSame($text, $this->credits->text);
         $regex = '/"text":"Highcharts.com"/';
         self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highstock
+    {
+        return new Highstock();
     }
 }

@@ -18,6 +18,8 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the global option.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class GlobalTest extends AbstractChartTestCase
 {
@@ -26,15 +28,14 @@ final class GlobalTest extends AbstractChartTestCase
      */
     public function testGlobal(): void
     {
-        $chart = new Highchart();
-        $chart->global['useUTC'] = 'true';
+        $this->chart->global['useUTC'] = 'true';
         $regex = '/global: \{"useUTC":"true"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
 
         // $chart->global->useUTC('false');
-        $chart->global['useUTC'] = 'false';
+        $this->chart->global['useUTC'] = 'false';
         $regex = '/global: \{"useUTC":"false"\}/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     /**
@@ -42,9 +43,14 @@ final class GlobalTest extends AbstractChartTestCase
      */
     public function testLang(): void
     {
-        $chart = new Highchart();
-        $chart->lang['noData'] = 'No data to display';
+        $this->chart->lang['noData'] = 'No data to display';
         $regex = '/"noData":"No data to display"/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }

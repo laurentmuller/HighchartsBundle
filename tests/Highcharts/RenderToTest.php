@@ -18,21 +18,27 @@ use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the 'renderTo' property.
+ *
+ * @extends AbstractChartTestCase<Highchart>
  */
 final class RenderToTest extends AbstractChartTestCase
 {
     public function testWithDefault(): void
     {
-        $chart = new Highchart();
         $regex = '/const chart = new Highcharts/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
     }
 
     public function testWithValue(): void
     {
-        $chart = new Highchart();
-        $chart->chart['renderTo'] = 'myChart';
+        $this->chart->chart['renderTo'] = 'myChart';
         $regex = '/const myChart = new Highcharts/';
-        self::assertChartMatchesRegularExpression($chart, $regex);
+        self::assertChartMatchesRegularExpression($this->chart, $regex);
+    }
+
+    #[\Override]
+    protected function createChart(): Highchart
+    {
+        return new Highchart();
     }
 }
