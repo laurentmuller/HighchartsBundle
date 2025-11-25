@@ -28,7 +28,7 @@ $paths = [
     __DIR__ . '/rector.php',
 ];
 
-$skips = [
+$skip = [
     PreferPHPUnitThisCallRector::class,
     // CODING STYLE
     NewlineAfterStatementRector::class,
@@ -63,7 +63,7 @@ return RectorConfig::configure()
     ->withCache(__DIR__ . '/cache/rector')
     ->withRootFiles()
     ->withPaths($paths)
-    ->withSkip($skips)
+    ->withSkip($skip)
     ->withSets($sets)
     ->withRules($rules)
     ->withComposerBased(
@@ -73,7 +73,6 @@ return RectorConfig::configure()
     )->withPhpSets(
         php82: true
     )->withAttributesSets(
-        // annotations to attributes
         symfony: true,
         phpunit: true
     );

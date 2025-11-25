@@ -16,13 +16,13 @@ namespace HighchartsBundle\Highcharts;
 /**
  * Chart options.
  *
- * @template-extends \ArrayObject<string, mixed>
+ * @template-extends \ArrayObject<array-key, mixed>
  */
 class ChartOption extends \ArrayObject
 {
     /**
-     * @param non-empty-string     $name the option name
-     * @param array<string, mixed> $data the initial values
+     * @param non-empty-string        $name the option name
+     * @param array<array-key, mixed> $data the initial values
      */
     public function __construct(private readonly string $name, array $data = [])
     {
@@ -72,7 +72,7 @@ class ChartOption extends \ArrayObject
     }
 
     /**
-     * @return array<string, mixed>
+     * @return array<array-key, mixed>
      */
     public function getData(): array
     {
@@ -90,8 +90,8 @@ class ChartOption extends \ArrayObject
     /**
      * Create a new instance.
      *
-     * @param non-empty-string     $name the option name
-     * @param array<string, mixed> $data the initial values
+     * @param non-empty-string        $name the option name
+     * @param array<array-key, mixed> $data the initial values
      */
     public static function instance(string $name, array $data = []): self
     {
@@ -104,7 +104,7 @@ class ChartOption extends \ArrayObject
     }
 
     /**
-     * @param array<string, mixed> $data
+     * @param array<array-key, mixed> $data
      */
     public function merge(array $data): void
     {

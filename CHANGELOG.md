@@ -1,5 +1,9 @@
 # Change log
 
+## 3.0.4 - 2025-11-25
+
+- Modified `ChartOption` template.
+
 ## 3.0.3 - 2025-11-25
 
 - Simplified `ChartOption` class and updated tests.
