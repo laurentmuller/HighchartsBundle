@@ -13,25 +13,12 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highstock;
 
-use HighchartsBundle\Highcharts\Highstock;
-use HighchartsBundle\Tests\AbstractChartTestCase;
-
-/**
- * @extends AbstractChartTestCase<Highstock>
- */
-final class ColorsTest extends AbstractChartTestCase
+final class ColorsTest extends AbstractHighstockTestCase
 {
     public function testColors(): void
     {
-        $colors = ['#FF0000', '#00FF00', '#0000FF'];
-        $this->chart->colors = $colors;
+        $this->chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
         $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highstock
-    {
-        return new Highstock();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

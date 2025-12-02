@@ -13,32 +13,21 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
-
 /**
  * This class hold Unit Tests for the 'renderTo' property.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class RenderToTest extends AbstractChartTestCase
+final class RenderToTest extends AbstractHighchartTestCase
 {
     public function testWithDefault(): void
     {
         $regex = '/const chart = new Highcharts/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testWithValue(): void
     {
         $this->chart->chart['renderTo'] = 'myChart';
         $regex = '/const myChart = new Highcharts/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

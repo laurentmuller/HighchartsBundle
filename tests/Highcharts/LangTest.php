@@ -13,15 +13,10 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
-
 /**
  * This class hold Unit Tests for the lang option.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class LangTest extends AbstractChartTestCase
+final class LangTest extends AbstractHighchartTestCase
 {
     /**
      * Set localized month names.
@@ -30,7 +25,7 @@ final class LangTest extends AbstractChartTestCase
     {
         $this->chart->lang['months'] = ['Janvier', 'Fevrier', 'Mars', 'Avril', 'Mai', 'Juin',  'Juillet', 'Aout', 'Septembre', 'Octobre', 'Novembre', 'Decembre'];
         $regex = '/lang: \{"months":\["Janvier","Fevrier","Mars","Avril","Mai","Juin","Juillet","Aout","Septembre","Octobre","Novembre","Decembre"\]\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -40,7 +35,7 @@ final class LangTest extends AbstractChartTestCase
     {
         $this->chart->lang['shortMonths'] = ['Jan', 'Fev', 'Mars', 'Avril', 'Mai', 'Juin',  'Juil', 'Aout', 'Sept', 'Oct', 'Nov', 'Dec'];
         $regex = '/lang: \{"shortMonths":\["Jan","Fev","Mars","Avril","Mai","Juin","Juil","Aout","Sept","Oct","Nov","Dec"\]\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -50,12 +45,6 @@ final class LangTest extends AbstractChartTestCase
     {
         $this->chart->lang['weekdays'] = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
         $regex = '/lang: \{"weekdays":\["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"\]\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

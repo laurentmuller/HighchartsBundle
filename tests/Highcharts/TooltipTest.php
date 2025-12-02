@@ -14,15 +14,11 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\ChartExpression;
-use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the tooltip option.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class TooltipTest extends AbstractChartTestCase
+final class TooltipTest extends AbstractHighchartTestCase
 {
     /**
      * Animation option (true/false).
@@ -31,11 +27,11 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['animation'] = 'true';
         $regex = '/tooltip: \{"animation":"true"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['animation'] = 'false';
         $regex = '/tooltip: \{"animation":"false"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -45,7 +41,7 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['backgroundColor'] = 'rgba(255, 255, 255, .85)';
         $regex = '/tooltip: \{"backgroundColor":"rgba\(255, 255, 255, .85\)"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -55,15 +51,15 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['borderColor'] = 'null';
         $regex = '/tooltip: \{"borderColor":"null"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['borderColor'] = 'auto';
         $regex = '/tooltip: \{"borderColor":"auto"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['borderColor'] = 'rgba(255, 255, 255, .85)';
         $regex = '/tooltip: \{"borderColor":"rgba\(255, 255, 255, .85\)"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -73,11 +69,11 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['borderRadius'] = 5;
         $regex = '/tooltip: \{"borderRadius":5\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['borderRadius'] = '5';
         $regex = '/tooltip: \{"borderRadius":"5"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -87,11 +83,11 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['borderWidth'] = 5;
         $regex = '/tooltip: \{"borderWidth":5\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['borderWidth'] = '5';
         $regex = '/tooltip: \{"borderWidth":"5"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -101,11 +97,11 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['enabled'] = 'true';
         $regex = '/tooltip: \{"enabled":"true"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['enabled'] = 'false';
         $regex = '/tooltip: \{"enabled":"false"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -116,7 +112,7 @@ final class TooltipTest extends AbstractChartTestCase
         $func = new ChartExpression('function () { return 1; }');
         $this->chart->tooltip['formatter'] = $func;
         $regex = '/tooltip: \{"formatter":function\s?\(\)\s?\{ return 1; \}\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -126,16 +122,10 @@ final class TooltipTest extends AbstractChartTestCase
     {
         $this->chart->tooltip['shadow'] = 'true';
         $regex = '/tooltip: \{"shadow":"true"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->tooltip['shadow'] = 'false';
         $regex = '/tooltip: \{"shadow":"false"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

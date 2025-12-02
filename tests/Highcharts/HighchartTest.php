@@ -15,14 +15,11 @@ namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\Engine;
 use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
 
 /**
  * This class hold Unit Tests for the Highchart class.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class HighchartTest extends AbstractChartTestCase
+final class HighchartTest extends AbstractHighchartTestCase
 {
     /**
      * Render chart using jQuery.
@@ -30,7 +27,7 @@ final class HighchartTest extends AbstractChartTestCase
     public function testJquery(): void
     {
         $regex = '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -39,7 +36,7 @@ final class HighchartTest extends AbstractChartTestCase
     public function testMooTools(): void
     {
         $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex, Engine::MOOTOOLS);
+        $this->assertChartMatchesRegularExpression($regex, engine: Engine::MOOTOOLS);
     }
 
     /**
@@ -48,7 +45,7 @@ final class HighchartTest extends AbstractChartTestCase
     public function testNoEngine(): void
     {
         $regex = '/const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex, Engine::NONE);
+        $this->assertChartMatchesRegularExpression($regex, engine: Engine::NONE);
     }
 
     /**
@@ -60,11 +57,5 @@ final class HighchartTest extends AbstractChartTestCase
         self::assertFalse($this->chart->credits['enabled']);
         $this->chart->credits['enabled'] = true;
         self::assertTrue($this->chart->credits['enabled']);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
     }
 }

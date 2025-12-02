@@ -34,15 +34,16 @@ abstract class AbstractChartTestCase extends TestCase
     }
 
     /**
-     * @param TChart $chart
+     * @param TChart|null $chart
      */
-    protected static function assertChartMatchesRegularExpression(
-        ChartInterface $chart,
-        string $regex,
+    protected function assertChartMatchesRegularExpression(
+        string $pattern,
+        ?ChartInterface $chart = null,
         Engine $engine = Engine::JQUERY
     ): void {
-        $result = $chart->render($engine);
-        self::assertMatchesRegularExpression($regex, $result);
+        $chart ??= $this->chart;
+        $actual = $chart->render($engine);
+        self::assertMatchesRegularExpression($pattern, $actual);
     }
 
     /**

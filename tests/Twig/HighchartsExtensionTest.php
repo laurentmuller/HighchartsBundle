@@ -27,23 +27,21 @@ final class HighchartsExtensionTest extends TestCase
     /**
      * @throws SyntaxError
      */
-    public function testDefaultEngine(): void
+    public function testEngineDefault(): void
     {
-        $actual = $this->invokeChart();
-        self::assertMatchesRegularExpression(
-            '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
+        $this->assertChartMatchesRegularExpression(
+            '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/'
         );
     }
 
     /**
      * @throws SyntaxError
      */
-    public function testInvalidEngine(): void
+    public function testEngineInvalid(): void
     {
         $this->expectException(SyntaxError::class);
         $this->expectExceptionMessage('Invalid chart engine: "fake".');
-        $this->invokeChart('fake');
+        $this->assertChartMatchesRegularExpression('', 'fake');
     }
 
     /**
@@ -52,10 +50,9 @@ final class HighchartsExtensionTest extends TestCase
     public function testJQueryEnum(): void
     {
         // render with jquery explicitly
-        $actual = $this->invokeChart(Engine::JQUERY);
-        self::assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
+            Engine::JQUERY
         );
     }
 
@@ -64,10 +61,9 @@ final class HighchartsExtensionTest extends TestCase
      */
     public function testJQueryString(): void
     {
-        $actual = $this->invokeChart('jquery');
-        self::assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
+            'jquery'
         );
     }
 
@@ -77,10 +73,9 @@ final class HighchartsExtensionTest extends TestCase
     public function testMootoolsEnum(): void
     {
         // render with mootools
-        $actual = $this->invokeChart(Engine::MOOTOOLS);
-        self::assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
+            Engine::MOOTOOLS
         );
     }
 
@@ -89,21 +84,22 @@ final class HighchartsExtensionTest extends TestCase
      */
     public function testMootoolsString(): void
     {
-        $actual = $this->invokeChart('mootools');
-        self::assertMatchesRegularExpression(
+        $this->assertChartMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
-            $actual
+            'mootools'
         );
     }
 
     /**
      * @throws SyntaxError
      */
-    private function invokeChart(Engine|string|null $engine = null): string
-    {
+    private function assertChartMatchesRegularExpression(
+        string $pattern,
+        Engine|string|null $engine = null
+    ): void {
         $chart = new Highchart();
         $extension = new HighchartsExtension();
-
-        return $extension->chart($chart, $engine ?? Engine::JQUERY);
+        $actual = $extension->chart($chart, $engine ?? Engine::JQUERY);
+        self::assertMatchesRegularExpression($pattern, $actual);
     }
 }

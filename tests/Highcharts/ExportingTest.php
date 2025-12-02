@@ -13,15 +13,10 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
-
 /**
  * This class hold Unit Tests for the exporting option.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class ExportingTest extends AbstractChartTestCase
+final class ExportingTest extends AbstractHighchartTestCase
 {
     /**
      * Buttons option.
@@ -31,20 +26,20 @@ final class ExportingTest extends AbstractChartTestCase
         // align option (string - left/center/right)
         $this->chart->exporting['buttons'] = ['exportButton' => ['align' => 'center']];
         $regex = '/exporting: \{"buttons":\{"exportButton":\{"align":"center"\}\}\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['buttons'] = ['printButton' => ['align' => 'center']];
         $regex = '/exporting: \{"buttons":\{"printButton":\{"align":"center"\}\}\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         // backgroundColor option
         $this->chart->exporting['buttons'] = ['exportButton' => ['backgroundColor' => 'blue']];
         $regex = '/exporting: \{"buttons":\{"exportButton":\{"backgroundColor":"blue"\}\}\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['buttons'] = ['printButton' => ['backgroundColor' => 'blue']];
         $regex = '/exporting: \{"buttons":\{"printButton":\{"backgroundColor":"blue"\}\}\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -54,11 +49,11 @@ final class ExportingTest extends AbstractChartTestCase
     {
         $this->chart->exporting['enabled'] = true;
         $regex = '/exporting: \{"enabled":true\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['enabled'] = false;
         $regex = '/exporting: \{"enabled":false\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -68,7 +63,7 @@ final class ExportingTest extends AbstractChartTestCase
     {
         $this->chart->exporting['filename'] = 'graph';
         $regex = '/exporting: \{"filename":"graph"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -78,19 +73,19 @@ final class ExportingTest extends AbstractChartTestCase
     {
         $this->chart->exporting['type'] = 'image/png';
         $regex = '/exporting: \{"type":"image\/png"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['type'] = 'image/jpeg';
         $regex = '/exporting: \{"type":"image\/jpeg"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['type'] = 'application/pdf';
         $regex = '/exporting: \{"type":"application\/pdf"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->exporting['type'] = 'image/svg+xml';
         $regex = '/exporting: \{"type":"image\/svg\+xml"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -100,7 +95,7 @@ final class ExportingTest extends AbstractChartTestCase
     {
         $this->chart->exporting['url'] = 'https://www.google.com';
         $regex = '/exporting: \{"url":"https:\/\/www.google.com"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -110,12 +105,6 @@ final class ExportingTest extends AbstractChartTestCase
     {
         $this->chart->exporting['width'] = 300;
         $regex = '/exporting: \{"width":300\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

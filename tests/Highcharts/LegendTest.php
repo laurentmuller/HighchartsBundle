@@ -13,15 +13,10 @@ declare(strict_types=1);
 
 namespace HighchartsBundle\Tests\Highcharts;
 
-use HighchartsBundle\Highcharts\Highchart;
-use HighchartsBundle\Tests\AbstractChartTestCase;
-
 /**
  * This class hold Unit Tests for the legend option.
- *
- * @extends AbstractChartTestCase<Highchart>
  */
-final class LegendTest extends AbstractChartTestCase
+final class LegendTest extends AbstractHighchartTestCase
 {
     /**
      * Align option (left/center/right).
@@ -30,15 +25,15 @@ final class LegendTest extends AbstractChartTestCase
     {
         $this->chart->legend['align'] = 'left';
         $regex = '/legend: \{"align":"left"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['align'] = 'center';
         $regex = '/legend: \{"align":"center"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['align'] = 'right';
         $regex = '/legend: \{"align":"right"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -48,11 +43,11 @@ final class LegendTest extends AbstractChartTestCase
     {
         $this->chart->legend['enabled'] = false;
         $regex = '/legend: \{"enabled":false\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['enabled'] = true;
         $regex = '/legend: \{"enabled":true\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -62,16 +57,10 @@ final class LegendTest extends AbstractChartTestCase
     {
         $this->chart->legend['layout'] = 'horizontal';
         $regex = '/legend: \{"layout":"horizontal"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['layout'] = 'vertical';
         $regex = '/legend: \{"layout":"vertical"\}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highchart
-    {
-        return new Highchart();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }

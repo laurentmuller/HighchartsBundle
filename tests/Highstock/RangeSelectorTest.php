@@ -14,13 +14,8 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highstock;
 
 use HighchartsBundle\Highcharts\ChartOption;
-use HighchartsBundle\Highcharts\Highstock;
-use HighchartsBundle\Tests\AbstractChartTestCase;
 
-/**
- * @extends AbstractChartTestCase<Highstock>
- */
-final class RangeSelectorTest extends AbstractChartTestCase
+final class RangeSelectorTest extends AbstractHighstockTestCase
 {
     private ChartOption $range;
 
@@ -43,7 +38,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->buttons($buttons);
         self::assertSame($buttons, $this->range->buttons);
         $regex = '/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testButtonSpacing(): void
@@ -54,7 +49,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->buttonSpacing($spacing);
         self::assertSame($spacing, $this->range->buttonSpacing);
         $regex = '/"buttonSpacing":0/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testEnabled(): void
@@ -64,12 +59,12 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->enabled(true);
         self::assertTrue($this->range->enabled);
         $regex = '/"enabled":true/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->range->enabled(false);
         self::assertFalse($this->range->enabled);
         $regex = '/"enabled":false/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputBoxBorderColor(): void
@@ -80,7 +75,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputBoxBorderColor($color);
         self::assertSame($color, $this->range->inputBoxBorderColor);
         $regex = '/"inputBoxBorderColor":"silver"/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputBoxHeight(): void
@@ -91,7 +86,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputBoxHeight($height);
         self::assertSame($height, $this->range->inputBoxHeight);
         $regex = '/"inputBoxHeight":16/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputBoxWidth(): void
@@ -102,7 +97,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputBoxWidth($width);
         self::assertSame($width, $this->range->inputBoxWidth);
         $regex = '/"inputBoxWidth":16/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputDateFormat(): void
@@ -113,7 +108,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputDateFormat($format);
         self::assertSame($format, $this->range->inputDateFormat);
         $regex = '/"inputDateFormat":"%b %e, %Y"/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputEditDateFormat(): void
@@ -124,7 +119,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputEditDateFormat($format);
         self::assertSame($format, $this->range->inputEditDateFormat);
         $regex = '/"inputEditDateFormat":"%b %e, %Y"/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputEnabled(): void
@@ -134,12 +129,12 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->inputEnabled(true);
         self::assertTrue($this->range->inputEnabled);
         $regex = '/"inputEnabled":true/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
 
         $this->range->inputEnabled(false);
         self::assertFalse($this->range->inputEnabled);
         $regex = '/"inputEnabled":false/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testInputPosition(): void
@@ -152,7 +147,7 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->position($position);
         self::assertSame($position, $this->range->position);
         $regex = '/"position":{"align":"right"}/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
+        $this->assertChartMatchesRegularExpression($regex);
     }
 
     public function testSelected(): void
@@ -163,12 +158,6 @@ final class RangeSelectorTest extends AbstractChartTestCase
         $this->range->selected($index);
         self::assertSame($index, $this->range->selected);
         $regex = '/"selected":3/';
-        self::assertChartMatchesRegularExpression($this->chart, $regex);
-    }
-
-    #[\Override]
-    protected function createChart(): Highstock
-    {
-        return new Highstock();
+        $this->assertChartMatchesRegularExpression($regex);
     }
 }
