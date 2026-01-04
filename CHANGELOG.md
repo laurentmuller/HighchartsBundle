@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Rector to version 3.0.0.
 - Updated tests.
 
 ## 3.0.4 - 2025-11-25

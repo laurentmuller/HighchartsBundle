@@ -55,6 +55,7 @@ $rules = [
     'native_function_invocation' => ['include' => ['@internal', 'all']],
     'header_comment' => ['header' => $comment, 'location' => 'after_open'],
     'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
+    'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
 ];
 
 $paths = [
