@@ -44,7 +44,7 @@ class ChartOption extends \ArrayObject
      */
     public function __isset(string $key): bool
     {
-        return $this->offsetExists($key);
+        return isset($this[$key]);
     }
 
     /**

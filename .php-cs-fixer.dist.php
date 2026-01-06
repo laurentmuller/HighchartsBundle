@@ -40,7 +40,10 @@ $rules = [
     //  Rules override
     // --------------------------------------------------------------
     'strict_param' => true,
+    'php_unit_strict' => true,
+    'no_useless_else' => true,
     'no_unused_imports' => true,
+    'no_useless_return' => true,
     'strict_comparison' => true,
     'ordered_imports' => true,
     'ordered_interfaces' => true,
@@ -76,8 +79,8 @@ $finder = Finder::create()
 $config = new Config();
 
 return $config
-    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setCacheFile(__DIR__ . '/cache/php-cs-fixer/.php-cs-fixer.cache')
+    ->setParallelConfig(ParallelConfigFactory::detect())
     ->setUnsupportedPhpVersionAllowed(false)
     ->setRiskyAllowed(true)
     ->setFinder($finder)

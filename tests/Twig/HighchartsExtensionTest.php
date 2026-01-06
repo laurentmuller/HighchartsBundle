@@ -27,6 +27,19 @@ final class HighchartsExtensionTest extends TestCase
     /**
      * @throws SyntaxError
      */
+    public static function assertChartMatchesRegularExpression(
+        string $pattern,
+        Engine|string|null $engine = null
+    ): void {
+        $chart = new Highchart();
+        $extension = new HighchartsExtension();
+        $actual = $extension->chart($chart, $engine ?? Engine::JQUERY);
+        self::assertMatchesRegularExpression($pattern, $actual);
+    }
+
+    /**
+     * @throws SyntaxError
+     */
     public function testEngineDefault(): void
     {
         $this->assertChartMatchesRegularExpression(
@@ -88,18 +101,5 @@ final class HighchartsExtensionTest extends TestCase
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             'mootools'
         );
-    }
-
-    /**
-     * @throws SyntaxError
-     */
-    private function assertChartMatchesRegularExpression(
-        string $pattern,
-        Engine|string|null $engine = null
-    ): void {
-        $chart = new Highchart();
-        $extension = new HighchartsExtension();
-        $actual = $extension->chart($chart, $engine ?? Engine::JQUERY);
-        self::assertMatchesRegularExpression($pattern, $actual);
     }
 }
