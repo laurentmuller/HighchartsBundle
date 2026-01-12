@@ -33,16 +33,12 @@ abstract class AbstractChartTestCase extends TestCase
         $this->chart = $this->createChart();
     }
 
-    /**
-     * @param TChart|null $chart
-     */
-    protected function assertChartMatchesRegularExpression(
-        string $pattern,
-        ?ChartInterface $chart = null,
-        Engine $engine = Engine::JQUERY
-    ): void {
-        $chart ??= $this->chart;
-        $actual = $chart->render($engine);
+    protected function assertChartMatchesRegularExpression(string $pattern, Engine $engine = Engine::JQUERY): void
+    {
+        $actual = $this->chart->render($engine);
+        if (!\str_starts_with($pattern, '/')) {
+            $pattern = '/' . \preg_quote($pattern, '/') . '/';
+        }
         self::assertMatchesRegularExpression($pattern, $actual);
     }
 

@@ -24,12 +24,12 @@ final class GlobalTest extends AbstractHighchartTestCase
     public function testGlobal(): void
     {
         $this->chart->global['useUTC'] = 'true';
-        $regex = '/global: \{"useUTC":"true"\}/';
+        $regex = 'global: {"useUTC":"true"}';
         $this->assertChartMatchesRegularExpression($regex);
 
         // $chart->global->useUTC('false');
         $this->chart->global['useUTC'] = 'false';
-        $regex = '/global: \{"useUTC":"false"\}/';
+        $regex = 'global: {"useUTC":"false"}';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -39,7 +39,7 @@ final class GlobalTest extends AbstractHighchartTestCase
     public function testLang(): void
     {
         $this->chart->lang['noData'] = 'No data to display';
-        $regex = '/"noData":"No data to display"/';
+        $regex = '"noData":"No data to display"';
         $this->assertChartMatchesRegularExpression($regex);
     }
 }

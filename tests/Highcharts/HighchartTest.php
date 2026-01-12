@@ -14,7 +14,6 @@ declare(strict_types=1);
 namespace HighchartsBundle\Tests\Highcharts;
 
 use HighchartsBundle\Highcharts\Engine;
-use HighchartsBundle\Highcharts\Highchart;
 
 /**
  * This class hold Unit Tests for the Highchart class.
@@ -35,8 +34,8 @@ final class HighchartTest extends AbstractHighchartTestCase
      */
     public function testMooTools(): void
     {
-        $regex = '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
-        $this->assertChartMatchesRegularExpression($regex, engine: Engine::MOOTOOLS);
+        $regex = '/window.addEvent\(\'domready\', function \(\) {\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/';
+        $this->assertChartMatchesRegularExpression($regex, Engine::MOOTOOLS);
     }
 
     /**
@@ -45,7 +44,7 @@ final class HighchartTest extends AbstractHighchartTestCase
     public function testNoEngine(): void
     {
         $regex = '/const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);/';
-        $this->assertChartMatchesRegularExpression($regex, engine: Engine::NONE);
+        $this->assertChartMatchesRegularExpression($regex, Engine::NONE);
     }
 
     /**

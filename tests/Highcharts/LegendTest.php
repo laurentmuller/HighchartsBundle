@@ -24,15 +24,15 @@ final class LegendTest extends AbstractHighchartTestCase
     public function testAlign(): void
     {
         $this->chart->legend['align'] = 'left';
-        $regex = '/legend: \{"align":"left"\}/';
+        $regex = 'legend: {"align":"left"}';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['align'] = 'center';
-        $regex = '/legend: \{"align":"center"\}/';
+        $regex = 'legend: {"align":"center"}';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['align'] = 'right';
-        $regex = '/legend: \{"align":"right"\}/';
+        $regex = 'legend: {"align":"right"}';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -42,11 +42,11 @@ final class LegendTest extends AbstractHighchartTestCase
     public function testEnabledDisabled(): void
     {
         $this->chart->legend['enabled'] = false;
-        $regex = '/legend: \{"enabled":false\}/';
+        $regex = 'legend: {"enabled":false}';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['enabled'] = true;
-        $regex = '/legend: \{"enabled":true\}/';
+        $regex = 'legend: {"enabled":true}';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -56,11 +56,11 @@ final class LegendTest extends AbstractHighchartTestCase
     public function testLayout(): void
     {
         $this->chart->legend['layout'] = 'horizontal';
-        $regex = '/legend: \{"layout":"horizontal"\}/';
+        $regex = 'legend: {"layout":"horizontal"}';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->chart->legend['layout'] = 'vertical';
-        $regex = '/legend: \{"layout":"vertical"\}/';
+        $regex = 'legend: {"layout":"vertical"}';
         $this->assertChartMatchesRegularExpression($regex);
     }
 }

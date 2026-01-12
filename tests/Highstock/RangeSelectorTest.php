@@ -37,7 +37,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->buttons($buttons);
         self::assertSame($buttons, $this->range->buttons);
-        $regex = '/"buttons":\[{"type":"month","count":3,"text":"3m"}\]/';
+        $regex = '"buttons":[{"type":"month","count":3,"text":"3m"}]';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -48,7 +48,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->buttonSpacing($spacing);
         self::assertSame($spacing, $this->range->buttonSpacing);
-        $regex = '/"buttonSpacing":0/';
+        $regex = '"buttonSpacing":0';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -58,12 +58,12 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->enabled(true);
         self::assertTrue($this->range->enabled);
-        $regex = '/"enabled":true/';
+        $regex = '"enabled":true';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->range->enabled(false);
         self::assertFalse($this->range->enabled);
-        $regex = '/"enabled":false/';
+        $regex = '"enabled":false';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -74,7 +74,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputBoxBorderColor($color);
         self::assertSame($color, $this->range->inputBoxBorderColor);
-        $regex = '/"inputBoxBorderColor":"silver"/';
+        $regex = '"inputBoxBorderColor":"silver"';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -85,7 +85,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputBoxHeight($height);
         self::assertSame($height, $this->range->inputBoxHeight);
-        $regex = '/"inputBoxHeight":16/';
+        $regex = '"inputBoxHeight":16';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -96,7 +96,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputBoxWidth($width);
         self::assertSame($width, $this->range->inputBoxWidth);
-        $regex = '/"inputBoxWidth":16/';
+        $regex = '"inputBoxWidth":16';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -107,7 +107,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputDateFormat($format);
         self::assertSame($format, $this->range->inputDateFormat);
-        $regex = '/"inputDateFormat":"%b %e, %Y"/';
+        $regex = '"inputDateFormat":"%b %e, %Y"';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -118,7 +118,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputEditDateFormat($format);
         self::assertSame($format, $this->range->inputEditDateFormat);
-        $regex = '/"inputEditDateFormat":"%b %e, %Y"/';
+        $regex = '"inputEditDateFormat":"%b %e, %Y"';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -128,12 +128,12 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->inputEnabled(true);
         self::assertTrue($this->range->inputEnabled);
-        $regex = '/"inputEnabled":true/';
+        $regex = '"inputEnabled":true';
         $this->assertChartMatchesRegularExpression($regex);
 
         $this->range->inputEnabled(false);
         self::assertFalse($this->range->inputEnabled);
-        $regex = '/"inputEnabled":false/';
+        $regex = '"inputEnabled":false';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -146,7 +146,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->position($position);
         self::assertSame($position, $this->range->position);
-        $regex = '/"position":{"align":"right"}/';
+        $regex = '"position":{"align":"right"}';
         $this->assertChartMatchesRegularExpression($regex);
     }
 
@@ -157,7 +157,7 @@ final class RangeSelectorTest extends AbstractHighstockTestCase
         self::assertNotNull($this->range);
         $this->range->selected($index);
         self::assertSame($index, $this->range->selected);
-        $regex = '/"selected":3/';
+        $regex = '"selected":3';
         $this->assertChartMatchesRegularExpression($regex);
     }
 }

@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Simplified tests.
 - Updated `ChartOption` class.
 - Updated Rector to version 3.0.0.
 - Updated tests.

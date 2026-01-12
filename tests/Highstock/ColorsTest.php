@@ -18,7 +18,7 @@ final class ColorsTest extends AbstractHighstockTestCase
     public function testColors(): void
     {
         $this->chart->colors = ['#FF0000', '#00FF00', '#0000FF'];
-        $regex = '/colors: \["#FF0000","#00FF00","#0000FF"\]/';
+        $regex = 'colors: ["#FF0000","#00FF00","#0000FF"]';
         $this->assertChartMatchesRegularExpression($regex);
     }
 }
