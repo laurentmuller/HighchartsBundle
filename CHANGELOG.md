@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Removed PhpStan type-coverage.
+- Updated Symfony to version 7.4.5.
 - Simplified tests.
 - Updated `ChartOption` class.
 - Updated Rector to version 3.0.0.
