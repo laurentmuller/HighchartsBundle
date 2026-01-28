@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- Removed PhpStan type-coverage.
+- Updated PhpStan configuration.
+- ~~Removed PhpStan type-coverage.~~
 - Updated Symfony to version 7.4.5.
 - Simplified tests.
 - Updated `ChartOption` class.

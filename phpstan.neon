@@ -7,3 +7,10 @@ parameters:
 
     reportUnmatchedIgnoredErrors: true
     checkUninitializedProperties: true
+
+    type_coverage:
+        constant: 0 # PHP 8.3
+        declare: 100
+        param: 100
+        property: 100
+        return: 100
