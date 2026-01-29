@@ -20,6 +20,7 @@ use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveParentDelegatingConstructorRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
+use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\NoSetupWithParentCallOverrideRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
 use Rector\Symfony\Set\TwigSetList;
@@ -42,6 +43,8 @@ $skip = [
     CatchExceptionNameMatchingTypeRector::class,
     // allow delegate constructor
     RemoveParentDelegatingConstructorRector::class,
+    // allow override attribute for setUp method in tests
+    NoSetupWithParentCallOverrideRector::class,
 ];
 
 $sets = [

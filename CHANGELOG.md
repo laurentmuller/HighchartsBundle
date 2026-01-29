@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Rector configuration for version 2.3.5.
 - Updated PhpStan configuration.
 - ~~Removed PhpStan type-coverage.~~
 - Updated Symfony to version 7.4.5.
