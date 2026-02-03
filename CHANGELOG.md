@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 3.0.5 - 2026-02-03
 
 - Updated Rector configuration for version 2.3.5.
 - Updated PhpStan configuration.
@@ -232,7 +232,7 @@
 ## 2.20.1 - 2023-11-28
 
 - Added chart class property
-- Added lint markdown action
+- Added lint Markdown action
 
 ## 2.20.0 - 2023-11-28
 

@@ -1,12 +1,20 @@
 parameters:
-    level: 10
-    phpVersion: 80300 # to check missing override method attribute
+    level: max
+    phpVersion: 80219
     tmpDir: cache/phpstan
     paths:
         - src
 
-    reportUnmatchedIgnoredErrors: true
+    checkFunctionNameCase: true
+    checkInternalClassCaseSensitivity: true
+    checkMissingOverrideMethodAttribute: true
     checkUninitializedProperties: true
+    checkTooWideReturnTypesInProtectedAndPublicMethods: true
+    reportMaybesInMethodSignatures: true
+    reportMaybesInPropertyPhpDocTypes: true
+    reportStaticMethodSignatures: true
+    reportUnmatchedIgnoredErrors: true
+    checkDynamicProperties: true
 
     type_coverage:
         constant: 0 # PHP 8.3
