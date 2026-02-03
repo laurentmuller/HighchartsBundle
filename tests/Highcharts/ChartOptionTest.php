@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 
 final class ChartOptionTest extends TestCase
 {
-    private const NAME = 'name';
-    private const VALUE = 'value';
+    private const string NAME = 'name';
+    private const string VALUE = 'value';
 
     public function testAccessArray(): void
     {
@@ -124,7 +124,7 @@ final class ChartOptionTest extends TestCase
     public function testOffsetGet(): void
     {
         $option = $this->createOption();
-        self::assertNull($option->offsetGet(self::NAME));
+        self::assertNull(@$option->offsetGet(self::NAME));
         $option[self::NAME] = self::VALUE;
         self::assertSame(self::VALUE, $option->offsetGet(self::NAME));
     }
@@ -142,7 +142,7 @@ final class ChartOptionTest extends TestCase
         $option[self::NAME] = self::VALUE;
         self::assertSame(self::VALUE, $option[self::NAME]);
         $option->offsetUnset(self::NAME);
-        self::assertNull($option->offsetGet(self::NAME));
+        self::assertNull(@$option->offsetGet(self::NAME));
     }
 
     public function testSet(): void
@@ -158,7 +158,7 @@ final class ChartOptionTest extends TestCase
         $option[self::NAME] = self::VALUE;
         self::assertSame(self::VALUE, $option[self::NAME]);
         $option->__unset(self::NAME);
-        self::assertNull($option->offsetGet(self::NAME));
+        self::assertNull(@$option->offsetGet(self::NAME));
     }
 
     private function createOption(): ChartOption

@@ -19,16 +19,16 @@ namespace HighchartsBundle\Highcharts;
 abstract class AbstractChart implements ChartInterface
 {
     // the script end line
-    private const END_LINE = ",\n";
+    private const string END_LINE = ",\n";
 
     // the half-space prefix
-    private const HALF_SPACE = '    ';
+    private const string HALF_SPACE = '    ';
 
     // the script new line
-    private const NEW_LINE = "\n";
+    private const string NEW_LINE = "\n";
 
     // the space prefix
-    private const SPACE = '        ';
+    private const string SPACE = '        ';
 
     /**
      * Options for configuring accessibility for the chart.

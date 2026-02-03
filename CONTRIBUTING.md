@@ -2,7 +2,7 @@
 
 First of all, **thank you** for contributing, **you are awesome**!
 
-Here are a few rules to follow in order to ease code reviews, and discussions
+Here are a few rules to follow to ease code reviews, and discussions
 before maintainers accept and merge your work.
 
 You MUST follow the [PSR-4](http://www.php-fig.org/psr/psr-4) and
@@ -31,7 +31,7 @@ Thank you!
 
 ## See also
 
-- [Installation](resources/doc/installation.md)
-- [Usage](resources/doc/usage.md)
-- [Cookbook](resources/doc/cookbook.md)
+- [Installation](doc/installation.md)
+- [Usage](doc/usage.md)
+- [Cookbook](doc/cookbook.md)
 - [Home Page](README.md)

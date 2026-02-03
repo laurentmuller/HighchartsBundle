@@ -27,7 +27,7 @@
         "source": "https://github.com/laurentmuller/HighchartsBundle"
     },
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "symfony/config": " ^7.0",
         "symfony/dependency-injection": " ^7.0",
         "symfony/http-kernel": " ^7.0",
@@ -35,9 +35,9 @@
     },
     "require-dev": {
         "bamarni/composer-bin-plugin": "^1.0",
-        "phpunit/phpunit": "^11.0",
+        "phpunit/phpunit": "^12.0",
         "symfony/framework-bundle": " ^7.0",
-        "symfony/phpunit-bridge": " ^7.0"
+        "symfony/phpunit-bridge": " ^8.0"
     },
     "extra": {
         "bamarni-bin": {
@@ -58,7 +58,7 @@
     },
     "config": {
         "platform": {
-            "php": "8.2.19"
+            "php": "8.3.29"
         },
         "optimize-autoloader": true,
         "preferred-install": {

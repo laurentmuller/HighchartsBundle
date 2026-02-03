@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Updated to PHP 8.3.
+
 ## 3.0.5 - 2026-02-03
 
 - Updated Rector configuration for version 2.3.5.

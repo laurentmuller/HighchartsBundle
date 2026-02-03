@@ -1,6 +1,5 @@
 parameters:
     level: max
-    phpVersion: 80219
     tmpDir: cache/phpstan
     paths:
         - src
@@ -17,7 +16,7 @@ parameters:
     checkDynamicProperties: true
 
     type_coverage:
-        constant: 0 # PHP 8.3
+        constant: 100
         declare: 100
         param: 100
         property: 100

@@ -20,7 +20,7 @@ namespace HighchartsBundle\Highcharts;
  */
 class Highchart extends AbstractChart
 {
-    public const CHART_CLASS = 'Chart';
+    public const string CHART_CLASS = 'Chart';
 
     /**
      * The color axis options for series.

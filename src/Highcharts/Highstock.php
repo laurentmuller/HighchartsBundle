@@ -20,7 +20,7 @@ namespace HighchartsBundle\Highcharts;
  */
 class Highstock extends AbstractChart
 {
-    public const CHART_CLASS = 'StockChart';
+    public const string CHART_CLASS = 'StockChart';
 
     /**
      * Range selector language options for accessibility.
