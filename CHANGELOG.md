@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 4.0.0 - 2026-02-03
 
 - Updated to PHP 8.3.
 
