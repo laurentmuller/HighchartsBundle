@@ -53,12 +53,20 @@ $rules = [
     'list_syntax' => ['syntax' => 'short'],
     'array_syntax' => ['syntax' => 'short'],
     'ordered_class_elements' => ['sort_algorithm' => 'alpha'],
-    'doctrine_annotation_array_assignment' => ['operator' => '='],
-    'phpdoc_to_comment' => ['allow_before_return_statement' => true],
     'native_function_invocation' => ['include' => ['@internal', 'all']],
-    'header_comment' => ['header' => $comment, 'location' => 'after_open'],
     'blank_line_before_statement' => ['statements' => ['declare', 'try', 'return']],
     'php_unit_test_case_static_method_calls' => ['call_type' => 'self'],
+    'header_comment' => ['header' => $comment, 'location' => 'after_open'],
+    'phpdoc_to_comment' => [
+        'allow_before_return_statement' => true,
+        'ignored_tags' => ['phpstan-var', 'phpstan-param', 'phpstan-ignore'],
+    ],
+    'phpdoc_line_span' => [
+        'case' => 'single',
+        'const' => 'single',
+        'property' => 'single',
+        'other' => 'single',
+    ],
 ];
 
 $paths = [

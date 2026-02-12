@@ -22,9 +22,7 @@ class Highstock extends AbstractChart
 {
     public const string CHART_CLASS = 'StockChart';
 
-    /**
-     * Range selector language options for accessibility.
-     */
+    /** Range selector language options for accessibility. */
     public ChartOption $rangeSelector;
 
     public function __construct()

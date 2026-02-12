@@ -2,7 +2,7 @@
 
 1. Run composer:
 
-    ```console
+    ```bash
     composer require laurentmuller/highcharts-bundle
     ```
 
@@ -11,7 +11,7 @@
    with a `composer.phar` file in your directory. In that case, no worries!
    Your command line in that case is:
 
-   ```console
+   ```bash
    php composer.phar require laurentmuller/highcharts-bundle
    ```
 

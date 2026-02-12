@@ -20,16 +20,10 @@ namespace HighchartsBundle\Highcharts;
  */
 enum Engine: string
 {
-    /**
-     * The JQuery engine.
-     */
+    /** The JQuery engine. */
     case JQUERY = 'jquery';
-    /**
-     * The MooTools engine.
-     */
+    /** The MooTools engine. */
     case MOOTOOLS = 'mootools';
-    /**
-     * No engine.
-     */
+    /** No engine. */
     case NONE = '';
 }

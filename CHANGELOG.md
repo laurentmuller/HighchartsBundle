@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Updated PHP-CS-Fixer configurations for line span in PHPDoc blocks.
+
 ## 4.0.0 - 2026-02-03
 
 - Updated to PHP 8.3.
@@ -23,7 +27,7 @@
 
 - Simplified `ChartOption` class and updated tests.
 - Updated `actions/checkout` workflows to version 6.
-- Updated Rector, PhpStan and PhpCsFixer configurations.
+- Updated Rector, PhpStan and PHP-CS-Fixer configurations.
 - Updated Symfony to version 7.3.7.
 - Removed Psalm dependency.
 
@@ -99,7 +103,7 @@
 
 ## 2.20.21 - 2024-11-25
 
-- Updated `php-cs-fixer` to version 3.65.0.
+- Updated PHP-CS-Fixer to version 3.65.0.
 - Updated `PHPunit` continuous integration action.
 - Added static `instance()` function to `ChartOption` class.
 - Added test for the `renderTo` property.
@@ -178,7 +182,7 @@
 - Move documentation to the root folder.
 - Updated `phpstan` configuration.
 - Updated `psalm/plugin-phpunit` plugin version.
-- Updated `PhpCsFixer` configuration.
+- Updated PHP-CS-Fixer configuration.
 - Updated `.gitattributes` to exclude non-essential files from distribution.
 
 ## 2.20.12 - 2024-04-22

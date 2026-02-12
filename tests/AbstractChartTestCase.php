@@ -22,9 +22,7 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class AbstractChartTestCase extends TestCase
 {
-    /**
-     * @var TChart
-     */
+    /** @var TChart */
     protected ChartInterface $chart;
 
     #[\Override]

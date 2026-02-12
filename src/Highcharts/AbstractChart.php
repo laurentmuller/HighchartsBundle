@@ -30,13 +30,9 @@ abstract class AbstractChart implements ChartInterface
     // the space prefix
     private const string SPACE = '        ';
 
-    /**
-     * Options for configuring accessibility for the chart.
-     */
+    /** Options for configuring accessibility for the chart. */
     public ChartOption $accessibility;
-    /**
-     * General options for the chart.
-     */
+    /** General options for the chart. */
     public ChartOption $chart;
     /**
      * An array containing the default colors for the chart's series.
@@ -44,53 +40,29 @@ abstract class AbstractChart implements ChartInterface
      * @var string[]
      */
     public array $colors = [];
-    /**
-     * The credit's label options.
-     */
+    /** The credit's label options. */
     public ChartOption $credits;
-    /**
-     * The options for the exporting module.
-     */
+    /** The options for the exporting module. */
     public ChartOption $exporting;
-    /**
-     * The global options.
-     */
+    /** The global options. */
     public ChartOption $global;
-    /**
-     * The language object options.
-     */
+    /** The language object options. */
     public ChartOption $lang;
-    /**
-     * The legend is a box containing a symbol and name for each series item or point item in the chart.
-     */
+    /** The legend is a box containing a symbol and name for each series item or point item in the chart. */
     public ChartOption $legend;
-    /**
-     * The plot options is a wrapper object for config objects for each series type.
-     */
+    /** The plot options is a wrapper object for config objects for each series type. */
     public ChartOption $plotOptions;
-    /**
-     * The series options for specific data and the data itself.
-     */
+    /** The series options for specific data and the data itself. */
     public ChartOption $series;
-    /**
-     * The chart's subtitle options.
-     */
+    /** The chart's subtitle options. */
     public ChartOption $subtitle;
-    /**
-     * The chart's main title options.
-     */
+    /** The chart's main title options. */
     public ChartOption $title;
-    /**
-     * The options for the tooltip that appears when the user hovers over a series or point.
-     */
+    /** The options for the tooltip that appears when the user hovers over a series or point. */
     public ChartOption $tooltip;
-    /**
-     * The X axis or category axis options.
-     */
+    /** The X axis or category axis options. */
     public ChartOption $xAxis;
-    /**
-     * The Y axis or value axis options.
-     */
+    /** The Y axis or value axis options. */
     public ChartOption $yAxis;
 
     public function __construct()
