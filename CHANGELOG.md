@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Rector configuration.
 - Updated PHP-CS-Fixer configurations for line span in PHPDoc blocks.
 
 ## 4.0.0 - 2026-02-03
