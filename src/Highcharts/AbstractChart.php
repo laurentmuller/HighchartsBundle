@@ -314,14 +314,16 @@ abstract class AbstractChart implements ChartInterface
             return '';
         }
 
-        return self::NEW_LINE
-            . self::HALF_SPACE
-            . 'Highcharts.setOptions({'
-            . self::NEW_LINE
-            . $this->renderGlobal()
-            . $this->renderLang()
-            . self::HALF_SPACE
-            . '});';
+        return $this->implode(
+            self::NEW_LINE,
+            self::HALF_SPACE,
+            'Highcharts.setOptions({',
+            self::NEW_LINE,
+            $this->renderGlobal(),
+            $this->renderLang(),
+            self::HALF_SPACE,
+            '});'
+        );
     }
 
     protected function renderPlotOptions(): string
