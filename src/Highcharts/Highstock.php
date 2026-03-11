@@ -38,14 +38,16 @@ class Highstock extends AbstractChart
     }
 
     #[\Override]
-    protected function renderChartOptions(string &$chartJS): void
+    protected function renderChartOptions(): string
     {
-        parent::renderChartOptions($chartJS);
-        $this->renderRangeSelector($chartJS);
+        return $this->implode(
+            parent::renderChartOptions(),
+            $this->renderRangeSelector()
+        );
     }
 
-    protected function renderRangeSelector(string &$chartJS): void
+    protected function renderRangeSelector(): string
     {
-        $chartJS .= $this->jsonEncode($this->rangeSelector);
+        return $this->jsonEncode($this->rangeSelector);
     }
 }

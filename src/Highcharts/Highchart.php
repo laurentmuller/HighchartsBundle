@@ -47,32 +47,34 @@ class Highchart extends AbstractChart
     }
 
     #[\Override]
-    protected function renderChartOptions(string &$chartJS): void
+    protected function renderChartOptions(): string
     {
-        parent::renderChartOptions($chartJS);
-        $this->renderColorAxis($chartJS);
-        $this->renderDrilldown($chartJS);
-        $this->renderNoData($chartJS);
-        $this->renderPane($chartJS);
+        return $this->implode(
+            parent::renderChartOptions(),
+            $this->renderColorAxis(),
+            $this->renderDrilldown(),
+            $this->renderNoData(),
+            $this->renderPane()
+        );
     }
 
-    private function renderColorAxis(string &$chartJS): void
+    private function renderColorAxis(): string
     {
-        $chartJS .= $this->jsonEncode($this->colorAxis);
+        return $this->jsonEncode($this->colorAxis);
     }
 
-    private function renderDrilldown(string &$chartJS): void
+    private function renderDrilldown(): string
     {
-        $chartJS .= $this->jsonEncode($this->drilldown);
+        return $this->jsonEncode($this->drilldown);
     }
 
-    private function renderNoData(string &$chartJS): void
+    private function renderNoData(): string
     {
-        $chartJS .= $this->jsonEncode($this->noData);
+        return $this->jsonEncode($this->noData);
     }
 
-    private function renderPane(string &$chartJS): void
+    private function renderPane(): string
     {
-        $chartJS .= $this->jsonEncode($this->pane);
+        return $this->jsonEncode($this->pane);
     }
 }
