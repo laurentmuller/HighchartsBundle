@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Removed PR 7912 exception in Rector configuration.
 - **BC Break!**: Rendering methods no longer pass the script as a parameter.
 - Updated Rector configuration.
 - Updated PHP-CS-Fixer configurations for line span in PHPDoc blocks.
