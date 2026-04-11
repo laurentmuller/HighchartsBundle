@@ -1,7 +1,8 @@
 # Change log
 
-## Unreleased
+## 4.1.0 - 2026-04-11
 
+- Updated Symfony to version 7.4.8.
 - Removed PR 7912 exception in Rector configuration.
 - **BC Break!**: Rendering methods no longer pass the script as a parameter.
 - Updated Rector configuration.
