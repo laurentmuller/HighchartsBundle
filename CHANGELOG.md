@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Updated Symfony to version 7.4.10.
+
 ## 4.1.0 - 2026-04-11
 
 - Updated Symfony to version 7.4.8.
