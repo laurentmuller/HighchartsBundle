@@ -1,6 +1,6 @@
 # Change log
 
-## Unreleased
+## 4.2.0 - 2026-05-22
 
 - Updated Symfony to version 7.4.12.
 - Updated Twig to version 3.26.0.
