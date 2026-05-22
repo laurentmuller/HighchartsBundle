@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.4.12.
+- Updated Twig to version 3.26.0.
+- Updated the PHP platform to version 8.3.31.
 - Updated Symfony to version 7.4.10.
 
 ## 4.1.0 - 2026-04-11
@@ -99,7 +102,7 @@
 - Updated Symfony to version 7.2.3.
 - Updated Rector to version 2.0.
 - Updated cache configurations.
-- Updated psalm to version 6.0.
+- Updated Psalm to version 6.0.
 
 ## 2.20.22 - 2025-01-15
 
