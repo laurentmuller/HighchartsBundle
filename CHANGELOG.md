@@ -1,5 +1,9 @@
 # Change log
 
+## Unreleased
+
+- Update GitHub actions.
+
 ## 4.2.0 - 2026-05-22
 
 - Updated Symfony to version 7.4.12.
