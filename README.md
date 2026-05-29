@@ -51,9 +51,5 @@ constitutes a non-commercial project or their
 
 ## Actions
 
-[![PHP-CS-Fixer](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php-cs-fixer.yaml)
-[![PHPStan](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_stan.yaml)
-[![PHPUnit](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/php_unit.yaml)
-[![Rector](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/rector.yaml)
-[![Lint](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/lint.yaml)
+[![CI](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml/badge.svg)](https://github.com/laurentmuller/HighchartsBundle/actions/workflows/ci.yaml)
 [![StyleCI](https://github.styleci.io/repos/472412531/shield?branch=master)](https://github.styleci.io/repos/472412531?branch=master)
