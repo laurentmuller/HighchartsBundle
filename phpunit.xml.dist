@@ -14,7 +14,7 @@
     </php>
 
     <testsuites>
-        <testsuite name="HighchartsBundle">
+        <testsuite name="highcharts-bundle">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
