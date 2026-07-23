@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update rector configuration.
 - Update GitHub actions.
 
 ## 4.2.0 - 2026-05-22
