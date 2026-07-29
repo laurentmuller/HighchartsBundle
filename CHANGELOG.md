@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Updated Symfony to version 7.4.15.
 - Update rector configuration.
 - Update GitHub actions.
 
