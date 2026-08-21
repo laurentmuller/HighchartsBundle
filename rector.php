@@ -21,7 +21,6 @@ use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\NoSetupWithParentCallOverrideRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
 use Rector\Set\ValueObject\SetList;
-use Rector\Symfony\Set\TwigSetList;
 
 $paths = [
     __DIR__ . '/src',
@@ -55,13 +54,9 @@ $sets = [
     SetList::PRIVATIZATION,
     SetList::TYPE_DECLARATION,
     // PHP-Unit
-    PHPUnitSetList::PHPUNIT_120,
     PHPUnitSetList::PHPUNIT_CODE_QUALITY,
     PHPUnitSetList::PHPUNIT_MOCK_TO_STUB,
     PHPUnitSetList::PHPUNIT_NARROW_ASSERTS,
-    // twig
-    TwigSetList::TWIG_24,
-    TwigSetList::TWIG_UNDERSCORE_TO_NAMESPACE,
 ];
 
 return RectorConfig::configure()
@@ -75,8 +70,6 @@ return RectorConfig::configure()
         twig: true,
         phpunit: true,
         symfony: true,
-    )->withPhpSets(
-        php83: true
     )->withAttributesSets(
         symfony: true,
         phpunit: true

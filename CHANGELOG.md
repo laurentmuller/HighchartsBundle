@@ -2,9 +2,11 @@
 
 ## Unreleased
 
-- Updated Symfony to version 7.4.15.
-- Update rector configuration.
-- Update GitHub actions.
+- Update Symfony to version 7.4.16.
+- Update Rector to version 2.6.3 and configuration.
+- Update Symfony to version 7.4.15.
+- Update Rector configuration.
+- Update GitHub workflow actions.
 
 ## 4.2.0 - 2026-05-22
 
