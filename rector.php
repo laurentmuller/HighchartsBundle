@@ -46,11 +46,9 @@ $skip = [
 
 $sets = [
     // global
-    SetList::PHP_83,
     SetList::CODE_QUALITY,
     SetList::CODING_STYLE,
     SetList::DEAD_CODE,
-    SetList::INSTANCEOF,
     SetList::PRIVATIZATION,
     SetList::TYPE_DECLARATION,
     // PHP-Unit
@@ -63,6 +61,7 @@ return RectorConfig::configure()
     ->withCache(__DIR__ . '/cache/rector')
     ->withRootFiles()
     ->reportUnusedSkips()
+    ->withPhpSets(php83: true)
     ->withPaths($paths)
     ->withSkip($skip)
     ->withSets($sets)

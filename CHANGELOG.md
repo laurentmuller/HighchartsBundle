@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Update Symfony to version 7.4.18, Rector to version 2.6.6, PhpStan to version
+  2.2.13.
 - Update Symfony to version 7.4.16.
 - Update Rector to version 2.6.3 and configuration.
 - Update Symfony to version 7.4.15.
@@ -320,7 +322,8 @@
 ## 1.1.0 - 2014-06-26
 
 This release fixes a security issue. You are encouraged to update to it as soon
-as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/security/advisory/ZF2014-01)
+as possible.
+See [Security Advisory: ZF2014-01](https://framework.zend.com/security/advisory/ZF2014-01)
 
 - Add support for the pane option
 - Add support for Highstock
@@ -329,7 +332,8 @@ as possible. See [Security Advisory: ZF2014-01](https://framework.zend.com/secur
 - Add a branch alias to composer.json
 - Update to Highcharts v4
 - Update Zend\Json for a security issue
-- Remove bundled assets in favor of Highcharts' CDN ([https://code.highcharts.com](https://code.highcharts.com))
+- Remove bundled assets in favor of Highcharts' CDN
+  ([https://code.highcharts.com](https://code.highcharts.com))
 
 ## 1.0.1 - 2013-11-08
 
