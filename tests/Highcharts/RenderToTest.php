@@ -21,13 +21,13 @@ final class RenderToTest extends AbstractHighchartTestCase
     public function testWithDefault(): void
     {
         $regex = 'const chart = new Highcharts';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testWithValue(): void
     {
         $this->chart->chart['renderTo'] = 'myChart';
         $regex = 'const myChart = new Highcharts';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 }

@@ -20,12 +20,12 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->alignTicks(true);
         self::assertTrue($this->chart->chart->alignTicks);
         $regex = '"alignTicks":true';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         $this->chart->chart->alignTicks(false);
         self::assertFalse($this->chart->chart->alignTicks);
         $regex = '"alignTicks":false';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testAnimation(): void
@@ -33,12 +33,12 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->animation(true);
         self::assertTrue($this->chart->chart->animation);
         $regex = '"animation":true';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         $this->chart->chart->animation(false);
         self::assertFalse($this->chart->chart->animation);
         $regex = '"animation":false';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testBackgroundColor(): void
@@ -47,7 +47,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->backgroundColor($color);
         self::assertSame($color, $this->chart->chart->backgroundColor);
         $regex = '"backgroundColor":"#ffffff"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testBorderColor(): void
@@ -56,7 +56,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->borderColor($color);
         self::assertSame($color, $this->chart->chart->borderColor);
         $regex = '"borderColor":"#4572a7"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testBorderRadius(): void
@@ -65,7 +65,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->borderRadius($radius);
         self::assertSame($radius, $this->chart->chart->borderRadius);
         $regex = '"borderRadius":5';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testBorderWidth(): void
@@ -74,7 +74,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->borderWidth($width);
         self::assertSame($width, $this->chart->chart->borderWidth);
         $regex = '"borderWidth":0';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testClassName(): void
@@ -83,7 +83,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->className($class);
         self::assertSame($class, $this->chart->chart->className);
         $regex = '"className":"extraClass"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testHeight(): void
@@ -92,7 +92,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->height($height);
         self::assertSame($height, $this->chart->chart->height);
         $regex = '"height":"300px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testIgnoreHiddenSeries(): void
@@ -100,12 +100,12 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->ignoreHiddenSeries(true);
         self::assertTrue($this->chart->chart->ignoreHiddenSeries);
         $regex = '"ignoreHiddenSeries":true';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         $this->chart->chart->ignoreHiddenSeries(false);
         self::assertFalse($this->chart->chart->ignoreHiddenSeries);
         $regex = '"ignoreHiddenSeries":false';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testMarginBottom(): void
@@ -114,7 +114,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->marginBottom($margin);
         self::assertSame($margin, $this->chart->chart->marginBottom);
         $regex = '"marginBottom":"150px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testMarginLeft(): void
@@ -123,7 +123,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->marginLeft($margin);
         self::assertSame($margin, $this->chart->chart->marginLeft);
         $regex = '"marginLeft":"150px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testMarginRight(): void
@@ -132,7 +132,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->marginRight($margin);
         self::assertSame($margin, $this->chart->chart->marginRight);
         $regex = '"marginRight":"150px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testMarginTop(): void
@@ -141,7 +141,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->marginTop($margin);
         self::assertSame($margin, $this->chart->chart->marginTop);
         $regex = '"marginTop":"150px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testPanning(): void
@@ -149,12 +149,12 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->panning(true);
         self::assertTrue($this->chart->chart->panning);
         $regex = '"panning":true';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         $this->chart->chart->panning(false);
         self::assertFalse($this->chart->chart->panning);
         $regex = '"panning":false';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testSpacingBottom(): void
@@ -163,7 +163,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->spacingBottom($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingBottom);
         $regex = '"spacingBottom":15';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testSpacingLeft(): void
@@ -172,7 +172,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->spacingLeft($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingLeft);
         $regex = '"spacingLeft":10';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testSpacingRight(): void
@@ -181,7 +181,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->spacingRight($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingRight);
         $regex = '"spacingRight":10';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testSpacingTop(): void
@@ -190,7 +190,7 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->spacingTop($spacing);
         self::assertSame($spacing, $this->chart->chart->spacingTop);
         $regex = '"spacingTop":10';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testWidth(): void
@@ -199,6 +199,6 @@ final class HighstockTest extends AbstractHighstockTestCase
         $this->chart->chart->width($width);
         self::assertSame($width, $this->chart->chart->width);
         $regex = '"width":"800px"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 }

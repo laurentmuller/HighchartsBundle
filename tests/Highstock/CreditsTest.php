@@ -33,12 +33,12 @@ final class CreditsTest extends AbstractHighstockTestCase
         $this->credits['enabled'] = true;
         self::assertTrue($this->credits['enabled']);
         $regex = '"enabled":true';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         $this->credits['enabled'] = false;
         self::assertFalse($this->credits['enabled']);
         $regex = '"enabled":false';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testHref(): void
@@ -63,7 +63,7 @@ final class CreditsTest extends AbstractHighstockTestCase
         $this->credits->position($position);
         self::assertSame($this->credits->position, $position);
         $regex = '"position":{"align":"right","x":-10,"verticalAlign":"bottom","y":-5}';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testStyle(): void
@@ -78,7 +78,7 @@ final class CreditsTest extends AbstractHighstockTestCase
         $this->credits->style($style);
         self::assertSame($style, $this->credits->style);
         $regex = '"style":{"cursor":"pointer","color":"#909090","fontSize":"10px"}';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     public function testText(): void
@@ -89,6 +89,6 @@ final class CreditsTest extends AbstractHighstockTestCase
         $this->credits->text($text);
         self::assertSame($text, $this->credits->text);
         $regex = '"text":"Highcharts.com"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 }

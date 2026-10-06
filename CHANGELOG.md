@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Update phpstan/phpstan to 2.3.0, the configuration and tests.
 - Update Symfony to version 7.4.18, Rector to version 2.6.6, PhpStan to version
   2.2.13.
 - Update Symfony to version 7.4.16.
@@ -147,7 +148,7 @@
 
 ## 2.20.19 - 2024-10-14
 
-- Replaced `SplQueue` structure by an array for expressions.
+- Replaced `SplQueue` structure with an array for expressions.
 - Updated documentation.
 - Added `getQuotedKey()` function to the `ChartExpression` class.
 
@@ -305,7 +306,7 @@
 
 ## 1.3.0 - 2015-10-10
 
-- Update to PSR-4 auto-loading
+- Update to PSR-4 autoloading
 - Add support for colorAxis
 - Add support for noData
 
@@ -327,7 +328,7 @@ See [Security Advisory: ZF2014-01](https://framework.zend.com/security/advisory/
 
 - Add support for the pane option
 - Add support for Highstock
-- Extract a common interface from Highchart and Highstock
+- Extract a common interface from Highcharts and Highstock
 - Add support for rangeSelector
 - Add a branch alias to composer.json
 - Update to Highcharts v4

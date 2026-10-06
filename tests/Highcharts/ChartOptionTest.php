@@ -18,8 +18,8 @@ use PHPUnit\Framework\TestCase;
 
 final class ChartOptionTest extends TestCase
 {
-    private const string NAME = 'name';
-    private const string VALUE = 'value';
+    private const string NAME = 'property_name';
+    private const string VALUE = 'property_value';
 
     public function testAccessArray(): void
     {

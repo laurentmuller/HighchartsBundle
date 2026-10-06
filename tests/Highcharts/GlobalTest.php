@@ -25,12 +25,12 @@ final class GlobalTest extends AbstractHighchartTestCase
     {
         $this->chart->global['useUTC'] = 'true';
         $regex = 'global: {"useUTC":"true"}';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
 
         // $chart->global->useUTC('false');
         $this->chart->global['useUTC'] = 'false';
         $regex = 'global: {"useUTC":"false"}';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 
     /**
@@ -40,6 +40,6 @@ final class GlobalTest extends AbstractHighchartTestCase
     {
         $this->chart->lang['noData'] = 'No data to display';
         $regex = '"noData":"No data to display"';
-        $this->assertChartMatchesRegularExpression($regex);
+        self::assertChartMatchesRegularExpression($regex);
     }
 }

@@ -42,7 +42,7 @@ final class HighchartsExtensionTest extends TestCase
      */
     public function testEngineDefault(): void
     {
-        $this->assertChartMatchesRegularExpression(
+        self::assertChartMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/'
         );
     }
@@ -54,7 +54,7 @@ final class HighchartsExtensionTest extends TestCase
     {
         $this->expectException(SyntaxError::class);
         $this->expectExceptionMessage('Invalid chart engine: "fake".');
-        $this->assertChartMatchesRegularExpression('', 'fake');
+        self::assertChartMatchesRegularExpression('', 'fake');
     }
 
     /**
@@ -63,7 +63,7 @@ final class HighchartsExtensionTest extends TestCase
     public function testJQueryEnum(): void
     {
         // render with jquery explicitly
-        $this->assertChartMatchesRegularExpression(
+        self::assertChartMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             Engine::JQUERY
         );
@@ -74,7 +74,7 @@ final class HighchartsExtensionTest extends TestCase
      */
     public function testJQueryString(): void
     {
-        $this->assertChartMatchesRegularExpression(
+        self::assertChartMatchesRegularExpression(
             '/\$\(function\s?\(\)\s?\{\n?\r?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             'jquery'
         );
@@ -86,7 +86,7 @@ final class HighchartsExtensionTest extends TestCase
     public function testMootoolsEnum(): void
     {
         // render with mootools
-        $this->assertChartMatchesRegularExpression(
+        self::assertChartMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             Engine::MOOTOOLS
         );
@@ -97,7 +97,7 @@ final class HighchartsExtensionTest extends TestCase
      */
     public function testMootoolsString(): void
     {
-        $this->assertChartMatchesRegularExpression(
+        self::assertChartMatchesRegularExpression(
             '/window.addEvent\(\'domready\', function\s?\(\)\s?\{\r?\n?\s*const chart = new Highcharts.Chart\(\{\n?\r?\s*\}\);\n?\r?\s*\}\);/',
             'mootools'
         );
