@@ -1,6 +1,7 @@
 # HighchartsBundle
 
-This is a fork of the [ObHighchartsBundle](https://github.com/marcaube/ObHighchartsBundle)
+This is a fork of
+the [ObHighchartsBundle](https://github.com/marcaube/ObHighchartsBundle)
 with support for PHP 8.3.
 
 `HighchartsBundle` eases the use of Highcharts to display rich graphs and
@@ -12,7 +13,7 @@ DRY out your chart code by writing it all in PHP!
 
 | Branch | PHP Version | Symfony Version | Twig Version |
 |--------|-------------|-----------------|--------------|
-| master | 8.3         | 7.0             | 3.21         |
+| master | 8.4         | 7.0 \| 8.0      | 3.21         |
 | 3.x    | 8.2         | 7.0             | 3.21         |
 | 2.x    | 8.2         | 6.0, 7.0        | 3.0          |
 

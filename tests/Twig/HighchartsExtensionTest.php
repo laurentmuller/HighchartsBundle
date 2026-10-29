@@ -53,7 +53,7 @@ final class HighchartsExtensionTest extends TestCase
     public function testEngineInvalid(): void
     {
         $this->expectException(SyntaxError::class);
-        $this->expectExceptionMessage('Invalid chart engine: "fake".');
+        $this->expectExceptionMessageIsOrContains('Invalid chart engine: "fake".');
         self::assertChartMatchesRegularExpression('', 'fake');
     }
 

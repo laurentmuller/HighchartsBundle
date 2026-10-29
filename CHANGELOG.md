@@ -1,7 +1,9 @@
 # Change log
 
-## Unreleased
+## 4.3.0 - 2026-10-29
 
+- **BC Break!**: Require PHP 8.4.
+- Allow Symfony 8.0.
 - Update phpstan/phpstan to 2.3.0, the configuration and tests.
 - Update Symfony to version 7.4.18, Rector to version 2.6.6, PhpStan to version
   2.2.13.

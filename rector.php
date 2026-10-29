@@ -16,7 +16,6 @@ use Rector\CodingStyle\Rector\ClassLike\NewlineBetweenClassLikeStmtsRector;
 use Rector\CodingStyle\Rector\ClassMethod\NewlineBeforeNewAssignSetRector;
 use Rector\CodingStyle\Rector\Stmt\NewlineAfterStatementRector;
 use Rector\Config\RectorConfig;
-use Rector\DeadCode\Rector\ClassMethod\RemoveParentDelegatingConstructorRector;
 use Rector\PHPUnit\CodeQuality\Rector\Class_\PreferPHPUnitThisCallRector;
 use Rector\PHPUnit\CodeQuality\Rector\ClassMethod\NoSetupWithParentCallOverrideRector;
 use Rector\PHPUnit\Set\PHPUnitSetList;
@@ -38,8 +37,6 @@ $skip = [
     NewlineBetweenClassLikeStmtsRector::class,
     // don't rename exception
     CatchExceptionNameMatchingTypeRector::class,
-    // allow delegate constructor
-    RemoveParentDelegatingConstructorRector::class,
     // allow override attribute for setUp method in tests
     NoSetupWithParentCallOverrideRector::class,
 ];
